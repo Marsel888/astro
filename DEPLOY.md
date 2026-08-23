@@ -66,6 +66,26 @@ residential plan. If the domain ever stops resolving, check those first.
 
 ---
 
+## 1b. When something else already owns 80 and 443
+
+If the host already runs a reverse proxy — as this one does, a standalone Caddy
+in `~/apps/proxy` fronting `fixyfile.net` — do **not** start ours. It would fight
+for the ports and take the existing site down with it.
+
+`docker-compose.shared-proxy.yml` drops our proxy and attaches the app to the
+existing proxy's network instead, under the alias `siderachart`:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.shared-proxy.yml up -d --build
+```
+
+Then add a site block to the host proxy's own Caddyfile pointing at
+`siderachart:3000`, and reload it with `docker exec caddy caddy reload --config
+/etc/caddy/Caddyfile`. A reload is not a restart: existing connections to the
+other site are not dropped.
+
+---
+
 ## 2. First deploy
 
 ```bash

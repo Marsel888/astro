@@ -1,0 +1,28 @@
+# Overlay for a host where something else already owns ports 80 and 443.
+#
+#   docker compose -f docker-compose.yml -f docker-compose.shared-proxy.yml up -d
+#
+# It drops our own Caddy and joins the existing reverse proxy's network instead,
+# so the app becomes one more backend behind it rather than fighting for the
+# ports. The proxy then routes to `siderachart:3000`.
+#
+# The external network must already exist — on this host it is `web`, created by
+# ~/apps/proxy. Check with: docker network ls
+
+services:
+  # Never starts: the host's own reverse proxy holds the ports.
+  proxy:
+    profiles: ["unused"]
+
+  app:
+    networks:
+      default: {}
+      web:
+        # Stable name for the proxy to target, independent of the compose
+        # project name or container numbering.
+        aliases:
+          - siderachart
+
+networks:
+  web:
+    external: true
