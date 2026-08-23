@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
+import ArticleCalculator from '@/components/ArticleCalculator';
 import SiteHeader from '@/components/SiteHeader';
 import { ARTICLES, getArticle, type ArticleCategory } from '@/content/articles';
 import { asLocale } from '@/i18n/routing';
 import { hreflangMetadata, pageUrl } from '@/lib/seo';
-import { SITE_URL } from '@/lib/site';
+import { SITE_NAME, SITE_URL } from '@/lib/site';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -44,7 +45,10 @@ export default async function ArticlePage({ params }: Props) {
       description: article.excerpt,
       inLanguage: locale,
       url,
-      publisher: { '@type': 'Organization', name: 'Meridian', url: SITE_URL },
+      datePublished: article.publishedAt,
+      dateModified: article.updatedAt,
+      author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     },
     {
       '@context': 'https://schema.org',
@@ -77,6 +81,10 @@ export default async function ArticlePage({ params }: Props) {
         <h1 className="mt-3 text-[34px] font-medium leading-[1.15] tracking-[-0.03em] sm:text-[44px]">{article.title}</h1>
         <p className="mt-5 text-[19px] leading-[1.6] text-ink-secondary [text-wrap:pretty]">{article.excerpt}</p>
         <p className="mt-4 font-mono text-caption text-ink-muted">{t('methodNote')}</p>
+
+        <section className="mt-10">
+          <ArticleCalculator toolHref={article.toolHref} />
+        </section>
 
         <article className="mt-10 rounded-card bg-reading px-6 py-12 sm:px-14 sm:py-16">
           <div className="flex flex-col gap-12">

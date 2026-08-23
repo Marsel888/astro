@@ -57,7 +57,7 @@
   },
   "home": {
     "title": "Calcolatori di tema natale",
-    "lead": "Inserisci data, ora e luogo. Meridian calcola posizioni tropicali con un’efemeride VSOP87, disegna la ruota e legge da una cache scritta — non da un modello che inventa i gradi.",
+    "lead": "Inserisci data, ora e luogo. SideraChart calcola posizioni tropicali con un’efemeride VSOP87, disegna la ruota e legge da una cache scritta — non da un modello che inventa i gradi.",
     "cta": "Apri il tema natale",
     "ctaSecondary": "Leggi gli articoli",
     "howTitle": "Come usare un calcolatore",
@@ -96,7 +96,7 @@
     "privacyTitle": "Privacy",
     "privacyBody": "I dati di nascita servono a calcolare il tema. La ricerca del luogo va all’API di questo sito e a OpenStreetMap. I temi salvati esistono se crei un account. Non è consiglio medico, legale o finanziario.",
     "termsTitle": "Termini",
-    "termsBody": "Meridian è uno strumento di calcolo gratuito. I temi sono posizioni tropicali con testi in cache. Una sinastria o un composito senza account; il resto richiede l’accesso."
+    "termsBody": "SideraChart è uno strumento di calcolo gratuito. I temi sono posizioni tropicali con testi in cache. Una sinastria o un composito senza account; il resto richiede l’accesso."
   },
   "footer": {
     "blurb": "Posizioni natali tropicali da un’efemeride VSOP87. Non Swiss Ephemeris.",
@@ -235,7 +235,7 @@
   },
   "calcCopy": {
     "howTitle": "Come si calcola un tema natale",
-    "howP1": "Un tema natale è un diagramma del cielo da un luogo in un istante. Due dati fanno il lavoro: l’ora, che fissa dove ogni corpo stava sull’eclittica, e le coordinate, che fissano quale parte di quel cielo stava sorgendo. Meridian risolve il luogo di nascita in latitudine e longitudine, converte l’ora civile locale in Tempo universale con le regole dei fusi IANA in vigore in quella data, poi legge le longitudini planetarie da un’efemeride di classe VSOP87 (astronomy-engine).",
+    "howP1": "Un tema natale è un diagramma del cielo da un luogo in un istante. Due dati fanno il lavoro: l’ora, che fissa dove ogni corpo stava sull’eclittica, e le coordinate, che fissano quale parte di quel cielo stava sorgendo. SideraChart risolve il luogo di nascita in latitudine e longitudine, converte l’ora civile locale in Tempo universale con le regole dei fusi IANA in vigore in quella data, poi legge le longitudini planetarie da un’efemeride di classe VSOP87 (astronomy-engine).",
     "howP2": "Le posizioni sono nel zodiac tropicale, misurate dall’equinozio di marzo — la convenzione occidentale. Le longitudini siderali oggi differiscono di circa 24° e in questo calcolatore non si mostrano.",
     "whyTimeTitle": "Perché conta l’ora di nascita",
     "whyTimeBody": "L’Ascendente si muove di circa un grado ogni quattro minuti, quindi un errore di venti minuti lo sposta di cinque gradi e può cambiare il segno. La Luna percorre circa mezzo grado all’ora. Dal Sole a Plutone in un giorno sono abbastanza stabili: senza ora il tema resta utile, ma senza case.",
@@ -250,7 +250,7 @@
     "precisionHouses": "Placidus + Whole Sign",
     "precisionOrbs": "orbi 8° / 6° / 4°",
     "risingTitle": "Che cos’è il segno di ascendente",
-    "risingBody": "Il segno di ascendente è il segno zodiacale che sorgeva all’orizzonte orientale nel momento della nascita. Dipende da latitudine, longitudine e orologio, non solo dalla data. Meridian lo calcola dal tempo sidereo locale e dalla stessa efemeride tropicale del tema natale.",
+    "risingBody": "Il segno di ascendente è il segno zodiacale che sorgeva all’orizzonte orientale nel momento della nascita. Dipende da latitudine, longitudine e orologio, non solo dalla data. SideraChart lo calcola dal tempo sidereo locale e dalla stessa efemeride tropicale del tema natale.",
     "moonTitle": "Perché la Luna ha bisogno di un’ora",
     "moonBody": "La Luna percorre circa 13° al giorno. La spunta «ora sconosciuta» nella maggior parte dei casi dà comunque il segno, ma grado e casa sono una stima a mezzogiorno. Per una lettura natale inserisci l’ora se ce l’hai.",
     "venusTitle": "Venere nel tema natale",

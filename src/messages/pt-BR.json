@@ -57,7 +57,7 @@
   },
   "home": {
     "title": "Calculadoras de mapa natal",
-    "lead": "Informe data, hora e local. O Meridian calcula posições tropicais com uma efeméride VSOP87, desenha a roda e lê de um cache escrito — não de um modelo que inventa graus.",
+    "lead": "Informe data, hora e local. O SideraChart calcula posições tropicais com uma efeméride VSOP87, desenha a roda e lê de um cache escrito — não de um modelo que inventa graus.",
     "cta": "Abrir o mapa natal",
     "ctaSecondary": "Ler artigos",
     "howTitle": "Como usar uma calculadora",
@@ -96,7 +96,7 @@
     "privacyTitle": "Privacidade",
     "privacyBody": "Os dados de nascimento servem para calcular o mapa. A busca de lugar vai à API deste site e ao OpenStreetMap. Mapas salvos existem se você criar uma conta. Não é conselho médico, jurídico ou financeiro.",
     "termsTitle": "Termos",
-    "termsBody": "Meridian é uma ferramenta de cálculo gratuita. Os mapas são posições tropicais com textos de um cache. Uma sinastria ou composta sem conta; o restante pede login."
+    "termsBody": "SideraChart é uma ferramenta de cálculo gratuita. Os mapas são posições tropicais com textos de um cache. Uma sinastria ou composta sem conta; o restante pede login."
   },
   "footer": {
     "blurb": "Posições natais tropicais de uma efeméride VSOP87. Não Swiss Ephemeris.",
@@ -235,7 +235,7 @@
   },
   "calcCopy": {
     "howTitle": "Como um mapa natal é calculado",
-    "howP1": "Um mapa natal é um diagrama do céu a partir de um lugar num instante. Dois dados fazem o trabalho: a hora, que fixa onde cada corpo estava na eclíptica, e as coordenadas, que fixam que parte daquele céu estava ascendendo. O Meridian resolve o local de nascimento em latitude e longitude, converte a hora civil local em Tempo Universal com as regras de fuso IANA vigentes nessa data e lê as longitudes planetárias de uma efeméride de classe VSOP87 (astronomy-engine).",
+    "howP1": "Um mapa natal é um diagrama do céu a partir de um lugar num instante. Dois dados fazem o trabalho: a hora, que fixa onde cada corpo estava na eclíptica, e as coordenadas, que fixam que parte daquele céu estava ascendendo. O SideraChart resolve o local de nascimento em latitude e longitude, converte a hora civil local em Tempo Universal com as regras de fuso IANA vigentes nessa data e lê as longitudes planetárias de uma efeméride de classe VSOP87 (astronomy-engine).",
     "howP2": "As posições são dadas no zodíaco tropical, medidas a partir do equinócio de março — a convenção ocidental. As longitudes siderais diferem hoje cerca de 24° e não aparecem nesta calculadora.",
     "whyTimeTitle": "Por que a hora de nascimento importa",
     "whyTimeBody": "O Ascendente se move cerca de um grau a cada quatro minutos, então um erro de vinte minutos o desloca cinco graus e pode mudar o signo. A Lua percorre cerca de meio grau por hora. Do Sol a Plutão são estáveis o bastante num dia: sem hora o mapa ainda é útil, mas sem casas.",
@@ -250,7 +250,7 @@
     "precisionHouses": "Placidus + Whole Sign",
     "precisionOrbs": "orbes 8° / 6° / 4°",
     "risingTitle": "O que é o signo ascendente",
-    "risingBody": "O signo ascendente é o signo do zodíaco que nascia no horizonte leste no momento do nascimento. Depende de latitude, longitude e relógio, não só da data. O Meridian o calcula a partir do tempo sideral local e da mesma efeméride tropical do mapa natal.",
+    "risingBody": "O signo ascendente é o signo do zodíaco que nascia no horizonte leste no momento do nascimento. Depende de latitude, longitude e relógio, não só da data. O SideraChart o calcula a partir do tempo sideral local e da mesma efeméride tropical do mapa natal.",
     "moonTitle": "Por que a Lua precisa de uma hora",
     "moonBody": "A Lua percorre cerca de 13° por dia. A caixa de hora desconhecida ainda devolve o signo na maioria dos casos, mas o grau e a casa são uma estimativa ao meio-dia. Para uma leitura natal, informe a hora se a tiver.",
     "venusTitle": "Vênus no mapa natal",

@@ -30,7 +30,14 @@ export default function BirthDataForm({
   }
 
   return (
-    <section className="rounded-card border border-hairline bg-panel p-4 sm:px-6 sm:py-5">
+    <form
+      noValidate
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit();
+      }}
+      className="rounded-card border border-hairline bg-panel p-4 sm:px-6 sm:py-5"
+    >
       {title && <h2 className="mb-4 text-h3 font-medium text-ink">{title}</h2>}
       <div className="grid gap-4 sm:grid-cols-[168px_128px_1fr_auto] sm:items-end">
         <DateField value={value.date} onChange={(date) => patch({ date })} />
@@ -41,8 +48,7 @@ export default function BirthDataForm({
         />
         <PlaceSearch value={value.place} onSelect={(place) => patch({ place })} />
         <button
-          type="button"
-          onClick={onSubmit}
+          type="submit"
           className="h-11 rounded-control bg-gold px-6 text-[15px] font-medium text-deep transition-colors hover:bg-gold-hover"
         >
           {submitLabel ?? t('calculate')}
@@ -62,6 +68,6 @@ export default function BirthDataForm({
           <span className="text-caption text-ink-muted">{t('timeUnknownHint')}</span>
         </div>
       )}
-    </section>
+    </form>
   );
 }

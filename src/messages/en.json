@@ -1,6 +1,6 @@
 {
   "brand": {
-    "name": "Meridian",
+    "name": "SideraChart",
     "tag": "ephemeris"
   },
   "nav": {
@@ -42,7 +42,13 @@
     "tropical": "tropical",
     "timeUnknown": "time unknown",
     "needsTime": "needs birth time",
-    "unknown": "Unknown"
+    "unknown": "Unknown",
+    "porphyry": "Porphyry",
+    "houseFallbackNote": "Placidus is undefined this far north, so the quadrants are trisected (Porphyry) instead.",
+    "print": "Print / save PDF",
+    "downloadText": "Download text",
+    "downloading": "Preparing…",
+    "downloadFailed": "The download failed. Try again."
   },
   "birthChart": {
     "title": "Birth chart calculator",
@@ -50,7 +56,10 @@
     "result": "Natal chart",
     "positions": "Planetary positions",
     "aspects": "Aspects",
-    "rowHint": "open a row for the sign and house reading"
+    "rowHint": "open a row for the sign and house reading",
+    "h1": "Free birth chart calculator",
+    "metaTitle": "Free birth chart calculator — natal chart with reading",
+    "metaDescription": "Enter your birth date, time and place for a full natal chart — planets, houses, aspects and a written reading. Free, no signup needed."
   },
   "resultUi": {
     "save": "Save chart to cabinet",
@@ -99,50 +108,74 @@
     "housesHeading": "Houses in this chart",
     "aspectsHeading": "Major aspects",
     "natalChart": "Natal chart",
-    "emptyOverlay": "Enter both charts, then calculate — the overlay wheel draws itself."
+    "emptyOverlay": "Enter both charts, then calculate — the overlay wheel draws itself.",
+    "wheelLabel": "Chart wheel: zodiac ring, house cusps, planetary positions and aspect lines",
+    "wheelLabelSynastry": "Synastry wheel: two charts overlaid, with the aspects between them",
+    "downloadFailed": "The chart could not be saved as an image. Try again."
   },
   "rising": {
     "title": "Rising sign calculator",
     "description": "Calculate your Ascendant from birth date, time and place. Tropical zodiac, Placidus.",
     "lead": "The Ascendant is the ecliptic degree rising on the eastern horizon at birth. It needs a clock time — a twenty minute error can move it five degrees.",
-    "result": "Rising sign"
+    "result": "Rising sign",
+    "h1": "What is my rising sign?",
+    "metaTitle": "Rising sign calculator — find your ascendant free",
+    "metaDescription": "Find the sign that was rising on the eastern horizon when you were born. Enter your birth time and place for the ascendant and a reading."
   },
   "moon": {
     "title": "Moon sign calculator",
     "description": "Calculate your Moon sign from birth date, time and place.",
     "lead": "The Moon moves about half a degree per hour, so a birth time still matters. Without one, the sign is usually right and the degree is a noon estimate.",
-    "result": "Moon sign"
+    "result": "Moon sign",
+    "h1": "Moon sign calculator",
+    "metaTitle": "Free moon sign calculator — what is my moon sign",
+    "metaDescription": "Find your Moon sign from your birth date, time and place. Get the exact degree, the house it falls in, and a reading of what it means."
   },
   "venus": {
     "title": "Venus sign calculator",
     "description": "Calculate your Venus sign from birth date, time and place.",
     "lead": "Venus changes sign every few weeks. A birth date is enough for the sign; time places it in a house.",
-    "result": "Venus sign"
+    "result": "Venus sign",
+    "h1": "Venus sign calculator",
+    "metaTitle": "Venus sign calculator — find your Venus sign free",
+    "metaDescription": "Find your Venus sign and what it says about how you love. Enter a birth date for the sign, or add a time for the house and a reading."
   },
   "mercury": {
     "title": "Mercury sign calculator",
     "description": "Calculate your Mercury sign from birth date, time and place.",
     "lead": "Mercury changes sign every few weeks and retrogrades three times a year. A birth date is usually enough for the sign; time places it in a house.",
-    "result": "Mercury sign"
+    "result": "Mercury sign",
+    "h1": "Mercury sign calculator",
+    "metaTitle": "Mercury sign calculator — find your Mercury sign free",
+    "metaDescription": "Find your Mercury sign and whether it was retrograde at birth. Enter a birth date for the sign, add a time for the house and a reading."
   },
   "mars": {
     "title": "Mars sign calculator",
     "description": "Calculate your Mars sign from birth date, time and place.",
     "lead": "Mars spends about six or seven weeks in a sign. A birth date is enough for the sign; time places it in a house.",
-    "result": "Mars sign"
+    "result": "Mars sign",
+    "h1": "Mars sign calculator",
+    "metaTitle": "Mars sign calculator — find your Mars sign free",
+    "metaDescription": "Find your Mars sign and how you go after what you want. Enter a birth date for the sign, or add a time for the house and a reading."
   },
   "synastry": {
     "title": "Synastry calculator",
     "description": "Compare two natal charts: overlay, cross-aspects and house overlays.",
     "lead": "Two charts on one wheel. Gold glyphs are person A, muted glyphs are person B. Aspects below are between the two charts, not within one.",
     "result": "Synastry",
-    "aspects": "Cross aspects"
+    "aspects": "Cross aspects",
+    "h1": "Synastry chart calculator",
+    "metaTitle": "Synastry chart calculator — free relationship compatibility",
+    "metaDescription": "Overlay two birth charts to see the aspects between them. Enter both sets of birth data for a free synastry wheel and a relationship reading."
   },
   "composite": {
     "title": "Composite chart calculator",
     "description": "Midpoint composite chart from two birth data sets.",
     "lead": "Each planet is the shorter-arc midpoint of the two natal positions. Houses follow the midpoint Ascendant in whole sign. This is a relationship chart, not a Davison (midpoint in time) chart.",
-    "result": "Composite chart"
+    "result": "Composite chart",
+    "h1": "Composite chart calculator",
+    "metaTitle": "Composite chart calculator — free relationship chart",
+    "metaDescription": "Build the midpoint chart of a relationship from two birth charts. Free composite wheel, houses and a reading of the pair as one chart."
   },
   "auth": {
     "signInTitle": "Sign in",
@@ -179,7 +212,9 @@
   },
   "gate": {
     "relTitle": "That was the free overlay",
-    "relBody": "One synastry or composite without an account. Create a free account to run more, save the charts, and keep the day-by-day log."
+    "relBody": "One synastry or composite without an account. Create a free account to run more, save the charts, and keep the day-by-day log.",
+    "createAccount": "Create free account",
+    "signIn": "Sign in"
   },
   "account": {
     "title": "Cabinet",
@@ -211,11 +246,33 @@
     "deleteChart": "Delete",
     "deletingChart": "Deleting…",
     "deleteChartConfirm": "Delete this chart and its daily readings? This cannot be undone.",
-    "deleteChartFailed": "Could not delete the chart."
+    "deleteChartFailed": "Could not delete the chart.",
+    "dangerTitle": "Delete account",
+    "dangerBody": "This removes your account, every saved chart and the whole day-by-day history. It cannot be undone.",
+    "dangerConfirmLabel": "Type DELETE to confirm",
+    "dangerConfirmWord": "DELETE",
+    "dangerButton": "Delete my account",
+    "dangerBusy": "Deleting…",
+    "dangerError": "The account could not be deleted. Try again.",
+    "exportTitle": "Export your data",
+    "exportBody": "A JSON file with your account details, every saved chart and every daily reading written for it.",
+    "exportButton": "Download my data",
+    "primaryTitle": "Main chart",
+    "primaryBody": "The chart the cabinet opens with and writes the daily sky for.",
+    "primarySet": "Make main",
+    "primaryCurrent": "Main",
+    "housesTitle": "House system",
+    "housesBody": "Placidus splits each quadrant by time and is what most Western astrologers read. Whole sign gives every house one whole sign and needs no birth time.",
+    "housesPlacidus": "Placidus",
+    "housesWhole": "Whole sign",
+    "saved": "Saved",
+    "emptyTitle": "No charts yet",
+    "emptyBody": "Run the birth chart calculator once and save the result. From that day on, the cabinet writes a reading of the sky against your chart every day.",
+    "emptyCta": "Open the birth chart calculator"
   },
   "home": {
     "title": "Natal chart calculators",
-    "lead": "Enter a birth date, time and place. Meridian computes tropical positions from a VSOP87 ephemeris, draws the wheel, and reads the chart from a written cache — not from a live model inventing degrees.",
+    "lead": "Eight calculators from the same VSOP87 sky. Natal draws the full wheel — Sun, Moon, rising, houses, aspects — and reads from a written cache, not a model inventing degrees. Separate pages isolate rising, Moon, Mercury, Venus and Mars; synastry overlays two charts; composite is the shorter-arc midpoint.",
     "cta": "Open the birth chart calculator",
     "ctaSecondary": "Read the articles",
     "howTitle": "How to use a calculator",
@@ -228,8 +285,8 @@
     "step3Body": "Type a city. Coordinates and the IANA timezone on that date convert local clock time to Universal Time.",
     "step4Title": "4. Read the instrument",
     "step4Body": "Wheel first, then Big Three, then the light reading card, then the positions table. Save the chart to keep a full report and a day-by-day sky log.",
-    "toolsTitle": "The calculators",
-    "toolsLead": "All of them are free without an account. Synastry and composite allow one overlay; further runs need a sign-in. The natal calculator never hides the wheel.",
+    "toolsTitle": "All eight calculators",
+    "toolsLead": "Natal is the full instrument. Rising needs a clock time. Moon, Mercury, Venus and Mars isolate one body. Synastry overlays two charts; composite is a relationship midpoint, not a Davison chart. All are free without an account; synastry and composite allow one overlay before a sign-in.",
     "methodTitle": "What is being computed",
     "methodBody": "Tropical zodiac, Placidus houses by default, major aspects at 8° / 6° / 4°. Engine: astronomy-engine (VSOP87 / lunar theory). Not Swiss Ephemeris. Not sidereal, Vedic or Chinese astrology.",
     "articlesTitle": "Articles",
@@ -237,8 +294,11 @@
     "articlesAll": "All articles",
     "horoscopeKicker": "Today’s sky",
     "horoscopeTitle": "Daily horoscope for twelve signs",
-    "horoscopeLead": "Readings computed from today’s tropical sky at 12:00 UTC — transits to 15° of each Sun sign, not a recycled column.",
-    "horoscopeCta": "Open today’s horoscope"
+    "horoscopeLead": "Readings from today’s tropical sky at 12:00 UTC. Add a birth date for your actual Sun degree — still not a natal chart.",
+    "horoscopeCta": "Open today’s horoscope",
+    "h1": "Free astrology calculators",
+    "metaTitle": "Free astrology calculators — birth chart, rising, synastry",
+    "metaDescription": "Calculate your birth chart, rising sign, Moon sign or synastry from real ephemeris positions. Every tool is free and needs no account."
   },
   "articles": {
     "title": "Articles",
@@ -259,7 +319,7 @@
     "privacyTitle": "Privacy",
     "privacyBody": "Birth data used in the calculators is processed to compute the chart. Place search queries go to this site’s API, which looks up OpenStreetMap. Saved charts, sessions and daily readings are stored if you create an account. This is not medical, legal or financial advice.",
     "termsTitle": "Terms",
-    "termsBody": "Meridian is a free calculation tool. Charts are tropical astronomical positions with written interpretations from a cache. They are not medical, legal or financial advice. One synastry or composite overlay is available without an account; further relationship charts and the cabinet require a sign-in."
+    "termsBody": "SideraChart is a free calculation tool. Charts are tropical astronomical positions with written interpretations from a cache. They are not medical, legal or financial advice. One synastry or composite overlay is available without an account; further relationship charts and the cabinet require a sign-in."
   },
   "footer": {
     "blurb": "Tropical natal positions from a VSOP87 ephemeris. Not Swiss Ephemeris.",
@@ -333,7 +393,7 @@
   },
   "calcCopy": {
     "howTitle": "How a birth chart is calculated",
-    "howP1": "A natal chart is a diagram of the sky from one place at one moment. Two inputs do the work: time, which fixes where each body sat along the ecliptic, and coordinates, which fix which part of that sky was rising. Meridian resolves the birthplace to latitude and longitude, converts local clock time to Universal Time with the IANA timezone rules in force on that date, then reads planetary longitudes from a VSOP87-class ephemeris (astronomy-engine).",
+    "howP1": "A natal chart is a diagram of the sky from one place at one moment. Two inputs do the work: time, which fixes where each body sat along the ecliptic, and coordinates, which fix which part of that sky was rising. SideraChart resolves the birthplace to latitude and longitude, converts local clock time to Universal Time with the IANA timezone rules in force on that date, then reads planetary longitudes from a VSOP87-class ephemeris (astronomy-engine).",
     "howP2": "Positions are given in the tropical zodiac, measured from the vernal equinox — the Western convention. Sidereal longitudes differ by roughly 24° today and are not shown in this calculator.",
     "whyTimeTitle": "Why birth time matters",
     "whyTimeBody": "The Ascendant moves about one degree every four minutes, so a twenty-minute error shifts it by five degrees and can change the sign entirely. The Moon moves roughly half a degree an hour. Sun through Pluto are stable enough across a day that an unknown time still gives a usable chart, minus the houses.",
@@ -348,7 +408,7 @@
     "precisionHouses": "Placidus + Whole Sign",
     "precisionOrbs": "orbs 8° / 6° / 4°",
     "risingTitle": "What the rising sign is",
-    "risingBody": "The rising sign is the zodiac sign that was coming up over the eastern horizon at the moment of birth. It depends on latitude, longitude and clock time, not just the date. Meridian computes it from local sidereal time and the same tropical ephemeris as the natal chart.",
+    "risingBody": "The rising sign is the zodiac sign that was coming up over the eastern horizon at the moment of birth. It depends on latitude, longitude and clock time, not just the date. SideraChart computes it from local sidereal time and the same tropical ephemeris as the natal chart.",
     "moonTitle": "Why the Moon needs a time",
     "moonBody": "The Moon travels about 13° a day. A birth time unknown checkbox still returns a sign in most cases, but the degree and house are a noon estimate. For a natal reading, enter the time if you have it.",
     "venusTitle": "Venus in the natal chart",
@@ -362,16 +422,51 @@
     "compositeTitle": "Composite vs Davison",
     "compositeBody": "This calculator uses planetary midpoints (the shorter arc between each pair of natal longitudes) and a midpoint Ascendant with whole-sign houses. A Davison chart instead takes the midpoint in time and space and computes a real sky. Both are used in relationship work; they are not the same chart.",
     "horoscopeTitle": "How this horoscope is calculated",
-    "horoscopeBody": "The sky is computed for today at 12:00 UTC with the same tropical VSOP87-class ephemeris as the natal calculators. Each of the twelve readings treats a natal Sun as 15° of that sign and aspects the Moon (orbs about 8°) plus Mercury, Venus and Mars (about 6°) to that point. If the transiting Sun or Moon occupies the sign, that is named separately. The paragraphs are written templates. This is a Sun-sign proxy, not a natal reading, and not medical, legal or financial advice."
+    "horoscopeBody": "The sky is computed for today at 12:00 UTC with the same tropical VSOP87-class ephemeris as the natal calculators. Without a date, each sign uses a natal Sun at 15°. With a birth date, the Sun degree plus Mercury, Venus and Mars are taken at noon UTC. Aspects come from the Moon, Mercury, Venus and Mars, with tight Jupiter and Saturn contacts as climate. The Moon without a birth time is a noon estimate. Paragraphs are written templates. Not a natal chart, and not medical, legal or financial advice."
   },
   "horoscope": {
     "title": "Daily horoscope",
     "indexTitle": "Daily horoscope today — twelve signs from the sky",
-    "lead": "Twelve readings from today’s sky, not a recycled column. Each sign is a natal Sun at 15° of that sign. Aspects come from the Moon, Mercury, Venus and Mars at 12:00 UTC.",
+    "lead": "Twelve readings from today’s sky, not a recycled column. Without a date each sign uses a natal Sun at 15°. Add a birth date and the Sun degree, Mercury, Venus and Mars become yours — still at noon UTC, still without houses.",
     "kicker": "tropical · 12:00 UTC · VSOP87",
+    "skyHeading": "Sky today",
+    "playHeading": "In play",
+    "longerHeading": "The longer weather",
+    "quietHeading": "A quiet aspect day",
+    "howHeading": "How to use this",
+    "skyToday": "The sky today: Sun in {sun}, Moon in {moon}, Mercury in {mercury}, Venus in {venus}, Mars in {mars}. That is the weather you are walking through — not a rewrite of a natal chart.",
+    "phase_new": "The Moon is new, close to the Sun. Starts are quiet. Keep the list short.",
+    "phase_waxing": "The Moon is waxing. Appetite is building. Add, don’t subtract, unless the thing was already dead.",
+    "phase_full": "The Moon is full, opposite the Sun. Things show. Name them; don’t start a second war with the reflection.",
+    "phase_waning": "The Moon is waning. Finish, sort, let go. New campaigns can wait until the light comes back.",
+    "rx_mercury": "Mercury is retrograde. Messages bounce. Write it twice, send it once, and do not treat a delay as a verdict.",
+    "rx_venus": "Venus is retrograde. Taste and money look backwards. Don’t buy the apology you already made last year.",
+    "rx_mars": "Mars is retrograde. Heat turns inward. Push the one task already named; don’t pick a new fight to feel the engine.",
+    "natalSnapshot": "From {date} at noon UTC: Sun in {sun} at {deg}, Moon in {moon} (noon estimate), Mercury in {mercury}, Venus in {venus}, Mars in {mars}.",
+    "natalMoonNote": "Without a birth time the Moon is a noon estimate. It can sit in the neighbouring sign.",
+    "jupiterInSign": "Jupiter is transiting your Sun sign. Climate, not a gift. Expansion is available if you give it a job.",
+    "saturnInSign": "Saturn is transiting your Sun sign. Climate, not a punishment. The work wants a spine and a calendar.",
+    "element_fire": "The transiting Sun is in a fire sign, same element as yours. Heat is shared even if the sign is not.",
+    "element_earth": "The transiting Sun is in an earth sign, same element as yours. The day wants something you can weigh.",
+    "element_air": "The transiting Sun is in an air sign, same element as yours. Talk is weather. Make one sentence land.",
+    "element_water": "The transiting Sun is in a water sign, same element as yours. Mood travels. Keep a shore.",
+    "longerLead": "Jupiter is in {jupiter}, Saturn in {saturn}. That is climate, not a task for this afternoon.",
+    "hitSlow": "Transiting {planet} {aspect} your Sun. {sense} {motion} Climate, not a one-day task.",
+    "hitNatal": "Transiting {planet} {aspect} natal {target}. {sense} {motion}",
+    "closePersonal": "This uses your natal Sun degree from the date, at noon UTC, without houses or a timed Moon. A birth time and place still make the cabinet the more honest instrument.",
+    "bornKicker": "Optional",
+    "bornTitle": "Add a birth date",
+    "bornLead": "A date replaces the 15° average with your natal Sun degree, plus Mercury, Venus and Mars at noon UTC. Houses and a precise Moon still need a time.",
+    "bornCta": "Read with this date",
+    "bornClear": "Without a date",
+    "bornHint": "Noon UTC, date only. Not a natal chart.",
+    "signLeadPersonal": "Transits to your natal Sun in {sign} at {deg}, from a noon-UTC chart for {date}. The Moon is a noon estimate. Houses are not placed.",
+    "personalKicker": "{date} · noon UTC · tropical",
+    "wrongSign": "From {date}, your natal Sun is in {sign}. This page is still a mid-sign proxy for a different sign.",
+    "openNatalSign": "Open the {sign} reading",
     "skyLine": "Sun in {sun} · Moon in {moon}",
     "signTitle": "{sign} horoscope today",
-    "signLead": "Transits to a {sign} Sun at 15° of the sign, computed from today’s tropical sky. This is a proxy. A saved natal chart is more precise.",
+    "signLead": "Transits to a {sign} Sun at 15° of the sign, computed from today’s tropical sky. Add a birth date for your actual Sun degree. A saved natal chart is still more precise.",
     "readSign": "Read {sign}",
     "allSigns": "All twelve signs",
     "otherSigns": "The other signs",
@@ -379,20 +474,22 @@
     "natalHint": "Sun, Moon, rising and houses from your date, time and place. The cabinet then writes transits to those degrees.",
     "cabinetCta": "Open the cabinet",
     "methodTitle": "How this is calculated",
-    "methodBody": "Meridian computes tropical planetary longitudes for today at 12:00 UTC with the same VSOP87-class ephemeris as the natal calculators. For each sign, a natal Sun sits at 15°. The Moon, Mercury, Venus and Mars are aspected to that point. Occupation of the sign by the transiting Sun or Moon is named separately. Paragraphs are written templates, not a model inventing degrees. Not medical, legal or financial advice.",
+    "methodBody": "SideraChart computes tropical planetary longitudes for today at 12:00 UTC with the same VSOP87-class ephemeris as the natal calculators. Without a date, a natal Sun sits at 15° of each sign. With a birth date, the real Sun degree plus Mercury, Venus and Mars are taken at noon UTC. Fast planets are aspected to those points; Jupiter and Saturn are named as climate. Occupation of the sign by the transiting Sun or Moon is named separately. Paragraphs are written templates. Not medical, legal or financial advice.",
     "faqTitle": "People also ask",
     "faq1q": "Is this the same as the cabinet daily reading?",
-    "faq1a": "No. The cabinet uses your saved natal chart — real degrees, houses, and both fast and slow transits. This page is the public Sun-sign layer: one point per sign, fast planets only.",
+    "faq1a": "No. The cabinet uses your saved natal chart — real degrees, houses, and both fast and slow transits. This page is the public layer. A birth date gets you closer. A time and place still belong in the natal calculator.",
     "faq2q": "Why 15 degrees?",
-    "faq2a": "A Sun-sign column cannot know your natal degree. Mid-sign is an honest average for everyone with the Sun in that sign. If you have a birth time, calculate the natal chart instead.",
+    "faq2a": "Without a birth date the column cannot know your natal degree. Mid-sign is an honest average. Add the date and the Sun is placed at noon UTC on that day instead.",
     "faq3q": "Do you use Vedic or sidereal signs?",
     "faq3a": "No. Positions are tropical, measured from the vernal equinox. Sidereal longitudes differ by roughly 24° today.",
+    "faq4q": "Why a birth date without a time?",
+    "faq4a": "The Sun, Mercury, Venus and Mars usually keep their sign across a calendar day. The Moon moves about 13° a day, so noon is only an estimate. Rising sign and houses need the clock and the place. That is what the natal calculator is for.",
     "quiet": "No major Moon, Mercury, Venus or Mars aspects to your Sun are inside orb at noon UTC. That is not emptiness. Do the work already on the desk.",
     "sunSeason": "The transiting Sun is in your sign. The season is pointing at identity, visibility, and the work you will actually put your name on.",
     "moonInSign": "The Moon is moving through your Sun sign. Mood and identity share a room. Eat, rest, and do not treat a familiar feeling as a new verdict about who you are.",
     "applying": "Applying — it is still tightening.",
     "separating": "Separating — the peak has passed.",
-    "close": "This is weather on a Sun-sign proxy, not a rewrite of a natal chart. If you have a birth time, the natal calculator and the cabinet are the more honest instrument.",
+    "close": "This is weather on a Sun-sign proxy, not a rewrite of a natal chart. Add a birth date for your Sun degree. If you have a birth time, the natal calculator and the cabinet are the more honest instrument.",
     "open_aries": "You start before the room has agreed it is time. Today’s sky is pressure on that ignition — what to begin, and what to stop treating as a first move.",
     "open_taurus": "You trust what can be touched, timed, and kept. Today’s sky is weather on appetite and patience: money, food, craft, and the refusal to be rushed.",
     "open_gemini": "You think out loud and split attention so the day stays interesting. Today’s sky is pressure on the split — two messages, two tabs — and whether the range still looks like range.",
@@ -424,6 +521,10 @@
     "hit_mars_sextile": "Mars sextiles your Sun. Effort has a door. Walk through it while the window is open; courage will not book the slot for you. {motion}",
     "hit_mars_square": "Mars squares your Sun. Will collides with will. The third move is smaller and cleaner than the dramatic one. {motion}",
     "hit_mars_trine": "Mars trines your Sun. Heat is available without a crisis. Put it into the task already named, or it becomes restlessness. {motion}",
-    "hit_mars_opposition": "Mars opposes your Sun. You meet the fight in other people, and in the part of yourself you keep across the room. Choose the contest worth having. {motion}"
+    "hit_mars_opposition": "Mars opposes your Sun. You meet the fight in other people, and in the part of yourself you keep across the room. Choose the contest worth having. {motion}",
+    "indexMetaTitle": "Daily horoscope today — twelve signs from live transits",
+    "indexMetaDescription": "Read today’s horoscope for every sign, written from the real position of the Moon and planets. Add your birth date for a sharper reading.",
+    "signMetaTitle": "{sign} horoscope today — from real transits",
+    "signMetaDescription": "Today’s transits to a {sign} Sun, computed from the live sky rather than a recycled column. Add your birth date to sharpen the reading."
   }
 }

@@ -74,7 +74,7 @@ export default function AuthForm({ mode, googleConfigured, nextPath, oauthError 
         const res = await authClient.signUp.email({
           email,
           password,
-          name: name.trim() || email.split('@')[0] || 'Meridian',
+          name: name.trim() || email.split('@')[0] || 'SideraChart',
         });
         if (res.error) {
           throw new Error(

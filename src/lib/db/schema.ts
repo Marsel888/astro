@@ -82,6 +82,8 @@ export const charts = pgTable('charts', {
   tzName: text('tz_name').notNull(),
   placeLabel: text('place_label'),
   houseSystem: text('house_system').notNull().default('placidus'),
+  /** The chart the cabinet opens with and writes the daily sky for. */
+  isPrimary: boolean('is_primary').notNull().default(false),
   computed: jsonb('computed').notNull(),
   ...stamps,
 });

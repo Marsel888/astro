@@ -57,7 +57,7 @@
   },
   "home": {
     "title": "Kalkulatory horoskopu urodzeniowego",
-    "lead": "Podaj datę, godzinę i miejsce. Meridian liczy pozycje tropikalne z efemeryd VSOP87, rysuje koło i czyta z napisanego cache — nie z modelu, który wymyśla stopnie.",
+    "lead": "Podaj datę, godzinę i miejsce. SideraChart liczy pozycje tropikalne z efemeryd VSOP87, rysuje koło i czyta z napisanego cache — nie z modelu, który wymyśla stopnie.",
     "cta": "Otwórz horoskop urodzeniowy",
     "ctaSecondary": "Czytaj artykuły",
     "howTitle": "Jak używać kalkulatora",
@@ -96,7 +96,7 @@
     "privacyTitle": "Prywatność",
     "privacyBody": "Dane urodzenia służą do obliczenia mapy. Wyszukiwanie miejsca idzie do API tej strony i OpenStreetMap. Zapisane mapy powstają po założeniu konta. To nie porada medyczna, prawna ani finansowa.",
     "termsTitle": "Regulamin",
-    "termsBody": "Meridian to darmowe narzędzie obliczeniowe. Mapy to pozycje tropikalne z tekstami z cache. Jedna synastria lub kompozyt bez konta; reszta wymaga logowania."
+    "termsBody": "SideraChart to darmowe narzędzie obliczeniowe. Mapy to pozycje tropikalne z tekstami z cache. Jedna synastria lub kompozyt bez konta; reszta wymaga logowania."
   },
   "footer": {
     "blurb": "Tropikalne pozycje natalne z efemeryd VSOP87. Nie Swiss Ephemeris.",
@@ -235,7 +235,7 @@
   },
   "calcCopy": {
     "howTitle": "Jak liczy się horoskop urodzeniowy",
-    "howP1": "Horoskop urodzeniowy to schemat nieba z jednego miejsca w jednej chwili. Dwa dane robią robotę: czas, który ustala, gdzie każde ciało stało na ekliptyce, i współrzędne, które ustalają, która część tego nieba wschodziła. Meridian sprowadza miejsce urodzenia do szerokości i długości, przelicza lokalny zegar na czas uniwersalny według reguł stref IANA obowiązujących w tamtym dniu, potem czyta długości planet z efemeryd klasy VSOP87 (astronomy-engine).",
+    "howP1": "Horoskop urodzeniowy to schemat nieba z jednego miejsca w jednej chwili. Dwa dane robią robotę: czas, który ustala, gdzie każde ciało stało na ekliptyce, i współrzędne, które ustalają, która część tego nieba wschodziła. SideraChart sprowadza miejsce urodzenia do szerokości i długości, przelicza lokalny zegar na czas uniwersalny według reguł stref IANA obowiązujących w tamtym dniu, potem czyta długości planet z efemeryd klasy VSOP87 (astronomy-engine).",
     "howP2": "Pozycje podawane są w zodiaku tropikalnym, od równonocy wiosennej — zachodnia umowa. Długości syderyczne dziś różnią się o około 24° i w tym kalkulatorze nie są pokazywane.",
     "whyTimeTitle": "Dlaczego czas urodzenia ma znaczenie",
     "whyTimeBody": "Ascendent przesuwa się o około stopień co cztery minuty, więc błąd dwudziestu minut zsuwa go o pięć stopni i może zmienić znak. Księżyc pokonuje około pół stopnia na godzinę. Od Słońca do Plutona w ciągu dnia jest dość stabilnie: bez czasu horoskop wciąż jest użyteczny, ale bez domów.",
@@ -250,7 +250,7 @@
     "precisionHouses": "Placidus + Whole Sign",
     "precisionOrbs": "orby 8° / 6° / 4°",
     "risingTitle": "Czym jest ascendent",
-    "risingBody": "Ascendent to znak zodiaku, który wschodził na wschodnim horyzoncie w chwili urodzenia. Zależy od szerokości, długości i zegara, nie tylko od daty. Meridian liczy go z lokalnego czasu gwiazdowego i tej samej tropikalnej efemerydy co horoskop urodzeniowy.",
+    "risingBody": "Ascendent to znak zodiaku, który wschodził na wschodnim horyzoncie w chwili urodzenia. Zależy od szerokości, długości i zegara, nie tylko od daty. SideraChart liczy go z lokalnego czasu gwiazdowego i tej samej tropikalnej efemerydy co horoskop urodzeniowy.",
     "moonTitle": "Dlaczego Księżyc potrzebuje godziny",
     "moonBody": "Księżyc pokonuje około 13° na dobę. Zaznaczenie „czas nieznany” w większości przypadków i tak daje znak, ale stopień i dom to ocena na południe. Do odczytu natalnego wpisz czas, jeśli go masz.",
     "venusTitle": "Wenus w horoskopie urodzeniowym",

@@ -1,6 +1,8 @@
 import { cookies } from 'next/headers';
 
-export const RELATIONSHIP_COOKIE = 'meridian_rel_used';
+// Renamed from meridian_rel_used when the project became SideraChart. Anyone
+// still carrying the old cookie simply gets their free overlay again.
+export const RELATIONSHIP_COOKIE = 'sidera_rel_used';
 export const ANON_RELATIONSHIP_MAX = 1;
 
 export async function relationshipUsed() {

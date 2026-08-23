@@ -57,7 +57,7 @@
   },
   "home": {
     "title": "Máy tính bản đồ khai sinh",
-    "lead": "Nhập ngày, giờ và nơi sinh. Meridian tính vị trí nhiệt đới từ lịch VSOP87, vẽ bánh xe và đọc từ bộ nhớ đã viết — không phải mô hình bịa độ.",
+    "lead": "Nhập ngày, giờ và nơi sinh. SideraChart tính vị trí nhiệt đới từ lịch VSOP87, vẽ bánh xe và đọc từ bộ nhớ đã viết — không phải mô hình bịa độ.",
     "cta": "Mở bản đồ khai sinh",
     "ctaSecondary": "Đọc bài viết",
     "howTitle": "Cách dùng máy tính",
@@ -96,7 +96,7 @@
     "privacyTitle": "Quyền riêng tư",
     "privacyBody": "Dữ liệu sinh được xử lý để tính bản đồ. Tìm nơi gửi tới API của site này và OpenStreetMap. Bản đồ lưu khi bạn tạo tài khoản. Đây không phải tư vấn y tế, pháp lý hay tài chính.",
     "termsTitle": "Điều khoản",
-    "termsBody": "Meridian là công cụ tính miễn phí. Bản đồ là vị trí nhiệt đới với văn bản từ bộ nhớ đệm. Một synastry hoặc composite không cần tài khoản; phần còn lại cần đăng nhập."
+    "termsBody": "SideraChart là công cụ tính miễn phí. Bản đồ là vị trí nhiệt đới với văn bản từ bộ nhớ đệm. Một synastry hoặc composite không cần tài khoản; phần còn lại cần đăng nhập."
   },
   "footer": {
     "blurb": "Vị trí natal nhiệt đới từ lịch VSOP87. Không phải Swiss Ephemeris.",
@@ -235,7 +235,7 @@
   },
   "calcCopy": {
     "howTitle": "Bản đồ khai sinh được tính thế nào",
-    "howP1": "Bản đồ natal là sơ đồ bầu trời từ một nơi trong một khoảnh khắc. Hai dữ liệu làm việc: giờ, cố định mỗi thiên thể đứng đâu trên hoàng đạo, và tọa độ, cố định phần nào của bầu trời đó đang mọc. Meridian đưa nơi sinh về vĩ độ và kinh độ, đổi giờ dân sự địa phương sang Giờ quốc tế theo quy tắc múi IANA có hiệu lực ngày đó, rồi đọc kinh độ hành tinh từ lịch hiệu VSOP87 (astronomy-engine).",
+    "howP1": "Bản đồ natal là sơ đồ bầu trời từ một nơi trong một khoảnh khắc. Hai dữ liệu làm việc: giờ, cố định mỗi thiên thể đứng đâu trên hoàng đạo, và tọa độ, cố định phần nào của bầu trời đó đang mọc. SideraChart đưa nơi sinh về vĩ độ và kinh độ, đổi giờ dân sự địa phương sang Giờ quốc tế theo quy tắc múi IANA có hiệu lực ngày đó, rồi đọc kinh độ hành tinh từ lịch hiệu VSOP87 (astronomy-engine).",
     "howP2": "Vị trí cho theo hoàng đạo nhiệt đới, đo từ điểm phân tháng Ba — quy ước phương Tây. Kinh độ sidereal hôm nay lệch khoảng 24° và máy tính này không hiện.",
     "whyTimeTitle": "Vì sao giờ sinh quan trọng",
     "whyTimeBody": "Cung mọc đi khoảng một độ mỗi bốn phút, nên sai hai mươi phút dịch năm độ và có thể đổi cung. Mặt Trăng đi khoảng nửa độ mỗi giờ. Từ Mặt Trời đến Diêm Vương trong một ngày đủ ổn: không có giờ bản đồ vẫn dùng được, nhưng không có nhà.",
@@ -250,7 +250,7 @@
     "precisionHouses": "Placidus + Whole Sign",
     "precisionOrbs": "orb 8° / 6° / 4°",
     "risingTitle": "Cung mọc là gì",
-    "risingBody": "Cung mọc là cung hoàng đạo đang lên ở chân trời đông lúc sinh. Nó phụ thuộc vĩ độ, kinh độ và đồng hồ, không chỉ ngày. Meridian tính từ thời sidereal địa phương và cùng lịch nhiệt đới với bản đồ natal.",
+    "risingBody": "Cung mọc là cung hoàng đạo đang lên ở chân trời đông lúc sinh. Nó phụ thuộc vĩ độ, kinh độ và đồng hồ, không chỉ ngày. SideraChart tính từ thời sidereal địa phương và cùng lịch nhiệt đới với bản đồ natal.",
     "moonTitle": "Vì sao Mặt Trăng cần một giờ",
     "moonBody": "Mặt Trăng đi khoảng 13° mỗi ngày. Ô giờ không rõ vẫn thường cho cung, nhưng độ và nhà là ước lượng buổi trưa. Để đọc natal, nhập giờ nếu bạn có.",
     "venusTitle": "Kim tinh trên bản đồ natal",

@@ -58,7 +58,7 @@
   },
   "home": {
     "title": "Geburtshoroskop-Rechner",
-    "lead": "Datum, Uhrzeit und Ort eingeben. Meridian berechnet tropische Positionen aus einer VSOP87-Ephemeride, zeichnet das Rad und liest aus einem geschriebenen Cache — kein Modell, das Grade erfindet.",
+    "lead": "Datum, Uhrzeit und Ort eingeben. SideraChart berechnet tropische Positionen aus einer VSOP87-Ephemeride, zeichnet das Rad und liest aus einem geschriebenen Cache — kein Modell, das Grade erfindet.",
     "cta": "Geburtshoroskop öffnen",
     "ctaSecondary": "Artikel lesen",
     "howTitle": "So benutzt du einen Rechner",
@@ -97,7 +97,7 @@
     "privacyTitle": "Datenschutz",
     "privacyBody": "Geburtsdaten werden zur Berechnung des Charts verarbeitet. Ortssuche läuft über die API dieser Site und OpenStreetMap. Gespeicherte Charts und Sitzungen entstehen mit einem Konto. Kein medizinischer, rechtlicher oder finanzieller Rat.",
     "termsTitle": "Nutzungsbedingungen",
-    "termsBody": "Meridian ist ein kostenloses Rechenwerkzeug. Charts sind tropische Positionen mit Texten aus einem Cache. Ein Synastrie- oder Komposit-Lauf ohne Konto; weitere Beziehungscharts und das Konto brauchen Anmeldung."
+    "termsBody": "SideraChart ist ein kostenloses Rechenwerkzeug. Charts sind tropische Positionen mit Texten aus einem Cache. Ein Synastrie- oder Komposit-Lauf ohne Konto; weitere Beziehungscharts und das Konto brauchen Anmeldung."
   },
   "footer": {
     "blurb": "Tropische Natalpositionen aus einer VSOP87-Ephemeride. Nicht Swiss Ephemeris.",
@@ -236,7 +236,7 @@
   },
   "calcCopy": {
     "howTitle": "Wie ein Geburtshoroskop berechnet wird",
-    "howP1": "Ein Natalchart ist ein Diagramm des Himmels von einem Ort in einem Augenblick. Zwei Eingaben leisten die Arbeit: die Zeit, die festhält, wo jeder Körper auf der Ekliptik stand, und die Koordinaten, die festlegen, welcher Teil dieses Himmels aufging. Meridian löst den Geburtsort in Breite und Länge auf, rechnet die Ortszeit mit den IANA-Zeitzonenregeln jenes Datums in Weltzeit um und liest dann Planetenlängen aus einer Ephemeride der Klasse VSOP87 (astronomy-engine).",
+    "howP1": "Ein Natalchart ist ein Diagramm des Himmels von einem Ort in einem Augenblick. Zwei Eingaben leisten die Arbeit: die Zeit, die festhält, wo jeder Körper auf der Ekliptik stand, und die Koordinaten, die festlegen, welcher Teil dieses Himmels aufging. SideraChart löst den Geburtsort in Breite und Länge auf, rechnet die Ortszeit mit den IANA-Zeitzonenregeln jenes Datums in Weltzeit um und liest dann Planetenlängen aus einer Ephemeride der Klasse VSOP87 (astronomy-engine).",
     "howP2": "Positionen stehen im tropischen Tierkreis, gemessen vom Frühlingsäquinoktium — die westliche Konvention. Siderische Längen unterscheiden sich heute um rund 24° und werden in diesem Rechner nicht gezeigt.",
     "whyTimeTitle": "Warum die Geburtszeit zählt",
     "whyTimeBody": "Der Aszendent wandert etwa ein Grad in vier Minuten, daher verschiebt ein Fehler von zwanzig Minuten ihn um fünf Grad und kann das Zeichen wechseln. Der Mond legt rund einen halben Grad pro Stunde zurück. Sonne bis Pluto sind über einen Tag stabil genug, dass eine unbekannte Zeit immer noch ein brauchbares Horoskop liefert — ohne Häuser.",
@@ -251,7 +251,7 @@
     "precisionHouses": "Placidus + Whole Sign",
     "precisionOrbs": "Orbis 8° / 6° / 4°",
     "risingTitle": "Was der Aszendent ist",
-    "risingBody": "Der Aszendent ist das Tierkreiszeichen, das im Geburtsmoment über dem östlichen Horizont aufging. Er hängt von Breite, Länge und Uhrzeit ab, nicht nur vom Datum. Meridian berechnet ihn aus der örtlichen Sternzeit und derselben tropischen Ephemeride wie das Geburtshoroskop.",
+    "risingBody": "Der Aszendent ist das Tierkreiszeichen, das im Geburtsmoment über dem östlichen Horizont aufging. Er hängt von Breite, Länge und Uhrzeit ab, nicht nur vom Datum. SideraChart berechnet ihn aus der örtlichen Sternzeit und derselben tropischen Ephemeride wie das Geburtshoroskop.",
     "moonTitle": "Warum der Mond eine Uhrzeit braucht",
     "moonBody": "Der Mond legt etwa 13° am Tag zurück. Ein Häkchen „Uhrzeit unbekannt“ liefert in den meisten Fällen trotzdem ein Zeichen; Grad und Haus sind aber eine Schätzung für Mittag. Für eine natale Lesung die Zeit eintragen, wenn sie bekannt ist.",
     "venusTitle": "Venus im Geburtshoroskop",

@@ -9,12 +9,13 @@ import SignEmblem from '@/components/SignEmblem';
 import SaveReportCta from '@/components/SaveReportCta';
 import GuestCabinetCta, { useFullReading } from '@/components/GuestCabinetCta';
 import { useAstroLabels } from '@/components/useAstroLabels';
+import { useResultFocus } from '@/components/useResultFocus';
 import { chartFromBirth } from '@/lib/astro/fromBirth';
 import { DEFAULT_BIRTH, type BirthData } from '@/lib/places/defaults';
 import { dms, signOf, type SignName } from '@/lib/chart';
 import { readingFor } from '@/lib/interpret/copy';
 
-export default function RisingCalculator() {
+export default function RisingCalculator({ headingAs = 'h1' }: { headingAs?: 'h1' | 'h2' | 'none' } = {}) {
   const t = useTranslations('rising');
   const form = useTranslations('form');
   const { locale, ui, sign: signLabel } = useAstroLabels();
@@ -22,6 +23,7 @@ export default function RisingCalculator() {
   const [data, setData] = useState<BirthData>(DEFAULT_BIRTH);
   const [result, setResult] = useState<{ sign: SignName; lon: string } | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const { ref: resultRef, focusResult } = useResultFocus<HTMLElement>();
 
   function onSubmit() {
     setError(null);
@@ -39,21 +41,29 @@ export default function RisingCalculator() {
       }
       const s = signOf(chart.ascendant);
       setResult({ sign: s.n, lon: dms(chart.ascendant) });
+      focusResult();
     } catch (e) {
       setResult(null);
       setError(e instanceof Error ? e.message : ui('failed'));
     }
   }
 
+  // 'none' is for embedding under a page that already has its own heading.
+  const Heading = headingAs === 'none' ? null : headingAs;
+
   return (
     <>
-      <h1 className="mb-2.5 text-[26px] font-medium tracking-[-0.02em] sm:text-h1">{t('title')}</h1>
-      <p className="mb-7 max-w-[620px] text-body text-ink-secondary [text-wrap:pretty]">{t('lead')}</p>
+      {Heading && (
+        <>
+          <Heading className="mb-2.5 text-[26px] font-medium tracking-[-0.02em] sm:text-h1">{t('h1')}</Heading>
+          <p className="mb-7 max-w-[620px] text-body text-ink-secondary [text-wrap:pretty]">{t('lead')}</p>
+        </>
+      )}
       <BirthDataForm value={data} onChange={setData} onSubmit={onSubmit} allowUnknownTime={false} />
       {error && <p className="mt-3 text-caption text-asp-hard">{error}</p>}
       {!result && <EmptyOrrery caption={ui('emptyRising')} />}
       {result && (
-        <section className="mt-12 border-t border-hairline pt-10">
+        <section ref={resultRef} tabIndex={-1} className="mt-12 scroll-mt-4 border-t border-hairline pt-10 outline-none">
           <h2 className="mb-5 text-h2 font-medium tracking-[-0.01em]">{t('result')}</h2>
           <div className="result-enter flex items-center gap-5 rounded-card border border-hairline bg-panel p-5 sm:p-7">
             <SignEmblem sign={result.sign} size={88} />

@@ -57,7 +57,7 @@
   },
   "home": {
     "title": "Geboortehoroscoop-calculators",
-    "lead": "Vul datum, tijd en plaats in. Meridian berekent tropische posities met een VSOP87-ephemeride, tekent het wiel en leest uit een geschreven cache — niet uit een model dat graden verzint.",
+    "lead": "Vul datum, tijd en plaats in. SideraChart berekent tropische posities met een VSOP87-ephemeride, tekent het wiel en leest uit een geschreven cache — niet uit een model dat graden verzint.",
     "cta": "Open de geboortehoroscoop",
     "ctaSecondary": "Lees de artikelen",
     "howTitle": "Een calculator gebruiken",
@@ -96,7 +96,7 @@
     "privacyTitle": "Privacy",
     "privacyBody": "Geboortegegevens worden verwerkt om de horoscoop te berekenen. Plaatszoekopdrachten gaan naar de API van deze site en OpenStreetMap. Opgeslagen kaarten ontstaan als je een account maakt. Dit is geen medisch, juridisch of financieel advies.",
     "termsTitle": "Voorwaarden",
-    "termsBody": "Meridian is een gratis rekentool. Horoscopen zijn tropische posities met teksten uit een cache. Eén synastrie of composiet zonder account; de rest vereist inloggen."
+    "termsBody": "SideraChart is een gratis rekentool. Horoscopen zijn tropische posities met teksten uit een cache. Eén synastrie of composiet zonder account; de rest vereist inloggen."
   },
   "footer": {
     "blurb": "Tropische natale posities uit een VSOP87-ephemeride. Geen Swiss Ephemeris.",
@@ -235,7 +235,7 @@
   },
   "calcCopy": {
     "howTitle": "Hoe een geboortehoroscoop wordt berekend",
-    "howP1": "Een natal chart is een diagram van de hemel vanaf één plek op één moment. Twee invoeren doen het werk: de tijd, die vastlegt waar elk lichaam op de ecliptica stond, en de coördinaten, die vastleggen welk deel van die hemel opkwam. Meridian herleidt de geboorteplaats tot breedte en lengte, zet lokale kloktijd om naar Universele Tijd met de IANA-tijdzoneregels van die datum, en leest daarna planeetlengtes uit een efemeride van klasse VSOP87 (astronomy-engine).",
+    "howP1": "Een natal chart is een diagram van de hemel vanaf één plek op één moment. Twee invoeren doen het werk: de tijd, die vastlegt waar elk lichaam op de ecliptica stond, en de coördinaten, die vastleggen welk deel van die hemel opkwam. SideraChart herleidt de geboorteplaats tot breedte en lengte, zet lokale kloktijd om naar Universele Tijd met de IANA-tijdzoneregels van die datum, en leest daarna planeetlengtes uit een efemeride van klasse VSOP87 (astronomy-engine).",
     "howP2": "Posities staan in de tropische dierenriem, gemeten vanaf de lente-equinox — de westerse afspraak. Siderische lengtes verschillen vandaag grofweg 24° en worden in deze calculator niet getoond.",
     "whyTimeTitle": "Waarom de geboortetijd telt",
     "whyTimeBody": "De Ascendant beweegt ongeveer een graad per vier minuten, dus een fout van twintig minuten verschuift hem vijf graden en kan het teken wisselen. De Maan legt grofweg een halve graad per uur af. Zon tot Pluto zijn over een dag stabiel genoeg: zonder tijd blijft de horoscoop bruikbaar, maar zonder huizen.",
@@ -250,7 +250,7 @@
     "precisionHouses": "Placidus + Whole Sign",
     "precisionOrbs": "orbs 8° / 6° / 4°",
     "risingTitle": "Wat het ascendantteken is",
-    "risingBody": "Het ascendantteken is het dierenriemteken dat op het moment van geboorte aan de oostelijke horizon opkwam. Het hangt af van breedte, lengte en klok, niet alleen van de datum. Meridian berekent het uit lokale sterrentijd en dezelfde tropische efemeride als de natal chart.",
+    "risingBody": "Het ascendantteken is het dierenriemteken dat op het moment van geboorte aan de oostelijke horizon opkwam. Het hangt af van breedte, lengte en klok, niet alleen van de datum. SideraChart berekent het uit lokale sterrentijd en dezelfde tropische efemeride als de natal chart.",
     "moonTitle": "Waarom de Maan een tijd nodig heeft",
     "moonBody": "De Maan legt ongeveer 13° per dag af. Het vinkje «tijd onbekend» geeft in de meeste gevallen toch een teken, maar graad en huis zijn een schatting voor de middag. Voor een natale lezing vul je de tijd in als je die hebt.",
     "venusTitle": "Venus in de geboortehoroscoop",

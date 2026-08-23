@@ -1,5 +1,5 @@
 {
-  "name": "meridian",
+  "name": "siderachart",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,13 +7,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "verify": "tsx scripts/verify-ephemeris.ts",
+    "verify": "tsx scripts/verify-ephemeris.ts && tsx scripts/verify-houses.ts",
     "interpret:dump": "tsx scripts/dump-interpretations.ts",
     "interpret:count": "tsx scripts/count-interpretations.ts",
     "interpret:seed": "tsx scripts/seed-interpretations.ts",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "verify:houses": "tsx scripts/verify-houses.ts",
+    "i18n:coverage": "tsx scripts/i18n-coverage.ts",
+    "check:contrast": "tsx scripts/check-contrast.ts"
   },
   "dependencies": {
     "astronomy-engine": "^2.1.19",

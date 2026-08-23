@@ -9,7 +9,7 @@ export const esArticles: Record<string, ArticleCopy> = {
       {
         heading: '¿Qué es una carta natal?',
         paragraphs: [
-          'Una carta natal es un mapa del Sistema Solar visto desde un lugar en un instante. Tú aportas tres datos: una fecha de nacimiento, una hora civil y un lugar geográfico. Con ellos, una calculadora obtiene la longitud eclíptica de cada planeta, el grado que salía por el este (el Ascendente) y una división en doce casas del cielo local. Meridian es esa calculadora: zodiaco tropical, casas Placidus por defecto, posiciones de una efeméride de clase VSOP87 a través de astronomy-engine.',
+          'Una carta natal es un mapa del Sistema Solar visto desde un lugar en un instante. Tú aportas tres datos: una fecha de nacimiento, una hora civil y un lugar geográfico. Con ellos, una calculadora obtiene la longitud eclíptica de cada planeta, el grado que salía por el este (el Ascendente) y una división en doce casas del cielo local. SideraChart es esa calculadora: zodiaco tropical, casas Placidus por defecto, posiciones de una efeméride de clase VSOP87 a través de astronomy-engine.',
           'La carta es un diagrama de acentos, no un veredicto. Cada planeta es una función. Cada signo es un estilo de esa función. Cada casa es un ámbito de la vida donde esa función se nota. Los aspectos son las distancias angulares entre esas funciones. Leídos juntos te dicen qué partes de la carta suenan más alto. No te dicen si debes cambiar de trabajo, dejar una relación o tomar una decisión médica.',
         ],
       },
@@ -17,27 +17,27 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Qué necesitas: fecha, hora y lugar de nacimiento',
         paragraphs: [
           'La fecha fija en qué día de la órbita de la Tierra naciste, y eso basta para que el Sol y los planetas lentos caigan en el signo correcto. La hora convierte el reloj civil a Tiempo Universal con las reglas IANA vigentes en esa fecha, incluido el horario de verano histórico. El lugar da latitud y longitud para poder calcular el horizonte local — y por tanto el Ascendente y las cúspides de las casas.',
-          'Si la hora es desconocida, igual obtienes los signos planetarios. No obtienes un Ascendente fiable ni un sistema de casas. Meridian te deja marcar la hora como desconocida y entonces dibuja solo planetas. Adivinar el mediodía y tratar las casas como un hecho es peor que un hueco honesto. Si el certificado tiene una hora, úsala; si los parientes discrepan en media hora, trata el Ascendente como provisional.',
+          'Si la hora es desconocida, igual obtienes los signos planetarios. No obtienes un Ascendente fiable ni un sistema de casas. SideraChart te deja marcar la hora como desconocida y entonces dibuja solo planetas. Adivinar el mediodía y tratar las casas como un hecho es peor que un hueco honesto. Si el certificado tiene una hora, úsala; si los parientes discrepan en media hora, trata el Ascendente como provisional.',
         ],
       },
       {
         heading: 'Planetas, signos, casas y aspectos',
         paragraphs: [
           'Los planetas (del Sol a Plutón, más la Luna) se sientan en la eclíptica. El signo es en qué rebanada de 30° del zodiaco tropical cae esa longitud. La casa es en qué sector local cae esa misma longitud cuando ya conoces el Ascendente. Un planeta en Aries en la casa diez no es la misma afirmación que un planeta en Aries en la cuatro: mismo estilo, otro ámbito.',
-          'Los aspectos son los ángulos con nombre entre dos longitudes: conjunción (0°), sextil (60°), cuadratura (90°), trígono (120°), oposición (180°). Meridian dibuja esos cinco con orbes de 8° para conjunción y oposición, 6° para cuadratura y trígono, y 4° para sextil. Los orbes más estrechos se leen más alto. Las líneas de color de la rueda y la tabla debajo muestran los mismos contactos.',
+          'Los aspectos son los ángulos con nombre entre dos longitudes: conjunción (0°), sextil (60°), cuadratura (90°), trígono (120°), oposición (180°). SideraChart dibuja esos cinco con orbes de 8° para conjunción y oposición, 6° para cuadratura y trígono, y 4° para sextil. Los orbes más estrechos se leen más alto. Las líneas de color de la rueda y la tabla debajo muestran los mismos contactos.',
         ],
       },
       {
         heading: 'Qué no es una carta natal',
         paragraphs: [
-          'Una carta natal no es una columna diaria de horóscopo escrita para doce signos solares. No es astrología védica ni sideral, que mide desde un punto cero estelar a unos 24° del equinoccio tropical de hoy. No es astrología china. Meridian no calcula esos sistemas y no usa Swiss Ephemeris.',
+          'Una carta natal no es una columna diaria de horóscopo escrita para doce signos solares. No es astrología védica ni sideral, que mide desde un punto cero estelar a unos 24° del equinoccio tropical de hoy. No es astrología china. SideraChart no calcula esos sistemas y no usa Swiss Ephemeris.',
           'Tampoco es un test de personalidad que entrega un tipo. Dos personas con el mismo signo solar pueden tener Lunas distintas, ascendentes distintos, distinto acento de casas y distintos patrones de aspectos. Si solo conoces el Sol, tienes una coordenada. La carta es el resto del sistema de coordenadas.',
         ],
       },
       {
-        heading: 'Cómo calcula Meridian la carta',
+        heading: 'Cómo calcula SideraChart la carta',
         paragraphs: [
-          'Meridian resuelve el lugar de nacimiento en latitud y longitud, convierte la hora civil local a Tiempo Universal y luego lee las longitudes tropicales aparentes en astronomy-engine (clase VSOP87). El zodiaco tropical empieza en el equinoccio de marzo, la convención occidental. No se muestran longitudes siderales. Las casas van por defecto a Placidus porque la mayoría de los textos occidentales publicados lo asumen; Whole Sign está disponible cuando necesitas signos iguales a partir del signo del Ascendente.',
+          'SideraChart resuelve el lugar de nacimiento en latitud y longitud, convierte la hora civil local a Tiempo Universal y luego lee las longitudes tropicales aparentes en astronomy-engine (clase VSOP87). El zodiaco tropical empieza en el equinoccio de marzo, la convención occidental. No se muestran longitudes siderales. Las casas van por defecto a Placidus porque la mayoría de los textos occidentales publicados lo asumen; Whole Sign está disponible cuando necesitas signos iguales a partir del signo del Ascendente.',
           'Placidus divide el tiempo de ascensión, así que las casas son desiguales y se vuelve poco fiable por encima de unos 66° de latitud. Para nacimientos polares, Whole Sign es la cuadrícula más honesta. Las longitudes planetarias se calculan de un modo u otro. Guarda la carta si quieres el informe escrito y el gabinete diario; las calculadoras públicas siguen gratis sin cuenta.',
         ],
       },
@@ -45,7 +45,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Cómo usar la carta cuando ya la tienes',
         paragraphs: [
           'Empieza por los Tres Grandes: Sol, Luna y Ascendente. Luego las casas ocupadas, luego los aspectos más estrechos. Las casas vacías son habitaciones sin un planeta sentado dentro, no órganos que faltan. El PNG de la rueda es una instantánea; las tablas son el instrumento. Primero los números, después la capa escrita.',
-          'Si más tarde comparas la carta natal con el cielo de hoy, eso son tránsitos: otro artículo. El gabinete de Meridian guarda esas superposiciones diarias al mediodía en la zona horaria natal para que la nota del día se quede estable. Nada de eso reescribe la carta natal. La natal es la línea de base que conservas; los tránsitos son el tiempo contra ella.',
+          'Si más tarde comparas la carta natal con el cielo de hoy, eso son tránsitos: otro artículo. El gabinete de SideraChart guarda esas superposiciones diarias al mediodía en la zona horaria natal para que la nota del día se quede estable. Nada de eso reescribe la carta natal. La natal es la línea de base que conservas; los tránsitos son el tiempo contra ella.',
         ],
       },
     ],
@@ -56,11 +56,11 @@ export const esArticles: Record<string, ArticleCopy> = {
       },
       {
         q: '¿Necesito la hora exacta de nacimiento para una carta natal?',
-        a: 'La necesitas para el Ascendente y las casas. Sin hora, los signos planetarios siguen siendo útiles. Meridian calculará los planetas y omitirá el signo ascendente si marcas la hora como desconocida.',
+        a: 'La necesitas para el Ascendente y las casas. Sin hora, los signos planetarios siguen siendo útiles. SideraChart calculará los planetas y omitirá el signo ascendente si marcas la hora como desconocida.',
       },
       {
         q: '¿Qué zodiaco usa una carta natal?',
-        a: 'Las cartas natales occidentales, incluida Meridian, usan el zodiaco tropical medido desde el equinoccio de primavera. Las cartas siderales (védicas) usan un punto cero estelar y hoy diferirán aproximadamente un signo en muchas posiciones.',
+        a: 'Las cartas natales occidentales, incluida SideraChart, usan el zodiaco tropical medido desde el equinoccio de primavera. Las cartas siderales (védicas) usan un punto cero estelar y hoy diferirán aproximadamente un signo en muchas posiciones.',
       },
       {
         q: '¿Pueden dos personas nacidas el mismo día tener cartas natales distintas?',
@@ -77,7 +77,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Carta natal y horóscopo',
         paragraphs: [
           'La gente busca «carta natal y horóscopo» porque ambas palabras se usan como si fueran «astrología», y no son el mismo objeto. Una carta natal es un diagrama calculado del cielo desde tu fecha, hora y lugar de nacimiento: planetas en la eclíptica, un Ascendente si se conoce el reloj, casas y aspectos. Un horóscopo, en el sentido de la mayoría de los resultados de búsqueda, es un pronóstico breve escrito para un signo solar — de Aries a Piscis — para un día, una semana o un mes.',
-          'Puedes extraer un párrafo al estilo horóscopo a partir de una carta natal. No puedes reconstruir una carta natal a partir de una columna de horóscopo. Uno es un mapa con coordenadas. El otro es un producto de texto dirigido a doce audiencias. Meridian calcula el mapa. No publica columnas de signo solar, semanales ni de otro tipo.',
+          'Puedes extraer un párrafo al estilo horóscopo a partir de una carta natal. No puedes reconstruir una carta natal a partir de una columna de horóscopo. Uno es un mapa con coordenadas. El otro es un producto de texto dirigido a doce audiencias. SideraChart calcula el mapa. No publica columnas de signo solar, semanales ni de otro tipo.',
         ],
       },
       {
@@ -98,20 +98,20 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Columnas de signo solar frente a una rueda completa',
         paragraphs: [
           'Tu signo solar es una coordenada: el signo tropical que ocupaba el Sol en tu fecha de nacimiento. Es el dato más fácil de conocer porque el Sol se queda en un signo aproximadamente un mes y rara vez necesita un reloj preciso. También es el dato que los horóscopos usan como índice. No es la carta.',
-          'La rueda añade la Luna (que cambia de signo cada dos días y medio), el signo ascendente (que necesita el minuto) y el resto de los planetas. La calculadora de carta natal de Meridian dibuja esa rueda en el zodiaco tropical con casas Placidus por defecto. Compárala con un horóscopo de revista y verás por qué las palabras no deberían usarse como si fueran intercambiables.',
+          'La rueda añade la Luna (que cambia de signo cada dos días y medio), el signo ascendente (que necesita el minuto) y el resto de los planetas. La calculadora de carta natal de SideraChart dibuja esa rueda en el zodiaco tropical con casas Placidus por defecto. Compárala con un horóscopo de revista y verás por qué las palabras no deberían usarse como si fueran intercambiables.',
         ],
       },
       {
         heading: 'Por qué se confunden las dos',
         paragraphs: [
           'El lenguaje de marketing las aplasta. «Horóscopo gratis» a menudo significa «carta natal gratis», o al revés. En redes preguntan «¿cuál es tu horóscopo?» cuando quieren decir el signo solar. Los buscadores heredan esa mezcla. Si llegaste aquí desde «carta natal y horóscopo», quédate con la distinción: carta = mapa calculado a partir de datos de nacimiento; horóscopo = normalmente un texto de signo solar.',
-          'Una lectura de tránsitos sobre tu carta natal guardada está más cerca de un horóscopo personal que una columna de periódico, porque usa tus posiciones reales. El gabinete diario de Meridian guarda esos tránsitos al mediodía en la zona horaria natal. Eso sigue sin ser la carta natal. La natal no cambia; el cielo encima sí.',
+          'Una lectura de tránsitos sobre tu carta natal guardada está más cerca de un horóscopo personal que una columna de periódico, porque usa tus posiciones reales. El gabinete diario de SideraChart guarda esos tránsitos al mediodía en la zona horaria natal. Eso sigue sin ser la carta natal. La natal no cambia; el cielo encima sí.',
         ],
       },
       {
-        heading: 'Cuál calcula Meridian',
+        heading: 'Cuál calcula SideraChart',
         paragraphs: [
-          'Meridian calcula cartas natales, herramientas de signo planeta a planeta, ruedas de sinastría y de carta compuesta. Las posiciones vienen de astronomy-engine (VSOP87), no de Swiss Ephemeris. El zodiaco es tropical, no sideral ni chino. Las casas son Placidus salvo que pases a Whole Sign. Hora desconocida: planetas sí, casas no.',
+          'SideraChart calcula cartas natales, herramientas de signo planeta a planeta, ruedas de sinastría y de carta compuesta. Las posiciones vienen de astronomy-engine (VSOP87), no de Swiss Ephemeris. El zodiaco es tropical, no sideral ni chino. Las casas son Placidus salvo que pases a Whole Sign. Hora desconocida: planetas sí, casas no.',
           'Si quieres un horóscopo de signo solar para la semana, este sitio es el instrumento equivocado. Si quieres el mapa que esas columnas pretenden describir a medias, usa la calculadora de carta natal con fecha, hora y lugar. Lee la carta como una descripción estructurada de acentos. No trates ninguno de los dos productos como consejo médico, legal ni financiero.',
         ],
       },
@@ -127,7 +127,7 @@ export const esArticles: Record<string, ArticleCopy> = {
       },
       {
         q: '¿Una carta natal predice mi semana?',
-        a: 'La carta natal es la línea de base. El lenguaje de semana a semana pertenece a los tránsitos contra esa línea. Meridian guarda tránsitos diarios al mediodía en la zona horaria natal; eso sigue sin ser un horóscopo de periódico.',
+        a: 'La carta natal es la línea de base. El lenguaje de semana a semana pertenece a los tránsitos contra esa línea. SideraChart guarda tránsitos diarios al mediodía en la zona horaria natal; eso sigue sin ser un horóscopo de periódico.',
       },
       {
         q: '¿Por qué algunos sitios llaman horóscopo a una carta natal?',
@@ -144,7 +144,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: '¿Cuál es mi signo solar?',
         paragraphs: [
           'Tu signo solar es la rebanada tropical de 30° que contenía el Sol al nacer. La gente pregunta «¿cuál es mi signo solar?» porque es el único dato astrológico que comparten periódicos, apps y la conversación casual. Lo encuentras a partir de la fecha de nacimiento. El Sol se mueve aproximadamente un grado al día y cambia de signo alrededor de las mismas fechas de calendario cada año, con un poco de deriva cerca de las cúspides.',
-          'Meridian mide el Sol en el zodiaco tropical, desde el equinoccio de marzo, con astronomy-engine (VSOP87). Esa es la práctica occidental. Un signo solar sideral (védico) puede diferir aproximadamente un signo hoy porque el punto cero estelar se ha desplazado por precesión. Si un amigo en una app sideral reporta un Sol distinto, no se trata del mismo sistema de coordenadas.',
+          'SideraChart mide el Sol en el zodiaco tropical, desde el equinoccio de marzo, con astronomy-engine (VSOP87). Esa es la práctica occidental. Un signo solar sideral (védico) puede diferir aproximadamente un signo hoy porque el punto cero estelar se ha desplazado por precesión. Si un amigo en una app sideral reporta un Sol distinto, no se trata del mismo sistema de coordenadas.',
         ],
       },
       {
@@ -158,25 +158,25 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Por qué tu signo solar no es toda la carta',
         paragraphs: [
           'El Sol es un cuerpo. Una carta natal también tiene la Luna, Mercurio, Venus, Marte y los planetas exteriores, más el Ascendente si tienes hora de nacimiento. Dos Leos pueden compartir un mes solar y aun así no compartir Luna, signo ascendente ni patrón de casas. Las descripciones de signo solar sobreviven porque son fáciles de indexar, no porque agoten el cielo.',
-          'Lee el Sol como el argumento de luz diurna: lo que haces cuando eres más obviamente tú en el tiempo público. Luego lee el resto. Una carta que solo lista el Sol es un titular. Las tablas bajo la rueda de Meridian son el artículo.',
+          'Lee el Sol como el argumento de luz diurna: lo que haces cuando eres más obviamente tú en el tiempo público. Luego lee el resto. Una carta que solo lista el Sol es un titular. Las tablas bajo la rueda de SideraChart son el artículo.',
         ],
       },
       {
         heading: 'Signo solar, signo lunar y signo ascendente',
         paragraphs: [
           'La Luna cambia de signo cada dos días y medio, así que mucha gente nacida en el mismo mes solar no comparte Luna. El signo ascendente cambia aproximadamente cada dos horas y necesita hora y lugar de nacimiento. Juntos, estos tres son los Tres Grandes. Si solo conoces el Sol, conoces el más lento de los tres.',
-          'No necesitas hora de nacimiento para un signo solar típico. A menudo tampoco la necesitas para la Luna, salvo que cambiara de signo ese día. Siempre la necesitas para el signo ascendente. Las herramientas dedicadas de Sol, Luna y Ascendente de Meridian son filtros del mismo motor que la carta natal completa. Usa la carta completa cuando también quieras casas y aspectos.',
+          'No necesitas hora de nacimiento para un signo solar típico. A menudo tampoco la necesitas para la Luna, salvo que cambiara de signo ese día. Siempre la necesitas para el signo ascendente. Las herramientas dedicadas de Sol, Luna y Ascendente de SideraChart son filtros del mismo motor que la carta natal completa. Usa la carta completa cuando también quieras casas y aspectos.',
         ],
       },
       {
         heading: 'Cúspides, zonas horarias y «soy dos signos»',
         paragraphs: [
           'En la práctica tropical no hay un decimotercer signo extra, y no hay doble ciudadanía oficial en el límite. El Sol está en un signo o en el otro en el minuto de nacimiento. Si te falta la hora en una fecha de cúspide, dilo. No promedies dos signos en una identidad a medida y luego la trates como un hecho calculado.',
-          'La historia de las zonas horarias importa más de lo que se espera. Un nacimiento anotado a las 23:40 en una ciudad que aún estaba en horario de verano puede ser un Tiempo Universal distinto que la misma lectura de reloj en invierno. Meridian usa las reglas IANA de esa fecha. Si un papel antiguo usó otro desfase, el grado del Sol puede moverse; en una cúspide, también el signo.',
+          'La historia de las zonas horarias importa más de lo que se espera. Un nacimiento anotado a las 23:40 en una ciudad que aún estaba en horario de verano puede ser un Tiempo Universal distinto que la misma lectura de reloj en invierno. SideraChart usa las reglas IANA de esa fecha. Si un papel antiguo usó otro desfase, el grado del Sol puede moverse; en una cúspide, también el signo.',
         ],
       },
       {
-        heading: 'Cómo encontrar tu signo solar en Meridian',
+        heading: 'Cómo encontrar tu signo solar en SideraChart',
         paragraphs: [
           'Introduce la fecha de nacimiento y añade hora y lugar si los tienes. La fila del Sol en la tabla es el signo y el grado. La rueda coloca el glifo solar en esa longitud. Los aspectos al Sol usan los mismos orbes que el resto de la carta: 8° conjunción y oposición, 6° cuadratura y trígono, 4° sextil.',
           'Guarda la carta natal si quieres el informe escrito y el gabinete diario. Los tránsitos a tu Sol natal son tiempo posterior, guardados al mediodía en la zona horaria natal. No cambian el signo solar natal. El signo solar es un hecho de nacimiento. Todo lo demás es lectura.',
@@ -190,7 +190,7 @@ export const esArticles: Record<string, ArticleCopy> = {
       },
       {
         q: '¿Por qué mi signo solar es distinto en una app védica?',
-        a: 'Las apps védicas suelen usar el zodiaco sideral. Meridian usa longitudes tropicales desde el equinoccio. La brecha es de unos 24° hoy, lo que a menudo mueve el Sol al signo anterior.',
+        a: 'Las apps védicas suelen usar el zodiaco sideral. SideraChart usa longitudes tropicales desde el equinoccio. La brecha es de unos 24° hoy, lo que a menudo mueve el Sol al signo anterior.',
       },
       {
         q: '¿Y si nací en la cúspide?',
@@ -211,7 +211,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Sol, Luna y Ascendente: los Tres Grandes',
         paragraphs: [
           'Al Sol, la Luna y el Ascendente se les llama los Tres Grandes porque son las tres posiciones que la gente usa de verdad en conversación, y porque van en tres relojes distintos. El Sol necesita una fecha. La Luna necesita una fecha y, en días rápidos, una hora. El signo ascendente necesita fecha, hora y lugar. Si solo tienes uno de los tres, no tienes el conjunto.',
-          'No son un ranking de importancia espiritual. Son tres coordenadas que describen tempos distintos: el camino anual del Sol, el camino mensual de la Luna y la rotación diaria de la Tierra bajo la eclíptica. Meridian calcula los tres con el mismo motor tropical basado en VSOP87. El signo ascendente se omite cuando la hora de nacimiento es desconocida.',
+          'No son un ranking de importancia espiritual. Son tres coordenadas que describen tempos distintos: el camino anual del Sol, el camino mensual de la Luna y la rotación diaria de la Tierra bajo la eclíptica. SideraChart calcula los tres con el mismo motor tropical basado en VSOP87. El signo ascendente se omite cuando la hora de nacimiento es desconocida.',
         ],
       },
       {
@@ -225,27 +225,27 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'La Luna: el cuerpo rápido',
         paragraphs: [
           'La Luna se mueve unos 13° al día y cambia de signo cada dos días y medio. Por eso dos personas nacidas en el mismo mes de signo solar a menudo no comparten Luna. El signo lunar describe el tiempo más rápido de la carta: apetito, sueño, las horas sin nota. No es un diagnóstico médico ni una etiqueta de trastorno del ánimo.',
-          'Sin hora de nacimiento, el signo de la Luna suele ser correcto igual. El grado y la casa no. Si la Luna cambió de signo el día de tu cumpleaños, una hora desconocida deja la propia Luna sin resolver. Marca la hora como desconocida en Meridian en lugar de inventar el mediodía y defender el grado.',
+          'Sin hora de nacimiento, el signo de la Luna suele ser correcto igual. El grado y la casa no. Si la Luna cambió de signo el día de tu cumpleaños, una hora desconocida deja la propia Luna sin resolver. Marca la hora como desconocida en SideraChart en lugar de inventar el mediodía y defender el grado.',
         ],
       },
       {
         heading: 'El signo ascendente: el horizonte este',
         paragraphs: [
           'El signo ascendente, o Ascendente, es el grado del zodiaco que estaba saliendo por el horizonte este en el minuto de nacimiento. No es un planeta. Es un ángulo local. Depende de latitud, longitud y hora del reloj. El Ascendente se mueve aproximadamente un grado cada cuatro minutos, así que un error de veinte minutos puede cambiar el signo.',
-          'Las casas en Placidus (el valor por defecto de Meridian) empiezan en ese ángulo. Sin un signo ascendente fiable no hay casas fiables. Si no tienes hora, salta el Ascendente. Un signo ascendente adivinado desplaza cada línea de «planeta en casa» que viene detrás.',
+          'Las casas en Placidus (el valor por defecto de SideraChart) empiezan en ese ángulo. Sin un signo ascendente fiable no hay casas fiables. Si no tienes hora, salta el Ascendente. Un signo ascendente adivinado desplaza cada línea de «planeta en casa» que viene detrás.',
         ],
       },
       {
         heading: 'Por qué se leen los tres juntos',
         paragraphs: [
           'Una lectura solo de Sol es un titular. Añadir la Luna te dice qué hace la carta cuando nadie la califica. Añadir el signo ascendente te dice la puerta que usa la carta: primeras impresiones, el cuerpo en el espacio, la cuadrícula de casas. Los tres pueden rimar (todo fuego) o discutir (Sol en Capricornio, Luna en Aries, Géminis ascendente). La discusión es información.',
-          'Los aspectos entre los Tres Grandes importan más que la química de eslogan. Una cuadratura Sol–Luna dentro de un orbe de 6° es una afirmación más estrecha que «fuego y agua». Los orbes de Meridian son 8° para conjunción y oposición, 6° para cuadratura y trígono, 4° para sextil. Mira la tabla, no la compatibilidad de memes.',
+          'Los aspectos entre los Tres Grandes importan más que la química de eslogan. Una cuadratura Sol–Luna dentro de un orbe de 6° es una afirmación más estrecha que «fuego y agua». Los orbes de SideraChart son 8° para conjunción y oposición, 6° para cuadratura y trígono, 4° para sextil. Mira la tabla, no la compatibilidad de memes.',
         ],
       },
       {
         heading: 'Cómo calcular los Tres Grandes',
         paragraphs: [
-          'Usa la calculadora de carta natal con fecha, hora y lugar. Lee primero las filas de Sol, Luna y Ascendente, luego el resto. Las herramientas dedicadas de Sol, Luna y Ascendente en Meridian son el mismo motor con una pantalla más estrecha. Solo zodiaco tropical; no sideral, no chino. Hora desconocida: aún puedes listar Sol y, por lo general, Luna; no puedes listar el Ascendente.',
+          'Usa la calculadora de carta natal con fecha, hora y lugar. Lee primero las filas de Sol, Luna y Ascendente, luego el resto. Las herramientas dedicadas de Sol, Luna y Ascendente en SideraChart son el mismo motor con una pantalla más estrecha. Solo zodiaco tropical; no sideral, no chino. Hora desconocida: aún puedes listar Sol y, por lo general, Luna; no puedes listar el Ascendente.',
           'Una vez guardada la carta natal, el gabinete diario superpondrá tránsitos al mediodía en la zona horaria natal. Esos tránsitos hablan con los Tres Grandes entre otros puntos. No los sustituyen. Los Tres Grandes son hechos de nacimiento. Los tránsitos son el cielo posterior.',
           'Si las tres posiciones discrepan, no elijas una favorita y descartes las otras. Escríbelas en una frase: Sol en este signo, Luna en aquel, este signo ascendente. Luego abre la tabla de aspectos. Esa frase más el orbe más estrecho ya es más carta natal que una columna de signo solar.',
         ],
@@ -262,7 +262,7 @@ export const esArticles: Record<string, ArticleCopy> = {
       },
       {
         q: '¿Puedo conocer mis Tres Grandes sin hora de nacimiento?',
-        a: 'Sol por lo general sí, Luna por lo general sí salvo en días de cambio de signo, Ascendente no. Meridian omite el Ascendente cuando la hora está marcada como desconocida.',
+        a: 'Sol por lo general sí, Luna por lo general sí salvo en días de cambio de signo, Ascendente no. SideraChart omite el Ascendente cuando la hora está marcada como desconocida.',
       },
       {
         q: '¿El Ascendente es lo mismo que el signo solar?',
@@ -286,34 +286,34 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Por qué el Ascendente necesita una hora de nacimiento',
         paragraphs: [
           'El Ascendente se mueve aproximadamente un grado cada cuatro minutos. Un error de veinte minutos son cinco grados y puede cambiar el signo, sobre todo cerca de un límite. Una conjetura de dos horas es un signo ascendente distinto la mayoría de las veces. El lugar también importa: el mismo Tiempo Universal produce horizontes locales distintos en Londres y en Kyiv.',
-          'Meridian convierte la hora civil a Tiempo Universal con las reglas IANA de esa fecha, luego calcula el tiempo sidéreo local y el grado de la eclíptica que intersecta. Si marcas la hora como desconocida, la calculadora igual devuelve longitudes planetarias y omite el Ascendente. Esa es la salida honesta. Inventar las 12:00 y publicar un signo ascendente es un producto distinto y peor.',
+          'SideraChart convierte la hora civil a Tiempo Universal con las reglas IANA de esa fecha, luego calcula el tiempo sidéreo local y el grado de la eclíptica que intersecta. Si marcas la hora como desconocida, la calculadora igual devuelve longitudes planetarias y omite el Ascendente. Esa es la salida honesta. Inventar las 12:00 y publicar un signo ascendente es un producto distinto y peor.',
         ],
       },
       {
         heading: 'Signo ascendente frente a signo solar',
         paragraphs: [
           'El signo solar viene de la longitud eclíptica del Sol y es estable a lo largo de un día. El signo ascendente viene del horizonte y no lo es. Puedes conocer tu Sol por una tarta de cumpleaños. No puedes conocer tu signo ascendente por una. Si una app te dio un signo ascendente sin pedir hora, adivinó, normalmente al mediodía, y no debería fiarse.',
-          'Cuando conoces ambos, léelos como objetos distintos. Sol en Virgo, Escorpio ascendente es un patrón habitual, no una contradicción. Uno es el argumento solar; el otro es la puerta este y la cuadrícula de casas. La calculadora de signo ascendente de Meridian es el motor natal filtrado a ese ángulo. La carta completa sigue mostrando por qué el resto del cielo se sienta donde se sienta.',
+          'Cuando conoces ambos, léelos como objetos distintos. Sol en Virgo, Escorpio ascendente es un patrón habitual, no una contradicción. Uno es el argumento solar; el otro es la puerta este y la cuadrícula de casas. La calculadora de signo ascendente de SideraChart es el motor natal filtrado a ese ángulo. La carta completa sigue mostrando por qué el resto del cielo se sienta donde se sienta.',
         ],
       },
       {
         heading: 'Las casas empiezan en el Ascendente',
         paragraphs: [
-          'En Placidus, el valor por defecto de Meridian, la casa I empieza en el Ascendente. El resto de las cúspides sigue el tiempo de ascensión, así que las casas son desiguales. Whole Sign asigna la casa I a todo el signo que contiene el Ascendente y luego cuenta signos. De un modo u otro, sin Ascendente no hay casas honestas.',
+          'En Placidus, el valor por defecto de SideraChart, la casa I empieza en el Ascendente. El resto de las cúspides sigue el tiempo de ascensión, así que las casas son desiguales. Whole Sign asigna la casa I a todo el signo que contiene el Ascendente y luego cuenta signos. De un modo u otro, sin Ascendente no hay casas honestas.',
           'Cada línea de «planeta en la casa siete» depende de esto. Si el signo ascendente está mal, esas líneas están mal aunque los signos planetarios estén bien. Por eso hora desconocida significa planetas sí, casas no — no «casas aproximadamente». Las latitudes polares por encima de unos 66° también tensan Placidus; pasa a Whole Sign ahí en lugar de forzar cúspides rotas.',
         ],
       },
       {
         heading: 'Horas aproximadas y cartas de mediodía',
         paragraphs: [
-          'Una hora anotada como 04:00 puede significar «alrededor de las cuatro» o «exactamente las cuatro». Trata las horas redondeadas como un rango. Recalcula veinte minutos a cada lado y mira si el Ascendente se queda en el signo. Si salta, aún no tienes un signo ascendente; tienes dos candidatos. La rectificación — inventar una hora para que encaje con una biografía — es un oficio aparte, fácil de abusar. Meridian no lo hace por ti.',
+          'Una hora anotada como 04:00 puede significar «alrededor de las cuatro» o «exactamente las cuatro». Trata las horas redondeadas como un rango. Recalcula veinte minutos a cada lado y mira si el Ascendente se queda en el signo. Si salta, aún no tienes un signo ascendente; tienes dos candidatos. La rectificación — inventar una hora para que encaje con una biografía — es un oficio aparte, fácil de abusar. SideraChart no lo hace por ti.',
           'La memoria familiar es más débil que un certificado. Si los parientes discrepan, prefiere el documento. Si no hay documento, deja la hora desconocida. Aún puedes leer Sol, Luna (por lo general), Mercurio, Venus, Marte y los planetas exteriores en signos, más los aspectos entre ellos. Eso ya es una carta natal menos el marco local.',
         ],
       },
       {
         heading: 'Cómo calcular tu signo ascendente',
         paragraphs: [
-          'Usa la calculadora de signo ascendente de Meridian o la calculadora de carta natal completa. Introduce fecha, hora y lugar. La fila del Ascendente es el signo y el grado. Las posiciones son tropicales, de astronomy-engine (VSOP87), no Swiss Ephemeris, no siderales. Los aspectos de planetas al Ascendente usan los mismos orbes que los contactos planeta a planeta: 8° / 6° / 4°.',
+          'Usa la calculadora de signo ascendente de SideraChart o la calculadora de carta natal completa. Introduce fecha, hora y lugar. La fila del Ascendente es el signo y el grado. Las posiciones son tropicales, de astronomy-engine (VSOP87), no Swiss Ephemeris, no siderales. Los aspectos de planetas al Ascendente usan los mismos orbes que los contactos planeta a planeta: 8° / 6° / 4°.',
           'Guarda la carta si quieres casas, el informe escrito y más tarde tránsitos en el gabinete al mediodía natal. Un signo ascendente sin el resto de la rueda sigue siendo solo un ángulo. Calcúlalo con cuidado y luego devuélvelo a la carta a la que pertenece.',
         ],
       },
@@ -321,7 +321,7 @@ export const esArticles: Record<string, ArticleCopy> = {
     faq: [
       {
         q: '¿Puedo encontrar mi signo ascendente sin hora de nacimiento?',
-        a: 'No. El Ascendente es un grado del horizonte. Sin reloj y sin lugar, cualquier signo ascendente es una conjetura. Meridian lo omite cuando la hora es desconocida.',
+        a: 'No. El Ascendente es un grado del horizonte. Sin reloj y sin lugar, cualquier signo ascendente es una conjetura. SideraChart lo omite cuando la hora es desconocida.',
       },
       {
         q: '¿Cada cuánto cambia el signo ascendente?',
@@ -333,7 +333,7 @@ export const esArticles: Record<string, ArticleCopy> = {
       },
       {
         q: '¿Por qué mi signo ascendente es distinto en otro sitio?',
-        a: 'Revisa zona horaria, horario de verano, coordenadas y si el otro sitio es sideral. Meridian es tropical Placidus por defecto. Un relleno de mediodía también produce un Ascendente falso.',
+        a: 'Revisa zona horaria, horario de verano, coordenadas y si el otro sitio es sideral. SideraChart es tropical Placidus por defecto. Un relleno de mediodía también produce un Ascendente falso.',
       },
     ],
   },
@@ -346,7 +346,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: '¿Qué es un signo lunar?',
         paragraphs: [
           'Tu signo lunar es el signo del zodiaco tropical que contenía la Luna cuando naciste. La gente lo pide porque es la segunda posición más famosa después del Sol, y porque se mueve lo bastante rápido para que dos personas con el mismo Sol a menudo no lo compartan. La Luna es una longitud como cualquier otro planeta de la carta natal, solo más rápida: unos 13° al día, un signo nuevo cada dos días y medio.',
-          'En el lenguaje de la carta, la Luna describe las horas sin nota: apetito, sueño, lo que haces cuando nadie califica la actuación. Eso es una función, no una nota médica ni un permiso. Meridian coloca la Luna con el mismo motor de clase VSOP87 (astronomy-engine) que el Sol, en el zodiaco tropical, no sideral.',
+          'En el lenguaje de la carta, la Luna describe las horas sin nota: apetito, sueño, lo que haces cuando nadie califica la actuación. Eso es una función, no una nota médica ni un permiso. SideraChart coloca la Luna con el mismo motor de clase VSOP87 (astronomy-engine) que el Sol, en el zodiaco tropical, no sideral.',
         ],
       },
       {
@@ -359,14 +359,14 @@ export const esArticles: Record<string, ArticleCopy> = {
       {
         heading: 'Signo lunar sin hora de nacimiento',
         paragraphs: [
-          'Si tienes fecha y no hora, el signo de la Luna suele ser correcto igual. El grado no. La casa no, porque las casas piden el Ascendente y el Ascendente pide el minuto. La regla de Meridian es la misma que para el resto de la carta: hora desconocida = planetas sí, casas no. En esa frase, la Luna es un planeta.',
+          'Si tienes fecha y no hora, el signo de la Luna suele ser correcto igual. El grado no. La casa no, porque las casas piden el Ascendente y el Ascendente pide el minuto. La regla de SideraChart es la misma que para el resto de la carta: hora desconocida = planetas sí, casas no. En esa frase, la Luna es un planeta.',
           'Un relleno de mediodía es una estimación. Sirve para una primera mirada al signo en un día tranquilo. No es un hecho desde el que debas discutir cuando entran el grado, la casa o una cúspide. Prefiere la hora del certificado. Si no hay, di que la hora es desconocida y lee la Luna solo en signo.',
         ],
       },
       {
         heading: 'Luna y Sol en la misma carta',
         paragraphs: [
-          'El Sol es el índice mensual que todo el mundo ya conoce. La Luna es el tiempo interior más rápido. Pueden ocupar el mismo signo (un nacimiento en luna nueva) o signos opuestos (un nacimiento en luna llena) o cualquier punto intermedio. Los aspectos Sol–Luna usan los orbes de Meridian: 8° conjunción y oposición, 6° cuadratura y trígono, 4° sextil. Una cuadratura Sol–Luna estrecha es una afirmación más alta que dos memes de signo apilados.',
+          'El Sol es el índice mensual que todo el mundo ya conoce. La Luna es el tiempo interior más rápido. Pueden ocupar el mismo signo (un nacimiento en luna nueva) o signos opuestos (un nacimiento en luna llena) o cualquier punto intermedio. Los aspectos Sol–Luna usan los orbes de SideraChart: 8° conjunción y oposición, 6° cuadratura y trígono, 4° sextil. Una cuadratura Sol–Luna estrecha es una afirmación más alta que dos memes de signo apilados.',
           'Los Tres Grandes ponen la Luna entre el Sol y el Ascendente. Puedes conocer Sol y Luna (por lo general) sin hora. No puedes completar el trío sin una. Si solo viniste por el signo lunar, igual introduce hora y lugar cuando los tengas para que el grado y los aspectos sean honestos.',
         ],
       },
@@ -374,7 +374,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Grado, casa y aspectos',
         paragraphs: [
           'El grado te dice cuán temprana o tardía está la Luna en el signo y qué tan cerca está de un aspecto. La casa, con un Ascendente conocido, te dice qué ámbito de la vida lleva esa función lunar. Las demás casas vacías no cancelan la Luna; solo significan que la Luna no está sentada en esas habitaciones.',
-          'La calculadora de signo lunar de Meridian es el motor natal filtrado a un cuerpo. La carta natal completa añade casas (Placidus por defecto), el Ascendente y el aspectario. Los tránsitos diarios a tu Luna natal se guardan en el gabinete al mediodía en la zona horaria natal. Eso es cielo posterior, no una reescritura de la Luna natal.',
+          'La calculadora de signo lunar de SideraChart es el motor natal filtrado a un cuerpo. La carta natal completa añade casas (Placidus por defecto), el Ascendente y el aspectario. Los tránsitos diarios a tu Luna natal se guardan en el gabinete al mediodía en la zona horaria natal. Eso es cielo posterior, no una reescritura de la Luna natal.',
         ],
       },
       {
@@ -382,14 +382,14 @@ export const esArticles: Record<string, ArticleCopy> = {
         paragraphs: [
           'Introduce fecha de nacimiento, hora si la tienes, y lugar. Lee la fila de la Luna: signo, grado, casa si se conoce el reloj. Las posiciones son tropicales. Si otra app es sideral, la Luna puede sentarse en el signo anterior; esa es la brecha de ayanamsha, no un fallo de astronomy-engine.',
           'No trates un signo lunar como consejo financiero, legal ni médico. Úsalo como una coordenada. Si falta la hora, deja la coordenada gruesa: solo el signo. Si la hora está, usa el grado y los aspectos. Ese es todo el método.',
-          'Compara con el Sol antes de parar. Sol y Luna en el mismo signo (nacimiento en luna nueva) tiene otra textura que una oposición de luna llena. Ambos son astronomía ordinaria. Meridian mostrará el orbe; tú decides si 6° todavía cuenta como alto. Los tránsitos posteriores de la Luna en el gabinete son tiempo, guardados al mediodía natal, no un signo lunar nuevo.',
+          'Compara con el Sol antes de parar. Sol y Luna en el mismo signo (nacimiento en luna nueva) tiene otra textura que una oposición de luna llena. Ambos son astronomía ordinaria. SideraChart mostrará el orbe; tú decides si 6° todavía cuenta como alto. Los tránsitos posteriores de la Luna en el gabinete son tiempo, guardados al mediodía natal, no un signo lunar nuevo.',
         ],
       },
     ],
     faq: [
       {
         q: '¿Cómo encuentro mi signo lunar?',
-        a: 'Calcula una carta natal a partir de fecha, hora y lugar de nacimiento. La fila de la Luna es el signo tropical. La calculadora de signo lunar de Meridian usa el mismo motor que la carta completa.',
+        a: 'Calcula una carta natal a partir de fecha, hora y lugar de nacimiento. La fila de la Luna es el signo tropical. La calculadora de signo lunar de SideraChart usa el mismo motor que la carta completa.',
       },
       {
         q: '¿Necesito hora de nacimiento para mi signo lunar?',
@@ -401,7 +401,7 @@ export const esArticles: Record<string, ArticleCopy> = {
       },
       {
         q: '¿Por qué mi signo lunar difiere en un sitio védico?',
-        a: 'Los zodiacos siderales miden desde un punto cero estelar a unos 24° del equinoccio tropical de hoy. Meridian es solo tropical.',
+        a: 'Los zodiacos siderales miden desde un punto cero estelar a unos 24° del equinoccio tropical de hoy. SideraChart es solo tropical.',
       },
     ],
   },
@@ -414,7 +414,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: '¿Qué es un signo de Venus?',
         paragraphs: [
           'Tu signo de Venus es el signo del zodiaco tropical que contenía a Venus al nacer. La gente busca «¿qué es un signo de Venus?» porque la astrología popular usa Venus como taquigrafía del gusto, la atracción y el modo en que pones precio a lo que no es una factura: el arte, los modales, la gente que retienes. En el instrumento es una longitud planetaria, calculada como las demás a partir de fecha, hora y lugar de nacimiento.',
-          'Meridian coloca a Venus en el zodiaco tropical con astronomy-engine (VSOP87). No es una Venus sideral ni una hora china. El signo es la rebanada de 30°. La casa, si tienes hora de nacimiento, es el ámbito local. Los aspectos a Venus usan orbes de 8° / 6° / 4°. Nada de eso es un veredicto sobre si una relación debe continuar.',
+          'SideraChart coloca a Venus en el zodiaco tropical con astronomy-engine (VSOP87). No es una Venus sideral ni una hora china. El signo es la rebanada de 30°. La casa, si tienes hora de nacimiento, es el ámbito local. Los aspectos a Venus usan orbes de 8° / 6° / 4°. Nada de eso es un veredicto sobre si una relación debe continuar.',
         ],
       },
       {
@@ -435,20 +435,20 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Venus frente a los Tres Grandes',
         paragraphs: [
           'Sol, Luna y Ascendente siguen siendo el primer pase. Venus es una coordenada de especialista que lees después de esos tres, salvo que Venus esté apilada en un ángulo o trabada en un aspecto estrecho con ellos. Una conjunción Venus–Saturno dentro de 8° suena más alto que un texto de signo de Venus. Mira el aspectario.',
-          'El signo ascendente sigue necesitando el reloj. Si viniste solo por Venus y tienes hora, introdúcela igual para que casa y aspectos sean reales. La calculadora de signo de Venus de Meridian es el motor natal filtrado a un glifo. La carta completa es el contexto que impide que Venus se coma toda la lectura.',
+          'El signo ascendente sigue necesitando el reloj. Si viniste solo por Venus y tienes hora, introdúcela igual para que casa y aspectos sean reales. La calculadora de signo de Venus de SideraChart es el motor natal filtrado a un glifo. La carta completa es el contexto que impide que Venus se coma toda la lectura.',
         ],
       },
       {
         heading: 'Casas y aspectos a Venus',
         paragraphs: [
-          'Con un Ascendente conocido, Venus en una casa nombra el ámbito de la vida donde esa función de valorar es obvia: cuarta, séptima, décima y así. Las casas vacías en otros sitios no son órganos que faltan. Placidus es el valor por defecto de Meridian; Whole Sign es la alternativa cuando quieres signos iguales o cuando estás en alta latitud.',
+          'Con un Ascendente conocido, Venus en una casa nombra el ámbito de la vida donde esa función de valorar es obvia: cuarta, séptima, décima y así. Las casas vacías en otros sitios no son órganos que faltan. Placidus es el valor por defecto de SideraChart; Whole Sign es la alternativa cuando quieres signos iguales o cuando estás en alta latitud.',
           'Los aspectos mayores a Venus son conjunción, sextil, cuadratura, trígono y oposición. Los orbes más estrechos se leen primero. Los tránsitos a la Venus natal viven después en el gabinete diario, guardados al mediodía en la zona horaria natal. Esos tránsitos no cambian el signo natal de Venus. Son tiempo contra un punto fijo.',
         ],
       },
       {
         heading: 'Cómo encontrar tu signo de Venus',
         paragraphs: [
-          'Introduce fecha, hora y lugar de nacimiento en Meridian. Lee la fila de Venus. Compárala con el Sol: a menudo cerca, a veces el mismo. Si una app sideral discrepa, estás mirando otro punto cero, a unos 24°. Pasa esa app a tropical si quieres coincidir con este sitio.',
+          'Introduce fecha, hora y lugar de nacimiento en SideraChart. Lee la fila de Venus. Compárala con el Sol: a menudo cerca, a veces el mismo. Si una app sideral discrepa, estás mirando otro punto cero, a unos 24°. Pasa esa app a tropical si quieres coincidir con este sitio.',
           'Usa la posición como coordenada en una carta natal, no como consejo de citas. Si la hora es desconocida, deja a Venus en signo y salta la casa. Si la hora es conocida, lee grado, casa y aspectos. Luego devuelve a Venus junto al resto de la rueda.',
           'Si más tarde corres una sinastría, los contactos de Venus entre dos cartas son otro mapa. Calcula primero tu Venus natal para saber qué longitud están contactando las demás personas. Los puntos medios de una carta compuesta que incluyen a Venus son un tercer mapa otra vez. Una coordenada, tres instrumentos: no mezcles las impresiones.',
         ],
@@ -457,7 +457,7 @@ export const esArticles: Record<string, ArticleCopy> = {
     faq: [
       {
         q: '¿Cómo encuentro mi signo de Venus?',
-        a: 'Corre una carta natal o la calculadora de signo de Venus de Meridian con tu fecha de nacimiento, y añade hora y lugar si los tienes. La fila de Venus es el signo tropical y el grado.',
+        a: 'Corre una carta natal o la calculadora de signo de Venus de SideraChart con tu fecha de nacimiento, y añade hora y lugar si los tienes. La fila de Venus es el signo tropical y el grado.',
       },
       {
         q: '¿Venus necesita una hora de nacimiento exacta?',
@@ -482,7 +482,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: '¿Qué es un signo de Mercurio?',
         paragraphs: [
           'Tu signo de Mercurio es el signo del zodiaco tropical que contenía a Mercurio al nacer. La gente lo busca porque Mercurio es la función de lenguaje y recados de la carta: cómo ordenas información, hablas, te desplazas y cambias de opinión. Es una longitud en la carta natal, no una medida de inteligencia ni un diagnóstico de atención.',
-          'Meridian calcula a Mercurio en el zodiaco tropical a partir de astronomy-engine (VSOP87), con casas Placidus cuando hay hora de nacimiento. No usa Swiss Ephemeris y no ofrece un Mercurio sideral ni védico. Si otra app discrepa aproximadamente un signo, comprueba si es sideral antes de asumir un error.',
+          'SideraChart calcula a Mercurio en el zodiaco tropical a partir de astronomy-engine (VSOP87), con casas Placidus cuando hay hora de nacimiento. No usa Swiss Ephemeris y no ofrece un Mercurio sideral ni védico. Si otra app discrepa aproximadamente un signo, comprueba si es sideral antes de asumir un error.',
         ],
       },
       {
@@ -509,7 +509,7 @@ export const esArticles: Record<string, ArticleCopy> = {
       {
         heading: 'Aspectos a Mercurio',
         paragraphs: [
-          'Los aspectos mayores son conjunción, sextil, cuadratura, trígono y oposición. Los orbes de Meridian son 8° para conjunción y oposición, 6° para cuadratura y trígono, 4° para sextil. Los contactos estrechos Mercurio–Saturno o Mercurio–Urano dirán más que el texto del signo. Usa la tabla bajo la rueda.',
+          'Los aspectos mayores son conjunción, sextil, cuadratura, trígono y oposición. Los orbes de SideraChart son 8° para conjunción y oposición, 6° para cuadratura y trígono, 4° para sextil. Los contactos estrechos Mercurio–Saturno o Mercurio–Urano dirán más que el texto del signo. Usa la tabla bajo la rueda.',
           'Los tránsitos a Mercurio natal aparecen después en el gabinete diario, guardados al mediodía en la zona horaria natal para que la nota del día no derive si refrescas a las 23:00. Esos tránsitos no reescriben el signo natal de Mercurio. La posición natal es la línea de base.',
           'Un Mercurio en tránsito retrógrado sobre el Mercurio natal es una superposición temporal, popular en titulares y fácil de sobreleer. Anota el orbe, anota si es aplicativo, luego mira el resto de los contactos lentos del día. El tiempo rápido de Mercurio no debería desbancar un tránsito de Saturno que de verdad está estrecho.',
         ],
@@ -517,16 +517,16 @@ export const esArticles: Record<string, ArticleCopy> = {
       {
         heading: 'Cómo calcular tu signo de Mercurio',
         paragraphs: [
-          'Usa la calculadora de signo de Mercurio de Meridian o la carta natal completa. Introduce fecha, hora y lugar. Lee la fila de Mercurio y luego echa un vistazo al Sol para ver si comparten signo. Solo tropical. Si necesitas casas, necesitas el reloj; si no tienes el reloj, párate en el signo.',
+          'Usa la calculadora de signo de Mercurio de SideraChart o la carta natal completa. Introduce fecha, hora y lugar. Lee la fila de Mercurio y luego echa un vistazo al Sol para ver si comparten signo. Solo tropical. Si necesitas casas, necesitas el reloj; si no tienes el reloj, párate en el signo.',
           'No trates a Mercurio como consejo laboral, legal ni médico. Es una coordenada de cómo habla y ordena la carta. Devuélvelo a la rueda con Venus, Marte y los Tres Grandes antes de decidir que la carta tiene un solo tema.',
-          'Cuando coincidas con otro sitio, pon zodiaco tropical y la misma zona horaria de nacimiento. Un signo de Mercurio que salta suele ser sideral, un error de reloj en un día de estación, o un fallo de historia de zona horaria — no astronomy-engine fallando. Las casas seguirán discrepando si un sitio usó Whole Sign y tú dejaste Meridian en Placidus.',
+          'Cuando coincidas con otro sitio, pon zodiaco tropical y la misma zona horaria de nacimiento. Un signo de Mercurio que salta suele ser sideral, un error de reloj en un día de estación, o un fallo de historia de zona horaria — no astronomy-engine fallando. Las casas seguirán discrepando si un sitio usó Whole Sign y tú dejaste SideraChart en Placidus.',
         ],
       },
     ],
     faq: [
       {
         q: '¿Cómo encuentro mi signo de Mercurio?',
-        a: 'Calcula una carta natal a partir de fecha, hora y lugar de nacimiento, o usa la calculadora de signo de Mercurio de Meridian. La fila de Mercurio es el signo tropical y el grado.',
+        a: 'Calcula una carta natal a partir de fecha, hora y lugar de nacimiento, o usa la calculadora de signo de Mercurio de SideraChart. La fila de Mercurio es el signo tropical y el grado.',
       },
       {
         q: '¿Por qué mi Mercurio está en el mismo signo que mi Sol?',
@@ -551,7 +551,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: '¿Qué es un signo de Marte?',
         paragraphs: [
           'Tu signo de Marte es el signo del zodiaco tropical que contenía a Marte al nacer. La gente busca «¿qué es un signo de Marte?» porque los textos populares tratan a Marte como combustible: cómo arrancas, compites, deseas y te enfadas. En el instrumento es una longitud planetaria en una carta natal, calculada a partir de fecha, hora y lugar de nacimiento. No es un permiso para la crueldad ni una lectura médica de sangre o músculos.',
-          'Meridian coloca a Marte en el zodiaco tropical con astronomy-engine (VSOP87). Las casas, cuando se conoce el reloj, van por defecto a Placidus. Los sistemas sideral y chino quedan fuera de alcance. Si una app védica muestra un signo de Marte distinto, estás mirando otro punto cero, no otro planeta.',
+          'SideraChart coloca a Marte en el zodiaco tropical con astronomy-engine (VSOP87). Las casas, cuando se conoce el reloj, van por defecto a Placidus. Los sistemas sideral y chino quedan fuera de alcance. Si una app védica muestra un signo de Marte distinto, estás mirando otro punto cero, no otro planeta.',
         ],
       },
       {
@@ -572,21 +572,21 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Marte, los Tres Grandes y los demás planetas',
         paragraphs: [
           'Lee primero Sol, Luna y Ascendente salvo que Marte esté en conjunción con uno de ellos o sentado en el Ascendente o el Medio Cielo. Una cuadratura Marte–Luna dentro de 6° hablará más alto que un párrafo de signo de Marte. El Ascendente sigue pidiendo hora y lugar de nacimiento.',
-          'Los contactos Marte–Venus y Marte–Saturno son fáciles de sobre-narrar. Usa el aspectario de Meridian y los orbes declarados: 8° conjunción y oposición, 6° cuadratura y trígono, 4° sextil. Primero lo estrecho. Los contactos anchos en el borde del orbe son más callados. Las líneas de color de la rueda coinciden con la tabla.',
+          'Los contactos Marte–Venus y Marte–Saturno son fáciles de sobre-narrar. Usa el aspectario de SideraChart y los orbes declarados: 8° conjunción y oposición, 6° cuadratura y trígono, 4° sextil. Primero lo estrecho. Los contactos anchos en el borde del orbe son más callados. Las líneas de color de la rueda coinciden con la tabla.',
         ],
       },
       {
         heading: 'Casas y tránsitos posteriores',
         paragraphs: [
           'Con un Ascendente conocido, Marte en una casa nombra dónde es obvia la función de iniciar. Las casas vacías no significan que te falte ese ámbito de la vida; significan que ningún planeta está sentado en esa habitación. Placidus es el valor por defecto porque la mayoría de los textos occidentales lo asumen. Whole Sign es más limpio en altas latitudes y cuando quieres signo = casa.',
-          'Los tránsitos a Marte natal son tiempo posterior. El gabinete de Meridian guarda la superposición del día al mediodía en la zona horaria natal. Una cuadratura de Marte en tránsito a Marte natal es un contacto temporal, no una reescritura del signo natal de Marte. Guarda la línea de base y el tiempo en cajones distintos.',
+          'Los tránsitos a Marte natal son tiempo posterior. El gabinete de SideraChart guarda la superposición del día al mediodía en la zona horaria natal. Una cuadratura de Marte en tránsito a Marte natal es un contacto temporal, no una reescritura del signo natal de Marte. Guarda la línea de base y el tiempo en cajones distintos.',
           'El retorno de Marte — Marte en tránsito de vuelta al grado natal — es un ciclo de unos dos años, no un reinicio de personalidad. Si lo sigues en el gabinete, estás siguiendo un contacto que se repite, no una carta natal nueva. Los días perdidos se quedan perdidos; el producto no inventa un retorno que no abriste.',
         ],
       },
       {
         heading: 'Cómo encontrar tu signo de Marte',
         paragraphs: [
-          'Usa la calculadora de signo de Marte o la carta natal completa en Meridian. Introduce fecha, hora y lugar. Lee la fila de Marte y luego los aspectos. Solo tropical. Haz coincidir otros sitios poniéndolos en tropical más Placidus si quieres las mismas casas.',
+          'Usa la calculadora de signo de Marte o la carta natal completa en SideraChart. Introduce fecha, hora y lugar. Lee la fila de Marte y luego los aspectos. Solo tropical. Haz coincidir otros sitios poniéndolos en tropical más Placidus si quieres las mismas casas.',
           'Devuelve a Marte a la carta. Un signo de Marte sin Sol, Luna, Ascendente y el resto es una nota de especialista. Calcúlalo con cuidado y luego léelo como una función entre diez cuerpos, no como toda la persona.',
           'Si la hora es desconocida, aún puedes citar el signo de Marte y los aspectos planeta a planeta. No puedes citar a Marte en el Ascendente o en la casa diez. Escribe el límite en la misma página que el signo para no colar después lenguaje de casas.',
         ],
@@ -595,7 +595,7 @@ export const esArticles: Record<string, ArticleCopy> = {
     faq: [
       {
         q: '¿Cómo encuentro mi signo de Marte?',
-        a: 'Calcula una carta natal o usa la calculadora de signo de Marte de Meridian con fecha, hora y lugar de nacimiento. La fila de Marte es el signo tropical y el grado.',
+        a: 'Calcula una carta natal o usa la calculadora de signo de Marte de SideraChart con fecha, hora y lugar de nacimiento. La fila de Marte es el signo tropical y el grado.',
       },
       {
         q: '¿Necesito hora de nacimiento para mi signo de Marte?',
@@ -620,7 +620,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: '¿Por qué importa la hora de nacimiento en una carta natal?',
         paragraphs: [
           'La hora de nacimiento importa porque en una sola marca civil se esconden dos relojes. El primero convierte tu hora local a Tiempo Universal para que las longitudes planetarias sean correctas. El segundo, con latitud y longitud, fija el tiempo sidéreo local: qué grado de la eclíptica estaba saliendo, cuál culminaba y dónde caen las cúspides de las casas. La gente pregunta «¿por qué importa la hora de nacimiento?» cuando tiene un cumpleaños pero no un minuto. La respuesta corta: los planetas en su mayoría sobreviven; el marco local no.',
-          'Meridian usa las reglas IANA vigentes en esa fecha, incluido el horario de verano histórico, y luego lee posiciones tropicales en astronomy-engine (VSOP87). Una zona horaria incorrecta daña tanto como un minuto incorrecto. Un nacimiento listado a las 14:00 con el desfase equivocado es otro cielo y otro Tiempo Universal.',
+          'SideraChart usa las reglas IANA vigentes en esa fecha, incluido el horario de verano histórico, y luego lee posiciones tropicales en astronomy-engine (VSOP87). Una zona horaria incorrecta daña tanto como un minuto incorrecto. Un nacimiento listado a las 14:00 con el desfase equivocado es otro cielo y otro Tiempo Universal.',
         ],
       },
       {
@@ -633,27 +633,27 @@ export const esArticles: Record<string, ArticleCopy> = {
       {
         heading: 'Las casas dependen del tiempo sidéreo local',
         paragraphs: [
-          'Las casas son sectores del cielo local, no signos. Los signos son 30° del zodiaco tropical. Las casas son lo que obtienes cuando divides el espacio alrededor del horizonte y el meridiano. Placidus, el valor por defecto de Meridian, divide el tiempo de ascensión, así que las casas son desiguales. Whole Sign da a cada casa un signo entero a partir del signo del Ascendente.',
-          'Sin hora de nacimiento no hay Ascendente honesto y por tanto no hay casas honestas. Hora desconocida = planetas sí, casas no. Meridian sigue esa regla en lugar de aparcarte en silencio al mediodía. El mediodía es una convención para algunas cartas históricas; no es tu Ascendente.',
+          'Las casas son sectores del cielo local, no signos. Los signos son 30° del zodiaco tropical. Las casas son lo que obtienes cuando divides el espacio alrededor del horizonte y el meridiano. Placidus, el valor por defecto de SideraChart, divide el tiempo de ascensión, así que las casas son desiguales. Whole Sign da a cada casa un signo entero a partir del signo del Ascendente.',
+          'Sin hora de nacimiento no hay Ascendente honesto y por tanto no hay casas honestas. Hora desconocida = planetas sí, casas no. SideraChart sigue esa regla en lugar de aparcarte en silencio al mediodía. El mediodía es una convención para algunas cartas históricas; no es tu Ascendente.',
         ],
       },
       {
         heading: 'El grado de la Luna y otros datos rápidos',
         paragraphs: [
           'La Luna se mueve aproximadamente medio grado por hora. A lo largo de un día eso son varios grados: suficiente para cambiar aspectos y, en un día de cambio de signo, el propio signo lunar. Mercurio, Venus y el Sol también pueden sentarse en una cúspide. Los planetas exteriores apenas se mueven en un día; sus signos están a salvo sin hora.',
-          'Los aspectos entre planetas existen igual sin casas. Meridian listará aspectos mayores dentro de orbes de 8° / 6° / 4° a partir de las longitudes planetarias incluso cuando se omite el Ascendente. Lo que pierdes es todo lo que necesita un ángulo: signo ascendente, cúspides de casa, planetas en el Medio Cielo.',
+          'Los aspectos entre planetas existen igual sin casas. SideraChart listará aspectos mayores dentro de orbes de 8° / 6° / 4° a partir de las longitudes planetarias incluso cuando se omite el Ascendente. Lo que pierdes es todo lo que necesita un ángulo: signo ascendente, cúspides de casa, planetas en el Medio Cielo.',
         ],
       },
       {
         heading: 'Certificados, memoria y horas redondeadas',
         paragraphs: [
           'Prefiere un certificado de nacimiento o un registro hospitalario a un relato. Los parientes redondean. «Sobre las seis» puede significar las 17:40. Recalcula un rango si la hora es aproximada y mira si el Ascendente se queda. Si no, aún no tienes un signo ascendente.',
-          'No rectifiques una hora para que encaje con una biografía dentro de esta calculadora. Meridian no inventará un minuto para que la casa diez se parezca a tu cargo. Si la hora es desconocida, márcala desconocida. Lee planetas en signos y aspectos. Deja las casas para un día en que tengas un reloj.',
-          'Los registros hospitalarios ganan a las conjeturas de bautizo. Una hora escrita como 16 h 30 es mejor que «a última hora de la tarde». Si el documento usa una hora media local antigua, dilo cuando compares con otro sitio; la conversión IANA asume la zona civil de esa fecha, que es lo que aplica Meridian.',
+          'No rectifiques una hora para que encaje con una biografía dentro de esta calculadora. SideraChart no inventará un minuto para que la casa diez se parezca a tu cargo. Si la hora es desconocida, márcala desconocida. Lee planetas en signos y aspectos. Deja las casas para un día en que tengas un reloj.',
+          'Los registros hospitalarios ganan a las conjeturas de bautizo. Una hora escrita como 16 h 30 es mejor que «a última hora de la tarde». Si el documento usa una hora media local antigua, dilo cuando compares con otro sitio; la conversión IANA asume la zona civil de esa fecha, que es lo que aplica SideraChart.',
         ],
       },
       {
-        heading: 'Qué introducir en Meridian',
+        heading: 'Qué introducir en SideraChart',
         paragraphs: [
           'Fecha, hora, lugar. El lugar se busca hasta coordenadas; la hora se convierte con IANA; los planetas vienen de efemérides de clase VSOP87; las casas van por defecto a Placidus. Si falta la hora, usa la opción de hora desconocida. Aún obtienes una carta planetaria usable. No obtienes un signo ascendente.',
           'Más tarde, el gabinete diario guarda tránsitos al mediodía en la zona horaria natal. Ese mediodía es una instantánea estable para tránsitos, no un sustituto de una hora de nacimiento que falta. Tu Ascendente natal sigue necesitando el minuto real. No mezcles esos dos mediodías.',
@@ -668,7 +668,7 @@ export const esArticles: Record<string, ArticleCopy> = {
       },
       {
         q: '¿Es precisa una carta natal de mediodía?',
-        a: 'Puede estimar signos planetarios en un día tranquilo. No es un Ascendente preciso ni un sistema de casas. Meridian trata la hora desconocida como solo planetas.',
+        a: 'Puede estimar signos planetarios en un día tranquilo. No es un Ascendente preciso ni un sistema de casas. SideraChart trata la hora desconocida como solo planetas.',
       },
       {
         q: '¿El lugar de nacimiento importa tanto como la hora?',
@@ -676,7 +676,7 @@ export const esArticles: Record<string, ArticleCopy> = {
       },
       {
         q: '¿Puedo usar las 12:00 si no sé la hora?',
-        a: 'Puedes como boceto para signos. No leas casas ni Ascendente a partir de eso. Marca la hora desconocida en Meridian en lugar de fingir que el mediodía es un hecho.',
+        a: 'Puedes como boceto para signos. No leas casas ni Ascendente a partir de eso. Marca la hora desconocida en SideraChart en lugar de fingir que el mediodía es un hecho.',
       },
     ],
   },
@@ -689,13 +689,13 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: '¿Puedo hacer una carta natal sin hora de nacimiento?',
         paragraphs: [
           'Sí, con un límite claro. Sin hora de nacimiento aún puedes calcular longitudes planetarias a partir de la fecha (y una zona/lugar para el Tiempo Universal). Eso te da del Sol a Plutón en signos tropicales y los aspectos mayores entre ellos. No puedes calcular un Ascendente, un Medio Cielo o cúspides de casa fiables. La carta natal honesta sin hora es una carta planetaria, no una rueda completa de casas.',
-          'Meridian te deja marcar la hora como desconocida y entonces devuelve planetas y omite el signo ascendente. Ese es el producto correcto. Muchos sitios usan en silencio las 12:00 y dibujan casas igual. Esas casas pertenecen a quien nació al mediodía, que no es un hecho sobre ti.',
+          'SideraChart te deja marcar la hora como desconocida y entonces devuelve planetas y omite el signo ascendente. Ese es el producto correcto. Muchos sitios usan en silencio las 12:00 y dibujan casas igual. Esas casas pertenecen a quien nació al mediodía, que no es un hecho sobre ti.',
         ],
       },
       {
         heading: 'Lo que aún obtienes: signos planetarios',
         paragraphs: [
-          'El Sol, Mercurio, Venus, Marte y los planetas exteriores se mueven lo bastante despacio para que una fecha de calendario suele fijar el signo. Los aspectos entre esos cuerpos también son usables, con los orbes de Meridian de 8° conjunción y oposición, 6° cuadratura y trígono, 4° sextil. Puedes leer mucho de una carta así: equilibrio de elementos, un estelium en un signo, una cuadratura estrecha de Saturno al Sol.',
+          'El Sol, Mercurio, Venus, Marte y los planetas exteriores se mueven lo bastante despacio para que una fecha de calendario suele fijar el signo. Los aspectos entre esos cuerpos también son usables, con los orbes de SideraChart de 8° conjunción y oposición, 6° cuadratura y trígono, 4° sextil. Puedes leer mucho de una carta así: equilibrio de elementos, un estelium en un signo, una cuadratura estrecha de Saturno al Sol.',
           'El lugar sigue ayudando, porque la zona horaria y el horario de verano convierten la fecha en Tiempo Universal. Un nacimiento cerca de medianoche puede caer técnicamente en la fecha vecina en UT. Si conoces la ciudad pero no el minuto, introduce el lugar y hora desconocida en lugar de un reloj falso.',
         ],
       },
@@ -717,11 +717,11 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Por qué el mediodía es una conjetura, no una carta',
         paragraphs: [
           'El mediodía es popular porque es el medio del día civil y porque algunas efemérides históricas listaban posiciones diarias al mediodía. Sigue siendo una hora concreta. Produce un Ascendente concreto para esa latitud. Usarlo como sustituto de «desconocido» esconde la incertidumbre en lugar de etiquetarla.',
-          'Si tienes que bocetar, calcula planetas al mediodía e ignora la rueda de casas. El camino de hora desconocida de Meridian hace esa etiqueta por ti. Los nacimientos polares tienen un segundo problema: las cúspides Placidus se rompen por encima de unos 66° de latitud incluso con una hora perfecta. Eso es un límite del sistema de casas, no una razón para fingir un reloj.',
+          'Si tienes que bocetar, calcula planetas al mediodía e ignora la rueda de casas. El camino de hora desconocida de SideraChart hace esa etiqueta por ti. Los nacimientos polares tienen un segundo problema: las cúspides Placidus se rompen por encima de unos 66° de latitud incluso con una hora perfecta. Eso es un límite del sistema de casas, no una razón para fingir un reloj.',
         ],
       },
       {
-        heading: 'Cómo usar Meridian sin hora',
+        heading: 'Cómo usar SideraChart sin hora',
         paragraphs: [
           'Introduce fecha y lugar, marca la hora desconocida, lee la tabla de planetas. Salta las herramientas de signo ascendente. Salta cualquier frase que necesite una casa. Aún puedes usar las calculadoras de signo planetario para Sol, Luna (por lo general), Mercurio, Venus y Marte. Zodiaco tropical, VSOP87 a través de astronomy-engine, no Swiss Ephemeris, no sideral.',
           'Los aspectos entre los planetas siguen siendo juego limpio. Ordénalos por orbe del mismo modo: 8° conjunción y oposición, 6° cuadratura y trígono, 4° sextil. Una cuadratura estrecha Sol–Saturno sin casas sigue siendo una cuadratura estrecha Sol–Saturno. Lo que no debes hacer es pegarla a «carrera de la casa diez» hasta que exista el Ascendente.',
@@ -733,7 +733,7 @@ export const esArticles: Record<string, ArticleCopy> = {
     faq: [
       {
         q: '¿Puedo levantar una carta natal solo con la fecha de nacimiento?',
-        a: 'Puedes levantar signos planetarios y aspectos. No puedes levantar un Ascendente o casas fiables. Meridian marca ese límite cuando la hora es desconocida.',
+        a: 'Puedes levantar signos planetarios y aspectos. No puedes levantar un Ascendente o casas fiables. SideraChart marca ese límite cuando la hora es desconocida.',
       },
       {
         q: '¿Está bien una hora de nacimiento 12:00 si no sé la hora real?',
@@ -758,27 +758,27 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Cómo leer una carta natal',
         paragraphs: [
           'Una carta natal es más fácil si te niegas a leerlo todo a la vez. Empieza por los Tres Grandes — Sol, Luna, Ascendente — luego las casas que de verdad contienen planetas, luego los aspectos mayores más estrechos. La rueda es un mapa. Las tablas son el instrumento. Primero los números: signo, grado, casa, orbe. El texto después. Ese orden te evita ahogarte en doce ensayos de signo antes de saber qué habitaciones están ocupadas.',
-          'Necesitas fecha, hora y lugar de nacimiento para el método completo. Si la hora es desconocida, deja el Ascendente y las casas y lee planetas en signos más aspectos. Meridian sigue esa división. No rodees un reloj que falta «cómo leer una carta natal» fingiendo que el mediodía es un dato. Escribe el hueco en la página.',
+          'Necesitas fecha, hora y lugar de nacimiento para el método completo. Si la hora es desconocida, deja el Ascendente y las casas y lee planetas en signos más aspectos. SideraChart sigue esa división. No rodees un reloj que falta «cómo leer una carta natal» fingiendo que el mediodía es un dato. Escribe el hueco en la página.',
         ],
       },
       {
         heading: 'Empieza por Sol, Luna y Ascendente',
         paragraphs: [
           'El Sol es el argumento de luz diurna, a partir de la fecha. La Luna es el tiempo interior más rápido; comprueba si cambió de signo ese día. El Ascendente es el horizonte este y solo existe con una hora. Lee si los tres riman o discuten. Luego mira los aspectos entre ellos con orbes de 8° / 6° / 4°.',
-          'Si solo tienes el Sol, aún no sabes leer la carta; conoces una coordenada. La rueda de Meridian pone esos tres glifos donde puedes verlos antes de ir a cazar asteroides o puntos hipotéticos que este sitio no usa.',
+          'Si solo tienes el Sol, aún no sabes leer la carta; conoces una coordenada. La rueda de SideraChart pone esos tres glifos donde puedes verlos antes de ir a cazar asteroides o puntos hipotéticos que este sitio no usa.',
         ],
       },
       {
         heading: 'Luego lee las casas ocupadas',
         paragraphs: [
           'Las casas son ámbitos locales. Un planeta en la diez no es lo mismo que ese planeta en la cuatro, aunque esté en el mismo signo. Lista las casas que contienen cuerpos. Esas son las habitaciones altas. Las casas vacías no son defectos; son habitaciones sin un planeta sentado dentro. Hay un artículo aparte para eso.',
-          'Meridian va por defecto a Placidus porque la mayoría de los textos occidentales lo asumen. Whole Sign es la otra cuadrícula. Las latitudes polares por encima de unos 66° no deberían forzar cúspides Placidus rotas. Si la hora es desconocida, salta este paso entero. El lenguaje de planeta-en-casa sin Ascendente es ficción.',
+          'SideraChart va por defecto a Placidus porque la mayoría de los textos occidentales lo asumen. Whole Sign es la otra cuadrícula. Las latitudes polares por encima de unos 66° no deberían forzar cúspides Placidus rotas. Si la hora es desconocida, salta este paso entero. El lenguaje de planeta-en-casa sin Ascendente es ficción.',
         ],
       },
       {
         heading: 'Luego lee los aspectos más estrechos',
         paragraphs: [
-          'Los aspectos son ángulos con nombre: conjunción, sextil, cuadratura, trígono, oposición. Ordena por orbe, primero lo más estrecho. Una conjunción Sol–Saturno de 0,4° desbanca un trígono de Marte de 7,8°. Meridian dibuja los cinco mayores y lista aplicativo o separativo en la tabla. Oculta las líneas de la rueda si el dibujo hace ruido; la tabla se queda.',
+          'Los aspectos son ángulos con nombre: conjunción, sextil, cuadratura, trígono, oposición. Ordena por orbe, primero lo más estrecho. Una conjunción Sol–Saturno de 0,4° desbanca un trígono de Marte de 7,8°. SideraChart dibuja los cinco mayores y lista aplicativo o separativo en la tabla. Oculta las líneas de la rueda si el dibujo hace ruido; la tabla se queda.',
           'No moralices los aspectos. Las cuadraturas son fricción que construye un oficio si las trabajas; no son maldiciones. Los trígonos son facilidad que puede volverse perezosa. Las conjunciones fusionan funciones. Las oposiciones polarizan. Quédate con la geometría. Suelta «el universo quiere».',
         ],
       },
@@ -786,11 +786,11 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Rueda, tablas y capa escrita',
         paragraphs: [
           'El anillo exterior son signos. Las divisiones interiores son casas. Los glifos se sientan en longitudes. Las líneas de color son aspectos. Abre una fila de tabla para el signo, la casa y el grado exactos. Las tarjetas escritas bajo una carta guardada son una capa de interpretación en caché, no un modelo de lenguaje en vivo que inventa física nueva.',
-          'Una exportación PNG es una instantánea para compartir. Las tablas en vivo son lo que relees. Si otro sitio discrepa, haz coincidir zodiaco tropical, Placidus y la misma zona horaria de nacimiento antes de culpar a las efemérides. Meridian usa astronomy-engine (VSOP87), no Swiss Ephemeris. Diferencias de unos minutos de arco son esperables; un signo entero suele significar un ajuste sideral o un reloj equivocado.',
+          'Una exportación PNG es una instantánea para compartir. Las tablas en vivo son lo que relees. Si otro sitio discrepa, haz coincidir zodiaco tropical, Placidus y la misma zona horaria de nacimiento antes de culpar a las efemérides. SideraChart usa astronomy-engine (VSOP87), no Swiss Ephemeris. Diferencias de unos minutos de arco son esperables; un signo entero suele significar un ajuste sideral o un reloj equivocado.',
         ],
       },
       {
-        heading: 'Un orden de trabajo en Meridian',
+        heading: 'Un orden de trabajo en SideraChart',
         paragraphs: [
           'Calcula la carta. Confirma fecha, hora, lugar, tropical, Placidus. Lee Sol, Luna, Ascendente. Recorre las casas ocupadas. Ordena aspectos por orbe. Solo entonces abre el texto signo a signo. Guarda la carta si quieres el informe y el gabinete diario. Los tránsitos del gabinete se guardan al mediodía natal; son un paso posterior, no el paso uno de leer la natal.',
           'Quédate al principio con una nota de trabajo de solo tres hechos: los Tres Grandes, la casa más ocupada, el aspecto más estrecho. Eso es una lectura de carta natal que de verdad puedes terminar. Amplía a regentes de casas vacías y tránsitos lentos después de que esos tres hechos estén estables.',
@@ -806,7 +806,7 @@ export const esArticles: Record<string, ArticleCopy> = {
       },
       {
         q: '¿Cómo leo una carta natal sin hora de nacimiento?',
-        a: 'Lee solo signos planetarios y aspectos. Salta el Ascendente y todas las afirmaciones de casa. Meridian omite el Ascendente cuando la hora es desconocida.',
+        a: 'Lee solo signos planetarios y aspectos. Salta el Ascendente y todas las afirmaciones de casa. SideraChart omite el Ascendente cuando la hora es desconocida.',
       },
       {
         q: '¿Leo primero signos o casas?',
@@ -814,20 +814,20 @@ export const esArticles: Record<string, ArticleCopy> = {
       },
       {
         q: '¿Qué orbes debo usar al leer aspectos?',
-        a: 'Meridian usa 8° para conjunción y oposición, 6° para cuadratura y trígono, 4° para sextil. Primero los orbes más estrechos.',
+        a: 'SideraChart usa 8° para conjunción y oposición, 6° para cuadratura y trígono, 4° para sextil. Primero los orbes más estrechos.',
       },
     ],
   },
   'houses-in-a-birth-chart': {
     title: '¿Qué son las casas en una carta natal?',
     excerpt:
-      'Las casas son doce sectores locales del cielo de nacimiento, no signos del zodiaco. Necesitan hora de nacimiento. Meridian va por defecto a Placidus; hora desconocida significa que no hay casas honestas.',
+      'Las casas son doce sectores locales del cielo de nacimiento, no signos del zodiaco. Necesitan hora de nacimiento. SideraChart va por defecto a Placidus; hora desconocida significa que no hay casas honestas.',
     sections: [
       {
         heading: '¿Qué son las casas en una carta natal?',
         paragraphs: [
           'Las casas son doce sectores del cielo vistos desde el lugar de nacimiento en el instante de nacimiento. No son signos. Los signos son rebanadas de 30° del zodiaco tropical a lo largo de la eclíptica. Las casas son un marco local: qué parte de ese cielo estaba saliendo, culminando, poniéndose. El signo de un planeta es su estilo. La casa de un planeta es el ámbito de la vida donde ese estilo es fácil de ver.',
-          'No puedes tener casas sin hora de nacimiento, porque el marco está atado al horizonte. Hora desconocida = planetas sí, casas no. Quienes publican lecturas de casas a partir de un relleno de mediodía están describiendo el mediodía, no un minuto desconocido. Meridian no hace eso por defecto.',
+          'No puedes tener casas sin hora de nacimiento, porque el marco está atado al horizonte. Hora desconocida = planetas sí, casas no. Quienes publican lecturas de casas a partir de un relleno de mediodía están describiendo el mediodía, no un minuto desconocido. SideraChart no hace eso por defecto.',
         ],
       },
       {
@@ -838,9 +838,9 @@ export const esArticles: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: 'Placidus es el valor por defecto en Meridian',
+        heading: 'Placidus es el valor por defecto en SideraChart',
         paragraphs: [
-          'Placidus divide el tiempo de ascensión en lugar de rebanadas iguales de espacio, así que las casas son desiguales. Meridian lo pone por defecto porque la mayoría de las interpretaciones occidentales publicadas asumen Placidus. Whole Sign está disponible: la casa I es todo el signo que contiene el Ascendente, luego los signos siguientes en orden. Ninguno de los dos sistemas es práctica sideral védica; ambos aquí se sientan sobre longitudes tropicales de astronomy-engine (VSOP87).',
+          'Placidus divide el tiempo de ascensión en lugar de rebanadas iguales de espacio, así que las casas son desiguales. SideraChart lo pone por defecto porque la mayoría de las interpretaciones occidentales publicadas asumen Placidus. Whole Sign está disponible: la casa I es todo el signo que contiene el Ascendente, luego los signos siguientes en orden. Ninguno de los dos sistemas es práctica sideral védica; ambos aquí se sientan sobre longitudes tropicales de astronomy-engine (VSOP87).',
           'Por encima de unos 66° de latitud las cúspides Placidus pueden fallar. Para esos nacimientos, Whole Sign es la cuadrícula más honesta. Las posiciones planetarias se calculan de un modo u otro. Si un sitio discrepa de tus casas, revisa el sistema de casas antes que la efeméride. Swiss Ephemeris no está en esta pila; un desajuste de sistema es el culpable habitual.',
         ],
       },
@@ -856,13 +856,13 @@ export const esArticles: Record<string, ArticleCopy> = {
         paragraphs: [
           'En Placidus, una cúspide de casa es el grado de frontera. Un planeta cerca de una cúspide es un juicio; este sitio no lo mueve en secreto a la casa siguiente por ti. Los signos interceptados — un signo tragado dentro de una casa sin cúspide — ocurren en latitudes más altas cuando las casas se estiran. Whole Sign evita esa geometría atando casas a signos.',
           'Si tu nacimiento es polar, no tortures Placidus. Cambia de sistema. Si tu hora de nacimiento está redondeada, recalcula un rango y mira si los planetas cambian de casa. Si lo hacen, esas afirmaciones de casa son provisionales.',
-          'Nominatim de OpenStreetMap suministra las coordenadas que Meridian usa para el lugar. Un pin de centro de ciudad no es un pin de hospital; para las casas la diferencia suele ser pequeña, pero en alta latitud o cerca de una cúspide puede importar. Prefiere el pueblo de nacimiento real a un hogar posterior.',
+          'Nominatim de OpenStreetMap suministra las coordenadas que SideraChart usa para el lugar. Un pin de centro de ciudad no es un pin de hospital; para las casas la diferencia suele ser pequeña, pero en alta latitud o cerca de una cúspide puede importar. Prefiere el pueblo de nacimiento real a un hogar posterior.',
         ],
       },
       {
         heading: 'Cómo leer las casas en la rueda',
         paragraphs: [
-          'En Meridian las divisiones interiores son casas, contadas desde el Ascendente a la izquierda. Los glifos se sientan en longitud eclíptica; la tabla te dice en qué número de casa cayó esa longitud. Los aspectos se quedan en la eclíptica (orbes 8° / 6° / 4°) y no les importan las paredes de casa. A las paredes de casa les importa el reloj.',
+          'En SideraChart las divisiones interiores son casas, contadas desde el Ascendente a la izquierda. Los glifos se sientan en longitud eclíptica; la tabla te dice en qué número de casa cayó esa longitud. Los aspectos se quedan en la eclíptica (orbes 8° / 6° / 4°) y no les importan las paredes de casa. A las paredes de casa les importa el reloj.',
           'Guarda la carta para conservar el sistema de casas con el informe. Los tránsitos diarios del gabinete se calculan al mediodía natal contra ese marco natal. Los planetas en tránsito a través de las casas solo tienen sentido si las casas natales eran reales de entrada — lo que, otra vez, significa que tenías hora de nacimiento.',
           'Si pasas de Placidus a Whole Sign después de guardar, recalcula en lugar de arrastrar glifos de cabeza. El planeta no se movió; las paredes sí. Anota el sistema en cualquier captura que compartas para que una comparación posterior no sea un desacuerdo falso.',
         ],
@@ -875,7 +875,7 @@ export const esArticles: Record<string, ArticleCopy> = {
       },
       {
         q: '¿Qué sistema de casas debo usar?',
-        a: 'Placidus es el valor por defecto de Meridian y coincide con la mayoría de los textos occidentales. Usa Whole Sign en altas latitudes o si quieres un signo por casa.',
+        a: 'Placidus es el valor por defecto de SideraChart y coincide con la mayoría de los textos occidentales. Usa Whole Sign en altas latitudes o si quieres un signo por casa.',
       },
       {
         q: '¿Puedo leer casas sin hora de nacimiento?',
@@ -910,7 +910,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'La regencia sigue contando',
         paragraphs: [
           'Si la casa siete está vacía pero su cúspide está en Libra, Venus sigue teniendo voz como regente tradicional. Encontrarás a Venus en otro sitio de la carta — quizá en la dos, quizá en conjunción con Saturno. Esa posición es cómo «habla» la casa vacía sin un residente. Esto es estructura, no misticismo.',
-          'Las tablas de Meridian listan planetas en casas. No esconden las casas vacías; simplemente no hay glifo ahí. Mira el signo de la cúspide en la rueda si quieres el regente. Los aspectos (orbes 8° / 6° / 4°) también pueden atar un planeta a temas asociados con una casa que no ocupa, porque los aspectos son ángulos eclípticos, no asignaciones de habitación.',
+          'Las tablas de SideraChart listan planetas en casas. No esconden las casas vacías; simplemente no hay glifo ahí. Mira el signo de la cúspide en la rueda si quieres el regente. Los aspectos (orbes 8° / 6° / 4°) también pueden atar un planeta a temas asociados con una casa que no ocupa, porque los aspectos son ángulos eclípticos, no asignaciones de habitación.',
         ],
       },
       {
@@ -923,13 +923,13 @@ export const esArticles: Record<string, ArticleCopy> = {
       {
         heading: 'Hora desconocida y casas vacías falsas',
         paragraphs: [
-          'Sin hora de nacimiento, toda afirmación de casa vacía es inválida, porque las paredes son inválidas. No uses una carta de 12:00 para anunciar que tu casa cuatro está vacía. Marca la hora desconocida en Meridian y salta las casas. Aún puedes hablar de signos vacíos — ningún planeta en Escorpio, por ejemplo — porque los signos no necesitan el horizonte.',
+          'Sin hora de nacimiento, toda afirmación de casa vacía es inválida, porque las paredes son inválidas. No uses una carta de 12:00 para anunciar que tu casa cuatro está vacía. Marca la hora desconocida en SideraChart y salta las casas. Aún puedes hablar de signos vacíos — ningún planeta en Escorpio, por ejemplo — porque los signos no necesitan el horizonte.',
           'Si la hora es aproximada, recalcula un rango. Los planetas que saltan de casa crearán y destruirán «vacío» en veinte minutos. Trata esas casas como no resueltas. El movimiento de cuatro minutos por grado del Ascendente es el mismo reloj que hace frágiles las listas de casas vacías.',
           'Whole Sign puede vaciar y llenar habitaciones distintas que Placidus con los mismos planetas. Si cambias de sistema para «arreglar» una casa vacía que no te gusta, estás editando la cuadrícula, no el cielo. Elige un sistema y lee el abarrotamiento que de verdad tienes.',
         ],
       },
       {
-        heading: 'Cómo leerlas en Meridian',
+        heading: 'Cómo leerlas en SideraChart',
         paragraphs: [
           'Calcula con fecha, hora y lugar, tropical, Placidus salvo que tengas una razón para cambiar. Lista las casas ocupadas. El resto están vacías. Lee primero las ocupadas. Usa los regentes de cúspide si necesitas un segundo pase. No ordenes ámbitos de la vida por vacío.',
           'Los tránsitos a través de una casa natal vacía siguen siendo tránsitos a través de ese sector del marco natal. El gabinete diario los guarda al mediodía en la zona horaria natal. Un tránsito no «llena» de forma permanente una casa natal vacía. Es tiempo en esa habitación durante un rato. La casa natal sigue vacía de planetas natales.',
@@ -959,13 +959,13 @@ export const esArticles: Record<string, ArticleCopy> = {
   'aspects-in-astrology': {
     title: '¿Qué son los aspectos en astrología?',
     excerpt:
-      'Los aspectos son ángulos con nombre entre planetas a lo largo de la eclíptica: conjunción, sextil, cuadratura, trígono, oposición. Meridian usa orbes de 8°, 6° y 4° para esos cinco.',
+      'Los aspectos son ángulos con nombre entre planetas a lo largo de la eclíptica: conjunción, sextil, cuadratura, trígono, oposición. SideraChart usa orbes de 8°, 6° y 4° para esos cinco.',
     sections: [
       {
         heading: '¿Qué son los aspectos en astrología?',
         paragraphs: [
           'Los aspectos son distancias angulares a lo largo de la eclíptica entre dos longitudes natales. Son geometría, no líneas de destino. Si dos planetas están a 90°, eso es una cuadratura. Si están a 120°, eso es un trígono. La carta natal lista los que caen dentro de un orbe permitido. La gente busca «qué son los aspectos en astrología» porque las líneas de color de la rueda parecen un lenguaje secreto. Son un transportador.',
-          'Meridian dibuja cinco aspectos mayores: conjunción (0°), sextil (60°), cuadratura (90°), trígono (120°), oposición (180°). Los orbes son 8° para conjunción y oposición, 6° para cuadratura y trígono, 4° para sextil. Los orbes más estrechos suenan más alto. La tabla bajo la rueda es la misma lista que las líneas, con movimiento aplicativo o separativo.',
+          'SideraChart dibuja cinco aspectos mayores: conjunción (0°), sextil (60°), cuadratura (90°), trígono (120°), oposición (180°). Los orbes son 8° para conjunción y oposición, 6° para cuadratura y trígono, 4° para sextil. Los orbes más estrechos suenan más alto. La tabla bajo la rueda es la misma lista que las líneas, con movimiento aplicativo o separativo.',
         ],
       },
       {
@@ -978,14 +978,14 @@ export const esArticles: Record<string, ArticleCopy> = {
       {
         heading: 'Orbes: 8°, 6° y 4°',
         paragraphs: [
-          'Un orbe es cuánto puede alejarse el contacto de lo exacto y seguir contando. La pila de Meridian es 8° / 6° / 4° como arriba. Una conjunción Sol–Luna a 7,2° cuenta; un sextil de Mercurio a 4,5° no. Otro software usa orbes distintos, y por eso las listas de aspectos discrepan aunque las longitudes coincidan.',
+          'Un orbe es cuánto puede alejarse el contacto de lo exacto y seguir contando. La pila de SideraChart es 8° / 6° / 4° como arriba. Una conjunción Sol–Luna a 7,2° cuenta; un sextil de Mercurio a 4,5° no. Otro software usa orbes distintos, y por eso las listas de aspectos discrepan aunque las longitudes coincidan.',
           'Ordena por estrechez. Un aspecto de 0,3° desbanca uno de 7,9° del mismo tipo. Si estás aprendiendo, ignora lo que está cerca del borde hasta que los estrechos estén claros. La exactitud no es pureza moral; es volumen en el instrumento.',
         ],
       },
       {
         heading: 'Aplicativo, separativo y hora de nacimiento',
         paragraphs: [
-          'Aplicativo significa que el aspecto se estaba estrechando al nacer; separativo significa que ya había alcanzado el pico y se estaba abriendo. Meridian lo marca en la tabla natal. Es un matiz de timing dentro del instante de nacimiento, no un pronóstico. Aún necesitas longitudes decentes, lo que significa un Tiempo Universal decente.',
+          'Aplicativo significa que el aspecto se estaba estrechando al nacer; separativo significa que ya había alcanzado el pico y se estaba abriendo. SideraChart lo marca en la tabla natal. Es un matiz de timing dentro del instante de nacimiento, no un pronóstico. Aún necesitas longitudes decentes, lo que significa un Tiempo Universal decente.',
           'Sin hora de nacimiento, los aspectos planeta a planeta existen igual. Los aspectos al Ascendente no, porque no hay Ascendente. Los aspectos de la Luna cerca de un borde de orbe pueden saltar a lo largo de un día. Hora desconocida: planetas sí, casas no; aspectos lunares cerca de 8°/6°/4° quizás. No pelees con una carta de mediodía por una cuadratura lunar de 5,9°.',
         ],
       },
@@ -993,12 +993,12 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Qué no son los aspectos',
         paragraphs: [
           'No son sinastría por sí mismos: la sinastría son aspectos entre dos cartas. No son tránsitos: los tránsitos son los planetas de hoy a los planetas natales. No son consejo médico, legal ni financiero. Una cuadratura Marte–Saturno no prescribe un entrenamiento ni un juicio. Describe fricción entre el calor de iniciar y la estructura.',
-          'Los aspectos menores (quincuncio, semicuadratura y el resto) no se dibujan aquí. Si otro sitio muestra más líneas, está usando un catálogo más amplio, no un cielo más preciso. Meridian se queda con los cinco mayores en longitudes tropicales de astronomy-engine (VSOP87), no Swiss Ephemeris.',
+          'Los aspectos menores (quincuncio, semicuadratura y el resto) no se dibujan aquí. Si otro sitio muestra más líneas, está usando un catálogo más amplio, no un cielo más preciso. SideraChart se queda con los cinco mayores en longitudes tropicales de astronomy-engine (VSOP87), no Swiss Ephemeris.',
           'Los esteliums producen pilas de conjunciones. Lee primero el par más estrecho en lugar de declarar que todo el montón es un solo ánimo. Una casa vacía no cancela un aspecto que casualmente involucra a un planeta en otra casa; los aspectos ignoran las paredes. Las casas necesitan la hora de nacimiento; los aspectos entre planetas no.',
         ],
       },
       {
-        heading: 'Cómo muestra Meridian los aspectos',
+        heading: 'Cómo muestra SideraChart los aspectos',
         paragraphs: [
           'Líneas de color dentro de la rueda; una tabla ordenable debajo. Oculta las líneas si el dibujo está abarrotado. La sinastría usa los mismos orbes entre los planetas de dos personas. Las cartas compuestas tienen sus propios puntos medios y luego sus propios aspectos internos. Los tránsitos diarios del gabinete se guardan al mediodía natal y usan los mismos nombres de aspecto contra la línea de base natal.',
           'Cuando compares con astro-seek o similar, pon tropical, la misma zona horaria y orbes comparables. Un aspecto que falta suele ser un orbe o un ajuste sideral. Placidus frente a Whole Sign no cambiará los aspectos eclípticos entre planetas; sí cambiará las frases basadas en casas que podrías mezclar por error.',
@@ -1009,11 +1009,11 @@ export const esArticles: Record<string, ArticleCopy> = {
     faq: [
       {
         q: '¿Cuáles son los aspectos mayores en astrología?',
-        a: 'Conjunción, sextil, cuadratura, trígono y oposición. Esos son los cinco que dibuja Meridian. Los orbes son 8°, 6° y 4° según el aspecto.',
+        a: 'Conjunción, sextil, cuadratura, trígono y oposición. Esos son los cinco que dibuja SideraChart. Los orbes son 8°, 6° y 4° según el aspecto.',
       },
       {
         q: '¿Qué significa orbe en astrología?',
-        a: 'Cuántos grados puede alejarse un aspecto de lo exacto y seguir contando. Los orbes más estrechos son más fuertes en el instrumento. El conjunto de Meridian es 8° / 6° / 4°.',
+        a: 'Cuántos grados puede alejarse un aspecto de lo exacto y seguir contando. Los orbes más estrechos son más fuertes en el instrumento. El conjunto de SideraChart es 8° / 6° / 4°.',
       },
       {
         q: '¿Los aspectos de cuadratura son malos?',
@@ -1028,26 +1028,26 @@ export const esArticles: Record<string, ArticleCopy> = {
   'tropical-vs-sidereal': {
     title: 'Zodiaco tropical y sideral',
     excerpt:
-      'El zodiaco tropical empieza en el equinoccio de marzo. El sideral usa un punto cero estelar, a unos 24° de distancia hoy. Meridian es solo tropical — no védico, no Swiss Ephemeris.',
+      'El zodiaco tropical empieza en el equinoccio de marzo. El sideral usa un punto cero estelar, a unos 24° de distancia hoy. SideraChart es solo tropical — no védico, no Swiss Ephemeris.',
     sections: [
       {
         heading: 'Zodiaco tropical y sideral',
         paragraphs: [
           'Tropical frente a sideral es una discusión de punto cero. Ambos zodiacos dividen la eclíptica en doce signos de 30° con los mismos nombres. No empiezan en el mismo sitio. El 0° de Aries tropical es el equinoccio de marzo: el cruce del Sol por el ecuador celeste. El 0° de Aries sideral está atado a una referencia estelar (un ayanamsha). Como el eje de la Tierra tiene precesión, esos dos ceros se han alejado unos 24° hoy.',
-          'Esa brecha es por qué tu signo solar en una app védica suele ser el signo anterior comparado con Meridian. Ninguna calculadora está «equivocada sobre el cielo». Están usando orígenes distintos para el mismo cinturón con nombre. Meridian es tropical: convención occidental, basada en el equinoccio, astronomy-engine (VSOP87). No calcula sistemas siderales, védicos ni chinos.',
+          'Esa brecha es por qué tu signo solar en una app védica suele ser el signo anterior comparado con SideraChart. Ninguna calculadora está «equivocada sobre el cielo». Están usando orígenes distintos para el mismo cinturón con nombre. SideraChart es tropical: convención occidental, basada en el equinoccio, astronomy-engine (VSOP87). No calcula sistemas siderales, védicos ni chinos.',
         ],
       },
       {
         heading: 'Qué mide el zodiaco tropical',
         paragraphs: [
           'Los signos tropicales son estaciones de la órbita de la Tierra, no fotografías de constelaciones. Las constelaciones son desiguales y se desplazan por precesión. Aries tropical empieza cuando el día y la noche coinciden en marzo (en el sentido calendárico boreal del equinoccio), da igual qué campo de estrellas quede ahora detrás de ese punto. La astrología natal occidental — incluido este sitio — lee esos signos de estación.',
-          'Tus planetas natales en Meridian son longitudes tropicales aparentes de la fecha. Las casas (Placidus por defecto) se sientan encima de esa eclíptica tropical. Fecha, hora y lugar de nacimiento siguen importando del modo habitual: hora para el Ascendente, hora desconocida = planetas sí, casas no. Cambiar de zodiaco es un ajuste distinto de cambiar de sistema de casas.',
+          'Tus planetas natales en SideraChart son longitudes tropicales aparentes de la fecha. Las casas (Placidus por defecto) se sientan encima de esa eclíptica tropical. Fecha, hora y lugar de nacimiento siguen importando del modo habitual: hora para el Ascendente, hora desconocida = planetas sí, casas no. Cambiar de zodiaco es un ajuste distinto de cambiar de sistema de casas.',
         ],
       },
       {
         heading: 'Qué mide el zodiaco sideral',
         paragraphs: [
-          'La práctica sideral busca mantener los signos alineados con un marco estelar. Distintos ayanamshas (Lahiri y otros) eligen desfases ligeramente distintos. La astrología natal india es por lo general sideral y a menudo usa signo entero u otros métodos de casas que no son los valores por defecto de este sitio. Si quieres esa carta, necesitas ese motor. Meridian no fingirá serlo.',
+          'La práctica sideral busca mantener los signos alineados con un marco estelar. Distintos ayanamshas (Lahiri y otros) eligen desfases ligeramente distintos. La astrología natal india es por lo general sideral y a menudo usa signo entero u otros métodos de casas que no son los valores por defecto de este sitio. Si quieres esa carta, necesitas ese motor. SideraChart no fingirá serlo.',
           'Los sistemas natales chinos son otra pila otra vez: ni tropicales ni la misma rueda de doce signos. No pegues un animal de año chino a un Sol tropical y lo llames la misma coordenada. Si llegaste aquí desde una búsqueda mezclada, elige un sistema y quédate ahí mientras aprendes.',
         ],
       },
@@ -1055,11 +1055,11 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'La brecha de unos 24° y el ayanamsha',
         paragraphs: [
           'Veinticuatro grados son unos cuatro quintos de un signo. Por eso muchas posiciones caen en el signo de nombre tropical precedente cuando pasas a sideral. Un Sol tropical de Géminis a menudo se vuelve un Sol sideral de Tauro. Las Lunas cerca de un límite saltan más a menudo porque la Luna es rápida. Los signos ascendentes también saltan, porque el Ascendente es un grado.',
-          'Si comparas dos sitios tropicales y ya discrepan en un signo, mira primero la hora de nacimiento y la zona horaria, no el ayanamsha. Sideral es la explicación cuando un sitio es explícitamente védico o «sideral» y el otro es tropical occidental. Meridian no coincidirá con una impresión Lahiri. Eso es esperable.',
+          'Si comparas dos sitios tropicales y ya discrepan en un signo, mira primero la hora de nacimiento y la zona horaria, no el ayanamsha. Sideral es la explicación cuando un sitio es explícitamente védico o «sideral» y el otro es tropical occidental. SideraChart no coincidirá con una impresión Lahiri. Eso es esperable.',
         ],
       },
       {
-        heading: 'Por qué Meridian es solo tropical',
+        heading: 'Por qué SideraChart es solo tropical',
         paragraphs: [
           'El producto es una calculadora de carta natal occidental: zodiaco tropical, Placidus por defecto, Whole Sign opcional, aspectos mayores a 8° / 6° / 4°, posiciones de clase VSOP87 a través de astronomy-engine, zonas IANA. No es Swiss Ephemeris. No ofrece un modo sideral. Quedarse con un punto cero evita un error silencioso de 24° cuando crees que estás mirando «la misma carta».',
           'Usa tropical si quieres leer textos occidentales, la mayoría de los recetarios natales en español o inglés, y la capa escrita de este sitio. Usa un especialista sideral si esa es tu tradición. No promedies los dos Soles. No trates el desacuerdo como una crisis de personalidad. Es un choque de sistemas de coordenadas.',
@@ -1069,8 +1069,8 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Cómo coincidir con otros sitios',
         paragraphs: [
           'En astro-seek, astro.com y similares, pon tropical + Placidus (o Whole Sign si eso es lo que usaste) y la misma hora de nacimiento. Deberías caer a una fracción de grado en los planetas. Si te desvías un signo, estás en sideral o tienes el reloj equivocado. Si las casas difieren pero los planetas coinciden, tienes un desajuste de sistema de casas.',
-          'Los tránsitos del gabinete de Meridian son tránsitos tropicales guardados al mediodía en la zona horaria natal. Mezclar natal tropical con tránsitos siderales es el mismo error de 24° en movimiento. Mantén el zodiaco coherente. La carta natal es la línea de base; los tránsitos son el tiempo contra esa línea, en el mismo sistema de coordenadas.',
-          'Si publicas una carta, nombra el zodiaco en el pie: tropical, Placidus, hora de nacimiento conocida o desconocida. Esa sola línea evita la mayoría de los hilos de «tu calculadora está mal». El pie de Meridian ya muestra tropical y Placidus cuando la rueda está completa.',
+          'Los tránsitos del gabinete de SideraChart son tránsitos tropicales guardados al mediodía en la zona horaria natal. Mezclar natal tropical con tránsitos siderales es el mismo error de 24° en movimiento. Mantén el zodiaco coherente. La carta natal es la línea de base; los tránsitos son el tiempo contra esa línea, en el mismo sistema de coordenadas.',
+          'Si publicas una carta, nombra el zodiaco en el pie: tropical, Placidus, hora de nacimiento conocida o desconocida. Esa sola línea evita la mayoría de los hilos de «tu calculadora está mal». El pie de SideraChart ya muestra tropical y Placidus cuando la rueda está completa.',
         ],
       },
     ],
@@ -1080,7 +1080,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         a: 'El tropical mide desde el equinoccio de primavera. El sideral mide desde un punto cero estelar. Hoy difieren unos 24°, a menudo un signo entero.',
       },
       {
-        q: '¿Qué zodiaco usa Meridian?',
+        q: '¿Qué zodiaco usa SideraChart?',
         a: 'Solo tropical, con posiciones de astronomy-engine (VSOP87). No calcula cartas siderales, védicas ni chinas y no usa Swiss Ephemeris.',
       },
       {
@@ -1102,13 +1102,13 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Sinastría y carta compuesta',
         paragraphs: [
           'Sinastría frente a carta compuesta son dos mapas relacionales distintos, no dos nombres para un mapa. La sinastría conserva a las dos personas. Calculas dos cartas natales, superpones los planetas y listas aspectos de la persona A a la persona B. Una carta compuesta descarta las dos ruedas como personas separadas y construye una tercera carta a partir de puntos medios. La gente busca la comparación porque las apps usan las palabras como si fueran intercambiables. No lo son.',
-          'Meridian ofrece ambas como calculadoras separadas. Cada natal es tropical, Placidus por defecto, VSOP87 a través de astronomy-engine. Los aspectos de sinastría usan los mismos orbes que un aspectario natal: 8° conjunción y oposición, 6° cuadratura y trígono, 4° sextil. Ninguna rueda es un veredicto sobre si quedarse juntos, casarse o repartir bienes. Son diagramas.',
+          'SideraChart ofrece ambas como calculadoras separadas. Cada natal es tropical, Placidus por defecto, VSOP87 a través de astronomy-engine. Los aspectos de sinastría usan los mismos orbes que un aspectario natal: 8° conjunción y oposición, 6° cuadratura y trígono, 4° sextil. Ninguna rueda es un veredicto sobre si quedarse juntos, casarse o repartir bienes. Son diagramas.',
         ],
       },
       {
         heading: 'Qué hace la sinastría',
         paragraphs: [
-          'La sinastría deja intactas ambas cartas. En Meridian, un conjunto de glifos es la persona A y el otro la persona B. La tabla lista aspectos entre cartas, no los aspectos internos de una natal. Estás preguntando qué pasa cuando dos cielos comparten cocina: su Saturno sobre tu Luna, su Marte sobre tu Ascendente, un trígono Sol–Sol.',
+          'La sinastría deja intactas ambas cartas. En SideraChart, un conjunto de glifos es la persona A y el otro la persona B. La tabla lista aspectos entre cartas, no los aspectos internos de una natal. Estás preguntando qué pasa cuando dos cielos comparten cocina: su Saturno sobre tu Luna, su Marte sobre tu Ascendente, un trígono Sol–Sol.',
           'Cada persona sigue necesitando su propia fecha, hora y lugar de nacimiento. Si una hora es desconocida, el Ascendente y las casas de esa persona se caen. Aún puedes hacer sinastría planeta a planeta. No puedes hablar con honestidad de «sus planetas en tu casa siete» sin el signo ascendente de esa persona. Hora desconocida = planetas sí, casas no — por carta.',
         ],
       },
@@ -1116,7 +1116,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Qué hace una carta compuesta',
         paragraphs: [
           'Una carta compuesta toma cada par de planetas natales (el Sol de A y el Sol de B, la Luna de A y la Luna de B, y así) y encuentra el punto medio del arco corto, luego dibuja una rueda nueva. El resultado es la relación como una tercera entidad, no ninguna de las dos personas. No es una carta Davison, que toma puntos medios en tiempo y espacio hacia un nacimiento hipotético de la relación.',
-          'Las casas de la carta compuesta siguen necesitando una convención de lugar y, en la práctica, un modo de fijar ángulos. Lee la compuesta como un instrumento aparte. No mezcles los significados de casa natal de una persona en los puntos medios compuestos sin notar que cambiaste de mapa. La calculadora de carta compuesta de Meridian es esa tercera rueda, no una superposición de sinastría.',
+          'Las casas de la carta compuesta siguen necesitando una convención de lugar y, en la práctica, un modo de fijar ángulos. Lee la compuesta como un instrumento aparte. No mezcles los significados de casa natal de una persona en los puntos medios compuestos sin notar que cambiaste de mapa. La calculadora de carta compuesta de SideraChart es esa tercera rueda, no una superposición de sinastría.',
         ],
       },
       {
@@ -1134,7 +1134,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: 'Cómo correrlas en Meridian',
+        heading: 'Cómo correrlas en SideraChart',
         paragraphs: [
           'Usa la calculadora de sinastría para superposiciones y aspectos cruzados. Usa la calculadora de carta compuesta para puntos medios. El mismo motor tropical, no sideral, no Swiss Ephemeris. Una corrida relacional gratis sin cuenta; luego inicia sesión. Guarda las natales individuales si también quieres tránsitos diarios en cada gabinete al mediodía natal: esos tránsitos son tiempo personal, no un pronóstico de pareja salvo que lo construyas aparte.',
           'Cuando compares con otros sitios, haz coincidir tropical, Placidus, orbes y si quieren decir sinastría o carta compuesta. Un sitio que «combina cartas» sin decir punto medio frente a superposición es la razón de que exista este artículo. Mira la rueda: dos conjuntos de planetas significa sinastría; un conjunto de puntos medios mezclados significa carta compuesta.',
@@ -1157,20 +1157,20 @@ export const esArticles: Record<string, ArticleCopy> = {
       },
       {
         q: '¿Una carta compuesta es lo mismo que una carta Davison?',
-        a: 'No. La carta compuesta usa puntos medios planetarios. Davison toma el punto medio de las dos horas y lugares de nacimiento hacia un suceso hipotético. La compuesta de Meridian es la rueda de puntos medios.',
+        a: 'No. La carta compuesta usa puntos medios planetarios. Davison toma el punto medio de las dos horas y lugares de nacimiento hacia un suceso hipotético. La compuesta de SideraChart es la rueda de puntos medios.',
       },
     ],
   },
   'what-are-transits': {
     title: '¿Qué son los tránsitos en astrología?',
     excerpt:
-      'Los tránsitos son las posiciones de hoy comparadas con tu carta natal. Son el tiempo contra una línea de base fija, no una carta de nacimiento nueva. Meridian los guarda al mediodía.',
+      'Los tránsitos son las posiciones de hoy comparadas con tu carta natal. Son el tiempo contra una línea de base fija, no una carta de nacimiento nueva. SideraChart los guarda al mediodía.',
     sections: [
       {
         heading: '¿Qué son los tránsitos en astrología?',
         paragraphs: [
           'Los tránsitos son los planetas en el cielo ahora (o en una fecha elegida) medidos contra los planetas de tu carta natal. La carta natal se queda quieta: es la línea de base de tu fecha, hora y lugar de nacimiento. Los tránsitos se mueven. Una cuadratura de Saturno en tránsito a tu Sol natal es un contacto temporal entre el Saturno de hoy y el Sol con el que naciste. La gente busca «qué son los tránsitos en astrología» cuando quiere saber si la carta natal cambia. No. El tiempo encima sí.',
-          'Meridian calcula tránsitos con el mismo motor tropical que la natal: astronomy-engine (VSOP87), aspectos mayores a 8° / 6° / 4°. El gabinete diario guarda una superposición por fecha de calendario al mediodía en la zona horaria natal, para que la nota del día se quede estable si refrescas a las 23:00. Las fechas perdidas no se rellenan hacia atrás.',
+          'SideraChart calcula tránsitos con el mismo motor tropical que la natal: astronomy-engine (VSOP87), aspectos mayores a 8° / 6° / 4°. El gabinete diario guarda una superposición por fecha de calendario al mediodía en la zona horaria natal, para que la nota del día se quede estable si refrescas a las 23:00. Las fechas perdidas no se rellenan hacia atrás.',
         ],
       },
       {
@@ -1188,7 +1188,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: 'Por qué Meridian usa el mediodía en la zona horaria natal',
+        heading: 'Por qué SideraChart usa el mediodía en la zona horaria natal',
         paragraphs: [
           'Un «día» de tránsitos tiene que elegir un instante. Si el gabinete recalculara en cada carga de página, la Luna vagaría y la nota no coincidiría con la captura de ayer. El mediodía en la zona horaria natal es una instantánea civil estable para esa fecha. No es tu hora de nacimiento, y no es la afirmación de que los tránsitos solo importan a la hora de comer.',
           'El gabinete escribe una fila por fecha de calendario cuando lo abres. Mañana, la fila de ayer se queda. Una semana saltada se queda saltada; el producto no inventa historia. Necesitas una natal guardada y una cuenta para ese diario. Las calculadoras públicas siguen usables sin iniciar sesión.',
@@ -1198,7 +1198,7 @@ export const esArticles: Record<string, ArticleCopy> = {
         heading: 'Cómo leer un día de tránsitos',
         paragraphs: [
           'Lista los planetas en tránsito que hacen aspectos mayores al Sol natal, la Luna, el Ascendente (si tienes hora) y cualquier configuración natal estrecha. Prefiere los contactos lentos para el titular, los rápidos para el tiempo. No asciendas una cuadratura lunar en tránsito a una decisión de vida. Tampoco ignores una conjunción de Saturno en tránsito al Sol natal; solo no la conviertas en consejo legal ni médico.',
-          'Mantén tránsitos tropicales sobre una natal tropical. Tránsitos siderales sobre una natal tropical mezclan puntos cero y desperdician la brecha de 24°. Meridian no hará esa mezcla. Las casas natales Placidus, si existen, son las habitaciones por las que pasan los tránsitos. Las casas natales vacías aún pueden recibir tránsitos; el vacío era sobre planetas natales, no una prohibición de tráfico posterior.',
+          'Mantén tránsitos tropicales sobre una natal tropical. Tránsitos siderales sobre una natal tropical mezclan puntos cero y desperdician la brecha de 24°. SideraChart no hará esa mezcla. Las casas natales Placidus, si existen, son las habitaciones por las que pasan los tránsitos. Las casas natales vacías aún pueden recibir tránsitos; el vacío era sobre planetas natales, no una prohibición de tráfico posterior.',
         ],
       },
       {
@@ -1217,10 +1217,10 @@ export const esArticles: Record<string, ArticleCopy> = {
       },
       {
         q: '¿Los tránsitos cambian mi carta natal?',
-        a: 'No. Los tránsitos se superponen a la natal. Meridian guarda la superposición de cada día al mediodía en la zona horaria natal. Tus posiciones de nacimiento no se mueven.',
+        a: 'No. Los tránsitos se superponen a la natal. SideraChart guarda la superposición de cada día al mediodía en la zona horaria natal. Tus posiciones de nacimiento no se mueven.',
       },
       {
-        q: '¿Por qué Meridian calcula los tránsitos diarios al mediodía?',
+        q: '¿Por qué SideraChart calcula los tránsitos diarios al mediodía?',
         a: 'Para que la nota del día sea estable. El mediodía en la zona horaria natal es una instantánea coherente. No es un sustituto de tu hora de nacimiento.',
       },
       {

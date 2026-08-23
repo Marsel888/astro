@@ -140,12 +140,16 @@ export function placed(list: BodyPoint[], baseR: number, asc: number) {
   });
 }
 
+/**
+ * The single orb table for the whole app. The wheel draws these lines and the
+ * positions table lists these rows, so the two can never disagree.
+ */
 export const ASPECT_DEFS = [
-  { name: 'conjunction', sym: '☌', ang: 0, orb: 6, color: 'var(--asp-neutral)' },
+  { name: 'conjunction', sym: '☌', ang: 0, orb: 8, color: 'var(--asp-neutral)' },
   { name: 'sextile', sym: '⚹', ang: 60, orb: 4, color: 'var(--asp-soft)' },
-  { name: 'square', sym: '□', ang: 90, orb: 5, color: 'var(--asp-hard)' },
-  { name: 'trine', sym: '△', ang: 120, orb: 5, color: 'var(--asp-soft)' },
-  { name: 'opposition', sym: '☍', ang: 180, orb: 6, color: 'var(--asp-hard)' },
+  { name: 'square', sym: '□', ang: 90, orb: 6, color: 'var(--asp-hard)' },
+  { name: 'trine', sym: '△', ang: 120, orb: 6, color: 'var(--asp-soft)' },
+  { name: 'opposition', sym: '☍', ang: 180, orb: 8, color: 'var(--asp-hard)' },
 ] as const;
 
 export function aspectLines(a: BodyPoint[], b: BodyPoint[], r: number, asc: number) {

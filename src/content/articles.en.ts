@@ -9,7 +9,7 @@ export const enArticles: Record<string, ArticleCopy> = {
       {
         heading: 'What is a natal chart?',
         paragraphs: [
-          'A natal chart is a map of the Solar System as seen from one place at one moment. You supply three facts: a birth date, a clock time, and a geographic location. From those inputs a calculator derives each planet’s ecliptic longitude, the degree that was rising in the east (the Ascendant), and a twelve-house division of the local sky. Meridian is that calculator: tropical zodiac, Placidus houses by default, positions from a VSOP87-class ephemeris via astronomy-engine.',
+          'A natal chart is a map of the Solar System as seen from one place at one moment. You supply three facts: a birth date, a clock time, and a geographic location. From those inputs a calculator derives each planet’s ecliptic longitude, the degree that was rising in the east (the Ascendant), and a twelve-house division of the local sky. SideraChart is that calculator: tropical zodiac, Placidus houses by default, positions from a VSOP87-class ephemeris via astronomy-engine.',
           'The chart is a diagram of accents, not a verdict. Each planet is a function. Each sign is a style of that function. Each house is a department of life where the function shows up. Aspects are the angular distances between those functions. Read together they tell you which parts of the chart are loud. They do not tell you whether to change jobs, leave a relationship, or take a medical decision.',
         ],
       },
@@ -17,27 +17,27 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'What you need: birth date, time and place',
         paragraphs: [
           'Date sets which day of the Earth’s orbit you were born on, which is enough for the Sun and the slow planets to land in the correct sign. Time converts civil clock time to Universal Time with the IANA timezone rules that were in force on that date, including historical daylight-saving. Place supplies latitude and longitude so the local horizon — and therefore the Ascendant and the house cusps — can be computed.',
-          'If the time is unknown, you still get planetary signs. You do not get a reliable Ascendant or a house system. Meridian lets you mark time as unknown and then draws planets only. Guessing noon and treating the houses as fact is worse than an honest gap. If a birth certificate has a time, use it; if relatives disagree by half an hour, treat the Ascendant as provisional.',
+          'If the time is unknown, you still get planetary signs. You do not get a reliable Ascendant or a house system. SideraChart lets you mark time as unknown and then draws planets only. Guessing noon and treating the houses as fact is worse than an honest gap. If a birth certificate has a time, use it; if relatives disagree by half an hour, treat the Ascendant as provisional.',
         ],
       },
       {
         heading: 'Planets, signs, houses and aspects',
         paragraphs: [
           'Planets (Sun through Pluto, plus the Moon) sit on the ecliptic. The sign is which 30° slice of the tropical zodiac that longitude falls in. The house is which local sector that longitude falls in once the Ascendant is known. A planet in Aries in the tenth house is not the same statement as a planet in Aries in the fourth: same style, different department.',
-          'Aspects are the named angles between two longitudes: conjunction (0°), sextile (60°), square (90°), trine (120°), opposition (180°). Meridian draws those five with orbs of 8° for conjunction and opposition, 6° for square and trine, and 4° for sextile. Tighter orbs read louder. The wheel’s coloured lines and the table under it show the same contacts.',
+          'Aspects are the named angles between two longitudes: conjunction (0°), sextile (60°), square (90°), trine (120°), opposition (180°). SideraChart draws those five with orbs of 8° for conjunction and opposition, 6° for square and trine, and 4° for sextile. Tighter orbs read louder. The wheel’s coloured lines and the table under it show the same contacts.',
         ],
       },
       {
         heading: 'What a natal chart is not',
         paragraphs: [
-          'A natal chart is not a daily horoscope column written for twelve Sun signs. It is not Vedic or sidereal astrology, which measures from a star-based zero point about 24° away from the tropical equinox today. It is not Chinese astrology. Meridian does not compute those systems and does not use Swiss Ephemeris.',
+          'A natal chart is not a daily horoscope column written for twelve Sun signs. It is not Vedic or sidereal astrology, which measures from a star-based zero point about 24° away from the tropical equinox today. It is not Chinese astrology. SideraChart does not compute those systems and does not use Swiss Ephemeris.',
           'It is also not a personality quiz that outputs a type. Two people with the same Sun sign can have different Moons, different rising signs, different house emphasis and different aspect patterns. If you only know the Sun, you have one coordinate. The chart is the rest of the coordinate system.',
         ],
       },
       {
-        heading: 'How Meridian calculates the chart',
+        heading: 'How SideraChart calculates the chart',
         paragraphs: [
-          'Meridian resolves the birthplace to latitude and longitude, converts local clock time to Universal Time, then reads apparent tropical longitudes from astronomy-engine (VSOP87-class). The tropical zodiac starts at the March equinox, which is the Western convention. Sidereal longitudes are not shown. Houses default to Placidus because most published Western texts assume it; Whole Sign is available when you need equal signs from the Ascendant’s sign.',
+          'SideraChart resolves the birthplace to latitude and longitude, converts local clock time to Universal Time, then reads apparent tropical longitudes from astronomy-engine (VSOP87-class). The tropical zodiac starts at the March equinox, which is the Western convention. Sidereal longitudes are not shown. Houses default to Placidus because most published Western texts assume it; Whole Sign is available when you need equal signs from the Ascendant’s sign.',
           'Placidus divides time of ascension, so houses are uneven, and it becomes unreliable above roughly 66° latitude. For polar births, Whole Sign is the more honest grid. Planetary longitudes are computed either way. Save the chart if you want the written report and the daily cabinet; the public calculators stay free without an account.',
         ],
       },
@@ -45,7 +45,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'How to use the chart once you have it',
         paragraphs: [
           'Start with the Big Three: Sun, Moon and rising. Then read occupied houses, then the tightest aspects. Empty houses are rooms without a planet sitting in them, not missing organs. The PNG of the wheel is a snapshot; the tables are the instrument. Numbers first, then the written layer.',
-          'If you later compare the natal chart with today’s sky, that is transits — a different article. Meridian’s cabinet stores those daily overlays at noon in the natal timezone so the day’s note stays stable. None of that rewrites the natal chart. The natal chart is the baseline you keep; transits are weather against it.',
+          'If you later compare the natal chart with today’s sky, that is transits — a different article. SideraChart’s cabinet stores those daily overlays at noon in the natal timezone so the day’s note stays stable. None of that rewrites the natal chart. The natal chart is the baseline you keep; transits are weather against it.',
         ],
       },
     ],
@@ -56,11 +56,11 @@ export const enArticles: Record<string, ArticleCopy> = {
       },
       {
         q: 'Do I need my exact birth time for a natal chart?',
-        a: 'You need it for the Ascendant and the houses. Without a time, planetary signs are still usable. Meridian will calculate planets and skip the rising sign if you mark time as unknown.',
+        a: 'You need it for the Ascendant and the houses. Without a time, planetary signs are still usable. SideraChart will calculate planets and skip the rising sign if you mark time as unknown.',
       },
       {
         q: 'What zodiac does a natal chart use?',
-        a: 'Western natal charts, including Meridian, use the tropical zodiac measured from the vernal equinox. Sidereal (Vedic) charts use a star-based zero point and will look about a sign different for many placements today.',
+        a: 'Western natal charts, including SideraChart, use the tropical zodiac measured from the vernal equinox. Sidereal (Vedic) charts use a star-based zero point and will look about a sign different for many placements today.',
       },
       {
         q: 'Can two people born on the same day have different natal charts?',
@@ -77,7 +77,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'Natal chart vs horoscope',
         paragraphs: [
           'People type “natal chart vs horoscope” because both words get used for “astrology,” and they are not the same object. A natal chart is a calculated diagram of the sky from your birth date, time and place: planets on the ecliptic, an Ascendant if the clock is known, houses, and aspects. A horoscope, in the sense most search results mean, is a short forecast written for a Sun sign — Aries through Pisces — for a day, week or month.',
-          'You can derive a horoscope-style paragraph from a natal chart. You cannot reconstruct a natal chart from a horoscope column. One is a map with coordinates. The other is a text product aimed at twelve audiences. Meridian calculates the map. It does not publish Sun-sign columns, weekly or otherwise.',
+          'You can derive a horoscope-style paragraph from a natal chart. You cannot reconstruct a natal chart from a horoscope column. One is a map with coordinates. The other is a text product aimed at twelve audiences. SideraChart calculates the map. It does not publish Sun-sign columns, weekly or otherwise.',
         ],
       },
       {
@@ -98,20 +98,20 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'Sun-sign columns vs a full wheel',
         paragraphs: [
           'Your Sun sign is one coordinate: the tropical sign the Sun occupied on your birth date. It is the easiest fact to know because the Sun stays in a sign for about a month and rarely needs a precise clock. It is also the fact horoscopes use as an index. It is not the chart.',
-          'The wheel adds the Moon (which changes sign every two and a half days), the rising sign (which needs the minute), and the rest of the planets. Meridian’s birth-chart calculator draws that wheel in the tropical zodiac with Placidus houses by default. Compare it with a magazine horoscope and you will see why the words should not be used interchangeably.',
+          'The wheel adds the Moon (which changes sign every two and a half days), the rising sign (which needs the minute), and the rest of the planets. SideraChart’s birth-chart calculator draws that wheel in the tropical zodiac with Placidus houses by default. Compare it with a magazine horoscope and you will see why the words should not be used interchangeably.',
         ],
       },
       {
         heading: 'Why the two get confused',
         paragraphs: [
           'Marketing language collapses them. “Free horoscope” often means “free natal chart,” or the reverse. Social posts say “what’s your horoscope?” when they mean Sun sign. Search engines inherit that mix. If you landed here from “natal chart vs horoscope,” keep the distinction: chart = calculated map from birth data; horoscope = usually a Sun-sign text.',
-          'A transit reading for your saved natal chart is closer to a personal horoscope than a newspaper column is, because it uses your actual positions. Meridian’s daily cabinet stores those transits at noon in the natal timezone. That is still not the natal chart. The natal chart does not change; the sky over it does.',
+          'A transit reading for your saved natal chart is closer to a personal horoscope than a newspaper column is, because it uses your actual positions. SideraChart’s daily cabinet stores those transits at noon in the natal timezone. That is still not the natal chart. The natal chart does not change; the sky over it does.',
         ],
       },
       {
-        heading: 'Which one Meridian calculates',
+        heading: 'Which one SideraChart calculates',
         paragraphs: [
-          'Meridian calculates natal charts, planet-by-planet sign tools, synastry and composite wheels. Positions come from astronomy-engine (VSOP87), not Swiss Ephemeris. The zodiac is tropical, not sidereal or Chinese. Houses are Placidus unless you switch to Whole Sign. Unknown birth time: planets yes, houses no.',
+          'SideraChart calculates natal charts, planet-by-planet sign tools, synastry and composite wheels. Positions come from astronomy-engine (VSOP87), not Swiss Ephemeris. The zodiac is tropical, not sidereal or Chinese. Houses are Placidus unless you switch to Whole Sign. Unknown birth time: planets yes, houses no.',
           'If you want a Sun-sign horoscope for the week, this site is the wrong instrument. If you want the map those columns are vaguely pretending to describe, use the birth-chart calculator with date, time and place. Read the chart as a structured description of accents. Do not treat either product as medical, legal or financial advice.',
         ],
       },
@@ -127,7 +127,7 @@ export const enArticles: Record<string, ArticleCopy> = {
       },
       {
         q: 'Does a natal chart predict my week?',
-        a: 'The natal chart is the baseline. Week-to-week language belongs to transits against that baseline. Meridian stores daily transits at noon in the natal timezone; that still is not a newspaper horoscope.',
+        a: 'The natal chart is the baseline. Week-to-week language belongs to transits against that baseline. SideraChart stores daily transits at noon in the natal timezone; that still is not a newspaper horoscope.',
       },
       {
         q: 'Why do some sites call a birth chart a horoscope?',
@@ -144,7 +144,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'What is my sun sign?',
         paragraphs: [
           'Your Sun sign is the 30° tropical slice that contained the Sun at your birth. People ask “what is my sun sign?” because it is the one astrological fact that newspapers, apps and casual conversation all share. You find it from the birth date. The Sun moves about one degree per day and changes sign around the same calendar dates each year, with a little drift near the cusps.',
-          'Meridian measures the Sun in the tropical zodiac, from the March equinox, using astronomy-engine (VSOP87). That is Western practice. A sidereal (Vedic) Sun sign can differ by about one sign today because the star-based zero point has precessed. If a friend in a sidereal app reports a different Sun, you are not looking at the same coordinate system.',
+          'SideraChart measures the Sun in the tropical zodiac, from the March equinox, using astronomy-engine (VSOP87). That is Western practice. A sidereal (Vedic) Sun sign can differ by about one sign today because the star-based zero point has precessed. If a friend in a sidereal app reports a different Sun, you are not looking at the same coordinate system.',
         ],
       },
       {
@@ -158,25 +158,25 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'Why your Sun sign is not the whole chart',
         paragraphs: [
           'The Sun is one body. A natal chart also has the Moon, Mercury, Venus, Mars and the outer planets, plus the Ascendant if you have a birth time. Two Leos can share a solar month and still not share a Moon, a rising sign, or a house pattern. Sun-sign descriptions survive because they are easy to index, not because they exhaust the sky.',
-          'Read the Sun as the daylight plot: what you are doing when you are most obviously yourself in public time. Then read the rest. A chart that only lists the Sun is a headline. The tables under Meridian’s wheel are the article.',
+          'Read the Sun as the daylight plot: what you are doing when you are most obviously yourself in public time. Then read the rest. A chart that only lists the Sun is a headline. The tables under SideraChart’s wheel are the article.',
         ],
       },
       {
         heading: 'Sun sign vs Moon sign and rising sign',
         paragraphs: [
           'The Moon changes sign every two and a half days, so many people born in the same solar month do not share a Moon. The rising sign changes about every two hours and needs the birth time and place. Together these three are the Big Three. If you only know the Sun, you know the slowest of the three.',
-          'You do not need a birth time for a typical Sun sign. You often do not need one for the Moon unless it changed sign that day. You always need one for the rising sign. Meridian’s dedicated Sun, Moon and rising tools are filters on the same engine as the full natal chart. Use the full chart when you want houses and aspects as well.',
+          'You do not need a birth time for a typical Sun sign. You often do not need one for the Moon unless it changed sign that day. You always need one for the rising sign. SideraChart’s dedicated Sun, Moon and rising tools are filters on the same engine as the full natal chart. Use the full chart when you want houses and aspects as well.',
         ],
       },
       {
         heading: 'Cusps, time zones and “I am two signs”',
         paragraphs: [
           'There is no extra thirteenth sign in tropical practice, and there is no official dual citizenship on the boundary. The Sun is in one sign or the other at the minute of birth. If you lack a time on a cusp date, say so. Do not average two signs into a custom identity and then treat it as a calculated fact.',
-          'Timezone history matters more than people expect. A birth recorded as 23:40 in a city that was still on daylight-saving can be a different Universal Time than the same clock reading in winter. Meridian uses IANA rules for that date. If an old paper used a different offset, the Sun’s degree can shift; on a cusp, the sign can too.',
+          'Timezone history matters more than people expect. A birth recorded as 23:40 in a city that was still on daylight-saving can be a different Universal Time than the same clock reading in winter. SideraChart uses IANA rules for that date. If an old paper used a different offset, the Sun’s degree can shift; on a cusp, the sign can too.',
         ],
       },
       {
-        heading: 'Finding your Sun sign on Meridian',
+        heading: 'Finding your Sun sign on SideraChart',
         paragraphs: [
           'Enter birth date, and add time and place if you have them. The Sun row in the table is the sign and degree. The wheel places the solar glyph on that longitude. Aspects to the Sun use the same orbs as the rest of the chart: 8° conjunction and opposition, 6° square and trine, 4° sextile.',
           'Save the natal chart if you want the written report and the daily cabinet. Transits to your natal Sun are later weather, stored at noon in the natal timezone. They do not change the natal Sun sign. The Sun sign is a birth fact. Everything else is reading.',
@@ -190,7 +190,7 @@ export const enArticles: Record<string, ArticleCopy> = {
       },
       {
         q: 'Why is my Sun sign different in a Vedic app?',
-        a: 'Vedic apps typically use the sidereal zodiac. Meridian uses tropical longitudes from the equinox. The gap is about 24° today, which often moves the Sun into the previous sign.',
+        a: 'Vedic apps typically use the sidereal zodiac. SideraChart uses tropical longitudes from the equinox. The gap is about 24° today, which often moves the Sun into the previous sign.',
       },
       {
         q: 'What if I was born on the cusp?',
@@ -211,7 +211,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'Sun, Moon and rising: the Big Three',
         paragraphs: [
           'Sun, Moon and rising are called the Big Three because they are the three placements people actually use in conversation, and because they sit on three different clocks. The Sun needs a date. The Moon needs a date and, on fast days, a time. The rising sign needs a date, a time and a place. If you only have one of the three, you do not have the set.',
-          'They are not a ranking of spiritual importance. They are three coordinates that describe different tempos: the Sun’s yearly path, the Moon’s monthly path, and the Earth’s daily rotation under the ecliptic. Meridian calculates all three from the same tropical, VSOP87-based engine. The rising sign is omitted when birth time is unknown.',
+          'They are not a ranking of spiritual importance. They are three coordinates that describe different tempos: the Sun’s yearly path, the Moon’s monthly path, and the Earth’s daily rotation under the ecliptic. SideraChart calculates all three from the same tropical, VSOP87-based engine. The rising sign is omitted when birth time is unknown.',
         ],
       },
       {
@@ -225,27 +225,27 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'The Moon: the fast body',
         paragraphs: [
           'The Moon moves about 13° a day and changes sign every two and a half days. That is why two people born in the same Sun-sign month often do not share a Moon. The Moon’s sign describes the faster weather of the chart: appetite, sleep, the un-scored hours. It is not a medical diagnosis and not a mood disorder label.',
-          'Without a birth time, the Moon’s sign is usually still correct. The degree and the house are not. If the Moon changed sign on your birthday, an unknown time leaves the Moon itself unresolved. Mark the time unknown in Meridian rather than inventing noon and defending the degree.',
+          'Without a birth time, the Moon’s sign is usually still correct. The degree and the house are not. If the Moon changed sign on your birthday, an unknown time leaves the Moon itself unresolved. Mark the time unknown in SideraChart rather than inventing noon and defending the degree.',
         ],
       },
       {
         heading: 'The rising sign: the eastern horizon',
         paragraphs: [
           'The rising sign, or Ascendant, is the zodiac degree that was coming up over the eastern horizon at the minute of birth. It is a local angle, not a planet. It depends on latitude, longitude and clock time. The Ascendant moves about one degree every four minutes, so a twenty-minute error can change the sign.',
-          'Houses in Placidus (Meridian’s default) start from that angle. No reliable rising sign means no reliable houses. If you do not have a time, skip the Ascendant. A guessed rising sign shifts every “planet in house” line that follows it.',
+          'Houses in Placidus (SideraChart’s default) start from that angle. No reliable rising sign means no reliable houses. If you do not have a time, skip the Ascendant. A guessed rising sign shifts every “planet in house” line that follows it.',
         ],
       },
       {
         heading: 'Why you read the three together',
         paragraphs: [
           'A Sun-only reading is a headline. Adding the Moon tells you what the chart does when nobody is grading it. Adding the rising sign tells you the door the chart uses — first impressions, the body in space, the house grid. The three can rhyme (all fire) or argue (Sun in Capricorn, Moon in Aries, Gemini rising). The argument is information.',
-          'Aspects among the Big Three matter more than slogan chemistry. A Sun–Moon square inside a 6° orb is a tighter statement than “fire and water.” Meridian’s orbs are 8° for conjunction and opposition, 6° for square and trine, 4° for sextile. Look at the table, not at meme compatibility.',
+          'Aspects among the Big Three matter more than slogan chemistry. A Sun–Moon square inside a 6° orb is a tighter statement than “fire and water.” SideraChart’s orbs are 8° for conjunction and opposition, 6° for square and trine, 4° for sextile. Look at the table, not at meme compatibility.',
         ],
       },
       {
         heading: 'How to calculate the Big Three',
         paragraphs: [
-          'Use the birth-chart calculator with date, time and place. Read the Sun, Moon and Ascendant rows first, then the rest. Dedicated Sun, Moon and rising tools on Meridian are the same engine with a narrower display. Tropical zodiac only; not sidereal, not Chinese. Unknown time: you can still list Sun and usually Moon; you cannot list rising.',
+          'Use the birth-chart calculator with date, time and place. Read the Sun, Moon and Ascendant rows first, then the rest. Dedicated Sun, Moon and rising tools on SideraChart are the same engine with a narrower display. Tropical zodiac only; not sidereal, not Chinese. Unknown time: you can still list Sun and usually Moon; you cannot list rising.',
           'Once the natal chart is saved, the daily cabinet will overlay transits at noon in the natal timezone. Those transits talk to the Big Three among other points. They do not replace them. The Big Three are birth facts. Transits are the later sky.',
           'If the three placements disagree, do not pick a favourite and discard the others. Write them in one sentence: Sun in this sign, Moon in that sign, this sign rising. Then open the aspect table. That sentence plus the tightest orb is already more of a natal chart than a Sun-sign column.',
         ],
@@ -262,7 +262,7 @@ export const enArticles: Record<string, ArticleCopy> = {
       },
       {
         q: 'Can I know my Big Three without a birth time?',
-        a: 'Sun usually yes, Moon usually yes except on sign-change days, rising no. Meridian skips the Ascendant when time is marked unknown.',
+        a: 'Sun usually yes, Moon usually yes except on sign-change days, rising no. SideraChart skips the Ascendant when time is marked unknown.',
       },
       {
         q: 'Is rising the same as Sun sign?',
@@ -286,34 +286,34 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'Why the Ascendant needs a birth time',
         paragraphs: [
           'The Ascendant moves about one degree every four minutes. A twenty-minute error is five degrees and can change the sign, especially near a boundary. A two-hour guess is a different rising sign most of the time. Place matters as well: the same Universal Time produces different local horizons in London and in Kyiv.',
-          'Meridian converts civil time to Universal Time with IANA timezone rules for that date, then computes the local sidereal time and the intersecting ecliptic degree. If you mark time unknown, the calculator still returns planetary longitudes and omits the Ascendant. That is the honest output. Inventing 12:00 and publishing a rising sign is a different, worse product.',
+          'SideraChart converts civil time to Universal Time with IANA timezone rules for that date, then computes the local sidereal time and the intersecting ecliptic degree. If you mark time unknown, the calculator still returns planetary longitudes and omits the Ascendant. That is the honest output. Inventing 12:00 and publishing a rising sign is a different, worse product.',
         ],
       },
       {
         heading: 'Rising sign vs Sun sign',
         paragraphs: [
           'The Sun sign comes from the Sun’s ecliptic longitude and is stable across a day. The rising sign comes from the horizon and is not. You can know your Sun from a birthday cake. You cannot know your rising sign from one. If an app gave you a rising sign without asking for a time, it guessed, usually at noon, and should not be trusted.',
-          'When both are known, read them as different objects. Sun in Virgo, Scorpio rising is a common pattern, not a contradiction. One is the solar plot; the other is the eastern door and the house grid. Meridian’s rising-sign calculator is the natal engine filtered to that angle. The full chart still shows why the rest of the sky sits where it does.',
+          'When both are known, read them as different objects. Sun in Virgo, Scorpio rising is a common pattern, not a contradiction. One is the solar plot; the other is the eastern door and the house grid. SideraChart’s rising-sign calculator is the natal engine filtered to that angle. The full chart still shows why the rest of the sky sits where it does.',
         ],
       },
       {
         heading: 'Houses start at the Ascendant',
         paragraphs: [
-          'In Placidus, Meridian’s default, house I begins at the Ascendant. The rest of the cusps follow from time of ascension, so houses are unequal. Whole Sign assigns house I to the whole sign that contains the Ascendant and then counts signs. Either way, no Ascendant means no honest houses.',
+          'In Placidus, SideraChart’s default, house I begins at the Ascendant. The rest of the cusps follow from time of ascension, so houses are unequal. Whole Sign assigns house I to the whole sign that contains the Ascendant and then counts signs. Either way, no Ascendant means no honest houses.',
           'Every “planet in the seventh house” line depends on this. If the rising sign is wrong, those lines are wrong even when the planetary signs are right. That is why unknown time means planets yes, houses no — not “houses approximately.” Polar latitudes above about 66° also strain Placidus; switch to Whole Sign there rather than forcing broken cusps.',
         ],
       },
       {
         heading: 'Approximate times and noon charts',
         paragraphs: [
-          'A recorded time of 04:00 might mean “about four” or “exactly four.” Treat rounded hours as a range. Recalculate twenty minutes either side and see whether the Ascendant stays in sign. If it flips, you do not have a rising sign yet; you have two candidates. Rectification — inventing a time to match a biography — is a separate, easy-to-abuse craft. Meridian does not do it for you.',
+          'A recorded time of 04:00 might mean “about four” or “exactly four.” Treat rounded hours as a range. Recalculate twenty minutes either side and see whether the Ascendant stays in sign. If it flips, you do not have a rising sign yet; you have two candidates. Rectification — inventing a time to match a biography — is a separate, easy-to-abuse craft. SideraChart does not do it for you.',
           'Family memory is weaker than a certificate. If relatives disagree, prefer the document. If there is no document, leave the time unknown. You can still read Sun, Moon (usually), Mercury, Venus, Mars and the outer planets in signs, plus aspects among them. That is already a natal chart minus the local frame.',
         ],
       },
       {
         heading: 'How to calculate your rising sign',
         paragraphs: [
-          'Use Meridian’s rising-sign calculator or the full birth-chart calculator. Enter date, time and place. The Ascendant row is the sign and degree. Positions are tropical, from astronomy-engine (VSOP87), not Swiss Ephemeris, not sidereal. Aspects from planets to the Ascendant use the same orbs as planet-to-planet contacts: 8° / 6° / 4°.',
+          'Use SideraChart’s rising-sign calculator or the full birth-chart calculator. Enter date, time and place. The Ascendant row is the sign and degree. Positions are tropical, from astronomy-engine (VSOP87), not Swiss Ephemeris, not sidereal. Aspects from planets to the Ascendant use the same orbs as planet-to-planet contacts: 8° / 6° / 4°.',
           'Save the chart if you want houses, the written report, and later transits in the cabinet at noon natal time. A rising sign without the rest of the wheel is still only one angle. Calculate it carefully, then put it back in the chart it belongs to.',
         ],
       },
@@ -321,7 +321,7 @@ export const enArticles: Record<string, ArticleCopy> = {
     faq: [
       {
         q: 'Can I find my rising sign without a birth time?',
-        a: 'No. The Ascendant is a horizon degree. Without a clock and a place, any rising sign is a guess. Meridian omits it when time is unknown.',
+        a: 'No. The Ascendant is a horizon degree. Without a clock and a place, any rising sign is a guess. SideraChart omits it when time is unknown.',
       },
       {
         q: 'How often does the rising sign change?',
@@ -333,7 +333,7 @@ export const enArticles: Record<string, ArticleCopy> = {
       },
       {
         q: 'Why is my rising sign different on another site?',
-        a: 'Check timezone, daylight-saving, coordinates, and whether the other site is sidereal. Meridian is tropical Placidus by default. A noon placeholder also produces a fake Ascendant.',
+        a: 'Check timezone, daylight-saving, coordinates, and whether the other site is sidereal. SideraChart is tropical Placidus by default. A noon placeholder also produces a fake Ascendant.',
       },
     ],
   },
@@ -346,7 +346,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'What is a Moon sign?',
         paragraphs: [
           'Your Moon sign is the tropical zodiac sign that contained the Moon when you were born. People ask for it because it is the second most famous placement after the Sun, and because it moves fast enough that two people with the same Sun often do not share it. The Moon is a longitude like any other planet in the natal chart, only quicker: about 13° per day, a new sign every two and a half days.',
-          'In chart language the Moon describes the un-scored hours: appetite, sleep, what you do when nobody is grading the performance. That is a function, not a medical note and not a permission slip. Meridian places the Moon with the same VSOP87-class engine (astronomy-engine) as the Sun, in the tropical zodiac, not sidereal.',
+          'In chart language the Moon describes the un-scored hours: appetite, sleep, what you do when nobody is grading the performance. That is a function, not a medical note and not a permission slip. SideraChart places the Moon with the same VSOP87-class engine (astronomy-engine) as the Sun, in the tropical zodiac, not sidereal.',
         ],
       },
       {
@@ -359,14 +359,14 @@ export const enArticles: Record<string, ArticleCopy> = {
       {
         heading: 'Moon sign without a birth time',
         paragraphs: [
-          'If you have a date and not a time, the Moon’s sign is usually still correct. The degree is not. The house is not, because houses require the Ascendant, and the Ascendant requires the minute. Meridian’s rule is the same as for the rest of the chart: unknown time = planets yes, houses no. The Moon is a planet in that sentence.',
+          'If you have a date and not a time, the Moon’s sign is usually still correct. The degree is not. The house is not, because houses require the Ascendant, and the Ascendant requires the minute. SideraChart’s rule is the same as for the rest of the chart: unknown time = planets yes, houses no. The Moon is a planet in that sentence.',
           'A noon placeholder is an estimate. It is useful for a first look at the sign on a quiet day. It is not a fact you should argue from when the degree, the house, or a cusp is in play. Prefer a certificate time. If there is none, say the time is unknown and read the Moon in sign only.',
         ],
       },
       {
         heading: 'Moon vs Sun in the same chart',
         paragraphs: [
-          'The Sun is the monthly index everyone already knows. The Moon is the faster inner weather. They can occupy the same sign (a New Moon birth) or opposite signs (a Full Moon birth) or anything between. Sun–Moon aspects use Meridian’s orbs: 8° conjunction and opposition, 6° square and trine, 4° sextile. A tight Sun–Moon square is a louder statement than two sign memes stacked.',
+          'The Sun is the monthly index everyone already knows. The Moon is the faster inner weather. They can occupy the same sign (a New Moon birth) or opposite signs (a Full Moon birth) or anything between. Sun–Moon aspects use SideraChart’s orbs: 8° conjunction and opposition, 6° square and trine, 4° sextile. A tight Sun–Moon square is a louder statement than two sign memes stacked.',
           'The Big Three put the Moon between Sun and rising. You can know Sun and Moon (usually) without a time. You cannot complete the trio without one. If you only came for the Moon sign, still enter time and place when you have them so the degree and any aspects are honest.',
         ],
       },
@@ -374,7 +374,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'Degree, house and aspects',
         paragraphs: [
           'The degree tells you how early or late the Moon is in the sign and how close it is to an aspect. The house, with a known Ascendant, tells you which department of life carries that lunar function. Empty other houses do not cancel the Moon; they just mean the Moon is not sitting in those rooms.',
-          'Meridian’s Moon-sign calculator is the natal engine filtered to one body. The full birth chart adds houses (Placidus by default), the Ascendant, and the aspectarian. Daily transits to your natal Moon are stored in the cabinet at noon in the natal timezone. Those are later sky, not a rewrite of the natal Moon.',
+          'SideraChart’s Moon-sign calculator is the natal engine filtered to one body. The full birth chart adds houses (Placidus by default), the Ascendant, and the aspectarian. Daily transits to your natal Moon are stored in the cabinet at noon in the natal timezone. Those are later sky, not a rewrite of the natal Moon.',
         ],
       },
       {
@@ -382,14 +382,14 @@ export const enArticles: Record<string, ArticleCopy> = {
         paragraphs: [
           'Enter birth date, time if you have it, and place. Read the Moon row: sign, degree, house if the clock is known. Positions are tropical. If another app is sidereal, the Moon may sit in the previous sign; that is the ayanamsha gap, not a bug in astronomy-engine.',
           'Do not treat a Moon sign as financial, legal or medical advice. Use it as a coordinate. If the time is missing, keep the coordinate coarse: sign only. If the time is present, use the degree and the aspects. That is the whole method.',
-          'Compare with the Sun before you stop. Same-sign Sun and Moon (a New Moon birth) is a different texture from a Full Moon opposition. Both are ordinary astronomy. Meridian will show the orb; you decide whether 6° still counts as loud. The cabinet’s later Moon transits are weather, stored at noon natal time, not a new Moon sign.',
+          'Compare with the Sun before you stop. Same-sign Sun and Moon (a New Moon birth) is a different texture from a Full Moon opposition. Both are ordinary astronomy. SideraChart will show the orb; you decide whether 6° still counts as loud. The cabinet’s later Moon transits are weather, stored at noon natal time, not a new Moon sign.',
         ],
       },
     ],
     faq: [
       {
         q: 'How do I find my Moon sign?',
-        a: 'Calculate a natal chart from birth date, time and place. The Moon row is the tropical sign. Meridian’s Moon-sign calculator uses the same engine as the full chart.',
+        a: 'Calculate a natal chart from birth date, time and place. The Moon row is the tropical sign. SideraChart’s Moon-sign calculator uses the same engine as the full chart.',
       },
       {
         q: 'Do I need a birth time for my Moon sign?',
@@ -401,7 +401,7 @@ export const enArticles: Record<string, ArticleCopy> = {
       },
       {
         q: 'Why does my Moon sign differ on a Vedic site?',
-        a: 'Sidereal zodiacs measure from a star-based zero point about 24° from the tropical equinox today. Meridian is tropical only.',
+        a: 'Sidereal zodiacs measure from a star-based zero point about 24° from the tropical equinox today. SideraChart is tropical only.',
       },
     ],
   },
@@ -414,7 +414,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'What is a Venus sign?',
         paragraphs: [
           'Your Venus sign is the tropical zodiac sign that contained Venus at your birth. People search “what is a Venus sign?” because popular astrology uses Venus as shorthand for taste, attraction and the way you price things that are not invoices — art, manners, the people you keep. On the instrument it is one planetary longitude, calculated like the others from birth date, time and place.',
-          'Meridian places Venus in the tropical zodiac with astronomy-engine (VSOP87). It is not a sidereal Venus and not a Chinese hour. The sign is the 30° slice. The house, if you have a birth time, is the local department. Aspects to Venus use orbs of 8° / 6° / 4°. None of that is a verdict on whether a relationship should continue.',
+          'SideraChart places Venus in the tropical zodiac with astronomy-engine (VSOP87). It is not a sidereal Venus and not a Chinese hour. The sign is the 30° slice. The house, if you have a birth time, is the local department. Aspects to Venus use orbs of 8° / 6° / 4°. None of that is a verdict on whether a relationship should continue.',
         ],
       },
       {
@@ -435,20 +435,20 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'Venus vs the Big Three',
         paragraphs: [
           'Sun, Moon and rising remain the first pass. Venus is a specialist coordinate you read after those three, unless Venus is piled on an angle or locked in a tight aspect to them. A Venus–Saturn conjunction inside 8° is louder than a Venus sign blurb. Look at the aspectarian.',
-          'Rising sign still needs the clock. If you came only for Venus and you have a time, enter it anyway so house and aspects are real. Meridian’s Venus-sign calculator is the natal engine filtered to one glyph. The full chart is the context that keeps Venus from eating the whole reading.',
+          'Rising sign still needs the clock. If you came only for Venus and you have a time, enter it anyway so house and aspects are real. SideraChart’s Venus-sign calculator is the natal engine filtered to one glyph. The full chart is the context that keeps Venus from eating the whole reading.',
         ],
       },
       {
         heading: 'Houses and aspects to Venus',
         paragraphs: [
-          'With a known Ascendant, Venus in a house names the life department where that valuing function is obvious — fourth, seventh, tenth and so on. Empty houses elsewhere are not missing organs. Placidus is Meridian’s default; Whole Sign is the alternative when you want equal signs or when you are at high latitude.',
+          'With a known Ascendant, Venus in a house names the life department where that valuing function is obvious — fourth, seventh, tenth and so on. Empty houses elsewhere are not missing organs. Placidus is SideraChart’s default; Whole Sign is the alternative when you want equal signs or when you are at high latitude.',
           'Major aspects to Venus are conjunction, sextile, square, trine and opposition. Tighter orbs read first. Transits to natal Venus later live in the daily cabinet, stored at noon in the natal timezone. Those transits do not change the natal Venus sign. They are weather against a fixed point.',
         ],
       },
       {
         heading: 'How to find your Venus sign',
         paragraphs: [
-          'Enter birth date, time and place in Meridian. Read the Venus row. Compare with the Sun: often nearby, sometimes the same. If a sidereal app disagrees, you are looking at a different zero point, about 24° away. Switch that app to tropical if you want to match this site.',
+          'Enter birth date, time and place in SideraChart. Read the Venus row. Compare with the Sun: often nearby, sometimes the same. If a sidereal app disagrees, you are looking at a different zero point, about 24° away. Switch that app to tropical if you want to match this site.',
           'Use the placement as a coordinate in a natal chart, not as dating advice. If the time is unknown, keep Venus in sign and skip the house. If the time is known, read degree, house and aspects. Then put Venus back next to the rest of the wheel.',
           'If you also run synastry later, Venus contacts between two charts are a different map. Calculate your natal Venus first so you know which longitude other people are contacting. Composite midpoints that include Venus are a third map again. One coordinate, three instruments — do not mix the printouts.',
         ],
@@ -457,7 +457,7 @@ export const enArticles: Record<string, ArticleCopy> = {
     faq: [
       {
         q: 'How do I find my Venus sign?',
-        a: 'Run a natal chart or Meridian’s Venus-sign calculator with your birth date, and add time and place if you have them. The Venus row is the tropical sign and degree.',
+        a: 'Run a natal chart or SideraChart’s Venus-sign calculator with your birth date, and add time and place if you have them. The Venus row is the tropical sign and degree.',
       },
       {
         q: 'Does Venus need an exact birth time?',
@@ -482,7 +482,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'What is a Mercury sign?',
         paragraphs: [
           'Your Mercury sign is the tropical zodiac sign that contained Mercury at your birth. People look it up because Mercury is the chart’s language-and-errand function: how you sort information, talk, commute, and change your mind. It is one longitude in the natal chart, not a measure of intelligence and not a diagnosis of attention.',
-          'Meridian calculates Mercury in the tropical zodiac from astronomy-engine (VSOP87), with Placidus houses when a birth time is present. It does not use Swiss Ephemeris and does not offer a sidereal or Vedic Mercury. If another app disagrees by about a sign, check whether it is sidereal before assuming an error.',
+          'SideraChart calculates Mercury in the tropical zodiac from astronomy-engine (VSOP87), with Placidus houses when a birth time is present. It does not use Swiss Ephemeris and does not offer a sidereal or Vedic Mercury. If another app disagrees by about a sign, check whether it is sidereal before assuming an error.',
         ],
       },
       {
@@ -509,7 +509,7 @@ export const enArticles: Record<string, ArticleCopy> = {
       {
         heading: 'Aspects to Mercury',
         paragraphs: [
-          'Major aspects are conjunction, sextile, square, trine and opposition. Meridian’s orbs are 8° for conjunction and opposition, 6° for square and trine, 4° for sextile. Tight Mercury–Saturn or Mercury–Uranus contacts will say more than the sign blurb. Use the table under the wheel.',
+          'Major aspects are conjunction, sextile, square, trine and opposition. SideraChart’s orbs are 8° for conjunction and opposition, 6° for square and trine, 4° for sextile. Tight Mercury–Saturn or Mercury–Uranus contacts will say more than the sign blurb. Use the table under the wheel.',
           'Transits to natal Mercury appear later in the daily cabinet, stored at noon in the natal timezone so the day’s note does not drift if you refresh at 23:00. Those transits do not rewrite the natal Mercury sign. The natal placement is the baseline.',
           'A transiting Mercury retrograde over natal Mercury is a temporary overlay, popular in headlines and easy to over-read. Note the orb, note whether it is applying, then look at the rest of the day’s slow contacts. Fast Mercury weather should not outrank a Saturn transit that is actually tight.',
         ],
@@ -517,16 +517,16 @@ export const enArticles: Record<string, ArticleCopy> = {
       {
         heading: 'How to calculate your Mercury sign',
         paragraphs: [
-          'Use Meridian’s Mercury-sign calculator or the full birth chart. Enter date, time and place. Read the Mercury row, then glance at the Sun to see whether they share a sign. Tropical only. If you need houses, you need the clock; if you do not have the clock, stop at the sign.',
+          'Use SideraChart’s Mercury-sign calculator or the full birth chart. Enter date, time and place. Read the Mercury row, then glance at the Sun to see whether they share a sign. Tropical only. If you need houses, you need the clock; if you do not have the clock, stop at the sign.',
           'Do not treat Mercury as career, legal or medical advice. It is a coordinate for how the chart talks and sorts. Put it back in the wheel with Venus, Mars and the Big Three before you decide the chart has a single theme.',
-          'When you match another website, set tropical zodiac and the same birth time zone. A Mercury sign that jumps is usually sidereal, a station-day clock error, or a timezone history miss — not astronomy-engine failing. Houses will still disagree if one site used Whole Sign and you left Meridian on Placidus.',
+          'When you match another website, set tropical zodiac and the same birth time zone. A Mercury sign that jumps is usually sidereal, a station-day clock error, or a timezone history miss — not astronomy-engine failing. Houses will still disagree if one site used Whole Sign and you left SideraChart on Placidus.',
         ],
       },
     ],
     faq: [
       {
         q: 'How do I find my Mercury sign?',
-        a: 'Calculate a natal chart from birth date, time and place, or use Meridian’s Mercury-sign calculator. The Mercury row is the tropical sign and degree.',
+        a: 'Calculate a natal chart from birth date, time and place, or use SideraChart’s Mercury-sign calculator. The Mercury row is the tropical sign and degree.',
       },
       {
         q: 'Why is my Mercury in the same sign as my Sun?',
@@ -551,7 +551,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'What is a Mars sign?',
         paragraphs: [
           'Your Mars sign is the tropical zodiac sign that contained Mars at your birth. People search “what is a Mars sign?” because popular copy treats Mars as fuel: how you start, compete, desire, and get angry. On the instrument it is a planetary longitude in a natal chart, calculated from birth date, time and place. It is not a permission slip for cruelty and not a medical reading of blood or muscles.',
-          'Meridian places Mars in the tropical zodiac using astronomy-engine (VSOP87). Houses, when the clock is known, default to Placidus. Sidereal and Chinese systems are out of scope. If a Vedic app shows a different Mars sign, you are looking at a different zero point, not a different planet.',
+          'SideraChart places Mars in the tropical zodiac using astronomy-engine (VSOP87). Houses, when the clock is known, default to Placidus. Sidereal and Chinese systems are out of scope. If a Vedic app shows a different Mars sign, you are looking at a different zero point, not a different planet.',
         ],
       },
       {
@@ -572,21 +572,21 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'Mars, the Big Three and other planets',
         paragraphs: [
           'Read Sun, Moon and rising first unless Mars is conjunct one of them or sitting on the Ascendant or Midheaven. A Mars–Moon square inside 6° will speak louder than a Mars-sign paragraph. Rising still requires birth time and place.',
-          'Mars–Venus and Mars–Saturn contacts are easy to over-narrate. Use Meridian’s aspectarian and the stated orbs: 8° conjunction and opposition, 6° square and trine, 4° sextile. Tight first. Wide contacts at the edge of orb are quieter. The wheel’s coloured lines match the table.',
+          'Mars–Venus and Mars–Saturn contacts are easy to over-narrate. Use SideraChart’s aspectarian and the stated orbs: 8° conjunction and opposition, 6° square and trine, 4° sextile. Tight first. Wide contacts at the edge of orb are quieter. The wheel’s coloured lines match the table.',
         ],
       },
       {
         heading: 'Houses and later transits',
         paragraphs: [
           'With a known Ascendant, Mars in a house names where the initiating function is obvious. Empty houses do not mean you lack that area of life; they mean no planet is sitting in that room. Placidus is the default because most Western texts assume it. Whole Sign is cleaner at high latitudes and when you want sign = house.',
-          'Transits to natal Mars are later weather. Meridian’s cabinet stores the day’s overlay at noon in the natal timezone. A transiting Mars square to natal Mars is a temporary contact, not a rewrite of the natal Mars sign. Keep the baseline and the weather in different drawers.',
+          'Transits to natal Mars are later weather. SideraChart’s cabinet stores the day’s overlay at noon in the natal timezone. A transiting Mars square to natal Mars is a temporary contact, not a rewrite of the natal Mars sign. Keep the baseline and the weather in different drawers.',
           'Mars return — transiting Mars back on the natal degree — is a cycle of about two years, not a personality reset. If you track it in the cabinet, you are tracking a repeating contact, not a new natal chart. Missed days stay missed; the product does not invent a return you did not open.',
         ],
       },
       {
         heading: 'How to find your Mars sign',
         paragraphs: [
-          'Use the Mars-sign calculator or the full natal chart on Meridian. Enter date, time and place. Read the Mars row, then the aspects. Tropical only. Match other sites by setting them to tropical plus Placidus if you want the same houses.',
+          'Use the Mars-sign calculator or the full natal chart on SideraChart. Enter date, time and place. Read the Mars row, then the aspects. Tropical only. Match other sites by setting them to tropical plus Placidus if you want the same houses.',
           'Put Mars back in the chart. A Mars sign without Sun, Moon, rising and the rest is a specialist note. Calculate it carefully, then read it as one function among ten bodies, not as the whole person.',
           'If time is unknown, you can still quote the Mars sign and planet-to-planet aspects. You cannot quote Mars on the Ascendant or in the tenth house. Write the limit on the same page as the sign so you do not smuggle house language back in later.',
         ],
@@ -595,7 +595,7 @@ export const enArticles: Record<string, ArticleCopy> = {
     faq: [
       {
         q: 'How do I find my Mars sign?',
-        a: 'Calculate a natal chart or use Meridian’s Mars-sign calculator with birth date, time and place. The Mars row is the tropical sign and degree.',
+        a: 'Calculate a natal chart or use SideraChart’s Mars-sign calculator with birth date, time and place. The Mars row is the tropical sign and degree.',
       },
       {
         q: 'Do I need a birth time for my Mars sign?',
@@ -620,7 +620,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'Why does birth time matter for a natal chart?',
         paragraphs: [
           'Birth time matters because two different clocks are hiding in one civil timestamp. The first clock converts your local time to Universal Time so planetary longitudes are correct. The second clock, with latitude and longitude, sets local sidereal time — which degree of the ecliptic was rising, which was culminating, and where the house cusps fall. People ask “why does birth time matter?” when they have a birthday but not a minute. The short answer: planets mostly survive; the local frame does not.',
-          'Meridian uses IANA timezone rules in force on that date, including historical daylight-saving, then reads tropical positions from astronomy-engine (VSOP87). A wrong timezone is as damaging as a wrong minute. A birth listed as 14:00 in the wrong offset is a different sky and a different Universal Time.',
+          'SideraChart uses IANA timezone rules in force on that date, including historical daylight-saving, then reads tropical positions from astronomy-engine (VSOP87). A wrong timezone is as damaging as a wrong minute. A birth listed as 14:00 in the wrong offset is a different sky and a different Universal Time.',
         ],
       },
       {
@@ -633,27 +633,27 @@ export const enArticles: Record<string, ArticleCopy> = {
       {
         heading: 'Houses depend on local sidereal time',
         paragraphs: [
-          'Houses are sectors of the local sky, not signs. Signs are 30° of the tropical zodiac. Houses are what you get when you divide the space around the horizon and meridian. Placidus, Meridian’s default, divides time of ascension, so houses are unequal. Whole Sign gives each house a full sign from the Ascendant’s sign.',
-          'Without a birth time there is no honest Ascendant and therefore no honest houses. Unknown time = planets yes, houses no. Meridian follows that rule instead of silently parking you at noon. Noon is a convention for some historical charts; it is not your Ascendant.',
+          'Houses are sectors of the local sky, not signs. Signs are 30° of the tropical zodiac. Houses are what you get when you divide the space around the horizon and meridian. Placidus, SideraChart’s default, divides time of ascension, so houses are unequal. Whole Sign gives each house a full sign from the Ascendant’s sign.',
+          'Without a birth time there is no honest Ascendant and therefore no honest houses. Unknown time = planets yes, houses no. SideraChart follows that rule instead of silently parking you at noon. Noon is a convention for some historical charts; it is not your Ascendant.',
         ],
       },
       {
         heading: 'The Moon’s degree and other fast facts',
         paragraphs: [
           'The Moon moves about half a degree per hour. Across a day that is several degrees — enough to change aspects and, on a sign-change day, the Moon sign itself. Mercury, Venus and the Sun can also sit on a cusp. Outer planets barely move in a day; their signs are safe without a time.',
-          'Aspects among planets still exist without houses. Meridian will list major aspects inside orbs of 8° / 6° / 4° from planetary longitudes even when the Ascendant is omitted. What you lose is anything that needs an angle: rising sign, house cusps, planets on the Midheaven.',
+          'Aspects among planets still exist without houses. SideraChart will list major aspects inside orbs of 8° / 6° / 4° from planetary longitudes even when the Ascendant is omitted. What you lose is anything that needs an angle: rising sign, house cusps, planets on the Midheaven.',
         ],
       },
       {
         heading: 'Certificates, memory and rounded hours',
         paragraphs: [
           'Prefer a birth certificate or hospital record over a story. Relatives round. “About six” can mean 17:40. Recalculate a range if the time is approximate and see whether the Ascendant stays put. If it does not, you do not have a rising sign yet.',
-          'Do not rectify a time to match a biography inside this calculator. Meridian will not invent a minute to make the tenth house look like your job title. If the time is unknown, mark it unknown. Read planets in signs and aspects. Leave houses for a day you have a clock.',
-          'Hospital records beat baptismal guesses. A time written as 16 h 30 is better than “late afternoon.” If the document uses an old local mean time, say so when you compare with another site; IANA conversion assumes the civil timezone of that date, which is what Meridian applies.',
+          'Do not rectify a time to match a biography inside this calculator. SideraChart will not invent a minute to make the tenth house look like your job title. If the time is unknown, mark it unknown. Read planets in signs and aspects. Leave houses for a day you have a clock.',
+          'Hospital records beat baptismal guesses. A time written as 16 h 30 is better than “late afternoon.” If the document uses an old local mean time, say so when you compare with another site; IANA conversion assumes the civil timezone of that date, which is what SideraChart applies.',
         ],
       },
       {
-        heading: 'What to enter on Meridian',
+        heading: 'What to enter on SideraChart',
         paragraphs: [
           'Date, time, place. Place is searched to coordinates; time is converted with IANA; planets come from VSOP87-class ephemerides; houses default to Placidus. If time is missing, use the unknown-time option. You still get a usable planetary chart. You do not get a rising sign.',
           'Later, the daily cabinet stores transits at noon in the natal timezone. That noon is a stable snapshot for transits, not a substitute for a missing birth time. Your natal Ascendant still needs the real minute. Do not mix those two noons.',
@@ -668,7 +668,7 @@ export const enArticles: Record<string, ArticleCopy> = {
       },
       {
         q: 'Is a noon birth chart accurate?',
-        a: 'It can estimate planetary signs on a quiet day. It is not an accurate Ascendant or house system. Meridian treats unknown time as planets only.',
+        a: 'It can estimate planetary signs on a quiet day. It is not an accurate Ascendant or house system. SideraChart treats unknown time as planets only.',
       },
       {
         q: 'Does birth place matter as much as time?',
@@ -676,7 +676,7 @@ export const enArticles: Record<string, ArticleCopy> = {
       },
       {
         q: 'Can I use 12:00 if I do not know the time?',
-        a: 'You can as a sketch for signs. Do not read houses or rising from it. Mark time unknown on Meridian instead of pretending noon is a fact.',
+        a: 'You can as a sketch for signs. Do not read houses or rising from it. Mark time unknown on SideraChart instead of pretending noon is a fact.',
       },
     ],
   },
@@ -689,13 +689,13 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'Can I make a birth chart without a birth time?',
         paragraphs: [
           'Yes, with a clear limit. Without a birth time you can still calculate planetary longitudes from the date (and a timezone/place for Universal Time). That gives you Sun through Pluto in tropical signs, and the major aspects among them. You cannot calculate a reliable Ascendant, Midheaven, or house cusps. The honest natal chart without a time is a planetary chart, not a full wheel of houses.',
-          'Meridian lets you mark time as unknown and then returns planets while skipping the rising sign. That is the correct product. Many sites silently use 12:00 and draw houses anyway. Those houses belong to whoever was born at noon, which is not a fact about you.',
+          'SideraChart lets you mark time as unknown and then returns planets while skipping the rising sign. That is the correct product. Many sites silently use 12:00 and draw houses anyway. Those houses belong to whoever was born at noon, which is not a fact about you.',
         ],
       },
       {
         heading: 'What you still get: planetary signs',
         paragraphs: [
-          'The Sun, Mercury, Venus, Mars and the outer planets move slowly enough that a calendar date usually locks the sign. Aspects among those bodies are also usable, with Meridian’s orbs of 8° conjunction and opposition, 6° square and trine, 4° sextile. You can read a lot of a chart this way: element balance, a stellium in one sign, a tight Saturn square to the Sun.',
+          'The Sun, Mercury, Venus, Mars and the outer planets move slowly enough that a calendar date usually locks the sign. Aspects among those bodies are also usable, with SideraChart’s orbs of 8° conjunction and opposition, 6° square and trine, 4° sextile. You can read a lot of a chart this way: element balance, a stellium in one sign, a tight Saturn square to the Sun.',
           'Place still helps, because timezone and daylight-saving convert the date into Universal Time. A birth near midnight can technically fall on the neighbouring date in UT. If you know the city but not the minute, enter the place and unknown time rather than a fake clock.',
         ],
       },
@@ -717,11 +717,11 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'Why noon is a guess, not a chart',
         paragraphs: [
           'Noon is popular because it is the middle of the civil day and because some historical ephemerides listed daily positions at noon. It is still a specific time. It produces a specific Ascendant for that latitude. Using it as a stand-in for “unknown” hides the uncertainty instead of labelling it.',
-          'If you must sketch, calculate planets at noon and ignore the house wheel. Meridian’s unknown-time path does that labelling for you. Polar births have a second problem: Placidus cusps break down above about 66° latitude even with a perfect time. That is a house-system limit, not a reason to fake a clock.',
+          'If you must sketch, calculate planets at noon and ignore the house wheel. SideraChart’s unknown-time path does that labelling for you. Polar births have a second problem: Placidus cusps break down above about 66° latitude even with a perfect time. That is a house-system limit, not a reason to fake a clock.',
         ],
       },
       {
-        heading: 'How to use Meridian without a time',
+        heading: 'How to use SideraChart without a time',
         paragraphs: [
           'Enter date and place, mark time unknown, read the planet table. Skip rising-sign tools. Skip any sentence that needs a house. You can still use planet-sign calculators for Sun, Moon (usually), Mercury, Venus and Mars. Tropical zodiac, VSOP87 via astronomy-engine, not Swiss Ephemeris, not sidereal.',
           'Aspects among the planets remain fair game. Sort them by orb the same way: 8° conjunction and opposition, 6° square and trine, 4° sextile. A tight Sun–Saturn square without houses is still a tight Sun–Saturn square. What you must not do is attach it to “tenth house career” until the Ascendant exists.',
@@ -733,7 +733,7 @@ export const enArticles: Record<string, ArticleCopy> = {
     faq: [
       {
         q: 'Can I cast a natal chart with only a birth date?',
-        a: 'You can cast planetary signs and aspects. You cannot cast a reliable Ascendant or houses. Meridian marks that limit when time is unknown.',
+        a: 'You can cast planetary signs and aspects. You cannot cast a reliable Ascendant or houses. SideraChart marks that limit when time is unknown.',
       },
       {
         q: 'Is a 12:00 birth time OK if I do not know the real time?',
@@ -758,27 +758,27 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'How to read a natal chart',
         paragraphs: [
           'A natal chart is easier if you refuse to read everything at once. Start with the Big Three — Sun, Moon, rising — then the houses that actually contain planets, then the tightest major aspects. The wheel is a map. The tables are the instrument. Numbers first: sign, degree, house, orb. Text second. That order keeps you from drowning in twelve sign essays before you know which rooms are occupied.',
-          'You need birth date, time and place for the full method. If time is unknown, drop rising and houses and read planets in signs plus aspects. Meridian follows that split. Do not “how to read a natal chart” your way around a missing clock by pretending noon is data. Write the gap on the page.',
+          'You need birth date, time and place for the full method. If time is unknown, drop rising and houses and read planets in signs plus aspects. SideraChart follows that split. Do not “how to read a natal chart” your way around a missing clock by pretending noon is data. Write the gap on the page.',
         ],
       },
       {
         heading: 'Start with Sun, Moon and rising',
         paragraphs: [
           'Sun is the daylight plot, from the date. Moon is the faster inner weather; check whether it changed sign that day. Rising is the eastern horizon and only exists with a time. Read whether the three rhyme or argue. Then look at aspects among them with orbs of 8° / 6° / 4°.',
-          'If you only have the Sun, you do not yet know how to read the chart; you know one coordinate. Meridian’s wheel puts those three glyphs where you can see them before you hunt for asteroids or hypothetical points this site does not use.',
+          'If you only have the Sun, you do not yet know how to read the chart; you know one coordinate. SideraChart’s wheel puts those three glyphs where you can see them before you hunt for asteroids or hypothetical points this site does not use.',
         ],
       },
       {
         heading: 'Then read occupied houses',
         paragraphs: [
           'Houses are local departments. A planet in the tenth is not the same as that planet in the fourth, even in the same sign. List the houses that contain bodies. Those are the loud rooms. Empty houses are not defects; they are rooms without a planet sitting in them. There is a separate article for that.',
-          'Meridian defaults to Placidus because most Western texts assume it. Whole Sign is the other grid. Polar latitudes above about 66° should not force broken Placidus cusps. If the time is unknown, skip this entire step. Planet-in-house language without an Ascendant is fiction.',
+          'SideraChart defaults to Placidus because most Western texts assume it. Whole Sign is the other grid. Polar latitudes above about 66° should not force broken Placidus cusps. If the time is unknown, skip this entire step. Planet-in-house language without an Ascendant is fiction.',
         ],
       },
       {
         heading: 'Then read the tightest aspects',
         paragraphs: [
-          'Aspects are named angles: conjunction, sextile, square, trine, opposition. Sort by orb, tightest first. A 0.4° Sun–Saturn conjunction outranks a 7.8° Mars trine. Meridian draws the five majors and lists applying or separating in the table. Hide the lines on the wheel if the drawing is noisy; the table remains.',
+          'Aspects are named angles: conjunction, sextile, square, trine, opposition. Sort by orb, tightest first. A 0.4° Sun–Saturn conjunction outranks a 7.8° Mars trine. SideraChart draws the five majors and lists applying or separating in the table. Hide the lines on the wheel if the drawing is noisy; the table remains.',
           'Do not moralise aspects. Squares are friction that builds a skill if you work them; they are not curses. Trines are ease that can go lazy. Conjunctions fuse functions. Oppositions polarise. Keep the geometry. Drop “the universe wants.”',
         ],
       },
@@ -786,11 +786,11 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'Wheel versus tables versus written layer',
         paragraphs: [
           'The outer ring is signs. The inner divisions are houses. Glyphs sit on longitudes. Coloured lines are aspects. Open a table row for the exact sign, house and degree. The written cards under a saved chart are a cached interpretation layer, not a live language model inventing new physics.',
-          'A PNG export is a snapshot for sharing. The live tables are what you reread. If another site disagrees, match tropical zodiac, Placidus, and the same birth time zone before you blame ephemerides. Meridian uses astronomy-engine (VSOP87), not Swiss Ephemeris. Differences of a few arcminutes are expected; a whole sign usually means a sidereal setting or a wrong clock.',
+          'A PNG export is a snapshot for sharing. The live tables are what you reread. If another site disagrees, match tropical zodiac, Placidus, and the same birth time zone before you blame ephemerides. SideraChart uses astronomy-engine (VSOP87), not Swiss Ephemeris. Differences of a few arcminutes are expected; a whole sign usually means a sidereal setting or a wrong clock.',
         ],
       },
       {
-        heading: 'A working order on Meridian',
+        heading: 'A working order on SideraChart',
         paragraphs: [
           'Calculate the chart. Confirm date, time, place, tropical, Placidus. Read Sun, Moon, Ascendant. Scan occupied houses. Sort aspects by orb. Only then open sign-by-sign copy. Save the chart if you want the report and the daily cabinet. Transits in the cabinet are stored at noon natal time; they are a later step, not step one of reading the natal.',
           'Keep a working note of three facts only at first: the Big Three, the most occupied house, the tightest aspect. That is a natal-chart reading you can actually finish. Expand to rulers of empty houses and slow transits after those three facts are stable.',
@@ -806,7 +806,7 @@ export const enArticles: Record<string, ArticleCopy> = {
       },
       {
         q: 'How do I read a natal chart without a birth time?',
-        a: 'Read planetary signs and aspects only. Skip the Ascendant and all house statements. Meridian omits rising when time is unknown.',
+        a: 'Read planetary signs and aspects only. Skip the Ascendant and all house statements. SideraChart omits rising when time is unknown.',
       },
       {
         q: 'Do I read signs or houses first?',
@@ -814,20 +814,20 @@ export const enArticles: Record<string, ArticleCopy> = {
       },
       {
         q: 'What orbs should I use when reading aspects?',
-        a: 'Meridian uses 8° for conjunction and opposition, 6° for square and trine, 4° for sextile. Tighter orbs first.',
+        a: 'SideraChart uses 8° for conjunction and opposition, 6° for square and trine, 4° for sextile. Tighter orbs first.',
       },
     ],
   },
   'houses-in-a-birth-chart': {
     title: 'What are houses in a birth chart?',
     excerpt:
-      'Houses are twelve local sectors of the birth sky, not zodiac signs. They need a birth time. Meridian defaults to Placidus; unknown time means no honest houses.',
+      'Houses are twelve local sectors of the birth sky, not zodiac signs. They need a birth time. SideraChart defaults to Placidus; unknown time means no honest houses.',
     sections: [
       {
         heading: 'What are houses in a birth chart?',
         paragraphs: [
           'Houses are twelve sectors of the sky as seen from the birthplace at the birth moment. They are not signs. Signs are 30° slices of the tropical zodiac along the ecliptic. Houses are a local frame: which part of that sky was rising, culminating, setting. A planet’s sign is its style. A planet’s house is the department of life where that style is easy to spot.',
-          'You cannot have houses without a birth time, because the frame is tied to the horizon. Unknown time = planets yes, houses no. People who publish house readings from a noon placeholder are describing noon, not an unknown minute. Meridian does not do that by default.',
+          'You cannot have houses without a birth time, because the frame is tied to the horizon. Unknown time = planets yes, houses no. People who publish house readings from a noon placeholder are describing noon, not an unknown minute. SideraChart does not do that by default.',
         ],
       },
       {
@@ -838,9 +838,9 @@ export const enArticles: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: 'Placidus is the default on Meridian',
+        heading: 'Placidus is the default on SideraChart',
         paragraphs: [
-          'Placidus divides time of ascension rather than equal slices of space, so houses are uneven. Meridian defaults to it because most published Western interpretations assume Placidus. Whole Sign is available: house I is the whole sign that contains the Ascendant, then the next signs in order. Neither system is Vedic sidereal practice; both here sit on tropical longitudes from astronomy-engine (VSOP87).',
+          'Placidus divides time of ascension rather than equal slices of space, so houses are uneven. SideraChart defaults to it because most published Western interpretations assume Placidus. Whole Sign is available: house I is the whole sign that contains the Ascendant, then the next signs in order. Neither system is Vedic sidereal practice; both here sit on tropical longitudes from astronomy-engine (VSOP87).',
           'Above roughly 66° latitude Placidus cusps can fail. For those births, Whole Sign is the more honest grid. Planetary positions are calculated either way. If a site disagrees with your houses, check the house system before the ephemeris. Swiss Ephemeris is not in this stack; a system mismatch is the usual culprit.',
         ],
       },
@@ -856,13 +856,13 @@ export const enArticles: Record<string, ArticleCopy> = {
         paragraphs: [
           'In Placidus a house cusp is the boundary degree. A planet near a cusp is a judgement call; this site does not secretly move it to the next house for you. Intercepted signs — a sign swallowed inside a house with no cusp — happen at higher latitudes when houses stretch. Whole Sign avoids that geometry by tying houses to signs.',
           'If your birth is polar, do not torture Placidus. Switch system. If your birth time is rounded, recalculate a range and see whether planets change houses. If they do, those house statements are provisional.',
-          'OpenStreetMap Nominatim supplies the coordinates Meridian uses for place. A city-centre pin is not a hospital pin; for houses the difference is usually small, but at high latitude or near a cusp it can matter. Prefer the actual birth town over a later hometown.',
+          'OpenStreetMap Nominatim supplies the coordinates SideraChart uses for place. A city-centre pin is not a hospital pin; for houses the difference is usually small, but at high latitude or near a cusp it can matter. Prefer the actual birth town over a later hometown.',
         ],
       },
       {
         heading: 'How to read houses on the wheel',
         paragraphs: [
-          'On Meridian the inner divisions are houses, counted from the Ascendant at the left. Glyphs sit on ecliptic longitude; the table tells you which house number that longitude fell in. Aspects stay on the ecliptic (orbs 8° / 6° / 4°) and do not care about house walls. House walls care about the clock.',
+          'On SideraChart the inner divisions are houses, counted from the Ascendant at the left. Glyphs sit on ecliptic longitude; the table tells you which house number that longitude fell in. Aspects stay on the ecliptic (orbs 8° / 6° / 4°) and do not care about house walls. House walls care about the clock.',
           'Save the chart to keep the house system with the report. Daily transits in the cabinet are computed at noon natal time against that natal frame. Transiting planets through houses only make sense if the natal houses were real in the first place — which, again, means you had a birth time.',
           'If you switch from Placidus to Whole Sign after saving, recalculate rather than mentally dragging glyphs. The planet did not move; the walls did. Note the system on any screenshot you share so a later comparison is not a fake disagreement.',
         ],
@@ -875,7 +875,7 @@ export const enArticles: Record<string, ArticleCopy> = {
       },
       {
         q: 'Which house system should I use?',
-        a: 'Placidus is Meridian’s default and matches most Western texts. Use Whole Sign at high latitudes or if you want one sign per house.',
+        a: 'Placidus is SideraChart’s default and matches most Western texts. Use Whole Sign at high latitudes or if you want one sign per house.',
       },
       {
         q: 'Can I read houses without a birth time?',
@@ -910,7 +910,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'Rulership still counts',
         paragraphs: [
           'If the seventh house is empty but its cusp is in Libra, Venus still has a say as the traditional ruler. You will find Venus somewhere else in the chart — maybe in the second, maybe conjunct Saturn. That placement is how the empty house “speaks” without a resident. This is structure, not mysticism.',
-          'Meridian’s tables list planets in houses. They do not hide empty houses; they simply have no glyph there. Look at the cusp sign in the wheel if you want the ruler. Aspects (orbs 8° / 6° / 4°) can also tie a planet to topics associated with a house it does not occupy, because aspects are ecliptic angles, not room assignments.',
+          'SideraChart’s tables list planets in houses. They do not hide empty houses; they simply have no glyph there. Look at the cusp sign in the wheel if you want the ruler. Aspects (orbs 8° / 6° / 4°) can also tie a planet to topics associated with a house it does not occupy, because aspects are ecliptic angles, not room assignments.',
         ],
       },
       {
@@ -923,13 +923,13 @@ export const enArticles: Record<string, ArticleCopy> = {
       {
         heading: 'Unknown time and fake empty houses',
         paragraphs: [
-          'Without a birth time, every empty-house statement is invalid, because the walls are invalid. Do not use a 12:00 chart to announce that your fourth house is empty. Mark time unknown on Meridian and skip houses. You can still talk about empty signs — no planet in Scorpio, for example — because signs do not need the horizon.',
+          'Without a birth time, every empty-house statement is invalid, because the walls are invalid. Do not use a 12:00 chart to announce that your fourth house is empty. Mark time unknown on SideraChart and skip houses. You can still talk about empty signs — no planet in Scorpio, for example — because signs do not need the horizon.',
           'If the time is approximate, recalculate a range. Planets that hop houses will create and destroy “emptiness” in twenty minutes. Treat those houses as unresolved. The Ascendant’s four-minute-per-degree motion is the same clock that makes empty-house lists fragile.',
           'Whole Sign can empty and fill different rooms than Placidus with the same planets. If you switch systems to “fix” an empty house you dislike, you are editing the grid, not the sky. Pick one system and read the crowding you actually have.',
         ],
       },
       {
-        heading: 'How to read them on Meridian',
+        heading: 'How to read them on SideraChart',
         paragraphs: [
           'Calculate with date, time and place, tropical, Placidus unless you have a reason to switch. List occupied houses. The rest are empty. Read occupied first. Use cusp rulers if you need a second pass. Do not rank life areas by emptiness.',
           'Transits through an empty natal house are still transits through that sector of the natal frame. The daily cabinet stores them at noon in the natal timezone. A transit does not “fill” a natal empty house permanently. It is weather in that room for a while. The natal house remains empty of natal planets.',
@@ -959,13 +959,13 @@ export const enArticles: Record<string, ArticleCopy> = {
   'aspects-in-astrology': {
     title: 'What are aspects in astrology?',
     excerpt:
-      'Aspects are named angles between planets along the ecliptic: conjunction, sextile, square, trine, opposition. Meridian uses orbs of 8°, 6° and 4° for those five.',
+      'Aspects are named angles between planets along the ecliptic: conjunction, sextile, square, trine, opposition. SideraChart uses orbs of 8°, 6° and 4° for those five.',
     sections: [
       {
         heading: 'What are aspects in astrology?',
         paragraphs: [
           'Aspects are angular distances along the ecliptic between two natal longitudes. They are geometry, not fate-lines. If two planets are 90° apart, that is a square. If they are 120° apart, that is a trine. The natal chart lists the ones inside an allowed orb. People search “what are aspects in astrology?” because the wheel’s coloured lines look like a secret language. They are a protractor.',
-          'Meridian draws five major aspects: conjunction (0°), sextile (60°), square (90°), trine (120°), opposition (180°). Orbs are 8° for conjunction and opposition, 6° for square and trine, 4° for sextile. Tighter orbs are louder. The table under the wheel is the same list as the lines, with applying or separating motion.',
+          'SideraChart draws five major aspects: conjunction (0°), sextile (60°), square (90°), trine (120°), opposition (180°). Orbs are 8° for conjunction and opposition, 6° for square and trine, 4° for sextile. Tighter orbs are louder. The table under the wheel is the same list as the lines, with applying or separating motion.',
         ],
       },
       {
@@ -978,14 +978,14 @@ export const enArticles: Record<string, ArticleCopy> = {
       {
         heading: 'Orbs: 8°, 6° and 4°',
         paragraphs: [
-          'An orb is how far from exact the contact may be and still count. Meridian’s stack is 8° / 6° / 4° as above. A Sun–Moon conjunction at 7.2° counts; a Mercury sextile at 4.5° does not. Other software uses different orbs, which is why aspect lists disagree even when longitudes match.',
+          'An orb is how far from exact the contact may be and still count. SideraChart’s stack is 8° / 6° / 4° as above. A Sun–Moon conjunction at 7.2° counts; a Mercury sextile at 4.5° does not. Other software uses different orbs, which is why aspect lists disagree even when longitudes match.',
           'Sort by tightness. A 0.3° aspect outranks a 7.9° aspect of the same type. If you are learning, ignore anything near the edge until the tight ones are clear. Exactness is not moral purity; it is volume on the instrument.',
         ],
       },
       {
         heading: 'Applying, separating and birth time',
         paragraphs: [
-          'Applying means the aspect was getting tighter at birth; separating means it had already peaked and was widening. Meridian flags this in the natal table. It is a timing nuance inside the birth moment, not a forecast. You still need decent longitudes, which means a decent Universal Time.',
+          'Applying means the aspect was getting tighter at birth; separating means it had already peaked and was widening. SideraChart flags this in the natal table. It is a timing nuance inside the birth moment, not a forecast. You still need decent longitudes, which means a decent Universal Time.',
           'Without a birth time, planet-to-planet aspects still exist. Aspects to the Ascendant do not, because there is no Ascendant. The Moon’s aspects near an orb boundary can flip across a day. Unknown time: planets yes, houses no; Moon aspects near 8°/6°/4° maybe. Do not fight with a noon chart over a 5.9° Moon square.',
         ],
       },
@@ -993,12 +993,12 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'What aspects are not',
         paragraphs: [
           'They are not synastry by themselves — synastry is aspects between two charts. They are not transits — transits are today’s planets to natal planets. They are not medical, legal or financial advice. A Mars square Saturn does not prescribe a workout or a lawsuit. It describes friction between initiating heat and structure.',
-          'Minor aspects (quincunx, semisquare, and the rest) are not drawn here. If another site shows more lines, it is using a wider catalogue, not a more accurate sky. Meridian stays with the five majors on tropical longitudes from astronomy-engine (VSOP87), not Swiss Ephemeris.',
+          'Minor aspects (quincunx, semisquare, and the rest) are not drawn here. If another site shows more lines, it is using a wider catalogue, not a more accurate sky. SideraChart stays with the five majors on tropical longitudes from astronomy-engine (VSOP87), not Swiss Ephemeris.',
           'Stelliums produce stacks of conjunctions. Read the tightest pair first rather than declaring the whole pile one mood. An empty house does not cancel an aspect that happens to involve a planet in another house; aspects ignore walls. Houses need the birth time; aspects between planets do not.',
         ],
       },
       {
-        heading: 'How Meridian shows aspects',
+        heading: 'How SideraChart shows aspects',
         paragraphs: [
           'Coloured lines inside the wheel; a sortable table under it. Hide the lines if the drawing is cluttered. Synastry uses the same orbs between two people’s planets. Composite charts have their own midpoints and then their own internal aspects. Daily transits in the cabinet are stored at noon natal time and use the same aspect names against the natal baseline.',
           'When you compare with astro-seek or similar, set tropical, the same time zone, and comparable orbs. A missing aspect is often an orb or a sidereal setting. Placidus vs Whole Sign will not change ecliptic aspects between planets; it will change house-based sentences you might mix in by mistake.',
@@ -1009,11 +1009,11 @@ export const enArticles: Record<string, ArticleCopy> = {
     faq: [
       {
         q: 'What are the major aspects in astrology?',
-        a: 'Conjunction, sextile, square, trine and opposition. Those are the five Meridian draws. Orbs are 8°, 6° and 4° depending on the aspect.',
+        a: 'Conjunction, sextile, square, trine and opposition. Those are the five SideraChart draws. Orbs are 8°, 6° and 4° depending on the aspect.',
       },
       {
         q: 'What does orb mean in astrology?',
-        a: 'How many degrees from exact an aspect may be and still count. Tighter orbs are stronger on the instrument. Meridian’s set is 8° / 6° / 4°.',
+        a: 'How many degrees from exact an aspect may be and still count. Tighter orbs are stronger on the instrument. SideraChart’s set is 8° / 6° / 4°.',
       },
       {
         q: 'Are square aspects bad?',
@@ -1028,26 +1028,26 @@ export const enArticles: Record<string, ArticleCopy> = {
   'tropical-vs-sidereal': {
     title: 'Tropical vs sidereal zodiac',
     excerpt:
-      'Tropical zodiac starts at the March equinox. Sidereal uses a star zero point, about 24° away today. Meridian is tropical only — not Vedic, not Swiss Ephemeris.',
+      'Tropical zodiac starts at the March equinox. Sidereal uses a star zero point, about 24° away today. SideraChart is tropical only — not Vedic, not Swiss Ephemeris.',
     sections: [
       {
         heading: 'Tropical vs sidereal zodiac',
         paragraphs: [
           'Tropical vs sidereal is a zero-point argument. Both zodiacs divide the ecliptic into twelve 30° signs with the same names. They do not start in the same place. Tropical 0° Aries is the March equinox — the Sun’s crossing of the celestial equator. Sidereal 0° Aries is tied to a star reference (an ayanamsha). Because Earth’s axis precesses, those two zeros have drifted apart by roughly 24° today.',
-          'That gap is why your Sun sign in a Vedic app is often the previous sign compared with Meridian. Neither calculator is “wrong about the sky.” They are using different origins for the same named belt. Meridian is tropical: Western convention, equinox-based, astronomy-engine (VSOP87). It does not compute sidereal, Vedic or Chinese systems.',
+          'That gap is why your Sun sign in a Vedic app is often the previous sign compared with SideraChart. Neither calculator is “wrong about the sky.” They are using different origins for the same named belt. SideraChart is tropical: Western convention, equinox-based, astronomy-engine (VSOP87). It does not compute sidereal, Vedic or Chinese systems.',
         ],
       },
       {
         heading: 'What the tropical zodiac measures',
         paragraphs: [
           'Tropical signs are seasons of Earth’s orbit, not photographs of constellations. The constellations are unequal and precess. Tropical Aries begins when day and night match in March (in the northern-hemisphere calendar sense of the equinox), regardless of which star field sits behind that point now. Western natal astrology — including this site — reads those seasonal signs.',
-          'Your natal planets on Meridian are apparent tropical longitudes of date. Houses (Placidus default) sit on top of that tropical ecliptic. Birth date, time and place still matter in the usual way: time for the Ascendant, unknown time = planets yes, houses no. Changing zodiacs is a separate switch from changing house systems.',
+          'Your natal planets on SideraChart are apparent tropical longitudes of date. Houses (Placidus default) sit on top of that tropical ecliptic. Birth date, time and place still matter in the usual way: time for the Ascendant, unknown time = planets yes, houses no. Changing zodiacs is a separate switch from changing house systems.',
         ],
       },
       {
         heading: 'What the sidereal zodiac measures',
         paragraphs: [
-          'Sidereal practice aims to keep signs aligned with a stellar frame. Different ayanamshas (Lahiri and others) pick slightly different offsets. Indian natal astrology is typically sidereal and often uses whole-sign or other house methods that are not this site’s defaults. If you want that chart, you need that engine. Meridian will not pretend to be it.',
+          'Sidereal practice aims to keep signs aligned with a stellar frame. Different ayanamshas (Lahiri and others) pick slightly different offsets. Indian natal astrology is typically sidereal and often uses whole-sign or other house methods that are not this site’s defaults. If you want that chart, you need that engine. SideraChart will not pretend to be it.',
           'Chinese natal systems are another stack again — not tropical, not the same twelve-sign wheel. Do not paste a Chinese year animal onto a tropical Sun and call it the same coordinate. If you came here from a mixed search, pick one system and stay there while you learn.',
         ],
       },
@@ -1055,11 +1055,11 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'The roughly 24° gap and ayanamsha',
         paragraphs: [
           'Twenty-four degrees is about four-fifths of a sign. Many placements therefore fall in the preceding tropical-named sign when you switch to sidereal. A tropical Gemini Sun often becomes a sidereal Taurus Sun. Moons near a boundary flip more often because the Moon is fast. Rising signs flip too, because the Ascendant is a degree.',
-          'If you compare two tropical sites and they already disagree by a sign, look at birth time and timezone first, not ayanamsha. Sidereal is the explanation when one site is explicitly Vedic or “sidereal” and the other is Western tropical. Meridian will not match a Lahiri printout. That is expected.',
+          'If you compare two tropical sites and they already disagree by a sign, look at birth time and timezone first, not ayanamsha. Sidereal is the explanation when one site is explicitly Vedic or “sidereal” and the other is Western tropical. SideraChart will not match a Lahiri printout. That is expected.',
         ],
       },
       {
-        heading: 'Why Meridian is tropical only',
+        heading: 'Why SideraChart is tropical only',
         paragraphs: [
           'The product is a Western natal-chart calculator: tropical zodiac, Placidus default, Whole Sign optional, major aspects at 8° / 6° / 4°, VSOP87-class positions via astronomy-engine, IANA timezones. It is not Swiss Ephemeris. It is not a sidereal switch. Keeping one zero point avoids a silent 24° error when you think you are looking at “the same chart.”',
           'Use tropical if you want to read Western texts, most English-language natal cookbooks, and this site’s written layer. Use a sidereal specialist if that is your tradition. Do not average the two Suns. Do not treat the disagreement as a personality crisis. It is a coordinate-system clash.',
@@ -1069,8 +1069,8 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'Matching other websites',
         paragraphs: [
           'On astro-seek, astro.com and similar, set tropical + Placidus (or Whole Sign if that is what you used) and the same birth time. You should land within a fraction of a degree on planets. If you are off by a sign, you are in sidereal or you have the wrong clock. If houses differ but planets match, you have a house-system mismatch.',
-          'Transits in Meridian’s cabinet are tropical transits stored at noon in the natal timezone. Mixing tropical natal with sidereal transits is the same 24° error in motion. Keep the zodiac consistent. The natal chart is the baseline; transits are weather against that baseline, in the same coordinate system.',
-          'If you publish a chart, name the zodiac in the caption: tropical, Placidus, birth time known or unknown. That single line prevents most “your calculator is wrong” threads. Meridian’s caption already shows tropical and Placidus when the wheel is complete.',
+          'Transits in SideraChart’s cabinet are tropical transits stored at noon in the natal timezone. Mixing tropical natal with sidereal transits is the same 24° error in motion. Keep the zodiac consistent. The natal chart is the baseline; transits are weather against that baseline, in the same coordinate system.',
+          'If you publish a chart, name the zodiac in the caption: tropical, Placidus, birth time known or unknown. That single line prevents most “your calculator is wrong” threads. SideraChart’s caption already shows tropical and Placidus when the wheel is complete.',
         ],
       },
     ],
@@ -1080,7 +1080,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         a: 'Tropical measures from the vernal equinox. Sidereal measures from a star-based zero point. They differ by about 24° today, often a whole sign.',
       },
       {
-        q: 'Which zodiac does Meridian use?',
+        q: 'Which zodiac does SideraChart use?',
         a: 'Tropical only, with positions from astronomy-engine (VSOP87). It does not calculate sidereal, Vedic or Chinese charts and does not use Swiss Ephemeris.',
       },
       {
@@ -1102,13 +1102,13 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'Synastry vs composite chart',
         paragraphs: [
           'Synastry vs composite is two different relationship maps, not two names for one map. Synastry keeps both people. You calculate two natal charts, overlay the planets, and list aspects from person A to person B. A composite chart discards the two wheels as separate people and builds a third chart from midpoints. People search the comparison because apps use the words as if they were interchangeable. They are not.',
-          'Meridian offers both as separate calculators. Each natal is tropical, Placidus by default, VSOP87 via astronomy-engine. Synastry aspects use the same orbs as a natal aspectarian: 8° conjunction and opposition, 6° square and trine, 4° sextile. Neither wheel is a verdict on whether to stay together, marry, or split assets. They are diagrams.',
+          'SideraChart offers both as separate calculators. Each natal is tropical, Placidus by default, VSOP87 via astronomy-engine. Synastry aspects use the same orbs as a natal aspectarian: 8° conjunction and opposition, 6° square and trine, 4° sextile. Neither wheel is a verdict on whether to stay together, marry, or split assets. They are diagrams.',
         ],
       },
       {
         heading: 'What synastry does',
         paragraphs: [
-          'Synastry leaves both charts intact. On Meridian, one set of glyphs is person A, the other is person B. The table lists inter-chart aspects, not the internal aspects of one natal. You are asking what happens when two skies share a kitchen: her Saturn on his Moon, his Mars on her Ascendant, a Sun–Sun trine.',
+          'Synastry leaves both charts intact. On SideraChart, one set of glyphs is person A, the other is person B. The table lists inter-chart aspects, not the internal aspects of one natal. You are asking what happens when two skies share a kitchen: her Saturn on his Moon, his Mars on her Ascendant, a Sun–Sun trine.',
           'Each person still needs their own birth date, time and place. If one time is unknown, that person’s Ascendant and houses drop out. You can still synastry planet-to-planet. You cannot honestly talk about “their planets in your seventh house” without that person’s rising sign. Unknown time = planets yes, houses no — per chart.',
         ],
       },
@@ -1116,7 +1116,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'What a composite chart does',
         paragraphs: [
           'A composite takes each pair of natal planets (A’s Sun and B’s Sun, A’s Moon and B’s Moon, and so on) and finds the shorter-arc midpoint, then draws a new wheel. The result is the relationship as a third entity, not either person. It is not a Davison chart, which midpoints in time and space to a hypothetical birth of the relationship.',
-          'Composite houses still need a location convention and, in practice, a way to set angles. Read the composite as a separate instrument. Do not mix one person’s natal house meanings into composite midpoints without noticing you changed maps. Meridian’s composite calculator is that third wheel, not a synastry overlay.',
+          'Composite houses still need a location convention and, in practice, a way to set angles. Read the composite as a separate instrument. Do not mix one person’s natal house meanings into composite midpoints without noticing you changed maps. SideraChart’s composite calculator is that third wheel, not a synastry overlay.',
         ],
       },
       {
@@ -1134,7 +1134,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: 'How to run them on Meridian',
+        heading: 'How to run them on SideraChart',
         paragraphs: [
           'Use the synastry calculator for overlays and inter-aspects. Use the composite calculator for midpoints. Same tropical engine, not sidereal, not Swiss Ephemeris. One free relationship run without an account; then sign in. Save individual natals if you also want daily transits in each cabinet at noon natal time — those transits are personal weather, not a couple forecast unless you build that separately.',
           'When comparing with other sites, match tropical, Placidus, orbs, and whether they mean synastry or composite. A site that “combines charts” without saying midpoint vs overlay is the reason this article exists. Look at the wheel: two sets of planets means synastry; one set of mixed midpoints means composite.',
@@ -1157,20 +1157,20 @@ export const enArticles: Record<string, ArticleCopy> = {
       },
       {
         q: 'Is a composite chart the same as a Davison chart?',
-        a: 'No. Composite uses planetary midpoints. Davison midpoints the two birth times and places into a hypothetical event. Meridian’s composite is the midpoint wheel.',
+        a: 'No. Composite uses planetary midpoints. Davison midpoints the two birth times and places into a hypothetical event. SideraChart’s composite is the midpoint wheel.',
       },
     ],
   },
   'what-are-transits': {
     title: 'What are transits in astrology?',
     excerpt:
-      'Transits are today’s positions compared with your natal chart. They are weather against a fixed baseline, not a new birth chart. Meridian stores them at noon.',
+      'Transits are today’s positions compared with your natal chart. They are weather against a fixed baseline, not a new birth chart. SideraChart stores them at noon.',
     sections: [
       {
         heading: 'What are transits in astrology?',
         paragraphs: [
           'Transits are the planets in the sky now (or on a chosen date) measured against the planets in your natal chart. The natal chart stays put: it is the baseline from your birth date, time and place. Transits move. A transiting Saturn square your natal Sun is a temporary contact between today’s Saturn and the Sun you were born with. People search “what are transits in astrology?” when they want to know whether the natal chart changes. It does not. The weather over it does.',
-          'Meridian calculates transits with the same tropical engine as the natal: astronomy-engine (VSOP87), major aspects at 8° / 6° / 4°. The daily cabinet stores one overlay per calendar date at noon in the natal timezone, so the day’s note stays stable if you refresh at 23:00. Missed dates are not backfilled.',
+          'SideraChart calculates transits with the same tropical engine as the natal: astronomy-engine (VSOP87), major aspects at 8° / 6° / 4°. The daily cabinet stores one overlay per calendar date at noon in the natal timezone, so the day’s note stays stable if you refresh at 23:00. Missed dates are not backfilled.',
         ],
       },
       {
@@ -1188,7 +1188,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         ],
       },
       {
-        heading: 'Why Meridian uses noon in the natal timezone',
+        heading: 'Why SideraChart uses noon in the natal timezone',
         paragraphs: [
           'A “day” of transits has to pick a moment. If the cabinet recomputed at every page load, the Moon would wander and the note would not match yesterday’s screenshot. Noon in the natal timezone is a stable civil snapshot for that date. It is not your birth time, and it is not a claim that transits only matter at lunch.',
           'The cabinet writes one row per calendar date when you open it. Tomorrow, yesterday’s row remains. A skipped week stays skipped; the product does not invent history. You need a saved natal and an account for that journal. Public calculators remain usable without signing in.',
@@ -1198,7 +1198,7 @@ export const enArticles: Record<string, ArticleCopy> = {
         heading: 'How to read a transit day',
         paragraphs: [
           'List transiting planets that make major aspects to natal Sun, Moon, rising (if you have a time), and any tight natal configurations. Prefer slow contacts for the headline, fast ones for the weather. Do not promote a transiting Moon square to a life decision. Do not ignore a transiting Saturn conjunction to natal Sun either; just do not turn it into legal or medical advice.',
-          'Keep tropical transits on a tropical natal. Sidereal transits on a tropical natal mix zero points and waste the 24° gap. Meridian will not do that mix. Placidus natal houses, if they exist, are the rooms transits pass through. Empty natal houses can still receive transits; emptiness was about natal planets, not a ban on later traffic.',
+          'Keep tropical transits on a tropical natal. Sidereal transits on a tropical natal mix zero points and waste the 24° gap. SideraChart will not do that mix. Placidus natal houses, if they exist, are the rooms transits pass through. Empty natal houses can still receive transits; emptiness was about natal planets, not a ban on later traffic.',
         ],
       },
       {
@@ -1217,10 +1217,10 @@ export const enArticles: Record<string, ArticleCopy> = {
       },
       {
         q: 'Do transits change my natal chart?',
-        a: 'No. Transits overlay the natal. Meridian stores each day’s overlay at noon in the natal timezone. Your birth positions do not move.',
+        a: 'No. Transits overlay the natal. SideraChart stores each day’s overlay at noon in the natal timezone. Your birth positions do not move.',
       },
       {
-        q: 'Why does Meridian calculate daily transits at noon?',
+        q: 'Why does SideraChart calculate daily transits at noon?',
         a: 'So the day’s note is stable. Noon in the natal timezone is a consistent snapshot. It is not a substitute for your birth time.',
       },
       {

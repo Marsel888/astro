@@ -9,8 +9,8 @@ import {
 } from 'astronomy-engine';
 import { DateTime } from 'luxon';
 import { calculateHouses, houseOf, type HouseSystem } from './houses';
-import { angularSep, norm360 } from './math';
-import { SIGNS, type BodyPoint } from '../chart';
+import { angularSep, norm360, signedDelta } from './math';
+import { ASPECT_DEFS, SIGNS, type BodyPoint } from '../chart';
 
 export type ChartInput = {
   date: string;
@@ -55,6 +55,8 @@ export type ChartResult = {
   placeLabel?: string;
   timeUnknown: boolean;
   houseSystem: HouseSystem;
+  /** What the cusps really are. Placidus degrades to Porphyry inside the polar circle. */
+  houseSystemResolved: HouseSystem | 'porphyry';
   obliquity: number;
   lstDeg: number;
   jd: number;
@@ -78,14 +80,6 @@ const PLANETS: Array<{ key: string; name: string; glyph: string; body: Body }> =
   { key: 'uranus', name: 'Uranus', glyph: '♅', body: Body.Uranus },
   { key: 'neptune', name: 'Neptune', glyph: '♆', body: Body.Neptune },
   { key: 'pluto', name: 'Pluto', glyph: '♇', body: Body.Pluto },
-];
-
-const ASPECTS: Array<{ name: string; symbol: string; angle: number; orb: number }> = [
-  { name: 'conjunction', symbol: '☌', angle: 0, orb: 8 },
-  { name: 'sextile', symbol: '⚹', angle: 60, orb: 4 },
-  { name: 'square', symbol: '□', angle: 90, orb: 6 },
-  { name: 'trine', symbol: '△', angle: 120, orb: 6 },
-  { name: 'opposition', symbol: '☍', angle: 180, orb: 8 },
 ];
 
 function tropicalLon(body: Body, time: Date | import('astronomy-engine').AstroTime): number {
@@ -136,18 +130,18 @@ export function aspectsBetween(
       const A = groupA[i];
       const B = listB[j];
       const s = angularSep(A.lon, B.lon);
-      const def = ASPECTS.find((d) => Math.abs(s - d.angle) <= d.orb);
+      const def = ASPECT_DEFS.find((d) => Math.abs(s - d.ang) <= d.orb);
       if (!def) continue;
-      const orb = Math.abs(s - def.angle);
+      const orb = Math.abs(s - def.ang);
       const future = angularSep(A.lon + A.speed / 24, B.lon + B.speed / 24);
       out.push({
         a: A.name,
         b: B.name,
         type: def.name,
-        symbol: def.symbol,
-        angle: def.angle,
+        symbol: def.sym,
+        angle: def.ang,
         orb,
-        applying: Math.abs(future - def.angle) < orb,
+        applying: Math.abs(future - def.ang) < orb,
       });
     }
   }
@@ -200,6 +194,7 @@ export function compositeChart(left: ChartResult, right: ChartResult): ChartResu
     placeLabel: [left.placeLabel, right.placeLabel].filter(Boolean).join(' × '),
     timeUnknown,
     houseSystem: 'whole-sign',
+    houseSystemResolved: 'whole-sign',
     obliquity: left.obliquity,
     lstDeg: left.lstDeg,
     jd: (left.jd + right.jd) / 2,
@@ -248,7 +243,8 @@ export function calculateChart(input: ChartInput): ChartResult {
   const utc = local.toUTC();
   const jsDate = utc.toJSDate();
   const astroTime = MakeTime(jsDate);
-  const nextDay = MakeTime(new Date(jsDate.getTime() + 86_400_000));
+  const halfDayBefore = MakeTime(new Date(jsDate.getTime() - 43_200_000));
+  const halfDayAfter = MakeTime(new Date(jsDate.getTime() + 43_200_000));
 
   const gastHours = SiderealTime(astroTime);
   const lstDeg = norm360(gastHours * 15 + input.lon);
@@ -265,10 +261,12 @@ export function calculateChart(input: ChartInput): ChartResult {
 
   const bodies: ChartPlanet[] = PLANETS.map(({ key, name, glyph, body }) => {
     const lon = tropicalLon(body, astroTime);
-    const lonNext = tropicalLon(body, nextDay);
-    let speed = lonNext - lon;
-    if (speed > 180) speed -= 360;
-    if (speed < -180) speed += 360;
+    // Central difference over ±12h. A forward-only difference lags by half a day,
+    // which flips the retrograde flag around Mercury and Venus stations.
+    const speed = signedDelta(
+      tropicalLon(body, halfDayBefore),
+      tropicalLon(body, halfDayAfter),
+    );
     const meta = signMeta(lon);
     return {
       key,
@@ -293,6 +291,7 @@ export function calculateChart(input: ChartInput): ChartResult {
     placeLabel: input.placeLabel,
     timeUnknown,
     houseSystem,
+    houseSystemResolved: houses?.resolved ?? houseSystem,
     obliquity,
     lstDeg,
     jd: astroTime.ut + 2451545.0,

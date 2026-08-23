@@ -26,8 +26,8 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Meridian — birth chart calculator',
-    template: '%s — Meridian',
+    default: 'SideraChart — birth chart calculator',
+    template: '%s — SideraChart',
   },
   description:
     'Free natal chart calculator. Enter birth date, time and place for planetary positions, houses and aspects.',

@@ -57,7 +57,7 @@
   },
   "home": {
     "title": "Calculadoras de carta natal",
-    "lead": "Introduce fecha, hora y lugar. Meridian calcula posiciones tropicales con una efeméride VSOP87, dibuja la rueda y lee desde una caché escrita, no desde un modelo que inventa grados.",
+    "lead": "Introduce fecha, hora y lugar. SideraChart calcula posiciones tropicales con una efeméride VSOP87, dibuja la rueda y lee desde una caché escrita, no desde un modelo que inventa grados.",
     "cta": "Abrir la carta natal",
     "ctaSecondary": "Leer artículos",
     "howTitle": "Cómo usar una calculadora",
@@ -96,7 +96,7 @@
     "privacyTitle": "Privacidad",
     "privacyBody": "Los datos de nacimiento se usan para calcular la carta. La búsqueda de lugar va a la API de este sitio y OpenStreetMap. Las cartas guardadas existen si creas una cuenta. No es consejo médico, legal ni financiero.",
     "termsTitle": "Términos",
-    "termsBody": "Meridian es una herramienta de cálculo gratuita. Las cartas son posiciones tropicales con textos de una caché. Una sinastría o compuesta sin cuenta; el resto requiere inicio de sesión."
+    "termsBody": "SideraChart es una herramienta de cálculo gratuita. Las cartas son posiciones tropicales con textos de una caché. Una sinastría o compuesta sin cuenta; el resto requiere inicio de sesión."
   },
   "footer": {
     "blurb": "Posiciones natales tropicales de una efeméride VSOP87. No Swiss Ephemeris.",
@@ -235,7 +235,7 @@
   },
   "calcCopy": {
     "howTitle": "Cómo se calcula una carta natal",
-    "howP1": "Una carta natal es un diagrama del cielo desde un lugar en un instante. Dos datos hacen el trabajo: la hora, que fija dónde estaba cada cuerpo en la eclíptica, y las coordenadas, que fijan qué parte de ese cielo ascendía. Meridian resuelve el lugar de nacimiento en latitud y longitud, convierte la hora civil local a Tiempo Universal con las reglas de zona IANA vigentes en esa fecha y lee las longitudes planetarias de una efeméride de clase VSOP87 (astronomy-engine).",
+    "howP1": "Una carta natal es un diagrama del cielo desde un lugar en un instante. Dos datos hacen el trabajo: la hora, que fija dónde estaba cada cuerpo en la eclíptica, y las coordenadas, que fijan qué parte de ese cielo ascendía. SideraChart resuelve el lugar de nacimiento en latitud y longitud, convierte la hora civil local a Tiempo Universal con las reglas de zona IANA vigentes en esa fecha y lee las longitudes planetarias de una efeméride de clase VSOP87 (astronomy-engine).",
     "howP2": "Las posiciones se dan en el zodiaco tropical, medidas desde el equinoccio de marzo: la convención occidental. Las longitudes siderales difieren hoy unos 24° y no se muestran en esta calculadora.",
     "whyTimeTitle": "Por qué importa la hora de nacimiento",
     "whyTimeBody": "El Ascendente se mueve unos un grado cada cuatro minutos, así que un error de veinte minutos lo desplaza cinco grados y puede cambiar el signo. La Luna recorre aproximadamente medio grado por hora. Del Sol a Plutón son lo bastante estables en un día: sin hora la carta sigue siendo útil, pero sin casas.",
@@ -250,7 +250,7 @@
     "precisionHouses": "Placidus + Whole Sign",
     "precisionOrbs": "orbes 8° / 6° / 4°",
     "risingTitle": "Qué es el signo ascendente",
-    "risingBody": "El signo ascendente es el signo del zodiaco que salía por el horizonte este en el momento del nacimiento. Depende de latitud, longitud y reloj, no solo de la fecha. Meridian lo calcula a partir del tiempo sidéreo local y de la misma efeméride tropical que la carta natal.",
+    "risingBody": "El signo ascendente es el signo del zodiaco que salía por el horizonte este en el momento del nacimiento. Depende de latitud, longitud y reloj, no solo de la fecha. SideraChart lo calcula a partir del tiempo sidéreo local y de la misma efeméride tropical que la carta natal.",
     "moonTitle": "Por qué la Luna necesita una hora",
     "moonBody": "La Luna recorre unos 13° al día. La casilla de hora desconocida suele devolver igual el signo, pero el grado y la casa son una estimación al mediodía. Para una lectura natal, introduce la hora si la tienes.",
     "venusTitle": "Venus en la carta natal",

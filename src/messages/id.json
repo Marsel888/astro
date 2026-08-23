@@ -57,7 +57,7 @@
   },
   "home": {
     "title": "Kalkulator peta kelahiran",
-    "lead": "Masukkan tanggal, waktu, dan tempat. Meridian menghitung posisi tropis dari efemeris VSOP87, menggambar roda, dan membaca dari cache tertulis — bukan model yang mengarang derajat.",
+    "lead": "Masukkan tanggal, waktu, dan tempat. SideraChart menghitung posisi tropis dari efemeris VSOP87, menggambar roda, dan membaca dari cache tertulis — bukan model yang mengarang derajat.",
     "cta": "Buka peta kelahiran",
     "ctaSecondary": "Baca artikel",
     "howTitle": "Cara memakai kalkulator",
@@ -96,7 +96,7 @@
     "privacyTitle": "Privasi",
     "privacyBody": "Data kelahiran diproses untuk menghitung peta. Pencarian tempat ke API situs ini dan OpenStreetMap. Peta tersimpan ada jika Anda membuat akun. Ini bukan nasihat medis, hukum, atau keuangan.",
     "termsTitle": "Ketentuan",
-    "termsBody": "Meridian adalah alat hitung gratis. Peta adalah posisi tropis dengan teks dari cache. Satu sinistri atau komposit tanpa akun; sisanya perlu masuk."
+    "termsBody": "SideraChart adalah alat hitung gratis. Peta adalah posisi tropis dengan teks dari cache. Satu sinistri atau komposit tanpa akun; sisanya perlu masuk."
   },
   "footer": {
     "blurb": "Posisi natal tropis dari efemeris VSOP87. Bukan Swiss Ephemeris.",
@@ -235,7 +235,7 @@
   },
   "calcCopy": {
     "howTitle": "Bagaimana peta kelahiran dihitung",
-    "howP1": "Peta natal adalah diagram langit dari satu tempat pada satu saat. Dua data mengerjakan itu: waktu, yang menetapkan di mana setiap benda berada di ekliptika, dan koordinat, yang menetapkan bagian langit mana yang sedang terbit. Meridian mengubah tempat lahir menjadi lintang dan bujur, mengubah jam sipil setempat ke Waktu Universal dengan aturan zona IANA yang berlaku pada tanggal itu, lalu membaca bujur planet dari efemeris kelas VSOP87 (astronomy-engine).",
+    "howP1": "Peta natal adalah diagram langit dari satu tempat pada satu saat. Dua data mengerjakan itu: waktu, yang menetapkan di mana setiap benda berada di ekliptika, dan koordinat, yang menetapkan bagian langit mana yang sedang terbit. SideraChart mengubah tempat lahir menjadi lintang dan bujur, mengubah jam sipil setempat ke Waktu Universal dengan aturan zona IANA yang berlaku pada tanggal itu, lalu membaca bujur planet dari efemeris kelas VSOP87 (astronomy-engine).",
     "howP2": "Posisi diberikan dalam zodiak tropis, diukur dari ekuinoks Maret — konvensi Barat. Bujur sideris hari ini berbeda sekitar 24° dan tidak ditampilkan di kalkulator ini.",
     "whyTimeTitle": "Mengapa waktu lahir penting",
     "whyTimeBody": "Ascendant bergerak sekitar satu derajat setiap empat menit, jadi kesalahan dua puluh menit menggesernya lima derajat dan bisa mengganti tanda. Bulan menempuh sekitar setengah derajat per jam. Matahari sampai Pluto cukup stabil dalam sehari: tanpa waktu peta tetap berguna, tetapi tanpa rumah.",
@@ -250,7 +250,7 @@
     "precisionHouses": "Placidus + Whole Sign",
     "precisionOrbs": "orb 8° / 6° / 4°",
     "risingTitle": "Apa itu tanda ascendant",
-    "risingBody": "Tanda ascendant adalah tanda zodiak yang terbit di horizon timur pada saat lahir. Tergantung lintang, bujur, dan jam, bukan hanya tanggal. Meridian menghitungnya dari waktu sideris setempat dan efemeris tropis yang sama dengan peta natal.",
+    "risingBody": "Tanda ascendant adalah tanda zodiak yang terbit di horizon timur pada saat lahir. Tergantung lintang, bujur, dan jam, bukan hanya tanggal. SideraChart menghitungnya dari waktu sideris setempat dan efemeris tropis yang sama dengan peta natal.",
     "moonTitle": "Mengapa Bulan membutuhkan waktu",
     "moonBody": "Bulan menempuh sekitar 13° per hari. Kotak waktu tidak diketahui biasanya tetap memberi tanda, tetapi derajat dan rumah adalah taksiran siang. Untuk bacaan natal, masukkan waktu jika Anda memilikinya.",
     "venusTitle": "Venus di peta natal",

@@ -11,6 +11,7 @@ import { chartFromBirth } from '@/lib/astro/fromBirth';
 import { aspectReading } from '@/lib/interpret/aspects';
 import { DEFAULT_BIRTH, NEW_YORK, type BirthData } from '@/lib/places/defaults';
 import { useAstroLabels } from '@/components/useAstroLabels';
+import { useResultFocus } from '@/components/useResultFocus';
 
 type Mode = 'synastry' | 'composite';
 
@@ -19,7 +20,13 @@ type Gate = {
   allowed: boolean;
 };
 
-export default function TwoChartCalculator({ mode }: { mode: Mode }) {
+export default function TwoChartCalculator({
+  mode,
+  headingAs = 'h1',
+}: {
+  mode: Mode;
+  headingAs?: 'h1' | 'h2' | 'none';
+}) {
   const t = useTranslations(mode);
   const form = useTranslations('form');
   const common = useTranslations('common');
@@ -38,6 +45,7 @@ export default function TwoChartCalculator({ mode }: { mode: Mode }) {
   const [aspectsOn, setAspectsOn] = useState(true);
   const [gate, setGate] = useState<Gate | null>(null);
   const [needAccount, setNeedAccount] = useState(false);
+  const { ref: resultRef, focusResult } = useResultFocus<HTMLElement>();
 
   const nextPath = mode === 'synastry' ? '/synastry-calculator' : '/composite-chart-calculator';
 
@@ -76,6 +84,7 @@ export default function TwoChartCalculator({ mode }: { mode: Mode }) {
     try {
       setLeft(chartFromBirth(a));
       setRight(chartFromBirth(b));
+      focusResult();
     } catch (e) {
       setLeft(null);
       setRight(null);
@@ -92,10 +101,17 @@ export default function TwoChartCalculator({ mode }: { mode: Mode }) {
   const display = mode === 'composite' ? composite : left;
   const bodiesB = mode === 'synastry' && right ? toBodyPoints(right.bodies) : undefined;
 
+  // 'none' is for embedding under a page that already has its own heading.
+  const Heading = headingAs === 'none' ? null : headingAs;
+
   return (
     <>
-      <h1 className="mb-2.5 text-[26px] font-medium tracking-[-0.02em] sm:text-h1">{t('title')}</h1>
-      <p className="mb-7 max-w-[620px] text-body text-ink-secondary [text-wrap:pretty]">{t('lead')}</p>
+      {Heading && (
+        <>
+          <Heading className="mb-2.5 text-[26px] font-medium tracking-[-0.02em] sm:text-h1">{t('h1')}</Heading>
+          <p className="mb-7 max-w-[620px] text-body text-ink-secondary [text-wrap:pretty]">{t('lead')}</p>
+        </>
+      )}
       <div className="flex flex-col gap-4">
         <BirthDataForm value={a} onChange={setA} onSubmit={onSubmit} title={form('personA')} />
         <BirthDataForm value={b} onChange={setB} onSubmit={onSubmit} title={form('personB')} />
@@ -105,7 +121,7 @@ export default function TwoChartCalculator({ mode }: { mode: Mode }) {
         <EmptyOrrery caption={ui('emptyOverlay')} />
       )}
       {display && (
-        <section className="mt-12 border-t border-hairline pt-10">
+        <section ref={resultRef} tabIndex={-1} className="mt-12 scroll-mt-4 border-t border-hairline pt-10 outline-none">
           <h2 className="mb-5 text-h2 font-medium tracking-[-0.01em]">{t('result')}</h2>
           <div key={`${left?.jd}-${right?.jd}`} className="flex justify-center">
             <ChartWheel
@@ -116,7 +132,8 @@ export default function TwoChartCalculator({ mode }: { mode: Mode }) {
               mc={display.mc ?? 90}
               showAspects={aspectsOn}
               showHouses={!display.timeUnknown}
-              size={560}
+              maxSize={560}
+              label={ui('wheelLabelSynastry')}
             />
           </div>
           <div className="mb-8 mt-2 flex justify-center">

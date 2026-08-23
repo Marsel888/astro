@@ -57,7 +57,7 @@
   },
   "home": {
     "title": "Doğum haritası hesaplayıcıları",
-    "lead": "Tarih, saat ve yer girin. Meridian VSOP87 efemerisiyle tropikal konumları hesaplar, çarkı çizer ve yazılı önbellekten okur — derece uyduran bir modelden değil.",
+    "lead": "Tarih, saat ve yer girin. SideraChart VSOP87 efemerisiyle tropikal konumları hesaplar, çarkı çizer ve yazılı önbellekten okur — derece uyduran bir modelden değil.",
     "cta": "Doğum haritasını aç",
     "ctaSecondary": "Yazıları oku",
     "howTitle": "Hesaplayıcı nasıl kullanılır",
@@ -96,7 +96,7 @@
     "privacyTitle": "Gizlilik",
     "privacyBody": "Doğum verileri haritayı hesaplamak için işlenir. Yer araması bu sitenin API’sine ve OpenStreetMap’e gider. Kayıtlı haritalar hesap açarsanız oluşur. Tıbbi, hukuki veya mali tavsiye değildir.",
     "termsTitle": "Koşullar",
-    "termsBody": "Meridian ücretsiz bir hesaplama aracıdır. Haritalar önbellekteki metinlerle tropikal konumlarıdır. Hesapsız bir sinastri veya kompozit; gerisi giriş ister."
+    "termsBody": "SideraChart ücretsiz bir hesaplama aracıdır. Haritalar önbellekteki metinlerle tropikal konumlarıdır. Hesapsız bir sinastri veya kompozit; gerisi giriş ister."
   },
   "footer": {
     "blurb": "VSOP87 efemerisinden tropikal natal konumlar. Swiss Ephemeris değil.",
@@ -235,7 +235,7 @@
   },
   "calcCopy": {
     "howTitle": "Doğum haritası nasıl hesaplanır",
-    "howP1": "Natal harita, bir yerden bir andaki gökyüzünün şemasıdır. İki girdi işi yapar: ekliptikte her cismin nerede durduğunu sabitleyen saat ve o gökyüzünün hangi kısmının doğduğunu sabitleyen koordinatlar. Meridian doğum yerini enlem ve boylama indirir, yerel saati o tarihte geçerli IANA saat dilimi kurallarıyla Evrensel Zamana çevirir, ardından VSOP87 sınıfı bir efemeristen (astronomy-engine) gezegen boylamlarını okur.",
+    "howP1": "Natal harita, bir yerden bir andaki gökyüzünün şemasıdır. İki girdi işi yapar: ekliptikte her cismin nerede durduğunu sabitleyen saat ve o gökyüzünün hangi kısmının doğduğunu sabitleyen koordinatlar. SideraChart doğum yerini enlem ve boylama indirir, yerel saati o tarihte geçerli IANA saat dilimi kurallarıyla Evrensel Zamana çevirir, ardından VSOP87 sınıfı bir efemeristen (astronomy-engine) gezegen boylamlarını okur.",
     "howP2": "Konumlar tropikal burçta, mart ekinoksundan ölçülür — Batı uzlaşısı. Sidereal boylamlar bugün yaklaşık 24° farklıdır ve bu hesaplayıcıda gösterilmez.",
     "whyTimeTitle": "Doğum saati neden önemli",
     "whyTimeBody": "Yükselen her dört dakikada yaklaşık bir derece ilerler; yirmi dakikalık bir hata onu beş derece kaydırır ve burcu değiştirebilir. Ay saatte yaklaşık yarım derece gider. Güneş’ten Plüton’a bir günde yeterince kararlıdır: saatsiz harita yine işe yarar, ama evler olmadan.",
@@ -250,7 +250,7 @@
     "precisionHouses": "Placidus + Whole Sign",
     "precisionOrbs": "orb 8° / 6° / 4°",
     "risingTitle": "Yükselen burç nedir",
-    "risingBody": "Yükselen burç, doğum anında doğu ufkundan yükselen zodyak burcudur. Enlem, boylam ve saate bağlıdır, yalnızca tarihe değil. Meridian onu yerel yıldız zamanından ve natal haritayla aynı tropikal efemeristen hesaplar.",
+    "risingBody": "Yükselen burç, doğum anında doğu ufkundan yükselen zodyak burcudur. Enlem, boylam ve saate bağlıdır, yalnızca tarihe değil. SideraChart onu yerel yıldız zamanından ve natal haritayla aynı tropikal efemeristen hesaplar.",
     "moonTitle": "Ay neden bir saate ihtiyaç duyar",
     "moonBody": "Ay günde yaklaşık 13° gider. «Saat bilinmiyor» kutusu çoğu durumda yine burcu verir, ama derece ve ev öğlen tahmini. Natal okuma için saati biliyorsanız girin.",
     "venusTitle": "Natal haritada Venüs",
