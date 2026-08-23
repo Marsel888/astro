@@ -61,16 +61,27 @@ function labelAspect(t: DailyT, type: string): string {
   return translated.startsWith('aspect_') ? type : translated;
 }
 
-function aspectLine(t: DailyT, row: ChartAspect): string {
-  const applying = row.applying ? t('applying') : t('separating');
-  return t('aspectLine', {
-    a: labelPlanet(t, row.a),
-    type: labelAspect(t, row.type),
-    b: labelPlanet(t, row.b),
+/**
+ * One contact, composed from three parts that each vary.
+ *
+ * Keying the explanation on aspect type alone meant a fourteen-line reading used
+ * five sentences, and Mars square Venus read word for word like Uranus square
+ * Saturn. Naming what is being touched — and what that part of the chart is in
+ * the reader's life — gives fifty shapes per transiting planet out of a handful
+ * of strings, without writing five hundred texts per language.
+ */
+function contactLine(t: DailyT, row: ChartAspect): string {
+  const natalKey = astroKey(row.b);
+  return t('contactLine', {
+    transit: labelPlanet(t, row.a),
+    verb: t(`verb_${row.type}`),
+    natalPoint: labelPlanet(t, row.b),
+    natalMeaning: t(`natal_${natalKey}`),
     sense: t(`sense_${row.type}`),
-    applying,
+    timing: row.applying ? t('timing_applying') : t('timing_separating'),
   });
 }
+
 
 function skyParagraphs(natal: ChartResult, transit: ChartResult, t: DailyT): string[] {
   const tSun = transit.bodies.find((b) => b.key === 'sun');
@@ -127,8 +138,36 @@ export function strongestLine(
   if (!crosses.length) return null;
   const applying = crosses.filter((row) => row.applying).sort((a, b) => a.orb - b.orb);
   const row = applying[0] ?? crosses[0];
-  return aspectLine(t, row);
+  return contactLine(t, row);
 }
+
+/**
+ * The tightest contact of a day in a few words, for a list of days.
+ *
+ * A history that reads "23 Aug / 22 Aug / 21 Aug" gives no reason to open any
+ * particular row. Naming what happened makes it scannable — and it is derived
+ * from the stored transit positions rather than the stored text, so it follows
+ * the reader's current language instead of the one the day was written in.
+ */
+export function shortContact(
+  natal: ChartResult,
+  transit: ChartResult,
+  t: DailyT,
+): string | null {
+  const crosses = aspectsBetween(transit.bodies, natal.bodies, 'synastry');
+  if (!crosses.length) return null;
+  const applying = crosses.filter((row) => row.applying).sort((a, b) => a.orb - b.orb);
+  const row = applying[0] ?? crosses[0];
+  return t('shortContact', {
+    transit: labelPlanet(t, row.a),
+    verb: t(`verb_${row.type}`),
+    natalPoint: labelPlanet(t, row.b),
+  });
+}
+
+/** Shown inline. Anything past this is counted, not printed. */
+const SHOW_DAILY = 4;
+const SHOW_SLOW = 3;
 
 export function dailyReport(
   natal: ChartResult,
@@ -142,22 +181,46 @@ export function dailyReport(
   const heading = formatDayHeading(isoDate, natal.tz, locale);
   const sections: ReportSection[] = [];
 
+  // Lead with the answer. The reading used to open on a technical description of
+  // the sky, which buries the one thing the reader came for.
+  const byOrb = [...daily].sort((a, b) => a.orb - b.orb);
+  const tightest = byOrb[0];
+  sections.push({
+    heading: t('headingToday'),
+    paragraphs: [tightest ? contactLine(t, tightest) : t('leadQuiet')],
+  });
+
   const sky = skyParagraphs(natal, transit, t);
   if (sky.length) {
     sections.push({ heading: t('skyHeading'), paragraphs: sky });
   }
 
-  if (daily.length) {
+  // The lead already carried the tightest one; repeating it here was the whole
+  // problem being fixed. Four more is enough to read — fourteen paragraphs of
+  // the same shape is a wall, and the loose ones at the bottom carry little.
+  const others = byOrb.slice(1);
+  if (others.length) {
+    const shown = others.slice(0, SHOW_DAILY);
+    const rest = others.length - shown.length;
     sections.push({
       heading: t('playHeading'),
-      paragraphs: daily.map((row) => aspectLine(t, row)),
+      paragraphs: [
+        ...shown.map((row) => contactLine(t, row)),
+        ...(rest > 0 ? [t('moreToday', { count: rest })] : []),
+      ],
     });
   }
 
   if (slower.length) {
+    const shown = slower.slice(0, SHOW_SLOW);
+    const rest = slower.length - shown.length;
     sections.push({
       heading: t('longerHeading'),
-      paragraphs: [t('longerLead'), ...slower.map((row) => aspectLine(t, row))],
+      paragraphs: [
+        t('longerLead'),
+        ...shown.map((row) => contactLine(t, row)),
+        ...(rest > 0 ? [t('moreLonger', { count: rest })] : []),
+      ],
     });
   }
 

@@ -2,10 +2,15 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import ChartPreferences from '@/components/ChartPreferences';
 import DeleteChartButton from '@/components/DeleteChartButton';
+import HoroscopeSky from '@/components/HoroscopeSky';
 import ReadingCard from '@/components/ReadingCard';
 import { DownloadLinkButton } from '@/components/ReportActions';
 import SignOutButton from '@/components/SignOutButton';
 import SiteHeader from '@/components/SiteHeader';
+import TransitWheel from '@/components/TransitWheel';
+import { toBodyPoints } from '@/lib/astro';
+import type { SignName } from '@/lib/chart';
+import { moonPhaseOf, skySnapshot } from '@/lib/interpret/horoscope';
 import { getSession } from '@/lib/auth-session';
 import { claimPendingCharts } from '@/lib/charts/claim';
 import {
@@ -15,7 +20,9 @@ import {
   listDailyReadings,
   listUserCharts,
   natalFromRow,
+  summariseDays,
   tomorrowPreview,
+  transitChartForDate,
 } from '@/lib/charts/daily';
 import { formatBirthDate, formatDayShort, todayInZone } from '@/lib/dates';
 import { chartLabel } from '@/lib/interpret/daily';
@@ -51,11 +58,24 @@ export default async function DashboardPage({ params }: Props) {
   const daily = primary ? await getOrCreateDailyReading(primary.id, session.user.id, locale) : null;
   const tomorrow = natal ? await tomorrowPreview(natal, locale) : null;
 
+  // The wheel and the sky strip are the parts that visibly move day to day.
+  const transit = natal && daily ? transitChartForDate(natal, daily.date) : null;
+  const sky = transit ? skySnapshot(transit) : null;
+  const moonPhase = transit
+    ? moonPhaseOf(
+        transit.bodies.find((b) => b.key === 'sun')?.lon ?? 0,
+        transit.bodies.find((b) => b.key === 'moon')?.lon ?? 0,
+      )
+    : null;
+  const horoscopeT = await getTranslations('horoscope');
+  const signLabel = (sign: SignName) => astroT(`sign_${sign.toLowerCase()}`);
+  const planetLabel = (key: string) => astroT(`planet_${key}`);
+
   // Today is the card above, so the strip below is only what came before it and
   // the same day is never listed twice.
   const history = primary ? await listDailyReadings(primary.id, session.user.id) : [];
   const earlier = history.filter((row) => row.date !== daily?.date);
-  const recent = earlier.slice(0, RECENT_DAYS);
+  const recent = natal ? await summariseDays(natal, earlier.slice(0, RECENT_DAYS), locale) : [];
 
   return (
     <>
@@ -77,8 +97,45 @@ export default async function DashboardPage({ params }: Props) {
           </div>
         </div>
 
-        {daily && primary && natal ? (
+        {daily && primary && natal && transit && sky ? (
           <section className="mb-12">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,440px)_1fr] lg:items-start">
+              <div>
+                <p className="mb-3 font-mono text-caption text-ink-muted">{t('wheelHeading')}</p>
+                <TransitWheel
+                  natal={toBodyPoints(natal.bodies)}
+                  transit={toBodyPoints(transit.bodies)}
+                  cusps={natal.cusps ?? Array.from({ length: 12 }, (_, i) => i * 30)}
+                  asc={natal.ascendant ?? 0}
+                  mc={natal.mc ?? 90}
+                  showHouses={!natal.timeUnknown}
+                  label={t('wheelLabel')}
+                  legendNatal={t('wheelNatal')}
+                  legendTransit={t('wheelTransit')}
+                />
+                {natal.timeUnknown ? (
+                  <p className="mt-3 text-caption text-ink-muted [text-wrap:pretty]">{t('wheelNoTime')}</p>
+                ) : null}
+              </div>
+
+              <div>
+                {moonPhase ? (
+                  <div className="rounded-card border border-hairline bg-panel p-5">
+                    <p className="font-mono text-caption text-gold">{t('moonPhaseKicker')}</p>
+                    <p className="mt-2 text-body text-ink-secondary [text-wrap:pretty]">
+                      {horoscopeT(`phase_${moonPhase}` as 'phase_new')}
+                    </p>
+                  </div>
+                ) : null}
+                <HoroscopeSky
+                  sky={sky}
+                  signLabel={signLabel}
+                  planetLabel={planetLabel}
+                  heading={horoscopeT('skyHeading')}
+                />
+              </div>
+            </div>
+
             {/* The whole reading, not a teaser. Opening the cabinet should be the
                 act of reading today's sky, not a link to somewhere that has it. */}
             <ReadingCard
@@ -141,14 +198,17 @@ export default async function DashboardPage({ params }: Props) {
                 />
               </div>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="overflow-hidden rounded-card border border-hairline bg-panel">
               {recent.map((row) => (
                 <Link
                   key={row.id}
                   href={`/chart/${primary.id}/day/${row.date}`}
-                  className="flex h-11 items-center rounded-control border border-hairline bg-panel px-4 font-mono text-caption text-ink-secondary hover:border-hairline-strong hover:text-ink"
+                  className="flex flex-col gap-1 border-b border-hairline px-5 py-3.5 last:border-0 hover:bg-elevated sm:flex-row sm:items-baseline sm:gap-5"
                 >
-                  {formatDayShort(row.date, primary.tzName, locale)}
+                  <span className="shrink-0 font-mono text-caption text-ink-muted sm:w-[110px]">
+                    {formatDayShort(row.date, primary.tzName, locale)}
+                  </span>
+                  <span className="text-data text-ink-secondary">{row.headline ?? t('quietDay')}</span>
                 </Link>
               ))}
             </div>

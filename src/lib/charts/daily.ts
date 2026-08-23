@@ -5,7 +5,7 @@ import { db } from '@/lib/db';
 import { charts, dailyReadings } from '@/lib/db/schema';
 import type { AppLocale } from '@/i18n/locales';
 import { addDaysIso, asIsoDate, eachIsoDate, isIsoDate, isoDateInZone, maxIsoDate, todayInZone } from '@/lib/dates';
-import { dailyReport, strongestLine, type DailyT } from '@/lib/interpret/daily';
+import { dailyReport, shortContact, strongestLine, type DailyT } from '@/lib/interpret/daily';
 import type { ReportDoc } from '@/lib/interpret/report';
 import { loadOwnedChart } from './report';
 
@@ -77,6 +77,37 @@ export async function tomorrowPreview(natal: ChartResult, locale: AppLocale) {
   const t = await dailyT(locale);
   const line = strongestLine(natal, transitChartForDate(natal, date), t);
   return { date, line };
+}
+
+export type DaySummary = {
+  id: string;
+  date: string;
+  headline: string | null;
+};
+
+/**
+ * A list of days, each with the day's tightest contact in a few words.
+ *
+ * Built from the transit positions already stored on the row, so it costs an
+ * aspect scan rather than a chart calculation, and it renders in whatever
+ * language the reader is using now.
+ */
+export async function summariseDays(
+  natal: ChartResult,
+  rows: Array<{ id: string; date: string; transits: unknown }>,
+  locale: AppLocale,
+): Promise<DaySummary[]> {
+  const t = await dailyT(locale);
+  return rows.map((row) => {
+    const transit = (row.transits as ChartResult | null)?.bodies?.length
+      ? (row.transits as ChartResult)
+      : null;
+    return {
+      id: row.id,
+      date: row.date,
+      headline: transit ? shortContact(natal, transit, t) : null,
+    };
+  });
 }
 
 export async function localizedDailyDoc(

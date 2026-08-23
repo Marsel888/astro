@@ -17,7 +17,8 @@
     "verify:houses": "tsx scripts/verify-houses.ts",
     "i18n:coverage": "tsx scripts/i18n-coverage.ts",
     "check:contrast": "tsx scripts/check-contrast.ts",
-    "db:migrate": "drizzle-kit migrate"
+    "db:migrate": "drizzle-kit migrate",
+    "preview:reading": "tsx scripts/preview-reading.ts"
   },
   "dependencies": {
     "astronomy-engine": "^2.1.19",

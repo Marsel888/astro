@@ -9,6 +9,7 @@ import {
   ensureDailyHistory,
   listDailyReadings,
   natalFromRow,
+  summariseDays,
 } from '@/lib/charts/daily';
 import { loadOwnedChart } from '@/lib/charts/report';
 import { formatDayShort } from '@/lib/dates';
@@ -41,6 +42,7 @@ export default async function ChartHistoryPage({ params }: Props) {
   await ensureDailyHistory(id, session.user.id, locale);
   const history = await listDailyReadings(id, session.user.id);
   const natal = natalFromRow(chart);
+  const days = await summariseDays(natal, history, locale);
 
   return (
     <>
@@ -78,14 +80,17 @@ export default async function ChartHistoryPage({ params }: Props) {
           <p className="text-body text-ink-secondary">{t('historyEmpty')}</p>
         ) : (
           <div className="overflow-hidden rounded-card border border-hairline bg-panel">
-            {history.map((row) => (
+            {days.map((row) => (
               <Link
                 key={row.id}
                 href={`/chart/${id}/day/${row.date}`}
-                className="flex flex-col gap-1 border-b border-hairline px-5 py-4 text-ink last:border-0 hover:bg-elevated sm:flex-row sm:items-center sm:justify-between"
+                className="flex flex-col gap-1 border-b border-hairline px-5 py-4 text-ink last:border-0 hover:bg-elevated sm:flex-row sm:items-baseline sm:gap-5"
               >
-                <span className="text-data">{formatDayShort(row.date, chart.tzName, locale)}</span>
-                <span className="font-mono text-caption text-ink-muted">{t('readDay')}</span>
+                <span className="shrink-0 font-mono text-caption text-ink-muted sm:w-[120px]">
+                  {formatDayShort(row.date, chart.tzName, locale)}
+                </span>
+                <span className="flex-1 text-data text-ink-secondary">{row.headline ?? t('quietDay')}</span>
+                <span className="shrink-0 font-mono text-caption text-ink-muted">{t('readDay')}</span>
               </Link>
             ))}
           </div>
