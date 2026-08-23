@@ -60,6 +60,43 @@ services:
     expose:
       - "3000"
 
+  # Keeps the Namecheap A records pointing at this connection when the ISP
+  # rotates the address. Only needed behind a home router on a dynamic IP; a VPS
+  # with a static address should leave this off.
+  #   enable: docker compose --profile ddns up -d
+  #   set:    NAMECHEAP_DDNS_PASSWORD in .env — Namecheap → Domain → Advanced
+  #           DNS → Dynamic DNS → switch on, then copy the password
+  ddns:
+    image: alpine:3.20
+    restart: unless-stopped
+    profiles: ["ddns"]
+    environment:
+      DOMAIN: ${DOMAIN:?DOMAIN is required}
+      # Not marked required: compose interpolates every service, active profile
+      # or not, so demanding it here would break a deploy that wants no DDNS.
+      # The container checks it instead.
+      DDNS_PASSWORD: ${NAMECHEAP_DDNS_PASSWORD:-}
+    command:
+      - sh
+      - -c
+      - |
+        if [ -z "$$DDNS_PASSWORD" ]; then
+          echo "NAMECHEAP_DDNS_PASSWORD is not set — nothing to update. Set it in .env."
+          exit 1
+        fi
+        apk add --no-cache curl >/dev/null
+        while true; do
+          for host in @ www; do
+            # An empty ip= tells Namecheap to use the address the request came from.
+            if curl -fsS "https://dynamicdns.park-your-domain.com/update?host=$$host&domain=$$DOMAIN&password=$$DDNS_PASSWORD&ip=" | grep -q "<ErrCount>0</ErrCount>"; then
+              echo "$$(date -Iseconds) ddns ok $$host.$$DOMAIN"
+            else
+              echo "$$(date -Iseconds) ddns FAILED $$host.$$DOMAIN"
+            fi
+          done
+          sleep 300
+        done
+
   proxy:
     image: caddy:2-alpine
     restart: unless-stopped

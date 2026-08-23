@@ -28,6 +28,44 @@ on boot, and a failed challenge is rate-limited for an hour.
 
 ---
 
+## 1a. Behind a home router (this project's current setup)
+
+The server is `192.168.0.103` on the LAN; the connection's public address is
+`95.46.199.43`. Three extra things are needed compared with a VPS.
+
+**Give the server a fixed LAN address.** In the router's DHCP settings, reserve
+`192.168.0.103` for that machine's MAC. If it ever gets a different lease the
+port forwards point at nothing.
+
+**Forward the ports.** Router → Port Forwarding / Virtual Server:
+
+| External | Internal | Protocol |
+|---|---|---|
+| 80 | 192.168.0.103:80 | TCP |
+| 443 | 192.168.0.103:443 | TCP |
+
+Port 80 is not optional — Caddy needs it for the ACME challenge, and it also
+serves the HTTP→HTTPS redirect. Verify from outside the network (a phone on
+mobile data, or canyouseeme.org); testing from inside the LAN gives a false
+answer on routers without NAT loopback.
+
+**Handle the changing IP.** Residential addresses rotate. Namecheap has Dynamic
+DNS built in, and `docker-compose.yml` carries a `ddns` service that uses it:
+
+1. Namecheap → Domain List → Manage → Advanced DNS → **Dynamic DNS: ON**, copy
+   the password it shows.
+2. Put it in `.env` as `NAMECHEAP_DDNS_PASSWORD`.
+3. Start with the profile enabled: `docker compose --profile ddns up -d`
+
+It re-points `@` and `www` every five minutes. Without it, the site disappears
+the next time the ISP hands out a new address.
+
+Two things this setup cannot give you: uptime that survives a power cut or a
+router reboot, and a guarantee that the ISP does not filter inbound 80/443 on a
+residential plan. If the domain ever stops resolving, check those first.
+
+---
+
 ## 2. First deploy
 
 ```bash
@@ -81,7 +119,7 @@ Run these before pushing. All four are wired into `package.json`.
 
 ```bash
 npm run verify          # planets against published charts; Placidus cusps to 0.02°
-npm run i18n:coverage   # fails if a locale marked published is under 92% translated
+npm run i18n:coverage   # reports translation coverage per locale (warns, does not fail)
 npm run check:contrast  # WCAG AA across the palette
 npm run lint
 ```
@@ -89,7 +127,7 @@ npm run lint
 After the deploy is up:
 
 ```bash
-curl -s https://your-domain/sitemap.xml | grep -c '<url>'      # 129 with en+uk+ru
+curl -s https://your-domain/sitemap.xml | grep -c '<url>'      # 645 with all 15 locales
 curl -s https://your-domain/en/birth-chart-calculator | grep canonical
 curl -s https://your-domain/robots.txt
 ```
@@ -162,5 +200,8 @@ the compose file for when that changes.
   export exist in Settings, so the policy can point at them.
 - Decide on a cookie banner. The session cookie is strictly necessary and needs
   no consent; anything analytics-shaped does.
-- Re-read `STRATEGY.md` §13 on which locales to publish. Only `en`, `uk` and `ru`
-  are indexed today; the flag is `published` in `src/i18n/locales.ts`.
+- All fifteen locales are indexed by decision, ahead of the phased rollout in
+  `STRATEGY.md` §13. Nine of them still serve English article bodies and about
+  half an English interface under their own `lang`. `npm run i18n:coverage`
+  prints where each stands — closing those gaps is what makes the decision safe.
+  The flag is `published` in `src/i18n/locales.ts`.
