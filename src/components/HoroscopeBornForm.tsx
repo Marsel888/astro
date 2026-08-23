@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import DateField from '@/components/DateField';
 import { Link } from '@/i18n/navigation';
 import { HOROSCOPE_PATH, type HoroscopeSlug } from '@/lib/interpret/horoscope';
@@ -13,12 +13,18 @@ type Props = {
 
 export default function HoroscopeBornForm({ slug, born }: Props) {
   const t = useTranslations('horoscope');
+  const locale = useLocale();
   const [date, setDate] = useState(born ?? '1994-03-12');
   const path = slug ? `${HOROSCOPE_PATH}/${slug}` : HOROSCOPE_PATH;
+  // Always submit to the index. It resolves the date to its own sign and
+  // redirects there, so a date entered on the wrong sign page cannot strand
+  // the reader on a sign that is not theirs.
+  const action = `/${locale}${HOROSCOPE_PATH}`;
 
   return (
     <form
       method="get"
+      action={action}
       className="mt-8 rounded-card border border-hairline bg-panel p-4 sm:px-6 sm:py-5"
     >
       <p className="font-mono text-caption text-gold">{t('bornKicker')}</p>

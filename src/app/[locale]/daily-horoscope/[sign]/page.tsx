@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Link } from '@/i18n/navigation';
+import { Link, redirect } from '@/i18n/navigation';
 import CalculatorNote from '@/components/CalculatorNote';
 import HoroscopeBornForm from '@/components/HoroscopeBornForm';
 import HoroscopePicker from '@/components/HoroscopePicker';
@@ -18,7 +18,7 @@ import {
   horoscopeSections,
   isHoroscopeSlug,
   parseHoroscopeBorn,
-  slugFromSign,
+  slugForBirthDate,
   withBorn,
   type HoroscopeSlug,
 } from '@/lib/interpret/horoscope';
@@ -58,6 +58,14 @@ export default async function SignHoroscopePage({ params, searchParams }: Props)
   if (!isHoroscopeSlug(slug)) notFound();
 
   const born = parseHoroscopeBorn((await searchParams).born);
+  // A date belongs to exactly one sign. Landing on any other one with it in the
+  // URL used to render a mid-sign proxy while still showing the reader their own
+  // date, which reads as a personalised page and is not one. Send them to theirs.
+  const bornSlug = born ? slugForBirthDate(born) : undefined;
+  if (born && bornSlug && bornSlug !== slug) {
+    redirect({ href: withBorn(`${HOROSCOPE_PATH}/${bornSlug}`, born), locale });
+  }
+
   const t = await getTranslations('horoscope');
   const daily = await getTranslations('daily');
   const copy = await getTranslations('calcCopy');
@@ -74,8 +82,6 @@ export default async function SignHoroscopePage({ params, searchParams }: Props)
   ) as Record<HoroscopeSlug, string>;
   const label = labels[slug];
   const sections = horoscopeSections(reading, pack, ht, dt, signLabel, locale);
-  const natalSign = pack.natal ? slugFromSign(pack.natal.sunSign) : undefined;
-  const natalLabel = pack.natal ? signLabel(pack.natal.sunSign) : '';
   const natalDate = born ? formatBirthDate(born, locale) : '';
 
   const jsonLd = {
@@ -119,14 +125,6 @@ export default async function SignHoroscopePage({ params, searchParams }: Props)
               })
             : t('signLead', { sign: label })}
         </p>
-        {pack.natal && natalSign && natalSign !== slug ? (
-          <p className="mt-4 rounded-control border border-gold/40 bg-gold/10 px-4 py-3 text-[14px] leading-[1.5] text-ink">
-            {t('wrongSign', { sign: natalLabel, date: natalDate })}{' '}
-            <Link href={withBorn(`${HOROSCOPE_PATH}/${natalSign}`, born)} className="text-gold hover:text-ink">
-              {t('openNatalSign', { sign: natalLabel })}
-            </Link>
-          </p>
-        ) : null}
         <p className="mt-3 font-mono text-caption text-gold">
           {t('skyLine', { sun: signLabel(pack.sky.sunSign), moon: signLabel(pack.sky.moonSign) })}
           {' · '}
@@ -135,7 +133,7 @@ export default async function SignHoroscopePage({ params, searchParams }: Props)
 
         <HoroscopeSky sky={pack.sky} signLabel={signLabel} planetLabel={planetLabel} heading={t('skyHeading')} />
         <HoroscopeBornForm slug={slug} born={born} />
-        <HoroscopePicker active={slug} labels={labels} born={born} />
+        <HoroscopePicker active={slug} labels={labels} born={born} bornSlug={bornSlug} />
 
         <ReadingCard
           kicker={reading.personal ? t('personalKicker', { date: natalDate }) : t('kicker')}
@@ -165,7 +163,7 @@ export default async function SignHoroscopePage({ params, searchParams }: Props)
         <CalculatorNote title={copy('horoscopeTitle')} body={copy('horoscopeBody')} />
 
         <p className="mt-10 font-mono text-caption text-ink-muted">{t('otherSigns')}</p>
-        <HoroscopePicker active={slug} labels={labels} born={born} />
+        <HoroscopePicker active={slug} labels={labels} born={born} bornSlug={bornSlug} />
       </main>
     </>
   );

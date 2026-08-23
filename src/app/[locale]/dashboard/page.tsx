@@ -2,7 +2,6 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import ChartPreferences from '@/components/ChartPreferences';
 import DeleteChartButton from '@/components/DeleteChartButton';
-import { DownloadLinkButton } from '@/components/ReportActions';
 import SignOutButton from '@/components/SignOutButton';
 import SiteHeader from '@/components/SiteHeader';
 import { getSession } from '@/lib/auth-session';
@@ -11,11 +10,10 @@ import {
   dailyTranslator,
   ensureDailyHistory,
   getOrCreateDailyReading,
-  listDailyReadings,
   listUserCharts,
   natalFromRow,
 } from '@/lib/charts/daily';
-import { formatBirthDate, formatDayShort, todayInZone } from '@/lib/dates';
+import { formatBirthDate, todayInZone } from '@/lib/dates';
 import { chartLabel } from '@/lib/interpret/daily';
 import { requireUser } from '@/lib/requireUser';
 import { asLocale } from '@/i18n/routing';
@@ -48,7 +46,6 @@ export default async function DashboardPage({ params }: Props) {
   if (primary) await ensureDailyHistory(primary.id, session.user.id, locale);
 
   const daily = primary ? await getOrCreateDailyReading(primary.id, session.user.id, locale) : null;
-  const history = primary ? await listDailyReadings(primary.id, session.user.id) : [];
   const preview = daily?.doc.sections[0]?.paragraphs[0] ?? null;
 
   return (
@@ -165,35 +162,6 @@ export default async function DashboardPage({ params }: Props) {
             </div>
           )}
         </section>
-
-        {primary && history.length ? (
-          <section>
-            <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <h2 className="text-[18px] font-medium tracking-[-0.02em]">{t('byDay')}</h2>
-                <p className="mt-1 font-mono text-caption text-ink-muted">
-                  {chartLabel(natalFromRow(primary), astroT) || t('natalLabel')} · {t('visitHint')}
-                </p>
-              </div>
-              <DownloadLinkButton
-                href={`/api/charts/${primary.id}/history?locale=${locale}`}
-                label={t('downloadDays')}
-              />
-            </div>
-            <div className="overflow-hidden rounded-card border border-hairline bg-panel">
-              {history.map((row) => (
-                <Link
-                  key={row.id}
-                  href={`/chart/${primary.id}/day/${row.date}`}
-                  className="flex flex-col gap-1 border-b border-hairline px-5 py-4 text-ink last:border-0 hover:bg-elevated sm:flex-row sm:items-center sm:justify-between"
-                >
-                  <span className="text-data">{formatDayShort(row.date, primary.tzName, locale)}</span>
-                  <span className="font-mono text-caption text-ink-muted">{t('readDay')}</span>
-                </Link>
-              ))}
-            </div>
-          </section>
-        ) : null}
       </main>
     </>
   );

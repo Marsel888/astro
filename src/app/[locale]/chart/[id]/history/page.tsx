@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link, redirect } from '@/i18n/navigation';
-import { DownloadTextButton } from '@/components/ReportActions';
+import { DownloadLinkButton } from '@/components/ReportActions';
 import SiteHeader from '@/components/SiteHeader';
 import { getSession } from '@/lib/auth-session';
 import { claimPendingCharts } from '@/lib/charts/claim';
@@ -8,13 +8,11 @@ import {
   dailyTranslator,
   ensureDailyHistory,
   listDailyReadings,
-  localizedDailyDoc,
   natalFromRow,
 } from '@/lib/charts/daily';
 import { loadOwnedChart } from '@/lib/charts/report';
 import { formatDayShort } from '@/lib/dates';
 import { chartLabel } from '@/lib/interpret/daily';
-import { reportToText } from '@/lib/interpret/report';
 import { requireUser } from '@/lib/requireUser';
 import { asLocale } from '@/i18n/routing';
 
@@ -43,14 +41,6 @@ export default async function ChartHistoryPage({ params }: Props) {
   await ensureDailyHistory(id, session.user.id, locale);
   const history = await listDailyReadings(id, session.user.id);
   const natal = natalFromRow(chart);
-  const historyText = (
-    await Promise.all(
-      history.map(async (row) => {
-        const doc = await localizedDailyDoc(natal, row.transits, row.date, locale);
-        return reportToText(doc);
-      }),
-    )
-  ).join('\n---\n\n');
 
   return (
     <>
@@ -75,10 +65,9 @@ export default async function ChartHistoryPage({ params }: Props) {
             >
               {t('readReport')}
             </Link>
-            {historyText ? (
-              <DownloadTextButton
-                filename={`siderachart-daily-${id.slice(0, 8)}.txt`}
-                text={historyText}
+            {history.length ? (
+              <DownloadLinkButton
+                href={`/api/charts/${id}/history?locale=${locale}`}
                 label={t('downloadDays')}
               />
             ) : null}
