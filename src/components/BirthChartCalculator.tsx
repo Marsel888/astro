@@ -20,12 +20,14 @@ import {
 import EmptyOrrery from '@/components/EmptyOrrery';
 import ReadingCard from '@/components/ReadingCard';
 import SignEmblem from '@/components/SignEmblem';
+import SaveGate from '@/components/SaveGate';
 import SaveReportCta from '@/components/SaveReportCta';
 import GuestCabinetCta, { useFullReading } from '@/components/GuestCabinetCta';
 import { aspectReading } from '@/lib/interpret/aspects';
 import { downloadSvgAsPng } from '@/lib/exportSvg';
 import { useResultFocus } from '@/components/useResultFocus';
 import { useAstroLabels } from '@/components/useAstroLabels';
+import { useStashedBirth } from '@/components/useStashedBirth';
 
 const PERSONAL = ['mercury', 'venus', 'mars'] as const;
 
@@ -41,15 +43,21 @@ export default function BirthChartCalculator({ headingAs = 'h1' }: { headingAs?:
   const wheelRef = useRef<HTMLDivElement>(null);
   const { ref: resultRef, focusResult } = useResultFocus<HTMLDivElement>();
 
-  function onCalculate() {
+  function onCalculate(input: BirthData = data) {
     setError(null);
     try {
-      setChart(chartFromBirth(data));
+      setChart(chartFromBirth(input));
       focusResult();
     } catch (e) {
       setError(e instanceof Error ? e.message : ui('failed'));
     }
   }
+
+  // Somebody who left to register comes back with their data already filled in.
+  useStashedBirth(fullReading, (restored) => {
+    setData(restored);
+    onCalculate(restored);
+  });
 
   const bodies = useMemo(() => (chart ? toBodyPoints(chart.bodies) : []), [chart]);
 
@@ -273,7 +281,7 @@ export default function BirthChartCalculator({ headingAs = 'h1' }: { headingAs?:
             />
           )}
 
-          {fullReading && <SaveReportCta data={data} />}
+          {fullReading ? <SaveReportCta data={data} /> : <SaveGate data={data} />}
 
           <h2 className="mb-1 mt-14 text-h2 font-medium tracking-[-0.01em]">{t('positions')}</h2>
           <p className="mb-4 font-mono text-data text-ink-muted">

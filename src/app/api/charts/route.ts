@@ -1,11 +1,10 @@
 import { eq } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import { addPendingId, readPendingIds } from '@/lib/charts/pending';
 import { db } from '@/lib/db';
 import { charts } from '@/lib/db/schema';
 import { chartFromBirth } from '@/lib/astro/fromBirth';
-import { clientIp, rateLimit } from '@/lib/rateLimit';
+import { rateLimit } from '@/lib/rateLimit';
 import { bumpUsage } from '@/lib/usage';
 import type { BirthData } from '@/lib/places/defaults';
 import type { ChartResult } from '@/lib/astro';
@@ -72,24 +71,20 @@ export async function POST(request: Request) {
   if (!db) return NextResponse.json({ error: 'Database is not configured' }, { status: 503 });
 
   const session = await sessionOf(request);
-  const ip = clientIp(request);
-  const limit = rateLimit(`charts:${session?.user.id ?? ip}`, session ? 40 : 3, 60 * 60 * 1000);
-  if (!limit.ok) {
-    return NextResponse.json({ error: 'Too many saves from this network. Try again later.' }, { status: 429 });
+
+  // Saving requires an account. A chart with no owner is birth data that nobody
+  // can open, export or delete — it just accumulates. The calculator itself
+  // stays free and needs no account; only keeping the result does.
+  if (!session) {
+    return NextResponse.json(
+      { error: 'Create a free account to save this chart.', needAccount: true },
+      { status: 401 },
+    );
   }
 
-  if (!session) {
-    const pending = await readPendingIds();
-    if (pending.length >= 1) {
-      return NextResponse.json(
-        {
-          error: 'Sign in to save more charts.',
-          pendingId: pending[0],
-          needAccount: true,
-        },
-        { status: 409 },
-      );
-    }
+  const limit = rateLimit(`charts:${session.user.id}`, 40, 60 * 60 * 1000);
+  if (!limit.ok) {
+    return NextResponse.json({ error: 'Too many saves. Try again later.' }, { status: 429 });
   }
 
   let json: SaveBody;
@@ -123,7 +118,7 @@ export async function POST(request: Request) {
   const [row] = await db
     .insert(charts)
     .values({
-      userId: session?.user.id ?? null,
+      userId: session.user.id,
       label,
       birthDate: birth.date,
       birthTime: birth.timeUnknown ? null : birth.time,
@@ -138,8 +133,7 @@ export async function POST(request: Request) {
     .returning({ id: charts.id });
 
   if (!row) return NextResponse.json({ error: 'Could not save chart' }, { status: 500 });
-  if (!session) await addPendingId(row.id);
-  else await bumpUsage(session.user.id, 'chartsSaved');
+  await bumpUsage(session.user.id, 'chartsSaved');
 
-  return NextResponse.json({ id: row.id, anonymous: !session });
+  return NextResponse.json({ id: row.id });
 }

@@ -111,7 +111,14 @@
     "emptyOverlay": "Enter both charts, then calculate — the overlay wheel draws itself.",
     "wheelLabel": "Chart wheel: zodiac ring, house cusps, planetary positions and aspect lines",
     "wheelLabelSynastry": "Synastry wheel: two charts overlaid, with the aspects between them",
-    "downloadFailed": "The chart could not be saved as an image. Try again."
+    "downloadFailed": "The chart could not be saved as an image. Try again.",
+    "saveGateKicker": "Keep this chart",
+    "saveGateTitle": "Saving needs a free account",
+    "saveGateBody": "The calculator stays free and open. An account is what keeps the chart: the full report, and a reading of the sky against it written for every day from the day you save it.",
+    "saveGateRegister": "Create free account",
+    "saveGateSignIn": "I already have an account",
+    "saveGateHint": "The birth data you entered is kept in this browser while you sign up, so you will not have to type it again.",
+    "saveNeedsAccount": "Create a free account to save this chart."
   },
   "rising": {
     "title": "Rising sign calculator",

@@ -2,12 +2,14 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { useRouter } from '@/i18n/navigation';
+import { usePathname, useRouter } from '@/i18n/navigation';
 import type { BirthData } from '@/lib/places/defaults';
 import { authClient } from '@/lib/auth-client';
+import { stashBirth } from '@/lib/stashedBirth';
 
 export default function SaveReportCta({ data }: { data: BirthData }) {
   const router = useRouter();
+  const pathname = usePathname();
   const t = useTranslations('resultUi');
   const { data: session } = authClient.useSession();
   const [error, setError] = useState<string | null>(null);
@@ -32,9 +34,11 @@ export default function SaveReportCta({ data }: { data: BirthData }) {
           },
         }),
       });
-      const json = (await res.json()) as { id?: string; error?: string; pendingId?: string; needAccount?: boolean };
-      if (res.status === 409 && json.needAccount) {
-        router.push(`/sign-in?next=/dashboard`);
+      const json = (await res.json()) as { id?: string; error?: string; needAccount?: boolean };
+      // The session can lapse between rendering the button and pressing it.
+      if (res.status === 401 || json.needAccount) {
+        stashBirth(pathname, data);
+        router.push(`/sign-in?next=${encodeURIComponent(pathname)}`);
         return;
       }
       if (!res.ok || !json.id) throw new Error(json.error || t('saveError'));

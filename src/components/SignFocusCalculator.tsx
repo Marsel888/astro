@@ -6,9 +6,11 @@ import BirthDataForm from '@/components/BirthDataForm';
 import EmptyOrrery from '@/components/EmptyOrrery';
 import ReadingCard from '@/components/ReadingCard';
 import SignEmblem from '@/components/SignEmblem';
+import SaveGate from '@/components/SaveGate';
 import SaveReportCta from '@/components/SaveReportCta';
 import GuestCabinetCta, { useFullReading } from '@/components/GuestCabinetCta';
 import { useAstroLabels } from '@/components/useAstroLabels';
+import { useStashedBirth } from '@/components/useStashedBirth';
 import { useResultFocus } from '@/components/useResultFocus';
 import { chartFromBirth } from '@/lib/astro/fromBirth';
 import { DEFAULT_BIRTH, type BirthData } from '@/lib/places/defaults';
@@ -31,10 +33,10 @@ export default function SignFocusCalculator({ ns, bodyKey, headingAs = 'h1' }: P
   const [error, setError] = useState<string | null>(null);
   const { ref: resultRef, focusResult } = useResultFocus<HTMLElement>();
 
-  function onSubmit() {
+  function onSubmit(input: BirthData = data) {
     setError(null);
     try {
-      const chart = chartFromBirth(data);
+      const chart = chartFromBirth(input);
       setBody(chart.bodies.find((row) => row.key === bodyKey) ?? null);
       focusResult();
     } catch (e) {
@@ -42,6 +44,11 @@ export default function SignFocusCalculator({ ns, bodyKey, headingAs = 'h1' }: P
       setError(e instanceof Error ? e.message : ui('failed'));
     }
   }
+
+  useStashedBirth(fullReading, (restored) => {
+    setData(restored);
+    onSubmit(restored);
+  });
 
   const kind = bodyKey as ReadingKind;
   const sign = body ? (body.sign as SignName) : null;
@@ -82,7 +89,7 @@ export default function SignFocusCalculator({ ns, bodyKey, headingAs = 'h1' }: P
             paragraphs={fullReading ? paras : paras.slice(0, 1)}
             footer={<GuestCabinetCta />}
           />
-          {fullReading && <SaveReportCta data={data} />}
+          {fullReading ? <SaveReportCta data={data} /> : <SaveGate data={data} />}
         </section>
       )}
     </>

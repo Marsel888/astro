@@ -6,9 +6,11 @@ import BirthDataForm from '@/components/BirthDataForm';
 import EmptyOrrery from '@/components/EmptyOrrery';
 import ReadingCard from '@/components/ReadingCard';
 import SignEmblem from '@/components/SignEmblem';
+import SaveGate from '@/components/SaveGate';
 import SaveReportCta from '@/components/SaveReportCta';
 import GuestCabinetCta, { useFullReading } from '@/components/GuestCabinetCta';
 import { useAstroLabels } from '@/components/useAstroLabels';
+import { useStashedBirth } from '@/components/useStashedBirth';
 import { useResultFocus } from '@/components/useResultFocus';
 import { chartFromBirth } from '@/lib/astro/fromBirth';
 import { DEFAULT_BIRTH, type BirthData } from '@/lib/places/defaults';
@@ -25,15 +27,15 @@ export default function RisingCalculator({ headingAs = 'h1' }: { headingAs?: 'h1
   const [error, setError] = useState<string | null>(null);
   const { ref: resultRef, focusResult } = useResultFocus<HTMLElement>();
 
-  function onSubmit() {
+  function onSubmit(input: BirthData = data) {
     setError(null);
-    if (data.timeUnknown) {
+    if (input.timeUnknown) {
       setResult(null);
       setError(form('timeRequired'));
       return;
     }
     try {
-      const chart = chartFromBirth({ ...data, timeUnknown: false });
+      const chart = chartFromBirth({ ...input, timeUnknown: false });
       if (chart.ascendant == null) {
         setResult(null);
         setError(form('timeRequired'));
@@ -81,7 +83,7 @@ export default function RisingCalculator({ headingAs = 'h1' }: { headingAs?: 'h1
             paragraphs={[readingFor('rising', result.sign, locale)]}
             footer={<GuestCabinetCta />}
           />
-          {fullReading && <SaveReportCta data={data} />}
+          {fullReading ? <SaveReportCta data={data} /> : <SaveGate data={data} />}
         </section>
       )}
     </>
