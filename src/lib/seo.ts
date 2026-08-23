@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { SITE_URL } from '@/lib/site';
-import { PUBLISHED_LOCALE_IDS, isPublishedLocale, type AppLocale } from '@/i18n/locales';
+import { LOCALES, PUBLISHED_LOCALE_IDS, isPublishedLocale, type AppLocale } from '@/i18n/locales';
+import { SITE_NAME } from '@/lib/site';
 
 export function pageUrl(locale: string, path = '') {
   const suffix = path === '/' ? '' : path;
@@ -37,4 +38,50 @@ export function hreflangMetadata(
     meta.robots = { index: false, follow: true };
   }
   return meta;
+}
+
+/**
+ * Open Graph and Twitter tags for a page.
+ *
+ * Next.js does not copy `title` and `description` into the social tags on its
+ * own, so a page that only sets those shares as bare brand text. The image comes
+ * from src/app/opengraph-image.tsx and is inherited automatically.
+ */
+export function socialMetadata(
+  locale: AppLocale,
+  title: string,
+  description: string,
+  path = '',
+): Pick<Metadata, 'openGraph' | 'twitter'> {
+  const htmlLocale = LOCALES.find((l) => l.id === locale)?.html ?? 'en';
+
+  // Declaring `openGraph` on a page replaces the whole object, so the image that
+  // src/app/opengraph-image.tsx would otherwise contribute is lost. It has to be
+  // named here or the share card comes out as text with no picture.
+  const images = [
+    {
+      url: '/opengraph-image',
+      width: 1200,
+      height: 630,
+      alt: `${SITE_NAME} — free birth chart calculators`,
+    },
+  ];
+
+  return {
+    openGraph: {
+      type: 'website',
+      siteName: SITE_NAME,
+      title,
+      description,
+      url: pageUrl(locale, path),
+      locale: htmlLocale.replace('-', '_'),
+      images,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images,
+    },
+  };
 }

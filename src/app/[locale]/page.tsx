@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import SiteHeader from '@/components/SiteHeader';
 import { CALCULATOR_NAV } from '@/lib/nav';
-import { hreflangMetadata } from '@/lib/seo';
+import { hreflangMetadata, socialMetadata } from '@/lib/seo';
 import { asLocale } from '@/i18n/routing';
 import { articleList, type ArticleCategory } from '@/content/articles';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
@@ -25,10 +25,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: raw } = await params;
   const locale = asLocale(raw);
   const t = await getTranslations({ locale, namespace: 'home' });
+  const title = t('metaTitle');
+  const description = t('metaDescription');
   return {
-    title: { absolute: t('metaTitle') },
-    description: t('metaDescription'),
+    title: { absolute: title },
+    description,
     ...hreflangMetadata(locale, ''),
+    ...socialMetadata(locale, title, description, ''),
   };
 }
 

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { hreflangMetadata } from '@/lib/seo';
+import { hreflangMetadata, socialMetadata } from '@/lib/seo';
 import type { AppLocale } from '@/i18n/routing';
 
 type CalculatorNamespace =
@@ -24,9 +24,12 @@ export async function calculatorMetadata(
   path: string,
 ): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace });
+  const title = t('metaTitle');
+  const description = t('metaDescription');
   return {
-    title: { absolute: t('metaTitle') },
-    description: t('metaDescription'),
+    title: { absolute: title },
+    description,
     ...hreflangMetadata(locale, path),
+    ...socialMetadata(locale, title, description, path),
   };
 }

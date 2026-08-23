@@ -6,7 +6,7 @@ import ArticleCalculator from '@/components/ArticleCalculator';
 import SiteHeader from '@/components/SiteHeader';
 import { ARTICLES, getArticle, type ArticleCategory } from '@/content/articles';
 import { asLocale } from '@/i18n/routing';
-import { hreflangMetadata, pageUrl } from '@/lib/seo';
+import { hreflangMetadata, pageUrl, socialMetadata } from '@/lib/seo';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: article.excerpt,
     keywords: [article.title, ...article.faq.map((item) => item.q)],
     ...hreflangMetadata(locale, `/articles/${slug}`),
+    ...socialMetadata(locale, article.title, article.excerpt, `/articles/${slug}`),
   };
 }
 

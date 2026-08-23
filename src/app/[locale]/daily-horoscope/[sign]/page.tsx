@@ -22,7 +22,7 @@ import {
   withBorn,
   type HoroscopeSlug,
 } from '@/lib/interpret/horoscope';
-import { hreflangMetadata, pageUrl } from '@/lib/seo';
+import { hreflangMetadata, pageUrl, socialMetadata } from '@/lib/seo';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
 import type { SignName } from '@/lib/chart';
 
@@ -44,10 +44,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'horoscope' });
   const daily = await getTranslations({ locale, namespace: 'daily' });
   const label = daily(`sign_${sign}` as 'sign_aries');
+  const title = t('signMetaTitle', { sign: label });
+  const description = t('signMetaDescription', { sign: label });
+  const path = `${HOROSCOPE_PATH}/${sign}`;
   return {
-    title: { absolute: t('signMetaTitle', { sign: label }) },
-    description: t('signMetaDescription', { sign: label }),
-    ...hreflangMetadata(locale, `${HOROSCOPE_PATH}/${sign}`),
+    title: { absolute: title },
+    description,
+    ...hreflangMetadata(locale, path),
+    ...socialMetadata(locale, title, description, path),
   };
 }
 

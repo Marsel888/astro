@@ -19,7 +19,7 @@ import {
   withBorn,
   type HoroscopeSlug,
 } from '@/lib/interpret/horoscope';
-import { hreflangMetadata, pageUrl } from '@/lib/seo';
+import { hreflangMetadata, pageUrl, socialMetadata } from '@/lib/seo';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
 import type { SignName } from '@/lib/chart';
 
@@ -33,10 +33,13 @@ export const revalidate = 3600;
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = asLocale((await params).locale);
   const t = await getTranslations({ locale, namespace: 'horoscope' });
+  const title = t('indexMetaTitle');
+  const description = t('indexMetaDescription');
   return {
-    title: { absolute: t('indexMetaTitle') },
-    description: t('indexMetaDescription'),
+    title: { absolute: title },
+    description,
     ...hreflangMetadata(locale, HOROSCOPE_PATH),
+    ...socialMetadata(locale, title, description, HOROSCOPE_PATH),
   };
 }
 
