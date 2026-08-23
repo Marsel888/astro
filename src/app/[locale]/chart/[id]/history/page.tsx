@@ -77,7 +77,7 @@ export default async function ChartHistoryPage({ params }: Props) {
             </Link>
             {historyText ? (
               <DownloadTextButton
-                filename={`meridian-daily-${id.slice(0, 8)}.txt`}
+                filename={`siderachart-daily-${id.slice(0, 8)}.txt`}
                 text={historyText}
                 label={t('downloadDays')}
               />

@@ -53,7 +53,7 @@ export default async function DailyReadingPage({ params }: Props) {
               {t('natalReport')}
             </Link>
           </div>
-          <ReportActions doc={result.doc} filename={`meridian-daily-${date}.txt`} />
+          <ReportActions doc={result.doc} filename={`siderachart-daily-${date}.txt`} />
         </div>
         <ReportView doc={result.doc} />
       </main>

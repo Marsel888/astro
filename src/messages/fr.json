@@ -57,7 +57,7 @@
   },
   "home": {
     "title": "Calculateurs de thème natal",
-    "lead": "Saisissez date, heure et lieu. Meridian calcule des positions tropicales avec une éphéméride VSOP87, dessine la roue et lit un cache rédigé — pas un modèle qui invente des degrés.",
+    "lead": "Saisissez date, heure et lieu. SideraChart calcule des positions tropicales avec une éphéméride VSOP87, dessine la roue et lit un cache rédigé — pas un modèle qui invente des degrés.",
     "cta": "Ouvrir le thème natal",
     "ctaSecondary": "Lire les articles",
     "howTitle": "Comment utiliser un calculateur",
@@ -96,7 +96,7 @@
     "privacyTitle": "Confidentialité",
     "privacyBody": "Les données de naissance servent à calculer le thème. La recherche de lieu passe par l’API de ce site et OpenStreetMap. Les thèmes enregistrés existent si vous créez un compte. Ce n’est pas un conseil médical, juridique ou financier.",
     "termsTitle": "Conditions",
-    "termsBody": "Meridian est un outil de calcul gratuit. Les thèmes sont des positions tropicales avec des textes en cache. Une synastrie ou un composite sans compte ; le reste demande une connexion."
+    "termsBody": "SideraChart est un outil de calcul gratuit. Les thèmes sont des positions tropicales avec des textes en cache. Une synastrie ou un composite sans compte ; le reste demande une connexion."
   },
   "footer": {
     "blurb": "Positions natales tropicales d’une éphéméride VSOP87. Pas Swiss Ephemeris.",
@@ -235,7 +235,7 @@
   },
   "calcCopy": {
     "howTitle": "Comment un thème natal est calculé",
-    "howP1": "Un thème natal est un diagramme du ciel depuis un lieu à un instant. Deux données font le travail : l’heure, qui fixe où chaque corps se trouvait sur l’écliptique, et les coordonnées, qui fixent quelle partie de ce ciel se levait. Meridian résout le lieu de naissance en latitude et longitude, convertit l’heure civile locale en Temps universel avec les règles de fuseaux IANA en vigueur à cette date, puis lit les longitudes planétaires dans une éphéméride de classe VSOP87 (astronomy-engine).",
+    "howP1": "Un thème natal est un diagramme du ciel depuis un lieu à un instant. Deux données font le travail : l’heure, qui fixe où chaque corps se trouvait sur l’écliptique, et les coordonnées, qui fixent quelle partie de ce ciel se levait. SideraChart résout le lieu de naissance en latitude et longitude, convertit l’heure civile locale en Temps universel avec les règles de fuseaux IANA en vigueur à cette date, puis lit les longitudes planétaires dans une éphéméride de classe VSOP87 (astronomy-engine).",
     "howP2": "Les positions sont données dans le zodiaque tropical, mesurées depuis l’équinoxe de mars — la convention occidentale. Les longitudes sidérales diffèrent aujourd’hui d’environ 24° et n’apparaissent pas dans ce calculateur.",
     "whyTimeTitle": "Pourquoi l’heure de naissance compte",
     "whyTimeBody": "L’Ascendant avance d’environ un degré toutes les quatre minutes : une erreur de vingt minutes le décale de cinq degrés et peut changer le signe. La Lune parcourt environ un demi-degré par heure. Du Soleil à Pluton, un jour suffit : sans heure, le thème reste utile, mais sans maisons.",
@@ -250,7 +250,7 @@
     "precisionHouses": "Placidus + Whole Sign",
     "precisionOrbs": "orbes 8° / 6° / 4°",
     "risingTitle": "Ce qu’est le signe Ascendant",
-    "risingBody": "Le signe Ascendant est le signe du zodiaque qui se levait à l’horizon est au moment de la naissance. Il dépend de la latitude, de la longitude et de l’horloge, pas seulement de la date. Meridian le calcule à partir du temps sidéral local et de la même éphéméride tropicale que le thème natal.",
+    "risingBody": "Le signe Ascendant est le signe du zodiaque qui se levait à l’horizon est au moment de la naissance. Il dépend de la latitude, de la longitude et de l’horloge, pas seulement de la date. SideraChart le calcule à partir du temps sidéral local et de la même éphéméride tropicale que le thème natal.",
     "moonTitle": "Pourquoi la Lune a besoin d’une heure",
     "moonBody": "La Lune parcourt environ 13° par jour. La case « heure inconnue » donne encore le signe dans la plupart des cas, mais le degré et la maison sont une estimation de midi. Pour une lecture natale, saisissez l’heure si vous l’avez.",
     "venusTitle": "Vénus dans le thème natal",

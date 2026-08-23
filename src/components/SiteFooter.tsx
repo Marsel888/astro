@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import BrandMark from '@/components/BrandMark';
 import { CALCULATOR_NAV } from '@/lib/nav';
 
 export default function SiteFooter() {
@@ -11,7 +12,7 @@ export default function SiteFooter() {
     <footer className="border-t border-hairline px-5 sm:px-8">
       <div className="mx-auto grid max-w-[1080px] gap-8 py-10 sm:grid-cols-[1.1fr_1.4fr_0.7fr]">
         <div>
-          <p className="text-h3 font-medium tracking-[-0.01em] text-ink">{t('brand.name')}</p>
+          <BrandMark />
           <p className="mt-1 max-w-[280px] font-mono text-caption text-ink-muted">{t('footer.blurb')}</p>
         </div>
         <nav aria-label={t('nav.calculators')}>

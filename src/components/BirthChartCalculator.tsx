@@ -23,40 +23,13 @@ import SignEmblem from '@/components/SignEmblem';
 import SaveReportCta from '@/components/SaveReportCta';
 import GuestCabinetCta, { useFullReading } from '@/components/GuestCabinetCta';
 import { aspectReading } from '@/lib/interpret/aspects';
+import { downloadSvgAsPng } from '@/lib/exportSvg';
+import { useResultFocus } from '@/components/useResultFocus';
 import { useAstroLabels } from '@/components/useAstroLabels';
 
 const PERSONAL = ['mercury', 'venus', 'mars'] as const;
 
-function downloadSvgPng(svg: SVGSVGElement, filename: string) {
-  const clone = svg.cloneNode(true) as SVGSVGElement;
-  clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-  const xml = new XMLSerializer().serializeToString(clone);
-  const blob = new Blob([xml], { type: 'image/svg+xml;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const img = new Image();
-  img.onload = () => {
-    const canvas = document.createElement('canvas');
-    canvas.width = 1120;
-    canvas.height = 1120;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    ctx.fillStyle = '#0B0E14';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(img, 0, 0, 1120, 1120);
-    canvas.toBlob((png) => {
-      if (!png) return;
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(png);
-      a.download = filename;
-      a.click();
-      URL.revokeObjectURL(a.href);
-    });
-    URL.revokeObjectURL(url);
-  };
-  img.src = url;
-}
-
-export default function BirthChartCalculator() {
+export default function BirthChartCalculator({ headingAs = 'h1' }: { headingAs?: 'h1' | 'h2' | 'none' } = {}) {
   const t = useTranslations('birthChart');
   const common = useTranslations('common');
   const { locale, ui, sign, planet, aspect } = useAstroLabels();
@@ -66,11 +39,13 @@ export default function BirthChartCalculator() {
   const [error, setError] = useState<string | null>(null);
   const [aspects, setAspects] = useState(true);
   const wheelRef = useRef<HTMLDivElement>(null);
+  const { ref: resultRef, focusResult } = useResultFocus<HTMLDivElement>();
 
   function onCalculate() {
     setError(null);
     try {
       setChart(chartFromBirth(data));
+      focusResult();
     } catch (e) {
       setError(e instanceof Error ? e.message : ui('failed'));
     }
@@ -140,10 +115,17 @@ export default function BirthChartCalculator() {
   const personal = chart?.bodies.filter((b) => PERSONAL.includes(b.key as (typeof PERSONAL)[number])) ?? [];
   const natalAspects = chart?.aspects ?? [];
 
+  // 'none' is for embedding under a page that already has its own heading.
+  const Heading = headingAs === 'none' ? null : headingAs;
+
   return (
     <>
-      <h1 className="mb-2.5 text-[26px] font-medium tracking-[-0.02em] sm:text-h1">{t('title')}</h1>
-      <p className="mb-7 max-w-[620px] text-body text-ink-secondary [text-wrap:pretty]">{t('lead')}</p>
+      {Heading && (
+        <>
+          <Heading className="mb-2.5 text-[26px] font-medium tracking-[-0.02em] sm:text-h1">{t('h1')}</Heading>
+          <p className="mb-7 max-w-[620px] text-body text-ink-secondary [text-wrap:pretty]">{t('lead')}</p>
+        </>
+      )}
 
       <BirthDataForm value={data} onChange={setData} onSubmit={onCalculate} />
       {error && <p className="mt-3 text-caption text-asp-hard">{error}</p>}
@@ -154,39 +136,36 @@ export default function BirthChartCalculator() {
 
       {chart && (
         <>
-          <div className="mt-12 border-t border-hairline pt-10 sm:mt-14 sm:pt-11">
+          <div
+            ref={resultRef}
+            tabIndex={-1}
+            className="mt-12 scroll-mt-4 border-t border-hairline pt-10 outline-none sm:mt-14 sm:pt-11"
+          >
             <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
               <h2 className="text-h2 font-medium tracking-[-0.01em]">{t('result')}</h2>
               <span className="font-mono text-caption text-ink-muted">
                 {data.date} · {data.timeUnknown ? common('timeUnknown') : data.time} · {data.place.tz} ·{' '}
-                {formatCoord(chart.lat, chart.lon)} · {common('placidus')} · {common('tropical')}
+                {formatCoord(chart.lat, chart.lon)} ·{' '}
+                {chart.houseSystemResolved === 'porphyry' ? common('porphyry') : common('placidus')} ·{' '}
+                {common('tropical')}
               </span>
             </div>
+            {chart.houseSystemResolved === 'porphyry' && (
+              <p className="mt-2 text-caption text-ink-muted [text-wrap:pretty]">{common('houseFallbackNote')}</p>
+            )}
           </div>
 
           <div key={chart.jd} ref={wheelRef} className="flex justify-center">
-            <div className="sm:hidden">
-              <ChartWheel
-                bodies={bodies}
-                cusps={chart.cusps ?? Array.from({ length: 12 }, (_, i) => i * 30)}
-                asc={chart.ascendant ?? 0}
-                mc={chart.mc ?? 90}
-                showAspects={aspects}
-                showHouses={!chart.timeUnknown}
-                size={340}
-              />
-            </div>
-            <div className="hidden sm:block">
-              <ChartWheel
-                bodies={bodies}
-                cusps={chart.cusps ?? Array.from({ length: 12 }, (_, i) => i * 30)}
-                asc={chart.ascendant ?? 0}
-                mc={chart.mc ?? 90}
-                showAspects={aspects}
-                showHouses={!chart.timeUnknown}
-                size={560}
-              />
-            </div>
+            <ChartWheel
+              bodies={bodies}
+              cusps={chart.cusps ?? Array.from({ length: 12 }, (_, i) => i * 30)}
+              asc={chart.ascendant ?? 0}
+              mc={chart.mc ?? 90}
+              showAspects={aspects}
+              showHouses={!chart.timeUnknown}
+              maxSize={560}
+              label={ui('wheelLabel')}
+            />
           </div>
 
           <div className="mb-10 mt-1 flex justify-center gap-5">
@@ -201,7 +180,10 @@ export default function BirthChartCalculator() {
               type="button"
               onClick={() => {
                 const svg = wheelRef.current?.querySelector('svg');
-                if (svg) downloadSvgPng(svg, 'meridian-natal-chart.png');
+                if (!svg) return;
+                downloadSvgAsPng(svg, { filename: 'siderachart-natal-chart.png' }).catch(() =>
+                  setError(ui('downloadFailed')),
+                );
               }}
               className="h-11 rounded-control border border-hairline-strong px-3.5 text-caption text-ink-secondary hover:border-ink-muted hover:text-ink sm:h-[34px]"
             >

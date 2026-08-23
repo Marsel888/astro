@@ -10,7 +10,7 @@
 
   --ink-primary: #e8e6e1;
   --ink-secondary: #9ba3b4;
-  --ink-muted: #5e6779;
+  --ink-muted: #7c8598;
 
   --read-primary: #1a1d24;
   --read-secondary: #4a5261;
@@ -24,7 +24,7 @@
   --el-air: #7fa3c4;
   --el-water: #6c7fb8;
 
-  --asp-hard: #c4564a;
+  --asp-hard: #d0655a;
   --asp-soft: #5a9a8b;
   --asp-neutral: #6e7686;
 
@@ -54,6 +54,24 @@ a {
 
 a:hover {
   color: var(--ink-primary);
+}
+
+/*
+ * Visible keyboard focus. Several controls set outline-none so the field can
+ * signal focus with its border instead; that is invisible to keyboard users, so
+ * the ring is restored here for :focus-visible only and never on mouse clicks.
+ * Element selectors outrank the utility class, so no !important is needed.
+ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 3px;
 }
 
 @keyframes wheel-draw {
@@ -125,8 +143,8 @@ a:hover {
 }
 
 .orrery-spin {
-  transform-origin: 140px 140px;
-  animation: orrery-spin 90s linear infinite;
+  transform-origin: center;
+  animation: orrery-spin 120s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

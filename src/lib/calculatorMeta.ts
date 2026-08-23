@@ -13,6 +13,11 @@ type CalculatorNamespace =
   | 'synastry'
   | 'composite';
 
+/**
+ * `absolute` skips the "%s — SideraChart" template on purpose: metaTitle is
+ * already written to fill the 50–60 character SERP budget (STRATEGY §12.2),
+ * and appending the brand would push it past the cut-off.
+ */
 export async function calculatorMetadata(
   locale: AppLocale,
   namespace: CalculatorNamespace,
@@ -20,8 +25,8 @@ export async function calculatorMetadata(
 ): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace });
   return {
-    title: t('title'),
-    description: t('lead'),
+    title: { absolute: t('metaTitle') },
+    description: t('metaDescription'),
     ...hreflangMetadata(locale, path),
   };
 }

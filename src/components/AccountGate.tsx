@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 
 type Props = {
@@ -9,6 +10,7 @@ type Props = {
 };
 
 export default function AccountGate({ nextPath, title, body }: Props) {
+  const t = useTranslations('gate');
   const next = encodeURIComponent(nextPath);
   return (
     <div className="mt-6 rounded-card border border-hairline bg-panel p-5">
@@ -19,13 +21,13 @@ export default function AccountGate({ nextPath, title, body }: Props) {
           href={`/sign-up?next=${next}`}
           className="flex h-11 items-center rounded-control bg-gold px-4 text-caption font-medium text-deep hover:bg-gold-hover sm:h-[34px]"
         >
-          Create free account
+          {t('createAccount')}
         </Link>
         <Link
           href={`/sign-in?next=${next}`}
           className="flex h-11 items-center rounded-control border border-hairline-strong px-4 text-caption text-ink-secondary hover:text-ink sm:h-[34px]"
         >
-          Sign in
+          {t('signIn')}
         </Link>
       </div>
     </div>

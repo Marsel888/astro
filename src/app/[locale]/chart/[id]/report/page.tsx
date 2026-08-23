@@ -43,7 +43,7 @@ export default async function ReportPage({ params }: Props) {
               {t('byDay')}
             </Link>
           </div>
-          <ReportActions doc={result.doc} filename={`meridian-natal-${id.slice(0, 8)}.txt`} />
+          <ReportActions doc={result.doc} filename={`siderachart-natal-${id.slice(0, 8)}.txt`} />
         </div>
         <ReportView doc={result.doc} />
       </main>

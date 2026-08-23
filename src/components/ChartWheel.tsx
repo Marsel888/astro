@@ -18,7 +18,9 @@ type Props = {
   bodiesB?: BodyPoint[];
   showAspects?: boolean;
   showHouses?: boolean;
-  size?: number;
+  /** Largest rendered edge in px. The wheel shrinks below this on narrow screens. */
+  maxSize?: number;
+  label?: string;
 };
 
 export default function ChartWheel({
@@ -29,7 +31,8 @@ export default function ChartWheel({
   bodiesB,
   showAspects = true,
   showHouses = true,
-  size = 560,
+  maxSize = 560,
+  label,
 }: Props) {
   const signs = ringSegs(asc);
   const houses = showHouses ? houseGeom(cusps, asc) : [];
@@ -52,11 +55,11 @@ export default function ChartWheel({
   return (
     <svg
       viewBox="0 0 560 560"
-      width={size}
-      height={size}
-      className="wheel-play block max-w-full"
+      width="100%"
+      style={{ maxWidth: maxSize }}
+      className="wheel-play block h-auto w-full"
       role="img"
-      aria-label="Natal chart wheel: zodiac ring, houses, planetary positions and aspects"
+      aria-label={label}
     >
       <rect x={0} y={0} width={560} height={560} fill="var(--bg-deep)" />
 

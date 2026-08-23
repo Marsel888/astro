@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 
-export const PENDING_COOKIE = 'meridian_pending';
+export const PENDING_COOKIE = 'sidera_pending';
 const MAX_PENDING = 1;
 
 export async function readPendingIds() {

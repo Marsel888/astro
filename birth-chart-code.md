@@ -1,4 +1,4 @@
-# Meridian — birth chart calculator (Next.js + Tailwind)
+# SideraChart — birth chart calculator (Next.js + Tailwind)
 
 Paste this whole file into an AI coding tool. It contains four files:
 `app/globals.css`, `lib/chart.ts`, `components/Starfield.tsx`,
@@ -553,7 +553,7 @@ export default function Page() {
       <header className="border-b border-hairline px-5 sm:px-8">
         <div className="mx-auto flex h-16 max-w-[1080px] items-center justify-between">
           <div className="flex items-baseline gap-2">
-            <span className="text-h3 font-medium tracking-[-0.01em]">Meridian</span>
+            <span className="text-h3 font-medium tracking-[-0.01em]">SideraChart</span>
             <span className="font-mono text-[11px] text-ink-muted">ephemeris v2.4</span>
           </div>
           <nav className="hidden gap-7 text-data sm:flex">
@@ -725,7 +725,7 @@ export default function Page() {
                 <p className="mb-3.5 text-body text-ink-secondary [text-wrap:pretty]">
                   A natal chart is a diagram of the sky from one place at one moment. Two inputs do
                   the work: time, which fixes where each body sat along the ecliptic, and
-                  coordinates, which fix which part of that sky was rising. Meridian resolves your
+                  coordinates, which fix which part of that sky was rising. SideraChart resolves your
                   birthplace to latitude and longitude, converts local clock time to Universal Time
                   using the timezone rules in force on that date, then reads planetary longitudes
                   from the Swiss Ephemeris.

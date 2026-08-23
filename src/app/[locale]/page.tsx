@@ -6,7 +6,7 @@ import { CALCULATOR_NAV } from '@/lib/nav';
 import { hreflangMetadata } from '@/lib/seo';
 import { asLocale } from '@/i18n/routing';
 import { articleList, type ArticleCategory } from '@/content/articles';
-import { SITE_URL } from '@/lib/site';
+import { SITE_NAME, SITE_URL } from '@/lib/site';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = asLocale(raw);
   const t = await getTranslations({ locale, namespace: 'home' });
   return {
-    title: t('title'),
-    description: t('lead'),
+    title: { absolute: t('metaTitle') },
+    description: t('metaDescription'),
     ...hreflangMetadata(locale, ''),
   };
 }
@@ -54,16 +54,10 @@ export default async function HomePage({ params }: Props) {
     }),
   );
 
-  const leads: Record<string, { title: string; lead: string }> = {};
-  for (const item of CALCULATOR_NAV) {
-    const tTool = await getTranslations(TOOL_COPY[item.key].ns);
-    leads[item.key] = { title: tTool('title'), lead: tTool('lead') };
-  }
-
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Meridian',
+    name: SITE_NAME,
     url: `${SITE_URL}/${locale}`,
     inLanguage: locale,
     description: t('lead'),
@@ -76,8 +70,19 @@ export default async function HomePage({ params }: Props) {
       <main className="mx-auto max-w-[1080px] px-5 pb-24 pt-10 sm:px-8 sm:pt-14">
         <section className="max-w-[720px]">
           <p className="font-mono text-caption text-ink-muted">{nav('calculators')}</p>
-          <h1 className="mt-2 text-[32px] font-medium tracking-[-0.03em] sm:text-[40px]">{t('title')}</h1>
+          <h1 className="mt-2 text-[32px] font-medium tracking-[-0.03em] sm:text-[40px]">{t('h1')}</h1>
           <p className="mt-4 text-body text-ink-secondary [text-wrap:pretty]">{t('lead')}</p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {tools.map((tool) => (
+              <Link
+                key={tool.key}
+                href={tool.href}
+                className="flex h-9 items-center rounded-control border border-hairline bg-panel px-3 font-mono text-caption text-ink-secondary hover:border-hairline-strong hover:text-ink"
+              >
+                {tool.label}
+              </Link>
+            ))}
+          </div>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
               href="/birth-chart-calculator"
@@ -91,6 +96,24 @@ export default async function HomePage({ params }: Props) {
             >
               {t('ctaSecondary')}
             </Link>
+          </div>
+        </section>
+
+        <section id="calculators" className="mt-16 scroll-mt-24 border-t border-hairline pt-11">
+          <h2 className="text-h2 font-medium tracking-[-0.01em]">{t('toolsTitle')}</h2>
+          <p className="mt-3 max-w-[640px] text-body text-ink-secondary [text-wrap:pretty]">{t('toolsLead')}</p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {tools.map((tool) => (
+              <Link
+                key={tool.key}
+                href={tool.href}
+                className="rounded-card border border-hairline bg-panel p-5 hover:border-hairline-strong hover:bg-elevated"
+              >
+                <p className="font-mono text-caption text-gold">{tool.label}</p>
+                <h3 className="mt-2 text-h3 font-medium text-ink">{tool.title}</h3>
+                <p className="mt-2 text-body text-ink-secondary [text-wrap:pretty]">{tool.lead}</p>
+              </Link>
+            ))}
           </div>
         </section>
 
@@ -122,24 +145,6 @@ export default async function HomePage({ params }: Props) {
                 <h3 className="text-h3 font-medium text-ink">{t(titleKey)}</h3>
                 <p className="mt-2 text-body text-ink-secondary [text-wrap:pretty]">{t(bodyKey)}</p>
               </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-16 border-t border-hairline pt-11">
-          <h2 className="text-h2 font-medium tracking-[-0.01em]">{t('toolsTitle')}</h2>
-          <p className="mt-3 max-w-[640px] text-body text-ink-secondary [text-wrap:pretty]">{t('toolsLead')}</p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {tools.map((tool) => (
-              <Link
-                key={tool.key}
-                href={tool.href}
-                className="rounded-card border border-hairline bg-panel p-5 hover:border-hairline-strong hover:bg-elevated"
-              >
-                <p className="font-mono text-caption text-gold">{tool.label}</p>
-                <h3 className="mt-2 text-h3 font-medium text-ink">{tool.title}</h3>
-                <p className="mt-2 text-body text-ink-secondary [text-wrap:pretty]">{tool.lead}</p>
-              </Link>
             ))}
           </div>
         </section>

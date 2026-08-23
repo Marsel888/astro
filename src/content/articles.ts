@@ -38,6 +38,9 @@ export type ArticleMeta = {
   slug: string;
   category: ArticleCategory;
   toolHref: CalculatorHref;
+  /** ISO date. Feeds Article schema; without it the markup is not eligible for rich results. */
+  publishedAt: string;
+  updatedAt: string;
 };
 
 const EXTRAS: Partial<Record<AppLocale, Record<string, ArticleCopy>>> = {
@@ -77,25 +80,136 @@ export function getArticle(slug: string, locale: AppLocale) {
   return { ...meta, ...pick(meta, locale) };
 }
 
+const PUBLISHED_AT = '2026-08-22';
+const UPDATED_AT = '2026-08-23';
+
 export const ARTICLE_META: ArticleMeta[] = [
-  { slug: 'what-is-a-natal-chart', category: 'basics', toolHref: '/birth-chart-calculator' },
-  { slug: 'natal-chart-vs-horoscope', category: 'basics', toolHref: '/birth-chart-calculator' },
-  { slug: 'what-is-my-sun-sign', category: 'placements', toolHref: '/birth-chart-calculator' },
-  { slug: 'sun-moon-rising', category: 'placements', toolHref: '/birth-chart-calculator' },
-  { slug: 'rising-sign', category: 'placements', toolHref: '/rising-sign-calculator' },
-  { slug: 'moon-sign', category: 'placements', toolHref: '/moon-sign-calculator' },
-  { slug: 'venus-sign', category: 'placements', toolHref: '/venus-sign-calculator' },
-  { slug: 'mercury-sign', category: 'placements', toolHref: '/mercury-sign-calculator' },
-  { slug: 'mars-sign', category: 'placements', toolHref: '/mars-sign-calculator' },
-  { slug: 'why-birth-time-matters', category: 'method', toolHref: '/birth-chart-calculator' },
-  { slug: 'birth-chart-without-time', category: 'method', toolHref: '/birth-chart-calculator' },
-  { slug: 'how-to-read-a-natal-chart', category: 'how-to', toolHref: '/birth-chart-calculator' },
-  { slug: 'houses-in-a-birth-chart', category: 'method', toolHref: '/birth-chart-calculator' },
-  { slug: 'empty-houses', category: 'method', toolHref: '/birth-chart-calculator' },
-  { slug: 'aspects-in-astrology', category: 'basics', toolHref: '/birth-chart-calculator' },
-  { slug: 'tropical-vs-sidereal', category: 'method', toolHref: '/birth-chart-calculator' },
-  { slug: 'synastry-vs-composite', category: 'relationships', toolHref: '/synastry-calculator' },
-  { slug: 'what-are-transits', category: 'cabinet', toolHref: '/birth-chart-calculator' },
+  {
+    slug: 'what-is-a-natal-chart',
+    category: 'basics',
+    toolHref: '/birth-chart-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'natal-chart-vs-horoscope',
+    category: 'basics',
+    toolHref: '/birth-chart-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'what-is-my-sun-sign',
+    category: 'placements',
+    toolHref: '/birth-chart-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'sun-moon-rising',
+    category: 'placements',
+    toolHref: '/birth-chart-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'rising-sign',
+    category: 'placements',
+    toolHref: '/rising-sign-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'moon-sign',
+    category: 'placements',
+    toolHref: '/moon-sign-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'venus-sign',
+    category: 'placements',
+    toolHref: '/venus-sign-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'mercury-sign',
+    category: 'placements',
+    toolHref: '/mercury-sign-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'mars-sign',
+    category: 'placements',
+    toolHref: '/mars-sign-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'why-birth-time-matters',
+    category: 'method',
+    toolHref: '/birth-chart-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'birth-chart-without-time',
+    category: 'method',
+    toolHref: '/birth-chart-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'how-to-read-a-natal-chart',
+    category: 'how-to',
+    toolHref: '/birth-chart-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'houses-in-a-birth-chart',
+    category: 'method',
+    toolHref: '/birth-chart-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'empty-houses',
+    category: 'method',
+    toolHref: '/birth-chart-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'aspects-in-astrology',
+    category: 'basics',
+    toolHref: '/birth-chart-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'tropical-vs-sidereal',
+    category: 'method',
+    toolHref: '/birth-chart-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'synastry-vs-composite',
+    category: 'relationships',
+    toolHref: '/synastry-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
+  {
+    slug: 'what-are-transits',
+    category: 'cabinet',
+    toolHref: '/birth-chart-calculator',
+    publishedAt: PUBLISHED_AT,
+    updatedAt: UPDATED_AT,
+  },
 ];
 
 /** @deprecated use ARTICLE_META — kept so sitemap and static params keep working */

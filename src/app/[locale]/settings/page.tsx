@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
+import AccountDangerZone from '@/components/AccountDangerZone';
 import SignOutButton from '@/components/SignOutButton';
 import SiteHeader from '@/components/SiteHeader';
 import { getSession } from '@/lib/auth-session';
@@ -31,6 +32,7 @@ export default async function SettingsPage({ params }: Props) {
           <p className="mt-1 text-data text-ink">{session.user.email}</p>
         </div>
         <p className="mt-6 text-body text-ink-secondary [text-wrap:pretty]">{t('settingsLead')}</p>
+        <AccountDangerZone />
         <div className="mt-8 flex gap-3">
           <Link
             href="/dashboard"

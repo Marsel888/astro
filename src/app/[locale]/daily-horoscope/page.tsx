@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Link } from '@/i18n/navigation';
+import { Link, redirect } from '@/i18n/navigation';
 import CalculatorNote from '@/components/CalculatorNote';
+import HoroscopeBornForm from '@/components/HoroscopeBornForm';
 import HoroscopePicker from '@/components/HoroscopePicker';
+import HoroscopeSky from '@/components/HoroscopeSky';
 import ReadingCard from '@/components/ReadingCard';
 import SignEmblem from '@/components/SignEmblem';
 import SiteHeader from '@/components/SiteHeader';
@@ -11,14 +13,20 @@ import {
   HOROSCOPE_PATH,
   HOROSCOPE_SLUGS,
   buildDailyHoroscope,
-  horoscopeParagraphs,
+  horoscopeTeaser,
+  parseHoroscopeBorn,
+  slugForBirthDate,
+  withBorn,
   type HoroscopeSlug,
 } from '@/lib/interpret/horoscope';
 import { hreflangMetadata, pageUrl } from '@/lib/seo';
-import { SITE_URL } from '@/lib/site';
+import { SITE_NAME, SITE_URL } from '@/lib/site';
 import type { SignName } from '@/lib/chart';
 
-type Props = { params: Promise<{ locale: string }> };
+type Props = {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ born?: string }>;
+};
 
 export const revalidate = 3600;
 
@@ -26,15 +34,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = asLocale((await params).locale);
   const t = await getTranslations({ locale, namespace: 'horoscope' });
   return {
-    title: t('indexTitle'),
-    description: t('lead'),
+    title: { absolute: t('indexMetaTitle') },
+    description: t('indexMetaDescription'),
     ...hreflangMetadata(locale, HOROSCOPE_PATH),
   };
 }
 
-export default async function DailyHoroscopePage({ params }: Props) {
+export default async function DailyHoroscopePage({ params, searchParams }: Props) {
   const locale = asLocale((await params).locale);
   setRequestLocale(locale);
+  const born = parseHoroscopeBorn((await searchParams).born);
+  if (born) {
+    redirect({ href: withBorn(`${HOROSCOPE_PATH}/${slugForBirthDate(born)}`, born), locale });
+  }
+
   const t = await getTranslations('horoscope');
   const daily = await getTranslations('daily');
   const copy = await getTranslations('calcCopy');
@@ -42,6 +55,7 @@ export default async function DailyHoroscopePage({ params }: Props) {
   const ht = (key: string, values?: Record<string, string | number>) => t(key as never, values as never);
 
   const signLabel = (sign: SignName) => daily(`sign_${sign.toLowerCase()}` as 'sign_aries');
+  const planetLabel = (key: string) => daily(`planet_${key}` as 'planet_sun');
   const labels = Object.fromEntries(
     HOROSCOPE_SLUGS.map((slug) => [slug, daily(`sign_${slug}` as 'sign_aries')]),
   ) as Record<HoroscopeSlug, string>;
@@ -50,6 +64,7 @@ export default async function DailyHoroscopePage({ params }: Props) {
     { q: t('faq1q'), a: t('faq1a') },
     { q: t('faq2q'), a: t('faq2a') },
     { q: t('faq3q'), a: t('faq3a') },
+    { q: t('faq4q'), a: t('faq4a') },
   ];
 
   const jsonLd = [
@@ -60,7 +75,7 @@ export default async function DailyHoroscopePage({ params }: Props) {
       description: t('lead'),
       inLanguage: locale,
       url: pageUrl(locale, HOROSCOPE_PATH),
-      publisher: { '@type': 'Organization', name: 'Meridian', url: SITE_URL },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     },
     {
       '@context': 'https://schema.org',
@@ -92,11 +107,14 @@ export default async function DailyHoroscopePage({ params }: Props) {
           {' · '}
           {pack.heading}
         </p>
+
+        <HoroscopeSky sky={pack.sky} signLabel={signLabel} planetLabel={planetLabel} heading={t('skyHeading')} />
+        <HoroscopeBornForm />
         <HoroscopePicker labels={labels} />
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
           {pack.signs.map((reading) => {
-            const paragraphs = horoscopeParagraphs(reading, pack.sky, ht, signLabel);
+            const teaser = horoscopeTeaser(reading, ht);
             return (
               <Link
                 key={reading.slug}
@@ -110,7 +128,10 @@ export default async function DailyHoroscopePage({ params }: Props) {
                     <h2 className="text-h3 font-medium text-ink">{t('readSign', { sign: labels[reading.slug] })}</h2>
                   </div>
                 </div>
-                <p className="mt-3 text-body text-ink-secondary [text-wrap:pretty]">{paragraphs[0]}</p>
+                <p className="mt-3 text-body text-ink-secondary [text-wrap:pretty]">{teaser[0]}</p>
+                {teaser[1] ? (
+                  <p className="mt-2 text-[14px] leading-[1.5] text-ink-muted [text-wrap:pretty]">{teaser[1]}</p>
+                ) : null}
               </Link>
             );
           })}

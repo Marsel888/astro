@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import AccountLink from '@/components/AccountLink';
+import BrandMark from '@/components/BrandMark';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { CALCULATOR_NAV } from '@/lib/nav';
 
@@ -21,7 +22,7 @@ export default function SiteHeader() {
         <Link href="/" className="flex items-center gap-2.5 text-ink hover:text-ink">
           <span aria-hidden className="h-3.5 w-px bg-gold" />
           <span className="flex items-baseline gap-2">
-            <span className="text-h3 font-medium tracking-[-0.01em]">{t('brand.name')}</span>
+            <BrandMark />
             <span className="hidden font-mono text-[11px] text-ink-muted sm:inline">{t('brand.tag')}</span>
           </span>
         </Link>

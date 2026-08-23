@@ -97,7 +97,7 @@ type PhotonFeature = {
   };
 };
 
-const UA = 'MeridianNatalChart/0.1 (https://localhost; birth-place lookup)';
+const UA = 'SideraChart/0.1 (https://localhost; birth-place lookup)';
 
 function uniqueParts(parts: Array<string | undefined>): string[] {
   const seen = new Set<string>();
