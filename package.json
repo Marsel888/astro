@@ -16,7 +16,8 @@
     "db:studio": "drizzle-kit studio",
     "verify:houses": "tsx scripts/verify-houses.ts",
     "i18n:coverage": "tsx scripts/i18n-coverage.ts",
-    "check:contrast": "tsx scripts/check-contrast.ts"
+    "check:contrast": "tsx scripts/check-contrast.ts",
+    "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
     "astronomy-engine": "^2.1.19",
@@ -43,5 +44,9 @@
     "tailwindcss": "^3.4.17",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=22",
+    "npm": ">=11"
   }
 }

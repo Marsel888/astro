@@ -4,7 +4,7 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: meridian
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-meridian}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
       POSTGRES_DB: meridian
     volumes:
       - pgdata:/var/lib/postgresql/data
@@ -20,22 +20,43 @@ services:
     volumes:
       - redisdata:/data
 
+  # Runs once per deploy and exits. The app waits for it to finish, so a fresh
+  # server gets its schema before the first request instead of 500ing on an
+  # empty database.
+  migrate:
+    build:
+      context: .
+      target: migrator
+    restart: "no"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://meridian:${DB_PASSWORD:?DB_PASSWORD is required}@db:5432/meridian
+
   app:
-    build: .
+    build:
+      context: .
+      target: runner
+      args:
+        # Must match SITE_URL below — it is compiled into the canonical tags.
+        SITE_URL: ${SITE_URL:?SITE_URL is required}
     restart: unless-stopped
     depends_on:
       db:
         condition: service_healthy
       cache:
         condition: service_started
+      migrate:
+        condition: service_completed_successfully
     environment:
-      SITE_URL: ${SITE_URL}
-      DATABASE_URL: postgres://meridian:${DB_PASSWORD:-meridian}@db:5432/meridian
+      SITE_URL: ${SITE_URL:?SITE_URL is required}
+      BETTER_AUTH_URL: ${SITE_URL:?SITE_URL is required}
+      DATABASE_URL: postgres://meridian:${DB_PASSWORD:?DB_PASSWORD is required}@db:5432/meridian
       REDIS_URL: redis://cache:6379
-      AUTH_SECRET: ${AUTH_SECRET}
-      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
-      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
-      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?BETTER_AUTH_SECRET is required}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
     expose:
       - "3000"
 
@@ -48,7 +69,7 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      DOMAIN: ${DOMAIN:-localhost}
+      DOMAIN: ${DOMAIN:?DOMAIN is required}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data
