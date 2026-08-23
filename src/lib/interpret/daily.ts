@@ -111,6 +111,25 @@ function skyParagraphs(natal: ChartResult, transit: ChartResult, t: DailyT): str
   return out;
 }
 
+/**
+ * The single tightest contact of a day, as one line.
+ *
+ * Used for a look at tomorrow, so the cabinet gives a reason to come back rather
+ * than only a record of today. Applying aspects win: those are the ones still
+ * tightening, which is what makes them worth waiting for.
+ */
+export function strongestLine(
+  natal: ChartResult,
+  transit: ChartResult,
+  t: DailyT,
+): string | null {
+  const crosses = aspectsBetween(transit.bodies, natal.bodies, 'synastry');
+  if (!crosses.length) return null;
+  const applying = crosses.filter((row) => row.applying).sort((a, b) => a.orb - b.orb);
+  const row = applying[0] ?? crosses[0];
+  return aspectLine(t, row);
+}
+
 export function dailyReport(
   natal: ChartResult,
   transit: ChartResult,

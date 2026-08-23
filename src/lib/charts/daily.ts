@@ -5,7 +5,7 @@ import { db } from '@/lib/db';
 import { charts, dailyReadings } from '@/lib/db/schema';
 import type { AppLocale } from '@/i18n/locales';
 import { addDaysIso, asIsoDate, eachIsoDate, isIsoDate, isoDateInZone, maxIsoDate, todayInZone } from '@/lib/dates';
-import { dailyReport, type DailyT } from '@/lib/interpret/daily';
+import { dailyReport, strongestLine, type DailyT } from '@/lib/interpret/daily';
 import type { ReportDoc } from '@/lib/interpret/report';
 import { loadOwnedChart } from './report';
 
@@ -64,6 +64,19 @@ function historyStart(natal: ChartResult, createdAt: Date, today: string): strin
   const created = isoDateInZone(createdAt, natal.tz);
   const floor = addDaysIso(today, -(HISTORY_DAYS - 1));
   return maxIsoDate(created, floor);
+}
+
+/**
+ * A one-line look at tomorrow's sky against this chart.
+ *
+ * Nothing is stored: tomorrow's reading is written when tomorrow arrives, so
+ * this is a peek, not a pre-generated entry.
+ */
+export async function tomorrowPreview(natal: ChartResult, locale: AppLocale) {
+  const date = addDaysIso(todayInZone(natal.tz), 1);
+  const t = await dailyT(locale);
+  const line = strongestLine(natal, transitChartForDate(natal, date), t);
+  return { date, line };
 }
 
 export async function localizedDailyDoc(
