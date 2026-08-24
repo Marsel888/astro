@@ -3,6 +3,7 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Noto_Sans_JP, Noto_Sans_KR } from 'next/font/google';
 import SiteFooter from '@/components/SiteFooter';
+import { SignEmblemDefs } from '@/components/SignEmblem';
 import { asLocale, routing } from '@/i18n/routing';
 import { clientMessages } from '@/i18n/clientMessages';
 
@@ -41,6 +42,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={clientMessages(messages)}>
       <div className={cjk || undefined}>
+        <SignEmblemDefs />
         {children}
         <SiteFooter />
       </div>

@@ -66,6 +66,43 @@ const TICKS = Array.from({ length: 12 }, (_, i) => {
   };
 });
 
+/**
+ * The dial every emblem sits on, written into the page once.
+ *
+ * A horoscope page draws twenty-eight emblems, and the disc and its twelve tick
+ * marks are identical in all of them — 62KB of the 230KB page was the same
+ * circle over and over, counting the copy in the hydration payload.
+ */
+export function SignEmblemDefs() {
+  return (
+    <svg width={0} height={0} aria-hidden className="absolute" focusable="false">
+      <defs>
+        <g id="sc-zodiac-dial">
+          <circle
+            cx={40}
+            cy={40}
+            r={38}
+            fill="color-mix(in oklab, var(--bg-elevated) 80%, transparent)"
+            stroke="var(--line-strong)"
+            strokeWidth={0.8}
+          />
+          {TICKS.map((tick, i) => (
+            <line
+              key={i}
+              x1={tick.x1}
+              y1={tick.y1}
+              x2={tick.x2}
+              y2={tick.y2}
+              stroke="var(--line)"
+              strokeWidth={tick.w}
+            />
+          ))}
+        </g>
+      </defs>
+    </svg>
+  );
+}
+
 type Props = {
   sign: SignName;
   size?: number;
@@ -84,18 +121,7 @@ export default function SignEmblem({ sign, size = 72 }: Props) {
       className="shrink-0"
       aria-hidden
     >
-      <circle cx={40} cy={40} r={38} fill="color-mix(in oklab, var(--bg-elevated) 80%, transparent)" stroke="var(--line-strong)" strokeWidth={0.8} />
-      {TICKS.map((tick, i) => (
-        <line
-          key={i}
-          x1={tick.x1}
-          y1={tick.y1}
-          x2={tick.x2}
-          y2={tick.y2}
-          stroke="var(--line)"
-          strokeWidth={tick.w}
-        />
-      ))}
+      <use href="#sc-zodiac-dial" />
       {map.lines.map(([a, b], i) => (
         <line
           key={i}
