@@ -7,9 +7,11 @@ import ReadingCard from '@/components/ReadingCard';
 import { DownloadLinkButton } from '@/components/ReportActions';
 import SignOutButton from '@/components/SignOutButton';
 import SiteHeader from '@/components/SiteHeader';
+import SignEmblem from '@/components/SignEmblem';
 import TransitWheel from '@/components/TransitWheel';
 import { toBodyPoints } from '@/lib/astro';
-import type { SignName } from '@/lib/chart';
+import { dms, signOf, type SignName } from '@/lib/chart';
+import { natalParagraphs } from '@/lib/interpret/copy';
 import { moonPhaseOf, skySnapshot } from '@/lib/interpret/horoscope';
 import { getSession } from '@/lib/auth-session';
 import { claimPendingCharts } from '@/lib/charts/claim';
@@ -68,8 +70,38 @@ export default async function DashboardPage({ params }: Props) {
       )
     : null;
   const horoscopeT = await getTranslations('horoscope');
+  const ui = await getTranslations('resultUi');
   const signLabel = (sign: SignName) => astroT(`sign_${sign.toLowerCase()}`);
   const planetLabel = (key: string) => astroT(`planet_${key}`);
+
+  // Who the reader is, not just what today is doing to them. The cabinet showed
+  // only the transit reading, so the natal interpretation they had just read on
+  // the calculator vanished the moment they saved the chart.
+  const natalSun = natal?.bodies.find((b) => b.key === 'sun') ?? null;
+  const natalMoon = natal?.bodies.find((b) => b.key === 'moon') ?? null;
+  const risingSign =
+    natal?.ascendant != null && !natal.timeUnknown ? signOf(natal.ascendant).n : null;
+  const bigThree =
+    natal && natalSun && natalMoon
+      ? [
+          { key: 'sun', sign: natalSun.sign as SignName, deg: dms(natalSun.lon), house: natalSun.house },
+          { key: 'moon', sign: natalMoon.sign as SignName, deg: dms(natalMoon.lon), house: natalMoon.house },
+          ...(risingSign
+            ? [{ key: 'rising', sign: risingSign, deg: dms(natal.ascendant!), house: 1 as number | null }]
+            : []),
+        ]
+      : [];
+  const natalReading =
+    natal && natalSun && natalMoon
+      ? natalParagraphs({
+          sun: natalSun.sign as SignName,
+          moon: natalMoon.sign as SignName,
+          rising: risingSign,
+          sunHouse: natalSun.house,
+          moonHouse: natalMoon.house,
+          locale,
+        })
+      : [];
 
   // Today is the card above, so the strip below is only what came before it and
   // the same day is never listed twice.
@@ -97,8 +129,82 @@ export default async function DashboardPage({ params }: Props) {
           </div>
         </div>
 
+        {primary && natal && bigThree.length ? (
+          <section className="mb-14">
+            <h2 className="text-[18px] font-medium tracking-[-0.02em]">{t('natalHeading')}</h2>
+            <p className="mt-1 max-w-[560px] text-caption text-ink-muted [text-wrap:pretty]">
+              {t('natalHint')}
+            </p>
+            <div className="mt-5 grid gap-3 sm:grid-cols-3 sm:gap-4">
+              {bigThree.map((row) => (
+                <div
+                  key={row.key}
+                  className="flex items-center gap-4 rounded-card border border-hairline bg-panel p-4 sm:px-5 sm:py-5"
+                >
+                  <SignEmblem sign={row.sign} />
+                  <div className="flex flex-col gap-1">
+                    <span className="text-caption text-ink-muted">{ui(row.key as 'sun')}</span>
+                    <span className="text-h3 text-ink">{signLabel(row.sign)}</span>
+                    <span className="font-mono text-data text-ink-secondary">
+                      {row.deg}
+                      {row.house ? ` · ${ui('house', { n: row.house })}` : ''}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* Every single-planet calculator answers a question about this same
+                chart. Somebody who arrived through the Mars calculator has to be
+                able to find their Mars here, or the cabinet looks like it lost it. */}
+            <div className="mt-4 overflow-hidden rounded-card border border-hairline bg-panel">
+              <div className="hidden grid-cols-[1.3fr_1.1fr_1fr_0.7fr] border-b border-hairline px-5 py-3 text-caption text-ink-muted sm:grid">
+                <span>{ui('body')}</span>
+                <span>{ui('sign')}</span>
+                <span>{ui('longitude')}</span>
+                <span>{ui('houseCol')}</span>
+              </div>
+              {natal.bodies.map((body) => (
+                <div
+                  key={body.key}
+                  className="grid grid-cols-[1fr_auto] items-center gap-2 border-b border-hairline px-5 py-2.5 font-mono text-data text-ink-secondary last:border-0 sm:grid-cols-[1.3fr_1.1fr_1fr_0.7fr] sm:gap-0"
+                >
+                  <span className="flex items-center gap-2.5 text-ink">
+                    <span className="text-[15px] text-gold">{body.glyph}</span>
+                    {planetLabel(body.key)}
+                  </span>
+                  <span className="sm:hidden">
+                    {signLabel(body.sign as SignName)} {dms(body.lon)}
+                  </span>
+                  <span className="hidden sm:inline">{signLabel(body.sign as SignName)}</span>
+                  <span className="hidden text-ink sm:inline">{dms(body.lon)}</span>
+                  <span className="hidden sm:inline">{body.house ?? '—'}</span>
+                </div>
+              ))}
+            </div>
+
+            {natalReading.length ? (
+              <ReadingCard
+                kicker={risingSign ? ui('readingNatal') : ui('readingNatalNoAsc')}
+                title={chartLabel(natal, astroT) || t('natalLabel')}
+                paragraphs={natalReading}
+                footer={
+                  <div className="mt-8 border-t border-read-secondary/20 pt-6">
+                    <Link
+                      href={`/chart/${primary.id}/report`}
+                      className="inline-flex h-11 items-center rounded-control border border-read-secondary/30 px-4 text-caption text-read-secondary hover:border-read hover:text-read"
+                    >
+                      {t('readReport')}
+                    </Link>
+                  </div>
+                }
+              />
+            ) : null}
+          </section>
+        ) : null}
+
         {daily && primary && natal && transit && sky ? (
           <section className="mb-12">
+            <h2 className="mb-5 text-[18px] font-medium tracking-[-0.02em]">{t('todayHeading')}</h2>
             <div className="grid gap-8 lg:grid-cols-[minmax(0,440px)_1fr] lg:items-start">
               <div>
                 <h2 className="mb-1 text-[18px] font-medium tracking-[-0.02em]">{t('wheelHeading')}</h2>
@@ -286,6 +392,7 @@ export default async function DashboardPage({ params }: Props) {
                     houseSystem={row.houseSystem}
                     isPrimary={row.id === primary?.id}
                     canBePrimary={rows.length > 1}
+                    timeUnknown={row.timeUnknown}
                   />
                 </div>
               ))}
