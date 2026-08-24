@@ -315,7 +315,9 @@
     "wheelLayerHouses": "The numbers 1 to 12 — your houses, cut from the same birth time and place.",
     "wheelLayerNatal": "The gold glyphs — the planets at the minute you were born. These never move.",
     "wheelLayerTransit": "The muted glyphs — where those planets actually are today, with lines to the natal points they touch. This is the part that changes overnight.",
-    "savedOk": "Saved"
+    "savedOk": "Saved",
+    "todayBridge": "This is the {sign} horoscope done properly. The public page has to assume an average {sign} — a Sun at 15° of the sign, no houses. Here it is your own Sun degree, your houses, and all ten planets rather than the Sun alone.",
+    "comparePublic": "See the public {sign} horoscope"
   },
   "home": {
     "title": "Natal chart calculators",

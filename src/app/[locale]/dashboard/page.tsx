@@ -297,7 +297,24 @@ export default async function DashboardPage({ params }: Props) {
 
         {daily && primary && natal && transit && sky ? (
           <section className="mb-12">
-            <h2 className="mb-5 text-[18px] font-medium tracking-[-0.02em]">{t('todayHeading')}</h2>
+            <h2 className="text-[18px] font-medium tracking-[-0.02em]">{t('todayHeading')}</h2>
+            {/* The public sign horoscope sends people here and they arrive looking
+                for it. It is not missing — this is the same thing computed from a
+                real chart instead of an average member of the sign. Say so, and
+                link back so the two can be compared. */}
+            {natalSun ? (
+              <div className="mb-5 mt-1.5 max-w-[640px]">
+                <p className="text-caption text-ink-muted [text-wrap:pretty]">
+                  {t('todayBridge', { sign: signLabel(natalSun.sign as SignName) })}
+                </p>
+                <Link
+                  href={`/daily-horoscope/${natalSun.sign.toLowerCase()}`}
+                  className="mt-1.5 inline-block font-mono text-caption text-gold hover:text-ink"
+                >
+                  {t('comparePublic', { sign: signLabel(natalSun.sign as SignName) })} →
+                </Link>
+              </div>
+            ) : null}
             <div className="grid gap-8 lg:grid-cols-[minmax(0,440px)_1fr] lg:items-start">
               <div>
                 <h2 className="mb-1 text-[18px] font-medium tracking-[-0.02em]">{t('wheelHeading')}</h2>
