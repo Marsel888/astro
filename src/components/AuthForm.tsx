@@ -52,7 +52,6 @@ export default function AuthForm({ mode, googleConfigured, nextPath, oauthError 
   }, []);
 
   async function afterAuth() {
-    await fetch('/api/charts/claim', { method: 'POST' });
     router.push(nextPath);
     router.refresh();
   }

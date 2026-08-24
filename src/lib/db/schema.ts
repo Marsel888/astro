@@ -72,7 +72,14 @@ export const verification = pgTable('verification', {
 
 export const charts = pgTable('charts', {
   id: uuid('id').defaultRandom().primaryKey(),
-  userId: text('user_id').references(() => user.id, { onDelete: 'set null' }),
+  /**
+   * Saving a chart requires an account, so every chart has an owner — and losing
+   * the account has to take the birth data with it. Ownerless rows were birth
+   * date, time and coordinates that nobody could reach, export or erase.
+   */
+  userId: text('user_id')
+    .notNull()
+    .references(() => user.id, { onDelete: 'cascade' }),
   label: text('label'),
   birthDate: date('birth_date').notNull(),
   birthTime: text('birth_time'),

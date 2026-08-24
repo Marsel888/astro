@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { cache } from 'react';
 import { getSession } from '@/lib/auth-session';
-import { claimPendingCharts } from '@/lib/charts/claim';
 import {
   dailyTranslator,
   ensureDailyHistory,
@@ -34,10 +33,7 @@ export type CabinetContext = {
  * rows, and a row carries a whole computed chart. Cached, the cabinet reads them
  * once instead of once per level.
  */
-const cabinetRows = cache(async (userId: string) => {
-  await claimPendingCharts(userId);
-  return listUserCharts(userId);
-});
+const cabinetRows = cache((userId: string) => listUserCharts(userId));
 
 export async function loadCabinet(
   locale: AppLocale,

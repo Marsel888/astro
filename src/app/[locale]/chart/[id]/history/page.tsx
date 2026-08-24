@@ -3,7 +3,6 @@ import { Link, redirect } from '@/i18n/navigation';
 import { DownloadLinkButton } from '@/components/ReportActions';
 import SiteHeader from '@/components/SiteHeader';
 import { getSession } from '@/lib/auth-session';
-import { claimPendingCharts } from '@/lib/charts/claim';
 import {
   dailyTranslator,
   ensureDailyHistory,
@@ -30,7 +29,6 @@ export default async function ChartHistoryPage({ params }: Props) {
   const locale = asLocale(raw);
   setRequestLocale(locale);
   const session = requireUser(await getSession(), locale, `/chart/${id}/history`);
-  await claimPendingCharts(session.user.id);
   const t = await getTranslations('account');
   const astroT = await dailyTranslator(locale);
   const chart = await loadOwnedChart(id, session.user.id);

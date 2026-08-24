@@ -4,7 +4,6 @@ import ReportActions from '@/components/ReportActions';
 import ReportView from '@/components/ReportView';
 import SiteHeader from '@/components/SiteHeader';
 import { getSession } from '@/lib/auth-session';
-import { claimPendingCharts } from '@/lib/charts/claim';
 import { getOrCreateDailyReading } from '@/lib/charts/daily';
 import { isIsoDate } from '@/lib/dates';
 import { requireUser } from '@/lib/requireUser';
@@ -23,7 +22,6 @@ export default async function DailyReadingPage({ params }: Props) {
   const locale = asLocale(raw);
   setRequestLocale(locale);
   const session = requireUser(await getSession(), locale, `/chart/${id}/day/${date}`);
-  await claimPendingCharts(session.user.id);
   const t = await getTranslations('account');
 
   if (!isIsoDate(date)) {

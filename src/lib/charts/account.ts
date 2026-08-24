@@ -170,9 +170,10 @@ export async function exportAccount(userId: string): Promise<AccountExport | nul
 /**
  * Erase the account and everything attached to it. GDPR art. 17.
  *
- * `charts.userId` is ON DELETE SET NULL, so removing the user row alone would
- * leave the birth data behind as orphans. The charts go first and cascade into
- * their readings and reports.
+ * The database would cascade all of this from the user row, but the deletion is
+ * spelled out here so that what leaves with an account is readable in one place
+ * rather than inferred from foreign keys. Charts cascade into their readings and
+ * reports.
  */
 export async function deleteAccount(userId: string): Promise<boolean> {
   if (!db) return false;

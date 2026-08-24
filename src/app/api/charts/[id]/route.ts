@@ -1,7 +1,6 @@
 import { and, eq } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import { readPendingIds } from '@/lib/charts/pending';
 import { db } from '@/lib/db';
 import { charts } from '@/lib/db/schema';
 
@@ -16,10 +15,9 @@ export async function GET(request: Request, { params }: Params) {
   if (!row) return NextResponse.json({ error: 'Chart not found' }, { status: 404 });
 
   const session = auth ? await auth.api.getSession({ headers: request.headers }) : null;
-  const pending = await readPendingIds();
-  const allowed = (session && row.userId === session.user.id) || pending.includes(row.id);
-
-  if (!allowed) return NextResponse.json({ error: 'Sign in to open this chart' }, { status: 401 });
+  if (!session || row.userId !== session.user.id) {
+    return NextResponse.json({ error: 'Sign in to open this chart' }, { status: 401 });
+  }
 
   return NextResponse.json({
     id: row.id,

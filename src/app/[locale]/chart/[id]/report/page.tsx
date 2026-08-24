@@ -4,7 +4,6 @@ import ReportActions from '@/components/ReportActions';
 import ReportView from '@/components/ReportView';
 import SiteHeader from '@/components/SiteHeader';
 import { getSession } from '@/lib/auth-session';
-import { claimPendingCharts } from '@/lib/charts/claim';
 import { getOrCreateNatalReport } from '@/lib/charts/report';
 import { requireUser } from '@/lib/requireUser';
 import { asLocale } from '@/i18n/routing';
@@ -22,7 +21,6 @@ export default async function ReportPage({ params }: Props) {
   const locale = asLocale(raw);
   setRequestLocale(locale);
   const session = requireUser(await getSession(), locale, `/chart/${id}/report`);
-  await claimPendingCharts(session.user.id);
   const t = await getTranslations('account');
   const result = await getOrCreateNatalReport(id, session.user.id, locale);
   if (!result) {
