@@ -3,6 +3,7 @@ import { Link } from '@/i18n/navigation';
 import CabinetEmpty from '@/components/CabinetEmpty';
 import ChartPreferences from '@/components/ChartPreferences';
 import DeleteChartButton from '@/components/DeleteChartButton';
+import OpenInCabinet from '@/components/OpenInCabinet';
 import { DownloadLinkButton } from '@/components/ReportActions';
 import { cabinetMetadata, loadCabinet } from '@/lib/charts/cabinet';
 import { natalFromRow } from '@/lib/charts/daily';
@@ -67,7 +68,7 @@ export default async function CabinetChartsPage({ params }: Props) {
                   </p>
                   <p className="mt-1 font-mono text-caption text-ink-muted">
                     {chartLabel(natalFromRow(row), astroT) || t('natalLabel')}
-                    {isShown ? ` · ${t('shownInCabinet')}` : ''}
+                    {isShown && rows.length > 1 ? ` · ${t('shownInCabinet')}` : ''}
                   </p>
                   {held.length ? (
                     <p className="mt-2 flex flex-wrap gap-1.5">
@@ -83,6 +84,7 @@ export default async function CabinetChartsPage({ params }: Props) {
                   ) : null}
                 </div>
                 <div className="flex flex-wrap gap-3">
+                  {rows.length > 1 && !isShown ? <OpenInCabinet chartId={row.id} /> : null}
                   <Link
                     href={`/chart/${row.id}/report`}
                     className="flex h-11 items-center rounded-control border border-hairline-strong px-4 text-caption text-ink-secondary hover:text-ink sm:h-[34px]"
@@ -106,8 +108,6 @@ export default async function CabinetChartsPage({ params }: Props) {
                 <ChartPreferences
                   chartId={row.id}
                   houseSystem={row.houseSystem}
-                  isPrimary={rows.length > 1 && isShown}
-                  canBePrimary={rows.length > 1}
                   timeUnknown={row.timeUnknown}
                 />
               </div>

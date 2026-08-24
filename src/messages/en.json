@@ -270,8 +270,6 @@
     "exportButton": "Download my data",
     "primaryTitle": "Main chart",
     "primaryBody": "The chart the cabinet opens with and writes the daily sky for.",
-    "primarySet": "Make main",
-    "primaryCurrent": "Main",
     "housesTitle": "House system",
     "housesBody": "Houses are the twelve slices a chart is cut into. The sign says how a planet behaves; the house says which part of life it turns up in — work, money, other people. There is more than one way to cut them, and astrologers have never agreed on it. Placidus makes unequal slices and is what almost every reading you will find assumes. Whole sign gives each house one entire sign, which is older and simpler. If you have no reason to prefer one, leave it on Placidus — and on many charts nothing moves either way.",
     "housesPlacidus": "Placidus",
@@ -334,7 +332,8 @@
     "placementLockedTitle": "You have not run {calculator} yet",
     "placementLockedBody": "Your saved chart already holds this placement — it comes out of the same birth data. Run the calculator once and it appears here with its reading.",
     "chartLockedTitle": "You have not worked out the whole chart yet",
-    "chartLockedBody": "You saved one placement. The same birth date, time and place give all ten of them, the houses they fall in and the aspects between them — there is nothing more to type in."
+    "chartLockedBody": "You saved one placement. The same birth date, time and place give all ten of them, the houses they fall in and the aspects between them — there is nothing more to type in.",
+    "openInCabinet": "Open in the cabinet"
   },
   "home": {
     "title": "Natal chart calculators",

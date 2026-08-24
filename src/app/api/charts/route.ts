@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { db } from '@/lib/db';
 import { charts } from '@/lib/db/schema';
+import { setPrimaryChart } from '@/lib/charts/account';
 import { mergePlacements } from '@/lib/charts/placements';
 import { chartFromBirth } from '@/lib/astro/fromBirth';
 import { rateLimit } from '@/lib/rateLimit';
@@ -153,6 +154,7 @@ export async function POST(request: Request) {
       .update(charts)
       .set({ placements: mergePlacements(existing.placements, source) })
       .where(eq(charts.id, existing.id));
+    await setPrimaryChart(session.user.id, existing.id);
     return NextResponse.json({ id: existing.id, merged: true });
   }
 
@@ -176,6 +178,14 @@ export async function POST(request: Request) {
     .returning({ id: charts.id });
 
   if (!row) return NextResponse.json({ error: 'Could not save chart' }, { status: 500 });
+
+  /*
+   * Saving is the reader telling us what they are working on, so the cabinet
+   * follows it. There used to be a "make main" button for this, which meant the
+   * calculator you had just used was not the one the cabinet showed until you
+   * went and pressed something.
+   */
+  await setPrimaryChart(session.user.id, row.id);
   await bumpUsage(session.user.id, 'chartsSaved');
 
   return NextResponse.json({ id: row.id });
