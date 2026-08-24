@@ -6,9 +6,20 @@ import DeleteChartButton from '@/components/DeleteChartButton';
 import { DownloadLinkButton } from '@/components/ReportActions';
 import { cabinetMetadata, loadCabinet } from '@/lib/charts/cabinet';
 import { natalFromRow } from '@/lib/charts/daily';
+import { FULL_CHART, opensEverything, unlockedPlacements } from '@/lib/charts/placements';
 import { formatBirthDate, todayInZone } from '@/lib/dates';
 import { chartLabel } from '@/lib/interpret/daily';
 import { asLocale } from '@/i18n/routing';
+
+/** Which tab's name to print for each thing a chart holds. */
+const TAB_OF: Record<string, string> = {
+  [FULL_CHART]: 'tabChart',
+  rising: 'tabRising',
+  moon: 'tabMoon',
+  mercury: 'tabMercury',
+  venus: 'tabVenus',
+  mars: 'tabMars',
+};
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -39,6 +50,8 @@ export default async function CabinetChartsPage({ params }: Props) {
       <div className="flex flex-col gap-4">
         {rows.map((row) => {
           const isShown = row.id === primary?.id;
+          // What the reader actually asked for, so a saved Moon reads as a Moon.
+          const held = opensEverything(row) ? [FULL_CHART] : [...unlockedPlacements(row)];
           return (
             <div
               key={row.id}
@@ -56,6 +69,18 @@ export default async function CabinetChartsPage({ params }: Props) {
                     {chartLabel(natalFromRow(row), astroT) || t('natalLabel')}
                     {isShown ? ` · ${t('shownInCabinet')}` : ''}
                   </p>
+                  {held.length ? (
+                    <p className="mt-2 flex flex-wrap gap-1.5">
+                      {held.map((key) => (
+                        <span
+                          key={key}
+                          className="rounded-full border border-hairline-strong px-2.5 py-0.5 text-[12px] text-ink-secondary"
+                        >
+                          {t(TAB_OF[key] as 'tabMoon')}
+                        </span>
+                      ))}
+                    </p>
+                  ) : null}
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <Link

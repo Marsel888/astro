@@ -330,7 +330,11 @@
     "chartsHint": "Every tab in the cabinet reads the chart marked here. Saving another one does not replace this — pick which one the cabinet follows.",
     "openCalculator": "Open the calculator",
     "risingNeedsTime": "The rising sign is the degree climbing over the horizon at the minute of birth, so it cannot be worked out without a time. This chart was saved without one.",
-    "risingRecalculate": "Calculate it with a birth time"
+    "risingRecalculate": "Calculate it with a birth time",
+    "placementLockedTitle": "You have not run {calculator} yet",
+    "placementLockedBody": "Your saved chart already holds this placement — it comes out of the same birth data. Run the calculator once and it appears here with its reading.",
+    "chartLockedTitle": "You have not worked out the whole chart yet",
+    "chartLockedBody": "You saved one placement. The same birth date, time and place give all ten of them, the houses they fall in and the aspects between them — there is nothing more to type in."
   },
   "home": {
     "title": "Natal chart calculators",

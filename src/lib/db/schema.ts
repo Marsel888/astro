@@ -89,6 +89,13 @@ export const charts = pgTable('charts', {
    * Moon, not ten rows they did not ask for. Null means the whole chart.
    */
   source: text('source'),
+  /**
+   * Which single-planet calculators have been run against this chart. The maths
+   * gives all ten placements the moment a chart is saved, but the cabinet only
+   * shows the ones the reader actually asked for — a tab they never opened is
+   * empty, with a link to the calculator that fills it.
+   */
+  placements: text('placements').array(),
   /** The chart the cabinet opens with and writes the daily sky for. */
   isPrimary: boolean('is_primary').notNull().default(false),
   computed: jsonb('computed').notNull(),

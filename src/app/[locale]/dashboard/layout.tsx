@@ -4,6 +4,8 @@ import CabinetNav from '@/components/CabinetNav';
 import SignOutButton from '@/components/SignOutButton';
 import SiteHeader from '@/components/SiteHeader';
 import { asLocale } from '@/i18n/routing';
+import { loadCabinet } from '@/lib/charts/cabinet';
+import { PLACEMENT_KEYS, opensEverything, unlockedPlacements } from '@/lib/charts/placements';
 
 type Props = {
   children: React.ReactNode;
@@ -18,6 +20,12 @@ export default async function CabinetLayout({ children, params }: Props) {
   const locale = asLocale(raw);
   setRequestLocale(locale);
   const t = await getTranslations('account');
+
+  // Dim the tabs whose calculator has not been run against the current chart.
+  const { primary } = await loadCabinet(locale, '/dashboard');
+  const unlocked = primary ? unlockedPlacements(primary) : new Set<string>();
+  const locked = PLACEMENT_KEYS.filter((k) => !unlocked.has(k)).map((k) => `/dashboard/${k}`);
+  if (primary && !opensEverything(primary)) locked.push('/dashboard/chart');
 
   return (
     <>
@@ -35,7 +43,7 @@ export default async function CabinetLayout({ children, params }: Props) {
             <SignOutButton />
           </div>
         </div>
-        <CabinetNav />
+        <CabinetNav locked={locked} />
         {children}
       </main>
     </>

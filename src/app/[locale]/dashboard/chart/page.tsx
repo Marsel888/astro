@@ -2,10 +2,12 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import CabinetChartHeader from '@/components/CabinetChartHeader';
 import CabinetEmpty from '@/components/CabinetEmpty';
+import CabinetLocked from '@/components/CabinetLocked';
 import ReadingCard from '@/components/ReadingCard';
 import SignEmblem from '@/components/SignEmblem';
 import { dms, signOf, type SignName } from '@/lib/chart';
 import { cabinetMetadata, loadCabinet } from '@/lib/charts/cabinet';
+import { opensEverything } from '@/lib/charts/placements';
 import { natalParagraphs } from '@/lib/interpret/copy';
 import { chartLabel } from '@/lib/interpret/daily';
 import { asLocale } from '@/i18n/routing';
@@ -25,6 +27,31 @@ export default async function CabinetChartPage({ params }: Props) {
 
   const { rows, primary, natal, astroT } = await loadCabinet(locale, '/dashboard/chart');
   if (!primary || !natal) return <CabinetEmpty />;
+
+  /*
+   * Saving from a single-planet calculator is not asking for the whole chart.
+   * The offer to compute it is the point of this tab until it has been taken up.
+   */
+  if (!opensEverything(primary)) {
+    return (
+      <>
+        <CabinetChartHeader
+          birthDate={primary.birthDate}
+          birthTime={primary.birthTime}
+          timeUnknown={primary.timeUnknown}
+          placeLabel={primary.placeLabel}
+          locale={locale}
+          showSwitch={rows.length > 1}
+        />
+        <CabinetLocked
+          title={t('chartLockedTitle')}
+          body={t('chartLockedBody')}
+          href="/birth-chart-calculator"
+          cta={t('calculate')}
+        />
+      </>
+    );
+  }
 
   const signLabel = (sign: SignName) => astroT(`sign_${sign.toLowerCase()}`);
   const planetLabel = (key: string) => astroT(`planet_${key}`);

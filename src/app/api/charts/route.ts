@@ -1,8 +1,9 @@
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { db } from '@/lib/db';
 import { charts } from '@/lib/db/schema';
+import { mergePlacements } from '@/lib/charts/placements';
 import { chartFromBirth } from '@/lib/astro/fromBirth';
 import { rateLimit } from '@/lib/rateLimit';
 import { bumpUsage } from '@/lib/usage';
@@ -125,6 +126,36 @@ export async function POST(request: Request) {
       .filter(Boolean)
       .join(' · ');
 
+  const source = SOURCES.includes(json.source as Source) ? (json.source as Source) : null;
+
+  /*
+   * Running a second calculator on the same birth data is not a second chart.
+   * Without this, working out your Moon and then your Venus left two identical
+   * rows in the cabinet and the reader had to guess which one it followed.
+   */
+  const [existing] = await db
+    .select({ id: charts.id, placements: charts.placements })
+    .from(charts)
+    .where(
+      and(
+        eq(charts.userId, session.user.id),
+        eq(charts.birthDate, birth.date),
+        eq(charts.timeUnknown, birth.timeUnknown),
+        eq(charts.lat, String(birth.place.lat)),
+        eq(charts.lon, String(birth.place.lon)),
+        eq(charts.tzName, birth.place.tz),
+      ),
+    )
+    .limit(1);
+
+  if (existing) {
+    await db
+      .update(charts)
+      .set({ placements: mergePlacements(existing.placements, source) })
+      .where(eq(charts.id, existing.id));
+    return NextResponse.json({ id: existing.id, merged: true });
+  }
+
   const [row] = await db
     .insert(charts)
     .values({
@@ -138,7 +169,8 @@ export async function POST(request: Request) {
       tzName: birth.place.tz,
       placeLabel: birth.place.name,
       houseSystem: computed.houseSystem,
-      source: SOURCES.includes(json.source as Source) ? (json.source as Source) : null,
+      source,
+      placements: mergePlacements(null, source),
       computed,
     })
     .returning({ id: charts.id });

@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { cache } from 'react';
 import { getSession } from '@/lib/auth-session';
 import { claimPendingCharts } from '@/lib/charts/claim';
 import {
@@ -28,15 +29,23 @@ export type CabinetContext = {
   astroT: Awaited<ReturnType<typeof dailyTranslator>>;
 };
 
+/*
+ * The layout and the page below it render in the same request and need the same
+ * rows, and a row carries a whole computed chart. Cached, the cabinet reads them
+ * once instead of once per level.
+ */
+const cabinetRows = cache(async (userId: string) => {
+  await claimPendingCharts(userId);
+  return listUserCharts(userId);
+});
+
 export async function loadCabinet(
   locale: AppLocale,
   returnTo: string,
   options: { withHistory?: boolean } = {},
 ): Promise<CabinetContext> {
   const session = requireUser(await getSession(), locale, returnTo);
-  await claimPendingCharts(session.user.id);
-
-  const rows = await listUserCharts(session.user.id);
+  const rows = await cabinetRows(session.user.id);
   const primary = rows.find((row) => row.isPrimary) ?? rows[0] ?? null;
 
   // Only the horoscope pages need the day-by-day log filled in, and it is the

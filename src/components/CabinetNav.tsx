@@ -23,7 +23,8 @@ const ITEMS: Item[] = [
   { href: '/dashboard/charts', key: 'tabCharts' },
 ];
 
-export default function CabinetNav() {
+/** `locked` lists hrefs whose calculator has not been run against this chart. */
+export default function CabinetNav({ locked = [] }: { locked?: string[] }) {
   const t = useTranslations('account');
   const pathname = usePathname();
 
@@ -41,7 +42,12 @@ export default function CabinetNav() {
                 href={item.href}
                 aria-current={active ? 'page' : undefined}
                 className={`relative flex h-11 items-center whitespace-nowrap px-3.5 text-caption transition-colors ${
-                  active ? 'text-ink' : 'text-ink-muted hover:text-ink-secondary'
+                  active
+                    ? 'text-ink'
+                    : locked.includes(item.href)
+                      ? // Not run yet: reachable, but visibly not filled in.
+                        'text-ink-muted/60 hover:text-ink-secondary'
+                      : 'text-ink-muted hover:text-ink-secondary'
                 }`}
               >
                 {t(item.key as 'tabToday')}

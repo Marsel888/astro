@@ -3,11 +3,13 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import CabinetChartHeader from '@/components/CabinetChartHeader';
 import CabinetEmpty from '@/components/CabinetEmpty';
+import CabinetLocked from '@/components/CabinetLocked';
 import ReadingCard from '@/components/ReadingCard';
 import SignEmblem from '@/components/SignEmblem';
 import { dms, signOf, type SignName } from '@/lib/chart';
 import { cabinetMetadata, loadCabinet } from '@/lib/charts/cabinet';
 import { placementReading, readingFor } from '@/lib/interpret/copy';
+import { unlockedPlacements } from '@/lib/charts/placements';
 import { asLocale } from '@/i18n/routing';
 
 /**
@@ -52,6 +54,32 @@ export default async function CabinetPlacementPage({ params }: Props) {
   if (!primary || !natal) return <CabinetEmpty />;
 
   const signLabel = (sign: SignName) => astroT(`sign_${sign.toLowerCase()}`);
+
+  /*
+   * The chart holds every placement, but the cabinet is a record of what was
+   * asked for. A calculator never run leaves its tab empty with a way to fill it,
+   * rather than answering a question nobody put.
+   */
+  if (!unlockedPlacements(primary).has(placement)) {
+    return (
+      <>
+        <CabinetChartHeader
+          birthDate={primary.birthDate}
+          birthTime={primary.birthTime}
+          timeUnknown={primary.timeUnknown}
+          placeLabel={primary.placeLabel}
+          locale={locale}
+          showSwitch={rows.length > 1}
+        />
+        <CabinetLocked
+          title={t('placementLockedTitle', { calculator: t(`calc_${placement}` as 'calc_moon') })}
+          body={t('placementLockedBody')}
+          href={PLACEMENTS[placement].calculator}
+          cta={t('openCalculator')}
+        />
+      </>
+    );
+  }
 
   // The ascendant is not a body, so it is read off the chart's angles instead.
   const rising = natal.ascendant != null && !natal.timeUnknown;
