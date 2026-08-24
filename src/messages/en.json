@@ -294,7 +294,7 @@
     "wheelNoTime": "Houses need a birth time. Without one the wheel shows planets only.",
     "moonPhaseKicker": "Moon",
     "quietDay": "A quiet day — nothing close",
-    "wheelExplain": "The gold glyphs are your natal chart — those never move. The muted ones are where the planets actually are today. The lines between them are the contacts the reading below describes.",
+    "wheelExplain": "Four things are drawn here:",
     "wheelSeeNatal": "See the natal chart on its own",
     "natalHeading": "Your chart",
     "natalHint": "This is the chart you saved, and it does not change — it is the sky at the moment you were born. Every calculator on the site reads from it.",
@@ -310,7 +310,11 @@
     "calc_venus": "Venus sign calculator",
     "calc_mars": "Mars sign calculator",
     "seeWholeChart": "See the whole chart",
-    "wholeChartBody": "The same birth data holds all ten placements, the houses they fall in and the aspects between them. Nothing more to enter."
+    "wholeChartBody": "The same birth data holds all ten placements, the houses they fall in and the aspects between them. Nothing more to enter.",
+    "wheelLayerRing": "The ring of signs — always the same twelve, but turned so your rising sign sits at the left edge. That turn comes from your birth time and place.",
+    "wheelLayerHouses": "The numbers 1 to 12 — your houses, cut from the same birth time and place.",
+    "wheelLayerNatal": "The gold glyphs — the planets at the minute you were born. These never move.",
+    "wheelLayerTransit": "The muted glyphs — where those planets actually are today, with lines to the natal points they touch. This is the part that changes overnight."
   },
   "home": {
     "title": "Natal chart calculators",

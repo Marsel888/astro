@@ -303,9 +303,24 @@ export default async function DashboardPage({ params }: Props) {
                 <h2 className="mb-1 text-[18px] font-medium tracking-[-0.02em]">{t('wheelHeading')}</h2>
                 {/* Two rings of glyphs look nothing like the single-ring natal
                     wheel on the calculator. Say what the reader is looking at. */}
-                <p className="mb-4 max-w-[440px] text-caption text-ink-muted [text-wrap:pretty]">
-                  {t('wheelExplain')}
-                </p>
+                <p className="mb-2 text-caption text-ink-muted">{t('wheelExplain')}</p>
+                <ul className="mb-4 flex max-w-[440px] flex-col gap-1.5 text-caption text-ink-muted">
+                  {(
+                    [
+                      ['wheelLayerRing', 'text-ink-secondary'],
+                      ['wheelLayerHouses', 'text-ink-secondary'],
+                      ['wheelLayerNatal', 'text-gold'],
+                      ['wheelLayerTransit', 'text-ink-secondary'],
+                    ] as const
+                  ).map(([key, tone]) => (
+                    <li key={key} className="flex gap-2 [text-wrap:pretty]">
+                      <span aria-hidden className={`shrink-0 ${tone}`}>
+                        ·
+                      </span>
+                      <span>{t(key)}</span>
+                    </li>
+                  ))}
+                </ul>
                 <TransitWheel
                   natal={toBodyPoints(natal.bodies)}
                   transit={toBodyPoints(transit.bodies)}
