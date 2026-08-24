@@ -92,7 +92,7 @@ export default function RisingCalculator({ headingAs = 'h1' }: { headingAs?: 'h1
             footer={<GuestCabinetCta />}
           />
           <FullChartCta />
-          {fullReading ? <SaveReportCta data={data} /> : <SaveGate data={data} />}
+          {fullReading ? <SaveReportCta data={data} source="rising" /> : <SaveGate data={data} />}
         </section>
       )}
     </>

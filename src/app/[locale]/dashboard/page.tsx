@@ -11,7 +11,7 @@ import SignEmblem from '@/components/SignEmblem';
 import TransitWheel from '@/components/TransitWheel';
 import { toBodyPoints } from '@/lib/astro';
 import { dms, signOf, type SignName } from '@/lib/chart';
-import { natalParagraphs } from '@/lib/interpret/copy';
+import { natalParagraphs, placementReading, readingFor } from '@/lib/interpret/copy';
 import { moonPhaseOf, skySnapshot } from '@/lib/interpret/horoscope';
 import { getSession } from '@/lib/auth-session';
 import { claimPendingCharts } from '@/lib/charts/claim';
@@ -95,6 +95,37 @@ export default async function DashboardPage({ params }: Props) {
             : []),
         ]
       : [];
+  /*
+   * If the chart was saved from a single-planet calculator, lead with that one
+   * placement — it is the question the reader actually asked. The rest of the
+   * chart is one disclosure away, not spread over the page uninvited.
+   */
+  const FOCUSABLE = ['rising', 'moon', 'mercury', 'venus', 'mars'] as const;
+  const focusKey = FOCUSABLE.find((k) => k === primary?.source) ?? null;
+  const focusBody = focusKey && focusKey !== 'rising'
+    ? (natal?.bodies.find((b) => b.key === focusKey) ?? null)
+    : null;
+  const focus =
+    focusKey === 'rising' && risingSign && natal?.ascendant != null
+      ? {
+          key: 'rising',
+          label: ui('rising'),
+          sign: risingSign,
+          deg: dms(natal.ascendant),
+          house: 1 as number | null,
+          reading: [readingFor('rising', risingSign, locale)],
+        }
+      : focusBody
+        ? {
+            key: focusBody.key,
+            label: planetLabel(focusBody.key),
+            sign: focusBody.sign as SignName,
+            deg: dms(focusBody.lon),
+            house: focusBody.house,
+            reading: placementReading(focusBody.key, focusBody.sign as SignName, focusBody.house, locale),
+          }
+        : null;
+
   const natalReading =
     natal && natalSun && natalMoon
       ? natalParagraphs({
@@ -147,7 +178,49 @@ export default async function DashboardPage({ params }: Props) {
             <p className="mt-2 max-w-[560px] text-caption text-ink-muted [text-wrap:pretty]">
               {t('natalHint')}
             </p>
-            <div className="mt-5 grid gap-3 sm:grid-cols-3 sm:gap-4">
+            {focus ? (
+              <>
+                <p className="mt-4 font-mono text-caption text-ink-muted">
+                  {t('savedFrom', { calculator: t(`calc_${focus.key}` as 'calc_moon') })}
+                </p>
+                <div className="result-enter mt-3 flex items-center gap-5 rounded-card border border-hairline bg-panel p-5 sm:p-7">
+                  <SignEmblem sign={focus.sign} size={88} />
+                  <div className="flex flex-col gap-1">
+                    <span className="text-caption text-ink-muted">{focus.label}</span>
+                    <span className="text-h1 font-medium tracking-[-0.02em] text-ink">
+                      {signLabel(focus.sign)}
+                    </span>
+                    <span className="font-mono text-data text-ink-secondary">
+                      {focus.deg}
+                      {focus.house ? ` · ${ui('house', { n: focus.house })}` : ''}
+                    </span>
+                  </div>
+                </div>
+                {focus.reading.length ? (
+                  <ReadingCard
+                    kicker={`${t('natalHeading')} · ${focus.label}`}
+                    title={`${signLabel(focus.sign)} · ${focus.label}`}
+                    paragraphs={focus.reading}
+                  />
+                ) : null}
+
+                {/* Everything they did not ask for, offered rather than imposed. */}
+                <div className="mt-6 rounded-card border border-hairline bg-panel p-5 sm:p-6">
+                  <h3 className="text-h3 font-medium text-ink">{t('seeWholeChart')}</h3>
+                  <p className="mt-2 max-w-[560px] text-body text-ink-secondary [text-wrap:pretty]">
+                    {t('wholeChartBody')}
+                  </p>
+                  <Link
+                    href={`/chart/${primary.id}/report`}
+                    className="mt-5 inline-flex h-11 items-center rounded-control bg-gold px-5 text-[15px] font-medium text-deep hover:bg-gold-hover"
+                  >
+                    {t('readReport')}
+                  </Link>
+                </div>
+              </>
+            ) : null}
+
+            <div className={`grid gap-3 sm:grid-cols-3 sm:gap-4 ${focus ? 'mt-8' : 'mt-5'}`}>
               {bigThree.map((row) => (
                 <div
                   key={row.key}
@@ -165,10 +238,17 @@ export default async function DashboardPage({ params }: Props) {
                 </div>
               ))}
             </div>
-            {/* Every single-planet calculator answers a question about this same
-                chart. Somebody who arrived through the Mars calculator has to be
-                able to find their Mars here, or the cabinet looks like it lost it. */}
-            <div className="mt-4 overflow-hidden rounded-card border border-hairline bg-panel">
+            {/* Everything else, on request. Somebody who asked for their Moon gets
+                their Moon above; the other nine are here if they want them, not
+                spread across the page as a wall they did not ask for. */}
+            <details className="group mt-4">
+              <summary className="inline-flex cursor-pointer list-none items-center gap-2 font-mono text-caption text-ink-muted hover:text-ink [&::-webkit-details-marker]:hidden">
+                <span aria-hidden className="transition-transform group-open:rotate-90">
+                  ›
+                </span>
+                {t('allPlacements')}
+              </summary>
+              <div className="mt-3 overflow-hidden rounded-card border border-hairline bg-panel">
               <div className="hidden grid-cols-[1.3fr_1.1fr_1fr_0.7fr] border-b border-hairline px-5 py-3 text-caption text-ink-muted sm:grid">
                 <span>{ui('body')}</span>
                 <span>{ui('sign')}</span>
@@ -192,9 +272,10 @@ export default async function DashboardPage({ params }: Props) {
                   <span className="hidden sm:inline">{body.house ?? '—'}</span>
                 </div>
               ))}
-            </div>
+              </div>
+            </details>
 
-            {natalReading.length ? (
+            {natalReading.length && !focus ? (
               <ReadingCard
                 kicker={risingSign ? ui('readingNatal') : ui('readingNatalNoAsc')}
                 title={chartLabel(natal, astroT) || t('natalLabel')}

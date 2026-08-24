@@ -11,12 +11,22 @@ import type { ChartResult } from '@/lib/astro';
 
 export const runtime = 'nodejs';
 
+/**
+ * Which calculator produced the save. The chart computed is identical either
+ * way, but the cabinet shows somebody who asked for their Moon their Moon,
+ * rather than ten rows they never asked about. Anything unrecognised is stored
+ * as null, which means the whole chart.
+ */
+const SOURCES = ['birth-chart', 'rising', 'moon', 'mercury', 'venus', 'mars'] as const;
+type Source = (typeof SOURCES)[number];
+
 type SaveBody = {
   date?: string;
   time?: string;
   timeUnknown?: boolean;
   place?: { name?: string; lat?: number; lon?: number; tz?: string };
   label?: string;
+  source?: string;
 };
 
 function parseBirth(body: SaveBody): BirthData | null {
@@ -128,6 +138,7 @@ export async function POST(request: Request) {
       tzName: birth.place.tz,
       placeLabel: birth.place.name,
       houseSystem: computed.houseSystem,
+      source: SOURCES.includes(json.source as Source) ? (json.source as Source) : null,
       computed,
     })
     .returning({ id: charts.id });

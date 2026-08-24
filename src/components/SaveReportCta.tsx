@@ -7,7 +7,7 @@ import type { BirthData } from '@/lib/places/defaults';
 import { authClient } from '@/lib/auth-client';
 import { stashBirth } from '@/lib/stashedBirth';
 
-export default function SaveReportCta({ data }: { data: BirthData }) {
+export default function SaveReportCta({ data, source }: { data: BirthData; source?: string }) {
   const router = useRouter();
   const pathname = usePathname();
   const t = useTranslations('resultUi');
@@ -26,6 +26,7 @@ export default function SaveReportCta({ data }: { data: BirthData }) {
           date: data.date,
           time: data.time,
           timeUnknown: data.timeUnknown,
+          source,
           place: {
             name: data.place.name,
             lat: data.place.lat,

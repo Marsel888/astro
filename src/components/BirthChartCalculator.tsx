@@ -273,7 +273,7 @@ export default function BirthChartCalculator({ headingAs = 'h1' }: { headingAs?:
             />
           )}
 
-          {fullReading ? <SaveReportCta data={data} /> : <SaveGate data={data} />}
+          {fullReading ? <SaveReportCta data={data} source="birth-chart" /> : <SaveGate data={data} />}
 
           <h2 className="mb-1 mt-14 text-h2 font-medium tracking-[-0.01em]">{t('positions')}</h2>
           <p className="mb-4 font-mono text-data text-ink-muted">

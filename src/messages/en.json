@@ -301,7 +301,16 @@
     "todayHeading": "Today",
     "housesNoTime": "This chart was saved without a birth time. Houses depend on the exact minute, so there are none to divide here — the planets and their signs are still right. Save the chart again with a time to use houses.",
     "noTimeShort": "no birth time",
-    "shownInCabinet": "shown in the cabinet"
+    "shownInCabinet": "shown in the cabinet",
+    "allPlacements": "All ten placements",
+    "savedFrom": "Saved from the {calculator}",
+    "calc_rising": "rising sign calculator",
+    "calc_moon": "Moon sign calculator",
+    "calc_mercury": "Mercury sign calculator",
+    "calc_venus": "Venus sign calculator",
+    "calc_mars": "Mars sign calculator",
+    "seeWholeChart": "See the whole chart",
+    "wholeChartBody": "The same birth data holds all ten placements, the houses they fall in and the aspects between them. Nothing more to enter."
   },
   "home": {
     "title": "Natal chart calculators",

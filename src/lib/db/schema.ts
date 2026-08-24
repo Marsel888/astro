@@ -82,6 +82,13 @@ export const charts = pgTable('charts', {
   tzName: text('tz_name').notNull(),
   placeLabel: text('place_label'),
   houseSystem: text('house_system').notNull().default('placidus'),
+  /**
+   * Which calculator produced this save: birth-chart, rising, moon,
+   * mercury, venus or mars. The maths is the same either way — a chart is
+   * a chart — but somebody who asked only for their Moon should be shown their
+   * Moon, not ten rows they did not ask for. Null means the whole chart.
+   */
+  source: text('source'),
   /** The chart the cabinet opens with and writes the daily sky for. */
   isPrimary: boolean('is_primary').notNull().default(false),
   computed: jsonb('computed').notNull(),
