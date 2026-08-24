@@ -23,7 +23,7 @@ export const CLIENT_NAMESPACES = [
   'resultUi',
   'account',
   'daily',
-  'horoscope',
+  'horoscopeForm',
   // The calculators with client shells of their own.
   'birthChart',
   'rising',

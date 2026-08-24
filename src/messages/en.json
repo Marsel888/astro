@@ -563,12 +563,6 @@
     "hitSlow": "Transiting {planet} {aspect} your Sun. {sense} {motion} Climate, not a one-day task.",
     "hitNatal": "Transiting {planet} {aspect} natal {target}. {sense} {motion}",
     "closePersonal": "This uses your natal Sun degree from the date, at noon UTC, without houses or a timed Moon. A birth time and place still make the cabinet the more honest instrument.",
-    "bornKicker": "Optional",
-    "bornTitle": "Add a birth date",
-    "bornLead": "A date replaces the 15° average with your natal Sun degree, plus Mercury, Venus and Mars at noon UTC. Houses and a precise Moon still need a time.",
-    "bornCta": "Read with this date",
-    "bornClear": "Without a date",
-    "bornHint": "Noon UTC, date only. Not a natal chart.",
     "signLeadPersonal": "Transits to your natal Sun in {sign} at {deg}, from a noon-UTC chart for {date}. The Moon is a noon estimate. Houses are not placed.",
     "personalKicker": "{date} · noon UTC · tropical",
     "skyLine": "Sun in {sun} · Moon in {moon}",
@@ -633,5 +627,13 @@
     "indexMetaDescription": "Read today’s horoscope for every sign, written from the real position of the Moon and planets. Add your birth date for a sharper reading.",
     "signMetaTitle": "{sign} horoscope today — from real transits",
     "signMetaDescription": "Today’s transits to a {sign} Sun, computed from the live sky rather than a recycled column. Add your birth date to sharpen the reading."
+  },
+  "horoscopeForm": {
+    "bornKicker": "Optional",
+    "bornTitle": "Add a birth date",
+    "bornLead": "A date replaces the 15° average with your natal Sun degree, plus Mercury, Venus and Mars at noon UTC. Houses and a precise Moon still need a time.",
+    "bornHint": "Noon UTC, date only. Not a natal chart.",
+    "bornCta": "Read with this date",
+    "bornClear": "Without a date"
   }
 }

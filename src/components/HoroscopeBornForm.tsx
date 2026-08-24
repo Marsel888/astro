@@ -12,7 +12,7 @@ type Props = {
 };
 
 export default function HoroscopeBornForm({ slug, born }: Props) {
-  const t = useTranslations('horoscope');
+  const t = useTranslations('horoscopeForm');
   const locale = useLocale();
   const [date, setDate] = useState(born ?? '1994-03-12');
   const path = slug ? `${HOROSCOPE_PATH}/${slug}` : HOROSCOPE_PATH;
