@@ -33,6 +33,10 @@ import { asLocale } from '@/i18n/routing';
 
 type Props = { params: Promise<{ locale: string }> };
 
+// Per-user and read from cookies, so it must never be served from a cache: a
+// chart saved a moment ago has to be there on the next render.
+export const dynamic = 'force-dynamic';
+
 /** Past days shown inline before sending the reader to the full log. */
 const RECENT_DAYS = 7;
 
@@ -132,7 +136,15 @@ export default async function DashboardPage({ params }: Props) {
         {primary && natal && bigThree.length ? (
           <section className="mb-14">
             <h2 className="text-[18px] font-medium tracking-[-0.02em]">{t('natalHeading')}</h2>
-            <p className="mt-1 max-w-[560px] text-caption text-ink-muted [text-wrap:pretty]">
+            {/* Which chart this is. Without the birth data on screen there was no
+                way to tell the cabinet was showing the one just saved. */}
+            <p className="mt-1.5 font-mono text-caption text-gold">
+              {formatBirthDate(primary.birthDate, locale)}
+              {' · '}
+              {primary.timeUnknown ? t('noTimeShort') : primary.birthTime}
+              {primary.placeLabel ? ` · ${primary.placeLabel}` : ''}
+            </p>
+            <p className="mt-2 max-w-[560px] text-caption text-ink-muted [text-wrap:pretty]">
               {t('natalHint')}
             </p>
             <div className="mt-5 grid gap-3 sm:grid-cols-3 sm:gap-4">
@@ -359,10 +371,17 @@ export default async function DashboardPage({ params }: Props) {
                 <div key={row.id} className="flex flex-col gap-3 border-b border-hairline px-5 py-4 last:border-0">
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                      <p className="text-data text-ink">{chartLabel(natalFromRow(row), astroT) || t('natalLabel')}</p>
-                      <p className="mt-1 font-mono text-caption text-ink-muted">
+                      {/* Birth data first. It is what identifies a chart; the Sun
+                          and Moon are the same for anyone born the same week. */}
+                      <p className="text-data text-ink">
                         {formatBirthDate(row.birthDate, locale)}
+                        {' · '}
+                        {row.timeUnknown ? t('noTimeShort') : row.birthTime}
                         {row.placeLabel ? ` · ${row.placeLabel}` : ''}
+                      </p>
+                      <p className="mt-1 font-mono text-caption text-ink-muted">
+                        {chartLabel(natalFromRow(row), astroT) || t('natalLabel')}
+                        {row.id === primary?.id ? ` · ${t('shownInCabinet')}` : ''}
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-3">

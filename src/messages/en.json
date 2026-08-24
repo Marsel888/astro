@@ -294,9 +294,11 @@
     "wheelExplain": "The gold glyphs are your natal chart — those never move. The muted ones are where the planets actually are today. The lines between them are the contacts the reading below describes.",
     "wheelSeeNatal": "See the natal chart on its own",
     "natalHeading": "Your chart",
-    "natalHint": "This does not change. It is the sky at the moment you were born.",
+    "natalHint": "This is the chart you saved, and it does not change — it is the sky at the moment you were born. Every calculator on the site reads from it.",
     "todayHeading": "Today",
-    "housesNoTime": "This chart was saved without a birth time, so it has no houses to divide. Add a time to use either system."
+    "housesNoTime": "This chart was saved without a birth time, so it has no houses to divide. Add a time to use either system.",
+    "noTimeShort": "no birth time",
+    "shownInCabinet": "shown in the cabinet"
   },
   "home": {
     "title": "Natal chart calculators",
