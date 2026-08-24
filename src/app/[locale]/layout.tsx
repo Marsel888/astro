@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { Noto_Sans_JP, Noto_Sans_KR } from 'next/font/google';
 import SiteFooter from '@/components/SiteFooter';
 import { asLocale, routing } from '@/i18n/routing';
+import { clientMessages } from '@/i18n/clientMessages';
 
 const notoJp = Noto_Sans_JP({
   subsets: ['latin'],
@@ -38,7 +39,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   const cjk = locale === 'ja' ? notoJp.className : locale === 'ko' ? notoKr.className : '';
   return (
-    <NextIntlClientProvider messages={messages}>
+    <NextIntlClientProvider messages={clientMessages(messages)}>
       <div className={cjk || undefined}>
         {children}
         <SiteFooter />

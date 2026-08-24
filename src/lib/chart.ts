@@ -64,9 +64,13 @@ export function sep(a: number, b: number): number {
   return d > 180 ? 360 - d : d;
 }
 
+const round2 = (n: number) => Math.round(n * 100) / 100;
+
 export function pt(r: number, lon: number, asc: number): [number, number] {
   const t = ((180 - (lon - asc)) * Math.PI) / 180;
-  return [CX + r * Math.cos(t), CY - r * Math.sin(t)];
+  // Two decimals is well under a pixel on this viewBox, and the difference in
+  // the markup is the whole tail of a double printed for every coordinate.
+  return [round2(CX + r * Math.cos(t)), round2(CY - r * Math.sin(t))];
 }
 
 export function ringSegs(asc: number, R1 = 272, R2 = 234, RG = 253) {

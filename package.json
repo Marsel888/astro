@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "verify": "tsx scripts/verify-ephemeris.ts && tsx scripts/verify-houses.ts && tsx scripts/verify-placements.ts && tsx scripts/verify-register.ts",
+    "verify": "tsx scripts/verify-ephemeris.ts && tsx scripts/verify-houses.ts && tsx scripts/verify-placements.ts && tsx scripts/verify-register.ts && tsx scripts/verify-client-messages.ts",
     "interpret:dump": "tsx scripts/dump-interpretations.ts",
     "interpret:count": "tsx scripts/count-interpretations.ts",
     "interpret:seed": "tsx scripts/seed-interpretations.ts",
@@ -20,7 +20,8 @@
     "db:migrate": "drizzle-kit migrate",
     "preview:reading": "tsx scripts/preview-reading.ts",
     "verify:placements": "tsx scripts/verify-placements.ts",
-    "verify:register": "tsx scripts/verify-register.ts"
+    "verify:register": "tsx scripts/verify-register.ts",
+    "verify:client": "tsx scripts/verify-client-messages.ts"
   },
   "dependencies": {
     "astronomy-engine": "^2.1.19",

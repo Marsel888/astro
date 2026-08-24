@@ -51,6 +51,21 @@ const MAP: Record<SignName, { dots: Array<[number, number]>; lines: Array<[numbe
   },
 };
 
+const round = (n: number) => Math.round(n * 100) / 100;
+
+/** The twelve tick marks: identical on every emblem, so worked out once. */
+const TICKS = Array.from({ length: 12 }, (_, i) => {
+  const a = ((i * 30 - 90) * Math.PI) / 180;
+  const inner = i % 3 === 0 ? 32 : 34;
+  return {
+    x1: round(40 + inner * Math.cos(a)),
+    y1: round(40 + inner * Math.sin(a)),
+    x2: round(40 + 37 * Math.cos(a)),
+    y2: round(40 + 37 * Math.sin(a)),
+    w: i % 3 === 0 ? 1.1 : 0.6,
+  };
+});
+
 type Props = {
   sign: SignName;
   size?: number;
@@ -70,21 +85,17 @@ export default function SignEmblem({ sign, size = 72 }: Props) {
       aria-hidden
     >
       <circle cx={40} cy={40} r={38} fill="color-mix(in oklab, var(--bg-elevated) 80%, transparent)" stroke="var(--line-strong)" strokeWidth={0.8} />
-      {Array.from({ length: 12 }, (_, i) => {
-        const a = ((i * 30 - 90) * Math.PI) / 180;
-        const inner = i % 3 === 0 ? 32 : 34;
-        return (
-          <line
-            key={i}
-            x1={40 + inner * Math.cos(a)}
-            y1={40 + inner * Math.sin(a)}
-            x2={40 + 37 * Math.cos(a)}
-            y2={40 + 37 * Math.sin(a)}
-            stroke="var(--line)"
-            strokeWidth={i % 3 === 0 ? 1.1 : 0.6}
-          />
-        );
-      })}
+      {TICKS.map((tick, i) => (
+        <line
+          key={i}
+          x1={tick.x1}
+          y1={tick.y1}
+          x2={tick.x2}
+          y2={tick.y2}
+          stroke="var(--line)"
+          strokeWidth={tick.w}
+        />
+      ))}
       {map.lines.map(([a, b], i) => (
         <line
           key={i}
