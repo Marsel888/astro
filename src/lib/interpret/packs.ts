@@ -68,3 +68,15 @@ export function packedHousePlay(
   if (!domain || !lens) return null;
   return pack.housePlay.replace('{lens}', lens).replace('{house}', String(house)).replace('{domain}', domain);
 }
+
+/**
+ * Whether this locale has readings of its own.
+ *
+ * English is the table built into the source; the rest come from packs. Without
+ * one, `readingFor` falls back to English — fine inside a result somebody asked
+ * for, but not for a page published under another language's hreflang, where it
+ * would be twelve paragraphs of English pretending to be German.
+ */
+export function hasReadings(locale?: string | null): boolean {
+  return locale === 'en' || copyPack(locale) !== null;
+}

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import BirthChartCalculator from '@/components/BirthChartCalculator';
 import CalculatorJsonLd from '@/components/CalculatorJsonLd';
+import PlacementsBySign from '@/components/PlacementsBySign';
 import SiteHeader from '@/components/SiteHeader';
 import { calculatorMetadata } from '@/lib/calculatorMeta';
 import { asLocale } from '@/i18n/routing';
@@ -55,6 +56,8 @@ export default async function BirthChartPage({ params }: { params: Promise<{ loc
             </div>
           </div>
         </section>
+
+        <PlacementsBySign kind="sun" locale={locale} />
       </main>
     </>
   );

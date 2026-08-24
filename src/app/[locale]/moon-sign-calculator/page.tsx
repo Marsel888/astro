@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import CalculatorJsonLd from '@/components/CalculatorJsonLd';
 import CalculatorNote from '@/components/CalculatorNote';
+import PlacementsBySign from '@/components/PlacementsBySign';
 import SignFocusCalculator from '@/components/SignFocusCalculator';
 import SiteHeader from '@/components/SiteHeader';
 import { calculatorMetadata } from '@/lib/calculatorMeta';
@@ -27,6 +28,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       <main className="mx-auto max-w-[1080px] px-5 pb-24 pt-8 sm:px-8 sm:pt-12">
         <SignFocusCalculator ns="moon" bodyKey="moon" />
         <CalculatorNote title={copy('moonTitle')} body={copy('moonBody')} />
+        <PlacementsBySign kind="moon" locale={locale} />
       </main>
     </>
   );
