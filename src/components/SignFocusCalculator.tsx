@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import BirthDataForm from '@/components/BirthDataForm';
+import BirthDataLine from '@/components/BirthDataLine';
 import EmptyOrrery from '@/components/EmptyOrrery';
 import ReadingCard from '@/components/ReadingCard';
 import SignEmblem from '@/components/SignEmblem';
@@ -16,7 +17,7 @@ import { chartFromBirth } from '@/lib/astro/fromBirth';
 import { DEFAULT_BIRTH, type BirthData } from '@/lib/places/defaults';
 import { dms, type SignName } from '@/lib/chart';
 import { placementReading, type ReadingKind } from '@/lib/interpret/copy';
-import type { ChartPlanet } from '@/lib/astro';
+import type { ChartPlanet, ChartResult } from '@/lib/astro';
 
 type Props = {
   ns: 'moon' | 'venus' | 'mercury' | 'mars';
@@ -30,17 +31,20 @@ export default function SignFocusCalculator({ ns, bodyKey, headingAs = 'h1' }: P
   const { fullReading } = useFullReading();
   const [data, setData] = useState<BirthData>(DEFAULT_BIRTH);
   const [body, setBody] = useState<ChartPlanet | null>(null);
+  const [chart, setChart] = useState<ChartResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const { ref: resultRef, focusResult } = useResultFocus<HTMLElement>();
 
   function onSubmit(input: BirthData = data) {
     setError(null);
     try {
-      const chart = chartFromBirth(input);
-      setBody(chart.bodies.find((row) => row.key === bodyKey) ?? null);
+      const computed = chartFromBirth(input);
+      setChart(computed);
+      setBody(computed.bodies.find((row) => row.key === bodyKey) ?? null);
       focusResult();
     } catch (e) {
       setBody(null);
+      setChart(null);
       setError(e instanceof Error ? e.message : ui('failed'));
     }
   }
@@ -70,7 +74,10 @@ export default function SignFocusCalculator({ ns, bodyKey, headingAs = 'h1' }: P
       {!body && <EmptyOrrery caption={ui('emptySign')} />}
       {body && sign && (
         <section ref={resultRef} tabIndex={-1} className="mt-12 scroll-mt-4 border-t border-hairline pt-10 outline-none">
-          <h2 className="mb-5 text-h2 font-medium tracking-[-0.01em]">{t('result')}</h2>
+          <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+            <h2 className="mb-5 text-h2 font-medium tracking-[-0.01em]">{t('result')}</h2>
+            {chart ? <BirthDataLine data={data} chart={chart} /> : null}
+          </div>
           <div className="result-enter flex items-center gap-5 rounded-card border border-hairline bg-panel p-5 sm:p-7">
             <SignEmblem sign={sign} size={88} />
             <div className="flex flex-col gap-1">

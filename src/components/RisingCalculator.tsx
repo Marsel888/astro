@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import BirthDataForm from '@/components/BirthDataForm';
+import BirthDataLine from '@/components/BirthDataLine';
 import EmptyOrrery from '@/components/EmptyOrrery';
 import ReadingCard from '@/components/ReadingCard';
 import SignEmblem from '@/components/SignEmblem';
@@ -13,6 +14,7 @@ import { useAstroLabels } from '@/components/useAstroLabels';
 import { useStashedBirth } from '@/components/useStashedBirth';
 import { useResultFocus } from '@/components/useResultFocus';
 import { chartFromBirth } from '@/lib/astro/fromBirth';
+import type { ChartResult } from '@/lib/astro';
 import { DEFAULT_BIRTH, type BirthData } from '@/lib/places/defaults';
 import { dms, signOf, type SignName } from '@/lib/chart';
 import { readingFor } from '@/lib/interpret/copy';
@@ -24,6 +26,7 @@ export default function RisingCalculator({ headingAs = 'h1' }: { headingAs?: 'h1
   const { fullReading } = useFullReading();
   const [data, setData] = useState<BirthData>(DEFAULT_BIRTH);
   const [result, setResult] = useState<{ sign: SignName; lon: string } | null>(null);
+  const [chart, setChart] = useState<ChartResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const { ref: resultRef, focusResult } = useResultFocus<HTMLElement>();
 
@@ -42,6 +45,7 @@ export default function RisingCalculator({ headingAs = 'h1' }: { headingAs?: 'h1
         return;
       }
       const s = signOf(chart.ascendant);
+      setChart(chart);
       setResult({ sign: s.n, lon: dms(chart.ascendant) });
       focusResult();
     } catch (e) {
@@ -66,7 +70,10 @@ export default function RisingCalculator({ headingAs = 'h1' }: { headingAs?: 'h1
       {!result && <EmptyOrrery caption={ui('emptyRising')} />}
       {result && (
         <section ref={resultRef} tabIndex={-1} className="mt-12 scroll-mt-4 border-t border-hairline pt-10 outline-none">
-          <h2 className="mb-5 text-h2 font-medium tracking-[-0.01em]">{t('result')}</h2>
+          <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+            <h2 className="mb-5 text-h2 font-medium tracking-[-0.01em]">{t('result')}</h2>
+            {chart ? <BirthDataLine data={data} chart={chart} /> : null}
+          </div>
           <div className="result-enter flex items-center gap-5 rounded-card border border-hairline bg-panel p-5 sm:p-7">
             <SignEmblem sign={result.sign} size={88} />
             <div className="flex flex-col gap-1">

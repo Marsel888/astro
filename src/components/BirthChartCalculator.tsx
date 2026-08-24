@@ -3,12 +3,9 @@
 import { useMemo, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import BirthDataForm from '@/components/BirthDataForm';
+import BirthDataLine from '@/components/BirthDataLine';
 import ChartWheel from '@/components/ChartWheel';
-import {
-  formatCoord,
-  toBodyPoints,
-  type ChartResult,
-} from '@/lib/astro';
+import { toBodyPoints, type ChartResult } from '@/lib/astro';
 import { chartFromBirth } from '@/lib/astro/fromBirth';
 import { EL, dms, signOf, type SignName } from '@/lib/chart';
 import { DEFAULT_BIRTH, type BirthData } from '@/lib/places/defaults';
@@ -151,18 +148,7 @@ export default function BirthChartCalculator({ headingAs = 'h1' }: { headingAs?:
           >
             <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
               <h2 className="text-h2 font-medium tracking-[-0.01em]">{t('result')}</h2>
-              <span className="font-mono text-caption text-ink-muted">
-                {data.date} · {data.timeUnknown ? common('timeUnknown') : data.time} · {data.place.tz} ·{' '}
-                {formatCoord(chart.lat, chart.lon)} ·{' '}
-                {/* No birth time means no houses were computed, so naming a house
-                    system here would claim something the chart does not contain. */}
-                {chart.timeUnknown
-                  ? common('noHouses')
-                  : chart.houseSystemResolved === 'porphyry'
-                    ? common('porphyry')
-                    : common('placidus')}{' '}
-                · {common('tropical')}
-              </span>
+              <BirthDataLine data={data} chart={chart} />
             </div>
             {chart.houseSystemResolved === 'porphyry' && (
               <p className="mt-2 text-caption text-ink-muted [text-wrap:pretty]">{common('houseFallbackNote')}</p>
