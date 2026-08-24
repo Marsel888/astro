@@ -505,7 +505,7 @@ export default async function DashboardPage({ params }: Props) {
                   <ChartPreferences
                     chartId={row.id}
                     houseSystem={row.houseSystem}
-                    isPrimary={row.id === primary?.id}
+                    isPrimary={rows.length > 1 && row.id === primary?.id}
                     canBePrimary={rows.length > 1}
                     timeUnknown={row.timeUnknown}
                   />

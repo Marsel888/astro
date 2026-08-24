@@ -314,7 +314,8 @@
     "wheelLayerRing": "The ring of signs — always the same twelve, but turned so your rising sign sits at the left edge. That turn comes from your birth time and place.",
     "wheelLayerHouses": "The numbers 1 to 12 — your houses, cut from the same birth time and place.",
     "wheelLayerNatal": "The gold glyphs — the planets at the minute you were born. These never move.",
-    "wheelLayerTransit": "The muted glyphs — where those planets actually are today, with lines to the natal points they touch. This is the part that changes overnight."
+    "wheelLayerTransit": "The muted glyphs — where those planets actually are today, with lines to the natal points they touch. This is the part that changes overnight.",
+    "savedOk": "Saved"
   },
   "home": {
     "title": "Natal chart calculators",

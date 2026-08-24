@@ -33,6 +33,10 @@ export default function ChartPreferences({
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // The controls were silent on success. On a chart where no planet changes
+  // house between the two systems — most charts — that is indistinguishable
+  // from a dead button.
+  const [saved, setSaved] = useState<string | null>(null);
 
   async function patch(body: { primary?: boolean; houseSystem?: string }) {
     setBusy(true);
@@ -44,6 +48,8 @@ export default function ChartPreferences({
         body: JSON.stringify(body),
       });
       if (!res.ok) throw new Error('failed');
+      setSaved(t('savedOk'));
+      window.setTimeout(() => setSaved(null), 4000);
       router.refresh();
     } catch {
       setError(t('dangerError'));
@@ -72,6 +78,7 @@ export default function ChartPreferences({
           )
         )}
         {error && <span className="text-caption text-asp-hard">{error}</span>}
+        {saved && !error && <span className="text-caption text-asp-soft">{saved}</span>}
       </div>
 
       <details className="group">
@@ -115,6 +122,7 @@ export default function ChartPreferences({
               ))}
             </div>
           )}
+          {saved && !error ? <p className="text-caption text-asp-soft">{saved}</p> : null}
         </div>
       </details>
     </div>
