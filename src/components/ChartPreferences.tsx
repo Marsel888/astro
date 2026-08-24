@@ -14,13 +14,13 @@ type Props = {
 };
 
 /**
- * Per-chart controls: which chart the cabinet leads with, and how its houses are
- * divided.
+ * Per-chart controls.
  *
- * The house switch used to look inert. It does write and recompute, but on many
- * charts no planet crosses a cusp when the system changes — only the cusps
- * themselves move — and the cabinet showed no house numbers to compare. It now
- * says what the two systems are and warns when a chart has no houses to divide.
+ * "Make main" belongs on the surface — it decides what the cabinet opens with.
+ * The house system does not: two unlabelled words next to a delete button read
+ * as a mystery, and almost nobody needs to change it. It sits behind a
+ * disclosure that names it, with an explanation written for someone who has
+ * never heard of Placidus rather than for an astrologer.
  */
 export default function ChartPreferences({
   chartId,
@@ -53,7 +53,7 @@ export default function ChartPreferences({
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-3">
       <div className="flex flex-wrap items-center gap-2">
         {isPrimary ? (
           <span className="flex h-11 items-center rounded-control border border-gold px-3 font-mono text-caption text-gold sm:h-[34px]">
@@ -71,41 +71,52 @@ export default function ChartPreferences({
             </button>
           )
         )}
-
-        <div
-          role="group"
-          aria-label={t('housesTitle')}
-          className="flex h-11 overflow-hidden rounded-control border border-hairline-strong sm:h-[34px]"
-        >
-          {(
-            [
-              ['placidus', t('housesPlacidus')],
-              ['whole-sign', t('housesWhole')],
-            ] as const
-          ).map(([value, label]) => (
-            <button
-              key={value}
-              type="button"
-              disabled={busy || timeUnknown || houseSystem === value}
-              aria-pressed={houseSystem === value}
-              onClick={() => patch({ houseSystem: value })}
-              className={`px-3 text-caption transition-colors ${
-                houseSystem === value
-                  ? 'bg-gold text-deep'
-                  : 'text-ink-secondary hover:bg-elevated hover:text-ink disabled:opacity-40'
-              }`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-
         {error && <span className="text-caption text-asp-hard">{error}</span>}
       </div>
 
-      <p className="max-w-[620px] text-caption text-ink-muted [text-wrap:pretty]">
-        {timeUnknown ? t('housesNoTime') : t('housesBody')}
-      </p>
+      <details className="group">
+        <summary className="inline-flex cursor-pointer list-none items-center gap-2 font-mono text-caption text-ink-muted hover:text-ink [&::-webkit-details-marker]:hidden">
+          <span aria-hidden className="transition-transform group-open:rotate-90">
+            ›
+          </span>
+          {t('housesTitle')} · {houseSystem === 'whole-sign' ? t('housesWhole') : t('housesPlacidus')}
+        </summary>
+
+        <div className="mt-3 flex flex-col gap-3 border-l border-hairline pl-4">
+          <p className="max-w-[620px] text-caption text-ink-secondary [text-wrap:pretty]">
+            {timeUnknown ? t('housesNoTime') : t('housesBody')}
+          </p>
+          {!timeUnknown && (
+            <div
+              role="group"
+              aria-label={t('housesTitle')}
+              className="flex h-11 w-fit overflow-hidden rounded-control border border-hairline-strong sm:h-[34px]"
+            >
+              {(
+                [
+                  ['placidus', t('housesPlacidus')],
+                  ['whole-sign', t('housesWhole')],
+                ] as const
+              ).map(([value, label]) => (
+                <button
+                  key={value}
+                  type="button"
+                  disabled={busy || houseSystem === value}
+                  aria-pressed={houseSystem === value}
+                  onClick={() => patch({ houseSystem: value })}
+                  className={`px-3 text-caption transition-colors ${
+                    houseSystem === value
+                      ? 'bg-gold text-deep'
+                      : 'text-ink-secondary hover:bg-elevated hover:text-ink'
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </details>
     </div>
   );
 }

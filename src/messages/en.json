@@ -119,7 +119,10 @@
     "saveGateRegister": "Create free account",
     "saveGateSignIn": "I already have an account",
     "saveGateHint": "The birth data you entered is kept in this browser while you sign up, so you will not have to type it again.",
-    "saveNeedsAccount": "Create a free account to save this chart."
+    "saveNeedsAccount": "Create a free account to save this chart.",
+    "onePlacementTitle": "This is one placement from your chart",
+    "onePlacementBody": "The Moon, Venus, Mars, Mercury and the rising sign all come out of the same birth data — one chart, read one line at a time. The full chart puts all ten planets together with the houses they fall in and how they answer each other.",
+    "onePlacementCta": "Calculate the full chart"
   },
   "rising": {
     "title": "Rising sign calculator",
@@ -270,7 +273,7 @@
     "primarySet": "Make main",
     "primaryCurrent": "Main",
     "housesTitle": "House system",
-    "housesBody": "Placidus divides each quadrant by how long a degree takes to rise, so the houses are unequal. Whole sign gives each house one entire sign, starting at the rising sign. On many charts no planet crosses a cusp when you switch — only the cusps move.",
+    "housesBody": "Houses are the twelve slices a chart is cut into. The sign says how a planet behaves; the house says which part of life it turns up in — work, money, other people. There is more than one way to cut them, and astrologers have never agreed on it. Placidus makes unequal slices and is what almost every reading you will find assumes. Whole sign gives each house one entire sign, which is older and simpler. If you have no reason to prefer one, leave it on Placidus — and on many charts nothing moves either way.",
     "housesPlacidus": "Placidus",
     "housesWhole": "Whole sign",
     "saved": "Saved",
@@ -296,7 +299,7 @@
     "natalHeading": "Your chart",
     "natalHint": "This is the chart you saved, and it does not change — it is the sky at the moment you were born. Every calculator on the site reads from it.",
     "todayHeading": "Today",
-    "housesNoTime": "This chart was saved without a birth time, so it has no houses to divide. Add a time to use either system.",
+    "housesNoTime": "This chart was saved without a birth time. Houses depend on the exact minute, so there are none to divide here — the planets and their signs are still right. Save the chart again with a time to use houses.",
     "noTimeShort": "no birth time",
     "shownInCabinet": "shown in the cabinet"
   },
