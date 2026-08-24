@@ -8,7 +8,9 @@ import HoroscopePicker from '@/components/HoroscopePicker';
 import HoroscopeSky from '@/components/HoroscopeSky';
 import ReadingCard from '@/components/ReadingCard';
 import SignEmblem from '@/components/SignEmblem';
+import ReadNext from '@/components/ReadNext';
 import SiteHeader from '@/components/SiteHeader';
+import { articlesForTool, otherCalculators } from '@/lib/related';
 import { asLocale } from '@/i18n/routing';
 import { formatBirthDate } from '@/lib/dates';
 import {
@@ -73,6 +75,7 @@ export default async function SignHoroscopePage({ params, searchParams }: Props)
   const t = await getTranslations('horoscope');
   const daily = await getTranslations('daily');
   const copy = await getTranslations('calcCopy');
+  const nav = await getTranslations('nav');
   const pack = buildDailyHoroscope(locale, undefined, born);
   const ht = (key: string, values?: Record<string, string | number>) => t(key as never, values as never);
   const dt = (key: string, values?: Record<string, string | number>) => daily(key as never, values as never);
@@ -168,6 +171,18 @@ export default async function SignHoroscopePage({ params, searchParams }: Props)
 
         <p className="mt-10 font-mono text-caption text-ink-muted">{t('otherSigns')}</p>
         <HoroscopePicker active={slug} labels={labels} born={born} bornSlug={bornSlug} />
+        <ReadNext
+          groups={[
+            {
+              title: nav('readNext'),
+              links: articlesForTool(locale, '/birth-chart-calculator', 3),
+            },
+            {
+              title: nav('otherCalculators'),
+              links: await otherCalculators(locale, '/birth-chart-calculator'),
+            },
+          ]}
+        />
       </main>
     </>
   );

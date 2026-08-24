@@ -3,8 +3,10 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import BirthChartCalculator from '@/components/BirthChartCalculator';
 import CalculatorJsonLd from '@/components/CalculatorJsonLd';
 import PlacementsBySign from '@/components/PlacementsBySign';
+import ReadNext from '@/components/ReadNext';
 import SiteHeader from '@/components/SiteHeader';
 import { calculatorMetadata } from '@/lib/calculatorMeta';
+import { articlesForTool, otherCalculators } from '@/lib/related';
 import { asLocale } from '@/i18n/routing';
 
 type Props = { params: Promise<{ locale: string }> };
@@ -18,6 +20,7 @@ export default async function BirthChartPage({ params }: { params: Promise<{ loc
   const { locale: raw } = await params;
   const locale = asLocale(raw);
   setRequestLocale(locale);
+  const navT = await getTranslations('nav');
   const t = await getTranslations('birthChart');
   const copy = await getTranslations('calcCopy');
   return (
@@ -58,6 +61,12 @@ export default async function BirthChartPage({ params }: { params: Promise<{ loc
         </section>
 
         <PlacementsBySign kind="sun" locale={locale} />
+        <ReadNext
+          groups={[
+            { title: navT('readNext'), links: articlesForTool(locale, '/birth-chart-calculator') },
+            { title: navT('otherCalculators'), links: await otherCalculators(locale, '/birth-chart-calculator') },
+          ]}
+        />
       </main>
     </>
   );

@@ -4,8 +4,10 @@ import CalculatorJsonLd from '@/components/CalculatorJsonLd';
 import CalculatorNote from '@/components/CalculatorNote';
 import PlacementsBySign from '@/components/PlacementsBySign';
 import SignFocusCalculator from '@/components/SignFocusCalculator';
+import ReadNext from '@/components/ReadNext';
 import SiteHeader from '@/components/SiteHeader';
 import { calculatorMetadata } from '@/lib/calculatorMeta';
+import { articlesForTool, otherCalculators } from '@/lib/related';
 import { asLocale } from '@/i18n/routing';
 
 type Props = { params: Promise<{ locale: string }> };
@@ -19,6 +21,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const { locale: raw } = await params;
   const locale = asLocale(raw);
   setRequestLocale(locale);
+  const navT = await getTranslations('nav');
   const t = await getTranslations('mars');
   const copy = await getTranslations('calcCopy');
   return (
@@ -29,6 +32,12 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
         <SignFocusCalculator ns="mars" bodyKey="mars" />
         <CalculatorNote title={copy('marsTitle')} body={copy('marsBody')} />
         <PlacementsBySign kind="mars" locale={locale} />
+        <ReadNext
+          groups={[
+            { title: navT('readNext'), links: articlesForTool(locale, '/mars-sign-calculator') },
+            { title: navT('otherCalculators'), links: await otherCalculators(locale, '/mars-sign-calculator') },
+          ]}
+        />
       </main>
     </>
   );

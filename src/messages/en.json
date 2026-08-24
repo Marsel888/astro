@@ -20,7 +20,11 @@
     "close": "Close menu",
     "signIn": "Sign in",
     "account": "Cabinet",
-    "horoscope": "Horoscope"
+    "horoscope": "Horoscope",
+    "readNext": "Read next",
+    "otherCalculators": "Other calculators",
+    "relatedArticles": "Related articles",
+    "dailyHoroscope": "Daily horoscope"
   },
   "form": {
     "date": "Birth date",

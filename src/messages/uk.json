@@ -16,7 +16,11 @@
     "close": "Закрити меню",
     "signIn": "Увійти",
     "account": "Кабінет",
-    "horoscope": "Гороскоп"
+    "horoscope": "Гороскоп",
+    "readNext": "Читати далі",
+    "otherCalculators": "Інші калькулятори",
+    "relatedArticles": "Схожі статті",
+    "dailyHoroscope": "Гороскоп на сьогодні"
   },
   "form": {
     "date": "Дата народження",

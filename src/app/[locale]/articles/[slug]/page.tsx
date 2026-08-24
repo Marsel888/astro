@@ -3,9 +3,11 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import ArticleCalculator from '@/components/ArticleCalculator';
+import ReadNext from '@/components/ReadNext';
 import SiteHeader from '@/components/SiteHeader';
 import { ARTICLES, getArticle, type ArticleCategory } from '@/content/articles';
 import { asLocale } from '@/i18n/routing';
+import { otherCalculators, relatedArticles } from '@/lib/related';
 import { hreflangMetadata, pageUrl, socialMetadata } from '@/lib/seo';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
 
@@ -36,6 +38,7 @@ export default async function ArticlePage({ params }: Props) {
   const article = getArticle(slug, locale);
   if (!article) notFound();
   const t = await getTranslations('articles');
+  const navT = await getTranslations('nav');
   const url = pageUrl(locale, `/articles/${slug}`);
 
   const jsonLd = [
@@ -131,6 +134,18 @@ export default async function ArticlePage({ params }: Props) {
             {t('openTool')}
           </Link>
         </div>
+        <ReadNext
+          groups={[
+            {
+              title: navT('relatedArticles'),
+              links: relatedArticles(locale, article.slug, article.category),
+            },
+            {
+              title: navT('otherCalculators'),
+              links: await otherCalculators(locale, article.toolHref),
+            },
+          ]}
+        />
       </main>
     </>
   );
