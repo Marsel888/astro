@@ -101,7 +101,12 @@ export default async function DashboardPage({ params }: Props) {
           <section className="mb-12">
             <div className="grid gap-8 lg:grid-cols-[minmax(0,440px)_1fr] lg:items-start">
               <div>
-                <p className="mb-3 font-mono text-caption text-ink-muted">{t('wheelHeading')}</p>
+                <h2 className="mb-1 text-[18px] font-medium tracking-[-0.02em]">{t('wheelHeading')}</h2>
+                {/* Two rings of glyphs look nothing like the single-ring natal
+                    wheel on the calculator. Say what the reader is looking at. */}
+                <p className="mb-4 max-w-[440px] text-caption text-ink-muted [text-wrap:pretty]">
+                  {t('wheelExplain')}
+                </p>
                 <TransitWheel
                   natal={toBodyPoints(natal.bodies)}
                   transit={toBodyPoints(transit.bodies)}
@@ -116,6 +121,12 @@ export default async function DashboardPage({ params }: Props) {
                 {natal.timeUnknown ? (
                   <p className="mt-3 text-caption text-ink-muted [text-wrap:pretty]">{t('wheelNoTime')}</p>
                 ) : null}
+                <Link
+                  href={`/chart/${primary.id}/report`}
+                  className="mt-3 inline-block font-mono text-caption text-gold hover:text-ink"
+                >
+                  {t('wheelSeeNatal')} →
+                </Link>
               </div>
 
               <div>

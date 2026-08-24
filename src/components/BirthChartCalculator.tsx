@@ -154,8 +154,14 @@ export default function BirthChartCalculator({ headingAs = 'h1' }: { headingAs?:
               <span className="font-mono text-caption text-ink-muted">
                 {data.date} · {data.timeUnknown ? common('timeUnknown') : data.time} · {data.place.tz} ·{' '}
                 {formatCoord(chart.lat, chart.lon)} ·{' '}
-                {chart.houseSystemResolved === 'porphyry' ? common('porphyry') : common('placidus')} ·{' '}
-                {common('tropical')}
+                {/* No birth time means no houses were computed, so naming a house
+                    system here would claim something the chart does not contain. */}
+                {chart.timeUnknown
+                  ? common('noHouses')
+                  : chart.houseSystemResolved === 'porphyry'
+                    ? common('porphyry')
+                    : common('placidus')}{' '}
+                · {common('tropical')}
               </span>
             </div>
             {chart.houseSystemResolved === 'porphyry' && (

@@ -48,7 +48,8 @@
     "print": "Print / save PDF",
     "downloadText": "Download text",
     "downloading": "Preparing…",
-    "downloadFailed": "The download failed. Try again."
+    "downloadFailed": "The download failed. Try again.",
+    "noHouses": "no houses"
   },
   "birthChart": {
     "title": "Birth chart calculator",
@@ -283,13 +284,15 @@
     "allDaysFull": "See all days",
     "daysKeptOne": "{count} day kept",
     "daysKeptMany": "{count} days kept",
-    "wheelHeading": "Your chart, today",
+    "wheelHeading": "Your chart, with today’s sky on it",
     "wheelLabel": "Your natal chart with today’s planets laid over it, and lines for the contacts between them",
     "wheelNatal": "your chart",
-    "wheelTransit": "today’s sky",
+    "wheelTransit": "today",
     "wheelNoTime": "Houses need a birth time. Without one the wheel shows planets only.",
     "moonPhaseKicker": "Moon",
-    "quietDay": "A quiet day — nothing close"
+    "quietDay": "A quiet day — nothing close",
+    "wheelExplain": "The gold glyphs are your natal chart — those never move. The muted ones are where the planets actually are today. The lines between them are the contacts the reading below describes.",
+    "wheelSeeNatal": "See the natal chart on its own"
   },
   "home": {
     "title": "Natal chart calculators",
