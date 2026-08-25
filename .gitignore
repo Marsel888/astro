@@ -10,3 +10,9 @@ tsconfig.tsbuildinfo
 *.tmp
 *.tmp.json
 *.tmp.html
+
+# Google service-account keys. Private keys — never committed.
+*.iam.gserviceaccount.com.json
+alpine-ship-*.json
+gcp-*.json
+service-account*.json

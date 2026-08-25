@@ -22,7 +22,8 @@
     "verify:placements": "tsx scripts/verify-placements.ts",
     "verify:register": "tsx scripts/verify-register.ts",
     "verify:client": "tsx scripts/verify-client-messages.ts",
-    "verify:locale": "tsx scripts/verify-locale-root.ts"
+    "verify:locale": "tsx scripts/verify-locale-root.ts",
+    "gsc": "tsx scripts/search-console.ts"
   },
   "dependencies": {
     "astronomy-engine": "^2.1.19",
