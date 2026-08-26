@@ -12,7 +12,8 @@
  *
  *   npx tsx scripts/search-console.ts                 # last 28 days
  *   npx tsx scripts/search-console.ts --days 7
- *   npx tsx scripts/search-console.ts --inspect /uk/moon-sign-calculator
+ *   npx tsx scripts/search-console.ts --who
+ *   npx tsx scripts/search-console.ts --inspect /uk/moon-sign-calculator,/en
  */
 import { createSign } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -100,13 +101,49 @@ async function main() {
   const key = JSON.parse(readFileSync(KEY_FILE, 'utf8')) as Key;
   const token = await accessToken(key);
 
+  // Which properties the key can see, and with what right. The inspection
+  // endpoint needs siteOwner; everything else is happy with siteFullUser.
+  if (args.includes('--who')) {
+    const { siteEntry = [] } = await api<{
+      siteEntry?: Array<{ siteUrl: string; permissionLevel: string }>;
+    }>(token, 'webmasters/v3/sites');
+    console.log(`  ${key.client_email}
+`);
+    if (!siteEntry.length) console.log('  (не бачить жодного ресурсу)');
+    for (const site of siteEntry) {
+      console.log(`  ${site.siteUrl.padEnd(34)} ${site.permissionLevel}`);
+    }
+    return;
+  }
+
   if (inspect) {
     // A comma-separated list, because the question is never about one page —
     // it is whether a whole shape of page made it into the index.
-    const paths = inspect.split(',').map((p) => p.trim()).filter(Boolean);
-    console.log(`  ${'сторінка'.padEnd(42)} ${'в індексі'.padEnd(26)} останній обхід`);
+    /*
+     * Git Bash on Windows rewrites an argument that looks like a POSIX path, so
+     * "/en" arrives as "C:/Program Files/Git/en" and Google quite correctly says
+     * the URL is not part of the property. Take the path however it comes —
+     * with a leading slash, without one, or as a full URL — and rebuild it.
+     */
+    const paths = inspect
+      .split(',')
+      .map((p) => p.trim())
+      .filter(Boolean)
+      .map((p) => p.replace(/^[A-Za-z]:[^\s]*?[/\\]Git[/\\]?/i, ''))
+      .map((p) => p.replace(/^https?:\/\/[^/]+/, ''))
+      .map((p) => `/${p.replace(/^\/+/, '')}`);
+    // Ask once whether the key is an owner, so a 403 on a single URL is read as
+    // "that URL is not in this property" rather than as a permissions problem.
+    const { siteEntry = [] } = await api<{
+      siteEntry?: Array<{ siteUrl: string; permissionLevel: string }>;
+    }>(token, 'webmasters/v3/sites');
+    const ownerConfirmed = siteEntry.some(
+      (site) => site.siteUrl === SITE && site.permissionLevel === 'siteOwner',
+    );
+    console.log(`  ${'сторінка'.padEnd(38)} ${'стан'.padEnd(36)} обхід`);
     for (const path of paths) {
       const url = new URL(path, SITE).toString();
+      if (!url.startsWith(SITE)) throw new Error(`${url} не належить ресурсу ${SITE}`);
       let r: Record<string, string> = {};
       try {
         const { inspectionResult } = await api<{
@@ -114,11 +151,11 @@ async function main() {
         }>(token, 'v1/urlInspection/index:inspect', {
           inspectionUrl: url,
           siteUrl: SITE,
-          languageCode: 'uk',
+          languageCode: 'en-US',
         });
         r = inspectionResult.indexStatusResult ?? {};
       } catch (error) {
-        if (String(error).includes('do not own this site')) {
+        if (String(error).includes('do not own this site') && !ownerConfirmed) {
           console.log(
             [
               '',
@@ -132,10 +169,15 @@ async function main() {
         }
         throw error;
       }
-      const crawled = r.lastCrawlTime ? r.lastCrawlTime.slice(0, 10) : 'ще не обходив';
+      const crawled = r.lastCrawlTime ? r.lastCrawlTime.slice(0, 10) : '—';
       console.log(
-        `  ${path.padEnd(42)} ${String(r.coverageState ?? r.verdict ?? '—').slice(0, 25).padEnd(26)} ${crawled}`,
+        `  ${path.padEnd(38)} ${String(r.coverageState ?? r.verdict ?? '—').slice(0, 34).padEnd(36)} ${crawled}`,
       );
+      if (r.googleCanonical && r.userCanonical && r.googleCanonical !== r.userCanonical) {
+        console.log(
+          `      канонікал: ми кажемо ${r.userCanonical.replace(SITE, '/')} — Google обрав ${r.googleCanonical.replace(SITE, '/')}`,
+        );
+      }
     }
     return;
   }
