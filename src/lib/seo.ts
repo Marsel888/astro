@@ -1,11 +1,22 @@
 import type { Metadata } from 'next';
 import { SITE_URL } from '@/lib/site';
 import { LOCALES, PUBLISHED_LOCALE_IDS, isPublishedLocale, type AppLocale } from '@/i18n/locales';
+import { routing } from '@/i18n/routing';
 import { SITE_NAME } from '@/lib/site';
 
+/**
+ * The public URL of a page.
+ *
+ * The default locale carries no prefix, so English is "/moon-sign-calculator"
+ * and Ukrainian is "/uk/moon-sign-calculator". Canonicals, hreflang and the
+ * sitemap all come through here, so they cannot drift apart.
+ */
 export function pageUrl(locale: string, path = '') {
   const suffix = path === '/' ? '' : path;
-  return `${SITE_URL}/${locale}${suffix}`;
+  const prefix = locale === routing.defaultLocale ? '' : `/${locale}`;
+  // The English home page is the one URL that would otherwise come out bare,
+  // and a canonical without a path reads as a mistake even where it resolves.
+  return prefix || suffix ? `${SITE_URL}${prefix}${suffix}` : `${SITE_URL}/`;
 }
 
 /** hreflang alternates for the published locales only, plus x-default on English. */

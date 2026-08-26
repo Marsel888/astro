@@ -19,17 +19,24 @@ const nextConfig: NextConfig = {
       key: 'Cache-Control',
       value: 'public, max-age=0, s-maxage=600, stale-while-revalidate=86400',
     };
+    // English has no prefix now, so a public page is any path whose first
+    // segment is not one of the signed-in surfaces — with or without a locale
+    // in front of it.
+    const notPrivate = '(?!dashboard|settings|chart|sign-in|sign-up|signed-in|api|_next)';
     return [
-      {
-        source:
-          '/:locale/:path((?!dashboard|settings|chart|sign-in|sign-up|signed-in)[^/]*)/:rest*',
-        headers: [publicPage],
-      },
-      { source: '/:locale', headers: [publicPage] },
+      { source: `/:first(${notPrivate}[^/]*)/:rest*`, headers: [publicPage] },
+      { source: `/:first(${notPrivate}[^/]*)`, headers: [publicPage] },
+      { source: '/', headers: [publicPage] },
     ];
   },
   async redirects() {
     return [
+      /*
+       * English lost its prefix, and Google had already indexed the /en/* URLs.
+       * Permanent, so the signals move rather than splitting in two.
+       */
+      { source: '/en', destination: '/', permanent: true },
+      { source: '/en/:path*', destination: '/:path*', permanent: true },
       {
         source: '/:locale/articles/how-to-read-the-wheel',
         destination: '/:locale/articles/how-to-read-a-natal-chart',

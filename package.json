@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "verify": "tsx scripts/verify-ephemeris.ts && tsx scripts/verify-houses.ts && tsx scripts/verify-placements.ts && tsx scripts/verify-register.ts && tsx scripts/verify-client-messages.ts && tsx scripts/verify-locale-root.ts",
+    "verify": "tsx scripts/verify-ephemeris.ts && tsx scripts/verify-houses.ts && tsx scripts/verify-placements.ts && tsx scripts/verify-register.ts && tsx scripts/verify-client-messages.ts && tsx scripts/verify-locale-root.ts && tsx scripts/verify-middleware-matcher.ts",
     "interpret:dump": "tsx scripts/dump-interpretations.ts",
     "interpret:count": "tsx scripts/count-interpretations.ts",
     "interpret:seed": "tsx scripts/seed-interpretations.ts",
@@ -23,7 +23,8 @@
     "verify:register": "tsx scripts/verify-register.ts",
     "verify:client": "tsx scripts/verify-client-messages.ts",
     "verify:locale": "tsx scripts/verify-locale-root.ts",
-    "gsc": "tsx scripts/search-console.ts"
+    "gsc": "tsx scripts/search-console.ts",
+    "verify:matcher": "tsx scripts/verify-middleware-matcher.ts"
   },
   "dependencies": {
     "astronomy-engine": "^2.1.19",
