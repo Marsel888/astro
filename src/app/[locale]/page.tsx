@@ -13,6 +13,7 @@ type Props = { params: Promise<{ locale: string }> };
 const TOOL_COPY = {
   birth: { ns: 'birthChart' as const, href: '/birth-chart-calculator' },
   rising: { ns: 'rising' as const, href: '/rising-sign-calculator' },
+  sun: { ns: 'sun' as const, href: '/sun-sign-calculator' },
   moon: { ns: 'moon' as const, href: '/moon-sign-calculator' },
   mercury: { ns: 'mercury' as const, href: '/mercury-sign-calculator' },
   venus: { ns: 'venus' as const, href: '/venus-sign-calculator' },

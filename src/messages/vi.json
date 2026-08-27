@@ -26,7 +26,8 @@
     "relatedArticles": "Bài liên quan",
     "dailyHoroscope": "Tử vi hằng ngày",
     "transits": "Vận hành",
-    "faq": "Câu hỏi"
+    "faq": "Câu hỏi",
+    "sun": "Mặt Trời"
   },
   "form": {
     "date": "Ngày sinh",
@@ -138,6 +139,15 @@
     "h1": "Cung mọc của tôi là gì?",
     "metaTitle": "Tính cung mọc — tìm cung mọc miễn phí",
     "metaDescription": "Xem cung nào đang mọc ở chân trời phía đông lúc bạn chào đời. Nhập giờ và nơi sinh để có cung mọc cùng luận giải."
+  },
+  "sun": {
+    "title": "Sun sign calculator",
+    "description": "Find your Sun sign from your birth date. Tropical zodiac, real position.",
+    "lead": "The Sun spends about a month in each sign, so the date is usually enough. Born within a day of a boundary? This works it out from the real position rather than a table of dates, which is where the year matters.",
+    "result": "Sun sign",
+    "h1": "What is my Sun sign?",
+    "metaTitle": "Sun sign calculator — what is my Sun sign",
+    "metaDescription": "Find your Sun sign from your birth date, computed from the real position of the Sun rather than a table. Add a time for the house it falls in and a reading."
   },
   "moon": {
     "title": "Máy tính cung Mặt Trăng",
@@ -339,7 +349,9 @@
     "placementLockedBody": "Bản đồ đã lưu vốn đã chứa vị trí này — nó ra từ cùng dữ liệu sinh. Chạy công cụ một lần và nó sẽ hiện ở đây kèm luận giải.",
     "chartLockedTitle": "Bạn chưa tính toàn bộ bản đồ",
     "chartLockedBody": "Bạn đã lưu một vị trí. Cùng ngày, giờ và nơi ấy cho cả mười vị trí, các nhà chúng rơi vào và những góc chiếu giữa chúng — không còn gì để nhập thêm.",
-    "openInCabinet": "Mở trong tủ hồ sơ"
+    "openInCabinet": "Mở trong tủ hồ sơ",
+    "tabSun": "Sun",
+    "calc_sun": "Sun sign calculator"
   },
   "home": {
     "title": "Máy tính bản đồ khai sinh",
@@ -542,7 +554,9 @@
     "in_sagittarius": "ở Nhân Mã",
     "in_capricorn": "ở Ma Kết",
     "in_aquarius": "ở Bảo Bình",
-    "in_pisces": "ở Song Ngư"
+    "in_pisces": "ở Song Ngư",
+    "sunTitle": "Why a date is usually enough",
+    "sunBody": "The Sun covers about one degree a day, so it holds a sign for roughly a month. Almost everybody can read their Sun sign off the date alone. The exception is a birthday within a day or so of a sign change: the boundary falls at a different hour each year, which is why a table of dates gets those people wrong and a real ephemeris does not. A birth time adds the house — which part of life the Sun's business shows up in — and nothing else."
   },
   "transits": {
     "h1": "Transits today — what the sky is doing to your chart",

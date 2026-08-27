@@ -26,7 +26,8 @@
     "relatedArticles": "Powiązane artykuły",
     "dailyHoroscope": "Horoskop dzienny",
     "transits": "Tranzyty",
-    "faq": "Pytania"
+    "faq": "Pytania",
+    "sun": "Słońce"
   },
   "form": {
     "date": "Data urodzenia",
@@ -138,6 +139,15 @@
     "h1": "Jaki mam ascendent?",
     "metaTitle": "Kalkulator ascendentu — sprawdź swój ascendent za darmo",
     "metaDescription": "Sprawdź, który znak wschodził na wschodnim horyzoncie w chwili twoich narodzin. Podaj godzinę i miejsce, by poznać ascendent i jego opis."
+  },
+  "sun": {
+    "title": "Sun sign calculator",
+    "description": "Find your Sun sign from your birth date. Tropical zodiac, real position.",
+    "lead": "The Sun spends about a month in each sign, so the date is usually enough. Born within a day of a boundary? This works it out from the real position rather than a table of dates, which is where the year matters.",
+    "result": "Sun sign",
+    "h1": "What is my Sun sign?",
+    "metaTitle": "Sun sign calculator — what is my Sun sign",
+    "metaDescription": "Find your Sun sign from your birth date, computed from the real position of the Sun rather than a table. Add a time for the house it falls in and a reading."
   },
   "moon": {
     "title": "Kalkulator znaku Księżyca",
@@ -339,7 +349,9 @@
     "placementLockedBody": "Zapisany kosmogram już zawiera tę pozycję — wychodzi z tych samych danych urodzeniowych. Uruchom kalkulator raz, a pojawi się tutaj wraz z opisem.",
     "chartLockedTitle": "Nie liczyłeś jeszcze całego kosmogramu",
     "chartLockedBody": "Zapisałeś jedną pozycję. Ta sama data, godzina i miejsce dają wszystkie dziesięć, domy, w które wpadają, i aspekty między nimi — nie ma nic więcej do wpisania.",
-    "openInCabinet": "Otwórz w gabinecie"
+    "openInCabinet": "Otwórz w gabinecie",
+    "tabSun": "Sun",
+    "calc_sun": "Sun sign calculator"
   },
   "home": {
     "title": "Kalkulatory horoskopu urodzeniowego",
@@ -542,7 +554,9 @@
     "in_sagittarius": "w Strzelcu",
     "in_capricorn": "w Koziorożcu",
     "in_aquarius": "w Wodniku",
-    "in_pisces": "w Rybach"
+    "in_pisces": "w Rybach",
+    "sunTitle": "Why a date is usually enough",
+    "sunBody": "The Sun covers about one degree a day, so it holds a sign for roughly a month. Almost everybody can read their Sun sign off the date alone. The exception is a birthday within a day or so of a sign change: the boundary falls at a different hour each year, which is why a table of dates gets those people wrong and a real ephemeris does not. A birth time adds the house — which part of life the Sun's business shows up in — and nothing else."
   },
   "transits": {
     "h1": "Transits today — what the sky is doing to your chart",

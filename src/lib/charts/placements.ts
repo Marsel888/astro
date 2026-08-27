@@ -6,7 +6,7 @@
  * reader asked for, so a tab they never opened stays empty with a link to the
  * calculator that fills it.
  */
-export const PLACEMENT_KEYS = ['rising', 'moon', 'mercury', 'venus', 'mars'] as const;
+export const PLACEMENT_KEYS = ['sun', 'rising', 'moon', 'mercury', 'venus', 'mars'] as const;
 export type PlacementKey = (typeof PLACEMENT_KEYS)[number];
 
 /** Saving from the full birth chart is asking for all of it. */

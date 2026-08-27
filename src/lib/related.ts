@@ -18,6 +18,7 @@ export type RelatedLink = { href: string; label: string };
 const CALC_NS: Record<string, string> = {
   '/birth-chart-calculator': 'birthChart',
   '/rising-sign-calculator': 'rising',
+  '/sun-sign-calculator': 'sun',
   '/moon-sign-calculator': 'moon',
   '/mercury-sign-calculator': 'mercury',
   '/venus-sign-calculator': 'venus',

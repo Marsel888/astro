@@ -15,6 +15,7 @@ type Item = { href: string; key: string };
 const ITEMS: Item[] = [
   { href: '/dashboard', key: 'tabToday' },
   { href: '/dashboard/chart', key: 'tabChart' },
+  { href: '/dashboard/sun', key: 'tabSun' },
   { href: '/dashboard/rising', key: 'tabRising' },
   { href: '/dashboard/moon', key: 'tabMoon' },
   { href: '/dashboard/mercury', key: 'tabMercury' },

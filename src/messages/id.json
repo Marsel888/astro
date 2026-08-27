@@ -26,7 +26,8 @@
     "relatedArticles": "Artikel terkait",
     "dailyHoroscope": "Horoskop harian",
     "transits": "Transit",
-    "faq": "Tanya jawab"
+    "faq": "Tanya jawab",
+    "sun": "Matahari"
   },
   "form": {
     "date": "Tanggal lahir",
@@ -138,6 +139,15 @@
     "h1": "Apa ascendant saya?",
     "metaTitle": "Kalkulator ascendant — cari ascendant Anda gratis",
     "metaDescription": "Cari tahu zodiak apa yang sedang naik di ufuk timur saat Anda lahir. Masukkan jam dan tempat lahir untuk ascendant beserta pembacaannya."
+  },
+  "sun": {
+    "title": "Sun sign calculator",
+    "description": "Find your Sun sign from your birth date. Tropical zodiac, real position.",
+    "lead": "The Sun spends about a month in each sign, so the date is usually enough. Born within a day of a boundary? This works it out from the real position rather than a table of dates, which is where the year matters.",
+    "result": "Sun sign",
+    "h1": "What is my Sun sign?",
+    "metaTitle": "Sun sign calculator — what is my Sun sign",
+    "metaDescription": "Find your Sun sign from your birth date, computed from the real position of the Sun rather than a table. Add a time for the house it falls in and a reading."
   },
   "moon": {
     "title": "Kalkulator tanda Bulan",
@@ -339,7 +349,9 @@
     "placementLockedBody": "Peta yang Anda simpan sudah memuat penempatan ini — ia keluar dari data lahir yang sama. Jalankan kalkulatornya sekali dan penempatan itu muncul di sini beserta pembacaannya.",
     "chartLockedTitle": "Anda belum menghitung peta seutuhnya",
     "chartLockedBody": "Anda menyimpan satu penempatan. Tanggal, jam, dan tempat yang sama memberi kesepuluhnya, rumah yang ditempatinya, dan aspek di antaranya — tidak ada lagi yang perlu diketik.",
-    "openInCabinet": "Buka di kabinet"
+    "openInCabinet": "Buka di kabinet",
+    "tabSun": "Sun",
+    "calc_sun": "Sun sign calculator"
   },
   "home": {
     "title": "Kalkulator peta kelahiran",
@@ -542,7 +554,9 @@
     "in_sagittarius": "di Sagitarius",
     "in_capricorn": "di Capricornus",
     "in_aquarius": "di Aquarius",
-    "in_pisces": "di Pisces"
+    "in_pisces": "di Pisces",
+    "sunTitle": "Why a date is usually enough",
+    "sunBody": "The Sun covers about one degree a day, so it holds a sign for roughly a month. Almost everybody can read their Sun sign off the date alone. The exception is a birthday within a day or so of a sign change: the boundary falls at a different hour each year, which is why a table of dates gets those people wrong and a real ephemeris does not. A birth time adds the house — which part of life the Sun's business shows up in — and nothing else."
   },
   "transits": {
     "h1": "Transits today — what the sky is doing to your chart",

@@ -31,7 +31,7 @@ const EN: FaqGroup[] = [
       {
         q: 'How do I find my Sun sign?',
         a: 'Your date of birth is enough. The Sun spends about a month in each sign, so only people born within a day or two of a boundary need to check the year — and the calculator does that from the real position rather than from a table of dates.',
-        href: '/birth-chart-calculator',
+        href: '/sun-sign-calculator',
       },
       {
         q: 'How do I find my Moon sign?',
@@ -140,7 +140,7 @@ const UK: FaqGroup[] = [
       {
         q: 'Як дізнатися свій знак Сонця?',
         a: 'Досить дати народження. Сонце проходить знак приблизно за місяць, тож перевіряти рік треба лише тим, хто народився за день-два від межі — і калькулятор робить це за справжнім положенням, а не за таблицею дат.',
-        href: '/birth-chart-calculator',
+        href: '/sun-sign-calculator',
       },
       {
         q: 'Як дізнатися свій знак Місяця?',
@@ -249,7 +249,7 @@ const RU: FaqGroup[] = [
       {
         q: 'Как узнать свой знак Солнца?',
         a: 'Достаточно даты рождения. Солнце проходит знак примерно за месяц, поэтому сверять год нужно лишь тем, кто родился за день-два от границы — и калькулятор делает это по настоящему положению, а не по таблице дат.',
-        href: '/birth-chart-calculator',
+        href: '/sun-sign-calculator',
       },
       {
         q: 'Как узнать свой знак Луны?',

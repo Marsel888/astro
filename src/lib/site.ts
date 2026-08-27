@@ -15,6 +15,7 @@ export const SITE_NAME = 'SideraChart';
 export const CALCULATOR_PATHS = [
   '/birth-chart-calculator',
   '/rising-sign-calculator',
+  '/sun-sign-calculator',
   '/moon-sign-calculator',
   '/venus-sign-calculator',
   '/mercury-sign-calculator',

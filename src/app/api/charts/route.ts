@@ -19,7 +19,7 @@ export const runtime = 'nodejs';
  * rather than ten rows they never asked about. Anything unrecognised is stored
  * as null, which means the whole chart.
  */
-const SOURCES = ['birth-chart', 'rising', 'moon', 'mercury', 'venus', 'mars'] as const;
+const SOURCES = ['birth-chart', 'sun', 'rising', 'moon', 'mercury', 'venus', 'mars'] as const;
 type Source = (typeof SOURCES)[number];
 
 type SaveBody = {

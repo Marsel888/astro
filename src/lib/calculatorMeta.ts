@@ -6,6 +6,7 @@ import type { AppLocale } from '@/i18n/routing';
 type CalculatorNamespace =
   | 'birthChart'
   | 'rising'
+  | 'sun'
   | 'moon'
   | 'venus'
   | 'mercury'

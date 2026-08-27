@@ -26,7 +26,8 @@
     "relatedArticles": "İlgili yazılar",
     "dailyHoroscope": "Günlük burç yorumu",
     "transits": "Transitler",
-    "faq": "SSS"
+    "faq": "SSS",
+    "sun": "Güneş"
   },
   "form": {
     "date": "Doğum tarihi",
@@ -138,6 +139,15 @@
     "h1": "Yükselen burcum ne?",
     "metaTitle": "Yükselen burç hesaplama — yükseleninizi ücretsiz bulun",
     "metaDescription": "Doğduğunuz anda doğu ufkunda hangi burcun yükseldiğini öğrenin. Yükselen ve yorumu için doğum saatinizi ve yerinizi girin."
+  },
+  "sun": {
+    "title": "Sun sign calculator",
+    "description": "Find your Sun sign from your birth date. Tropical zodiac, real position.",
+    "lead": "The Sun spends about a month in each sign, so the date is usually enough. Born within a day of a boundary? This works it out from the real position rather than a table of dates, which is where the year matters.",
+    "result": "Sun sign",
+    "h1": "What is my Sun sign?",
+    "metaTitle": "Sun sign calculator — what is my Sun sign",
+    "metaDescription": "Find your Sun sign from your birth date, computed from the real position of the Sun rather than a table. Add a time for the house it falls in and a reading."
   },
   "moon": {
     "title": "Ay burcu hesaplayıcı",
@@ -339,7 +349,9 @@
     "placementLockedBody": "Kaydettiğiniz harita bu yerleşimi zaten içeriyor — aynı doğum bilgisinden çıkıyor. Hesaplayıcıyı bir kez çalıştırın, yorumuyla birlikte burada belirsin.",
     "chartLockedTitle": "Haritanın tamamını henüz hesaplamadınız",
     "chartLockedBody": "Bir yerleşim kaydettiniz. Aynı tarih, saat ve yer onun hepsini, düştükleri evleri ve aralarındaki açıları verir — yazılacak başka bir şey yok.",
-    "openInCabinet": "Kabinette aç"
+    "openInCabinet": "Kabinette aç",
+    "tabSun": "Sun",
+    "calc_sun": "Sun sign calculator"
   },
   "home": {
     "title": "Doğum haritası hesaplayıcıları",
@@ -542,7 +554,9 @@
     "in_sagittarius": "Yay burcunda",
     "in_capricorn": "Oğlak burcunda",
     "in_aquarius": "Kova burcunda",
-    "in_pisces": "Balık burcunda"
+    "in_pisces": "Balık burcunda",
+    "sunTitle": "Why a date is usually enough",
+    "sunBody": "The Sun covers about one degree a day, so it holds a sign for roughly a month. Almost everybody can read their Sun sign off the date alone. The exception is a birthday within a day or so of a sign change: the boundary falls at a different hour each year, which is why a table of dates gets those people wrong and a real ephemeris does not. A birth time adds the house — which part of life the Sun's business shows up in — and nothing else."
   },
   "transits": {
     "h1": "Transits today — what the sky is doing to your chart",

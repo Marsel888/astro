@@ -1,6 +1,7 @@
 export const CALCULATOR_NAV = [
   { href: '/birth-chart-calculator', key: 'birth' },
   { href: '/rising-sign-calculator', key: 'rising' },
+  { href: '/sun-sign-calculator', key: 'sun' },
   { href: '/moon-sign-calculator', key: 'moon' },
   { href: '/mercury-sign-calculator', key: 'mercury' },
   { href: '/venus-sign-calculator', key: 'venus' },

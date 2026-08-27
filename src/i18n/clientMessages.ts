@@ -28,6 +28,7 @@ export const CLIENT_NAMESPACES = [
   'birthChart',
   'rising',
   'transits',
+  'sun',
   'moon',
   'venus',
   'mercury',

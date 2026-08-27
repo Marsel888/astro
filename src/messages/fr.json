@@ -26,7 +26,8 @@
     "relatedArticles": "Articles liés",
     "dailyHoroscope": "Horoscope du jour",
     "transits": "Transits",
-    "faq": "Questions"
+    "faq": "Questions",
+    "sun": "Soleil"
   },
   "form": {
     "date": "Date de naissance",
@@ -138,6 +139,15 @@
     "h1": "Quel est mon ascendant ?",
     "metaTitle": "Calculateur d’ascendant — trouvez votre ascendant gratuitement",
     "metaDescription": "Découvrez quel signe se levait à l’horizon est à votre naissance. Entrez l’heure et le lieu pour obtenir l’ascendant et sa lecture."
+  },
+  "sun": {
+    "title": "Sun sign calculator",
+    "description": "Find your Sun sign from your birth date. Tropical zodiac, real position.",
+    "lead": "The Sun spends about a month in each sign, so the date is usually enough. Born within a day of a boundary? This works it out from the real position rather than a table of dates, which is where the year matters.",
+    "result": "Sun sign",
+    "h1": "What is my Sun sign?",
+    "metaTitle": "Sun sign calculator — what is my Sun sign",
+    "metaDescription": "Find your Sun sign from your birth date, computed from the real position of the Sun rather than a table. Add a time for the house it falls in and a reading."
   },
   "moon": {
     "title": "Calculateur de signe lunaire",
@@ -339,7 +349,9 @@
     "placementLockedBody": "Votre thème enregistré contient déjà cette position — elle sort des mêmes données de naissance. Lancez le calculateur une fois et elle apparaîtra ici avec sa lecture.",
     "chartLockedTitle": "Vous n’avez pas encore calculé le thème entier",
     "chartLockedBody": "Vous avez enregistré une position. Les mêmes date, heure et lieu donnent les dix, les maisons où elles tombent et les aspects entre elles — il n’y a rien de plus à taper.",
-    "openInCabinet": "Ouvrir dans le cabinet"
+    "openInCabinet": "Ouvrir dans le cabinet",
+    "tabSun": "Sun",
+    "calc_sun": "Sun sign calculator"
   },
   "home": {
     "title": "Calculateurs de thème natal",
@@ -542,7 +554,9 @@
     "in_sagittarius": "en Sagittaire",
     "in_capricorn": "en Capricorne",
     "in_aquarius": "en Verseau",
-    "in_pisces": "en Poissons"
+    "in_pisces": "en Poissons",
+    "sunTitle": "Why a date is usually enough",
+    "sunBody": "The Sun covers about one degree a day, so it holds a sign for roughly a month. Almost everybody can read their Sun sign off the date alone. The exception is a birthday within a day or so of a sign change: the boundary falls at a different hour each year, which is why a table of dates gets those people wrong and a real ephemeris does not. A birth time adds the house — which part of life the Sun's business shows up in — and nothing else."
   },
   "transits": {
     "h1": "Transits today — what the sky is doing to your chart",

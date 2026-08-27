@@ -18,6 +18,7 @@ import { asLocale } from '@/i18n/routing';
  * and finds exactly that, instead of hunting a row in a table.
  */
 const PLACEMENTS = {
+  sun: { tab: 'tabSun', calculator: '/sun-sign-calculator' },
   rising: { tab: 'tabRising', calculator: '/rising-sign-calculator' },
   moon: { tab: 'tabMoon', calculator: '/moon-sign-calculator' },
   mercury: { tab: 'tabMercury', calculator: '/mercury-sign-calculator' },

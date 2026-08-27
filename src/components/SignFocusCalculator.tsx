@@ -20,7 +20,7 @@ import { placementReading, type ReadingKind } from '@/lib/interpret/copy';
 import type { ChartPlanet, ChartResult } from '@/lib/astro';
 
 type Props = {
-  ns: 'moon' | 'venus' | 'mercury' | 'mars';
+  ns: 'sun' | 'moon' | 'venus' | 'mercury' | 'mars';
   bodyKey: string;
   headingAs?: 'h1' | 'h2' | 'none';
 };

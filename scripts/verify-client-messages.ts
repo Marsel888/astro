@@ -17,7 +17,7 @@ const ROOT_READERS: Record<string, string[]> = {
 
 /** Namespaces reached through a prop rather than a literal. */
 const DYNAMIC: Record<string, string[]> = {
-  'SignFocusCalculator.tsx': ['moon', 'venus', 'mercury', 'mars'],
+  'SignFocusCalculator.tsx': ['sun', 'moon', 'venus', 'mercury', 'mars'],
   'TwoChartCalculator.tsx': ['synastry', 'composite'],
 };
 
