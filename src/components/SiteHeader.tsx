@@ -15,6 +15,7 @@ export default function SiteHeader() {
   const home = pathname === '/';
   const articles = pathname === '/articles' || pathname.startsWith('/articles/');
   const horoscope = pathname === '/daily-horoscope' || pathname.startsWith('/daily-horoscope/');
+  const faq = pathname === '/faq';
 
   return (
     <header className="border-b border-hairline px-5 sm:px-8">
@@ -112,7 +113,7 @@ function NavLink({
   active,
   children,
 }: {
-  href: '/' | '/articles' | '/daily-horoscope';
+  href: '/' | '/articles' | '/daily-horoscope' | '/faq';
   active: boolean;
   children: ReactNode;
 }) {

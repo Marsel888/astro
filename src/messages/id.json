@@ -25,7 +25,8 @@
     "otherCalculators": "Kalkulator lain",
     "relatedArticles": "Artikel terkait",
     "dailyHoroscope": "Horoskop harian",
-    "transits": "Transit"
+    "transits": "Transit",
+    "faq": "Tanya jawab"
   },
   "form": {
     "date": "Tanggal lahir",
@@ -384,6 +385,13 @@
     "category_placements": "Posisi",
     "category_relationships": "Hubungan",
     "category_cabinet": "Akun"
+  },
+  "faq": {
+    "h1": "Frequently asked questions",
+    "lead": "The questions people actually type into a search box, answered plainly. Each one ends at the page that does the thing.",
+    "metaTitle": "Astrology FAQ — birth charts, rising signs, transits",
+    "metaDescription": "How to find your Sun, Moon, Venus and rising sign, whether you need a birth time, what a transit is, and how the positions are calculated.",
+    "answerCta": "Open the calculator"
   },
   "legal": {
     "privacyTitle": "Privasi",

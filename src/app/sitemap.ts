@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...CALCULATOR_PATHS,
     ...horoscopePaths(),
     '/articles',
+    '/faq',
     ...ARTICLES.map((article) => `/articles/${article.slug}`),
     '/privacy',
     '/terms',

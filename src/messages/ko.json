@@ -25,7 +25,8 @@
     "otherCalculators": "다른 계산기",
     "relatedArticles": "관련 글",
     "dailyHoroscope": "오늘의 운세",
-    "transits": "트랜싯"
+    "transits": "트랜싯",
+    "faq": "자주 묻는 질문"
   },
   "form": {
     "date": "출생일",
@@ -384,6 +385,13 @@
     "category_placements": "배치",
     "category_relationships": "관계",
     "category_cabinet": "계정"
+  },
+  "faq": {
+    "h1": "Frequently asked questions",
+    "lead": "The questions people actually type into a search box, answered plainly. Each one ends at the page that does the thing.",
+    "metaTitle": "Astrology FAQ — birth charts, rising signs, transits",
+    "metaDescription": "How to find your Sun, Moon, Venus and rising sign, whether you need a birth time, what a transit is, and how the positions are calculated.",
+    "answerCta": "Open the calculator"
   },
   "legal": {
     "privacyTitle": "개인정보",

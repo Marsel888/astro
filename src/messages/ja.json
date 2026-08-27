@@ -25,7 +25,8 @@
     "otherCalculators": "ほかの計算ツール",
     "relatedArticles": "関連記事",
     "dailyHoroscope": "今日の占い",
-    "transits": "トランジット"
+    "transits": "トランジット",
+    "faq": "よくある質問"
   },
   "form": {
     "date": "生年月日",
@@ -384,6 +385,13 @@
     "category_placements": "配置",
     "category_relationships": "関係",
     "category_cabinet": "アカウント"
+  },
+  "faq": {
+    "h1": "Frequently asked questions",
+    "lead": "The questions people actually type into a search box, answered plainly. Each one ends at the page that does the thing.",
+    "metaTitle": "Astrology FAQ — birth charts, rising signs, transits",
+    "metaDescription": "How to find your Sun, Moon, Venus and rising sign, whether you need a birth time, what a transit is, and how the positions are calculated.",
+    "answerCta": "Open the calculator"
   },
   "legal": {
     "privacyTitle": "プライバシー",

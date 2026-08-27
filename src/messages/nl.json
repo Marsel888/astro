@@ -25,7 +25,8 @@
     "otherCalculators": "Andere rekenmachines",
     "relatedArticles": "Verwante artikelen",
     "dailyHoroscope": "Dagelijkse horoscoop",
-    "transits": "Transits"
+    "transits": "Transits",
+    "faq": "Vragen"
   },
   "form": {
     "date": "Geboortedatum",
@@ -384,6 +385,13 @@
     "category_placements": "Plaatsingen",
     "category_relationships": "Relaties",
     "category_cabinet": "Account"
+  },
+  "faq": {
+    "h1": "Frequently asked questions",
+    "lead": "The questions people actually type into a search box, answered plainly. Each one ends at the page that does the thing.",
+    "metaTitle": "Astrology FAQ — birth charts, rising signs, transits",
+    "metaDescription": "How to find your Sun, Moon, Venus and rising sign, whether you need a birth time, what a transit is, and how the positions are calculated.",
+    "answerCta": "Open the calculator"
   },
   "legal": {
     "privacyTitle": "Privacy",
