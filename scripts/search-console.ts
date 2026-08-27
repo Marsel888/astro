@@ -19,7 +19,9 @@ import { createSign } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 
 const SITE = 'https://siderachart.com/';
-const SCOPE = 'https://www.googleapis.com/auth/webmasters.readonly';
+const READ = 'https://www.googleapis.com/auth/webmasters.readonly';
+/** Only requested for --drop-sitemap. Everything else reads. */
+const WRITE = 'https://www.googleapis.com/auth/webmasters';
 const KEY_FILE = process.env.GSC_KEY_FILE ?? 'alpine-ship-506618-d0-d7024fa85d2c.json';
 
 type Key = { client_email: string; private_key: string };
@@ -29,13 +31,13 @@ const base64url = (input: string | Buffer) =>
   Buffer.from(input).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 
 /** Exchange the key for an access token, RFC 7523 style. */
-async function accessToken(key: Key): Promise<string> {
+async function accessToken(key: Key, scope: string = READ): Promise<string> {
   const now = Math.floor(Date.now() / 1000);
   const header = base64url(JSON.stringify({ alg: 'RS256', typ: 'JWT' }));
   const claim = base64url(
     JSON.stringify({
       iss: key.client_email,
-      scope: SCOPE,
+      scope,
       aud: 'https://oauth2.googleapis.com/token',
       iat: now,
       exp: now + 3600,
@@ -99,7 +101,29 @@ async function main() {
   const inspect = args.includes('--inspect') ? args[args.indexOf('--inspect') + 1] : null;
 
   const key = JSON.parse(readFileSync(KEY_FILE, 'utf8')) as Key;
-  const token = await accessToken(key);
+  const drop = args.includes('--drop-sitemap') ? args[args.indexOf('--drop-sitemap') + 1] : null;
+  const token = await accessToken(key, drop ? WRITE : READ);
+
+  /*
+   * Remove a sitemap Google is still being told to fetch.
+   *
+   * The property has one that was submitted by mistake and does not exist —
+   * every crawl of it records another error against the site. This is the one
+   * thing here that changes something rather than reading it, so it asks for the
+   * write scope only when it is used, and only for the path named on the
+   * command line.
+   */
+  if (drop) {
+    const target = new URL(drop, SITE).toString();
+    if (!target.startsWith(SITE)) throw new Error(`${target} не належить ресурсу ${SITE}`);
+    const res = await fetch(
+      `https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(SITE)}/sitemaps/${encodeURIComponent(target)}`,
+      { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } },
+    );
+    if (!res.ok) throw new Error(`видалення ${target}: ${res.status} ${await res.text()}`);
+    console.log(`  видалено з Search Console: ${target}`);
+    return;
+  }
 
   // Which properties the key can see, and with what right. The inspection
   // endpoint needs siteOwner; everything else is happy with siteFullUser.
