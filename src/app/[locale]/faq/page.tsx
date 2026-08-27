@@ -12,6 +12,20 @@ type Props = { params: Promise<{ locale: string }> };
 
 const PATH = '/faq';
 
+/**
+ * What the link at the end of an answer promises.
+ *
+ * It said "open the calculator" under every answer, including the ones that
+ * point at an article about the tropical zodiac or at the horoscope. A link
+ * that misdescribes itself is worse than no link: the reader clicks expecting a
+ * tool and lands on prose.
+ */
+function ctaKey(href: string): 'answerCtaArticle' | 'answerCtaHoroscope' | 'answerCta' {
+  if (href.startsWith('/articles/')) return 'answerCtaArticle';
+  if (href.startsWith('/daily-horoscope')) return 'answerCtaHoroscope';
+  return 'answerCta';
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = asLocale((await params).locale);
   const t = await getTranslations({ locale, namespace: 'faq' });
@@ -94,7 +108,7 @@ export default async function FaqPage({ params }: Props) {
                         href={item.href}
                         className="mt-3 inline-flex font-mono text-caption text-gold hover:text-ink"
                       >
-                        {t('answerCta')} →
+                        {t(ctaKey(item.href))} →
                       </Link>
                     ) : null}
                   </article>
