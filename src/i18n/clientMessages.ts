@@ -27,6 +27,7 @@ export const CLIENT_NAMESPACES = [
   // The calculators with client shells of their own.
   'birthChart',
   'rising',
+  'transits',
   'moon',
   'venus',
   'mercury',
