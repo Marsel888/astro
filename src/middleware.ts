@@ -2,6 +2,7 @@ import createMiddleware from 'next-intl/middleware';
 import { NextResponse, type NextRequest } from 'next/server';
 import { routing } from './i18n/routing';
 import { LOCALE_IDS } from './i18n/locales';
+import { isPrivatePath } from './lib/privatePaths';
 
 const handle = createMiddleware(routing);
 
@@ -42,6 +43,23 @@ export default function middleware(request: NextRequest) {
    */
   if (PREFIXED.test(pathname) && request.cookies.has('NEXT_LOCALE')) {
     response.headers.delete('set-cookie');
+  }
+
+  /*
+   * Cacheability is decided here rather than by a pattern in next.config,
+   * because the decision needs the whole path. The pattern matched on the first
+   * segment, so "/dashboard" was correctly private while "/uk/dashboard" — first
+   * segment "uk" — was handed a public, ten-minute, serve-stale-for-a-day
+   * header. Every cabinet page in fourteen languages was marked shareable, and
+   * a reader who deleted a chart went on being shown it.
+   */
+  if (isPrivatePath(pathname, LOCALE_IDS)) {
+    response.headers.set('Cache-Control', 'private, no-store, max-age=0, must-revalidate');
+  } else if (!response.headers.has('set-cookie')) {
+    response.headers.set(
+      'Cache-Control',
+      'public, max-age=0, s-maxage=600, stale-while-revalidate=86400',
+    );
   }
 
   return response;

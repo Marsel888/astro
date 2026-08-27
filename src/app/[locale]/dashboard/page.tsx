@@ -18,6 +18,9 @@ import { chartLabel } from '@/lib/interpret/daily';
 import { moonPhaseOf, skySnapshot } from '@/lib/interpret/horoscope';
 import { asLocale } from '@/i18n/routing';
 
+// Reads the session, so it must never be prerendered or reused.
+export const dynamic = 'force-dynamic';
+
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props) {

@@ -18,6 +18,7 @@ import { config } from '../src/middleware';
 import { ARTICLES } from '../src/content/articles';
 import { LOCALE_IDS } from '../src/i18n/locales';
 import { CALCULATOR_PATHS } from '../src/lib/site';
+import { isPrivatePath } from '../src/lib/privatePaths';
 
 /** Pages the middleware must see, so next-intl can resolve their language. */
 const MUST_HANDLE = [
@@ -29,6 +30,8 @@ const MUST_HANDLE = [
   '/daily-horoscope/leo',
   '/privacy',
   '/dashboard',
+  '/admin',
+  '/uk/admin',
   ...LOCALE_IDS.map((id) => `/${id}`),
   ...LOCALE_IDS.map((id) => `/${id}/moon-sign-calculator`),
   '/pt-BR/articles/moon-sign',
@@ -57,7 +60,45 @@ const SKIP = new RegExp(
 );
 const skipped = (path: string) => SKIP.test(path) || path.slice(1).includes('.');
 
+/*
+ * A page behind a sign-in that answers with "public, s-maxage" is a page a
+ * shared cache will hand to the next stranger who asks. The admin table exists
+ * now, so the classification is checked rather than assumed.
+ */
+const MUST_BE_PRIVATE = [
+  '/admin',
+  '/uk/admin',
+  '/dashboard',
+  '/dashboard/moon',
+  '/uk/dashboard/charts',
+  '/settings',
+  '/chart/abc/report',
+  '/sign-in',
+  '/ja/sign-up',
+];
+
+const MUST_BE_PUBLIC = [
+  '/',
+  '/moon-sign-calculator',
+  '/uk/moon-sign-calculator',
+  '/articles/moon-sign',
+  '/daily-horoscope/leo',
+  '/privacy',
+];
+
 let failed = 0;
+
+for (const path of MUST_BE_PRIVATE) {
+  if (isPrivatePath(path, LOCALE_IDS)) continue;
+  console.log(`  ${path.padEnd(34)} <<< FAIL — would be cached and served to strangers`);
+  failed += 1;
+}
+
+for (const path of MUST_BE_PUBLIC) {
+  if (!isPrivatePath(path, LOCALE_IDS)) continue;
+  console.log(`  ${path.padEnd(34)} <<< FAIL — a public page marked private`);
+  failed += 1;
+}
 
 const sources = config.matcher as string[];
 for (const source of sources) {
@@ -85,11 +126,12 @@ for (const path of MUST_SKIP) {
 }
 
 console.log(
-  `  matcher: ${sources.join(', ')} · ${MUST_HANDLE.length} route(s) handled, ${MUST_SKIP.length} left alone`,
+  `  matcher: ${sources.join(', ')} · ${MUST_HANDLE.length} handled, ${MUST_SKIP.length} skipped, ` +
+    `${MUST_BE_PRIVATE.length} private, ${MUST_BE_PUBLIC.length} cacheable`,
 );
 console.log(
   failed === 0
-    ? 'PASS — the middleware runs where it has to and nowhere else.'
+    ? 'PASS — routes are handled, skipped and cached as intended.'
     : `FAIL — ${failed} problem(s).`,
 );
 process.exit(failed === 0 ? 0 : 1);

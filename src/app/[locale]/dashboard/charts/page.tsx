@@ -22,6 +22,9 @@ const TAB_OF: Record<string, string> = {
   mars: 'tabMars',
 };
 
+// Reads the session, so it must never be prerendered or reused.
+export const dynamic = 'force-dynamic';
+
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props) {

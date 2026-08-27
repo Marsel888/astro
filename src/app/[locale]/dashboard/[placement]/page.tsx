@@ -26,6 +26,9 @@ const PLACEMENTS = {
 } as const;
 
 type Placement = keyof typeof PLACEMENTS;
+// Reads the session, so it must never be prerendered or reused.
+export const dynamic = 'force-dynamic';
+
 type Props = { params: Promise<{ locale: string; placement: string }> };
 
 function isPlacement(value: string): value is Placement {

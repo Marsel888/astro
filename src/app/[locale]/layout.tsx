@@ -68,16 +68,21 @@ export const viewport: Viewport = {
   colorScheme: 'dark',
 };
 
+// Only two of the fifteen locales apply these, and a CJK face is an order of
+// magnitude larger than a Latin one. Preloading them on every page in every
+// language spends the budget of the pages that never use them.
 const notoJp = Noto_Sans_JP({
   subsets: ['latin'],
   weight: ['400', '500'],
   display: 'swap',
+  preload: false,
   variable: '--font-noto-jp',
 });
 const notoKr = Noto_Sans_KR({
   subsets: ['latin'],
   weight: ['400', '500'],
   display: 'swap',
+  preload: false,
   variable: '--font-noto-kr',
 });
 

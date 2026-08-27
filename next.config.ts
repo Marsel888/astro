@@ -14,21 +14,6 @@ const nextConfig: NextConfig = {
    * Signed-in surfaces are matched out by name: they read cookies and name the
    * reader's birth data, and must never be held anywhere.
    */
-  async headers() {
-    const publicPage = {
-      key: 'Cache-Control',
-      value: 'public, max-age=0, s-maxage=600, stale-while-revalidate=86400',
-    };
-    // English has no prefix now, so a public page is any path whose first
-    // segment is not one of the signed-in surfaces — with or without a locale
-    // in front of it.
-    const notPrivate = '(?!dashboard|settings|chart|sign-in|sign-up|signed-in|api|_next)';
-    return [
-      { source: `/:first(${notPrivate}[^/]*)/:rest*`, headers: [publicPage] },
-      { source: `/:first(${notPrivate}[^/]*)`, headers: [publicPage] },
-      { source: '/', headers: [publicPage] },
-    ];
-  },
   async redirects() {
     return [
       /*
