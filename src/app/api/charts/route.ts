@@ -130,6 +130,26 @@ export async function POST(request: Request) {
   const source = SOURCES.includes(json.source as Source) ? (json.source as Source) : null;
 
   /*
+   * Which page the press came from.
+   *
+   * A reader reported saving from the Mars calculator and finding every
+   * placement open. The record kept saying birth-chart, and the Mars page
+   * demonstrably sends "mars" — so the two accounts of the same event could not
+   * both be right, and no amount of reading the code was going to settle it.
+   * The referrer says which page the button was actually on.
+   */
+  console.info(
+    '[save]',
+    JSON.stringify({
+      source: json.source ?? null,
+      stored: source,
+      from: request.headers.get('referer') ?? '—',
+      date: birth.date,
+      place: birth.place.name,
+    }),
+  );
+
+  /*
    * Running a second calculator on the same birth data is not a second chart.
    * Without this, working out your Moon and then your Venus left two identical
    * rows in the cabinet and the reader had to guess which one it followed.
