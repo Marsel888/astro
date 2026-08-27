@@ -13,7 +13,7 @@ import { useAstroLabels } from '@/components/useAstroLabels';
 import { useStashedBirth } from '@/components/useStashedBirth';
 import { useResultFocus } from '@/components/useResultFocus';
 import { chartFromBirth } from '@/lib/astro/fromBirth';
-import { transitChartForDate } from '@/lib/charts/daily';
+import { transitChartForDate } from '@/lib/astro/transits';
 import { dailyReport, type DailyT } from '@/lib/interpret/daily';
 import { todayInZone } from '@/lib/dates';
 import { DEFAULT_BIRTH, type BirthData } from '@/lib/places/defaults';

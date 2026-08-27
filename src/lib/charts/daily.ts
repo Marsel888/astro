@@ -1,3 +1,4 @@
+import { transitChartForDate } from '@/lib/astro/transits';
 import { and, desc, eq, lte } from 'drizzle-orm';
 import { getTranslations } from 'next-intl/server';
 import { calculateChart, type ChartResult, type HouseSystem } from '@/lib/astro';
@@ -28,18 +29,9 @@ export function natalFromRow(row: ChartRow): ChartResult {
   });
 }
 
-export function transitChartForDate(natal: ChartResult, isoDate: string): ChartResult {
-  return calculateChart({
-    date: isoDate,
-    time: '12:00',
-    lat: natal.lat,
-    lon: natal.lon,
-    tz: natal.tz,
-    houseSystem: natal.houseSystem,
-    timeUnknown: false,
-    placeLabel: natal.placeLabel,
-  });
-}
+export { transitChartForDate };
+
+
 
 export function parseReportDoc(raw: string): ReportDoc | null {
   try {
