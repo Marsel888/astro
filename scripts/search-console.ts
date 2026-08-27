@@ -192,8 +192,9 @@ async function main() {
       rowLimit,
     }).then((r) => r.rows ?? []);
 
-  const [totals, queries, pages, countries, devices] = await Promise.all([
+  const [totals, byDate, queries, pages, countries, devices] = await Promise.all([
     query([], 1),
+    query(['date'], 60),
     query(['query']),
     query(['page']),
     query(['country'], 10),
@@ -206,6 +207,19 @@ async function main() {
       ? `\nВсього: ${total.impressions} показів, ${total.clicks} кліків, середня позиція ${total.position.toFixed(1)}`
       : '\nВсього: жодного показу за цей період.',
   );
+
+  // A day-by-day column, because on a site this young the shape of the line
+  // says more than any single number in it.
+  if (byDate.length) {
+    const peak = Math.max(...byDate.map((row) => row.impressions));
+    console.log('\n== По днях ==');
+    for (const row of [...byDate].sort((a, b) => a.keys[0]!.localeCompare(b.keys[0]!))) {
+      const bar = '█'.repeat(Math.max(1, Math.round((row.impressions / peak) * 28)));
+      console.log(
+        `  ${row.keys[0]}  ${String(row.impressions).padStart(4)} показів ${String(row.clicks).padStart(3)} кл  ${bar}`,
+      );
+    }
+  }
 
   table('Запити', queries, 'запит');
   table('Сторінки', pages, 'сторінка');
