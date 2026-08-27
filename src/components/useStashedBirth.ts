@@ -13,17 +13,17 @@ import type { BirthData } from '@/lib/places/defaults';
  * Runs at most once: the stash is consumed on read, and the ref guards against
  * the session hook resolving more than once.
  */
-export function useStashedBirth(signedIn: boolean, apply: (data: BirthData) => void) {
+export function useStashedBirth(enabled: boolean, apply: (data: BirthData) => void) {
   const pathname = usePathname();
   const done = useRef(false);
   const applyRef = useRef(apply);
   applyRef.current = apply;
 
   useEffect(() => {
-    if (!signedIn || done.current) return;
+    if (!enabled || done.current) return;
     const stashed = takeStashedBirth(pathname);
     if (!stashed) return;
     done.current = true;
     applyRef.current(stashed);
-  }, [signedIn, pathname]);
+  }, [enabled, pathname]);
 }

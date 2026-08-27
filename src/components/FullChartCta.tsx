@@ -1,5 +1,9 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import { stashBirth } from '@/lib/stashedBirth';
+import type { BirthData } from '@/lib/places/defaults';
 
 /**
  * Shown under a single-planet result.
@@ -9,8 +13,18 @@ import { Link } from '@/i18n/navigation';
  * nothing on the page said so. People ran several and could not tell whether they
  * were building up one picture or collecting unrelated answers. Saying it also
  * points at the birth chart, which is where an account starts.
+ *
+ * It used to sit above the save button, in the same gold as the save button, and
+ * it took the reader to a different calculator. Somebody who meant to keep their
+ * Mars pressed it, entered their data again on the birth chart page, saved there,
+ * and their cabinet opened every placement — the save had recorded the whole
+ * chart, because that is what they had ended up on. Secondary now, and placed
+ * after the thing most people came to do.
+ *
+ * It also carries the birth data across, so taking the offer costs one click
+ * rather than typing a date, a time and a city a second time.
  */
-export default function FullChartCta() {
+export default function FullChartCta({ data }: { data?: BirthData }) {
   const t = useTranslations('resultUi');
 
   return (
@@ -21,7 +35,8 @@ export default function FullChartCta() {
       </p>
       <Link
         href="/birth-chart-calculator"
-        className="mt-5 inline-flex h-11 items-center rounded-control bg-gold px-5 text-[15px] font-medium text-deep hover:bg-gold-hover"
+        onClick={() => data && stashBirth('/birth-chart-calculator', data)}
+        className="mt-5 inline-flex h-11 items-center rounded-control border border-hairline-strong px-5 text-[15px] text-ink-secondary hover:border-ink-muted hover:text-ink"
       >
         {t('onePlacementCta')}
       </Link>

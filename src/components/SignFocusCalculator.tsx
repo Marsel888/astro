@@ -50,7 +50,7 @@ export default function SignFocusCalculator({ ns, bodyKey, headingAs = 'h1' }: P
     }
   }
 
-  useStashedBirth(fullReading, (restored) => {
+  useStashedBirth(true, (restored) => {
     setData(restored);
     onSubmit(restored);
   });
@@ -97,8 +97,8 @@ export default function SignFocusCalculator({ ns, bodyKey, headingAs = 'h1' }: P
             paragraphs={fullReading ? paras : paras.slice(0, 1)}
             footer={<GuestCabinetCta />}
           />
-          <FullChartCta />
           {fullReading ? <SaveReportCta data={data} source={ns} /> : <SaveGate data={data} />}
+          <FullChartCta data={data} />
         </section>
       )}
     </>

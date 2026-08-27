@@ -31,6 +31,13 @@ export default function RisingCalculator({ headingAs = 'h1' }: { headingAs?: 'h1
   const [error, setError] = useState<string | null>(null);
   const { ref: resultRef, focusResult } = useResultFocus<HTMLElement>();
 
+  // Imported but never called: a guest who signed up from this page came back to
+  // an empty form, while the Moon and birth chart pages remembered.
+  useStashedBirth(true, (restored) => {
+    setData(restored);
+    onSubmit(restored);
+  });
+
   function onSubmit(input: BirthData = data) {
     setError(null);
     if (input.timeUnknown) {
@@ -91,8 +98,8 @@ export default function RisingCalculator({ headingAs = 'h1' }: { headingAs?: 'h1
             paragraphs={[readingFor('rising', result.sign, locale)]}
             footer={<GuestCabinetCta />}
           />
-          <FullChartCta />
           {fullReading ? <SaveReportCta data={data} source="rising" /> : <SaveGate data={data} />}
+          <FullChartCta data={data} />
         </section>
       )}
     </>

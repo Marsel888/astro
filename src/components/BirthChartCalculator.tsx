@@ -51,7 +51,7 @@ export default function BirthChartCalculator({ headingAs = 'h1' }: { headingAs?:
   }
 
   // Somebody who left to register comes back with their data already filled in.
-  useStashedBirth(fullReading, (restored) => {
+  useStashedBirth(true, (restored) => {
     setData(restored);
     onCalculate(restored);
   });
