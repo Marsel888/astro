@@ -97,7 +97,7 @@ export default function SignFocusCalculator({ ns, bodyKey, headingAs = 'h1' }: P
             paragraphs={fullReading ? paras : paras.slice(0, 1)}
             footer={<GuestCabinetCta />}
           />
-          {fullReading ? <SaveReportCta data={data} source={ns} /> : <SaveGate data={data} />}
+          {fullReading ? <SaveReportCta data={data} source={ns} label={planetLabel(bodyKey)} /> : <SaveGate data={data} />}
           <FullChartCta data={data} />
         </section>
       )}

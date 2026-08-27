@@ -7,7 +7,34 @@ import type { BirthData } from '@/lib/places/defaults';
 import { authClient } from '@/lib/auth-client';
 import { stashBirth } from '@/lib/stashedBirth';
 
-export default function SaveReportCta({ data, source }: { data: BirthData; source?: string }) {
+/** Where the cabinet should open after keeping this. */
+const TAB: Record<string, string> = {
+  'birth-chart': '/dashboard/chart',
+  rising: '/dashboard/rising',
+  moon: '/dashboard/moon',
+  mercury: '/dashboard/mercury',
+  venus: '/dashboard/venus',
+  mars: '/dashboard/mars',
+};
+
+/**
+ * Keep this result.
+ *
+ * `label` names what is being kept, because the button read the same on every
+ * calculator. Somebody who followed the full-chart offer from the Mars page and
+ * pressed save there had no way to tell from the button that they were now
+ * keeping the whole chart — and their cabinet opened every placement, which
+ * looked like a bug in the saving rather than a wrong page.
+ */
+export default function SaveReportCta({
+  data,
+  source,
+  label,
+}: {
+  data: BirthData;
+  source?: string;
+  label?: string;
+}) {
   const router = useRouter();
   const pathname = usePathname();
   const t = useTranslations('resultUi');
@@ -43,7 +70,9 @@ export default function SaveReportCta({ data, source }: { data: BirthData; sourc
         return;
       }
       if (!res.ok || !json.id) throw new Error(json.error || t('saveError'));
-      router.push('/dashboard');
+      // Land on what was just kept, not on a general page that could be showing
+      // anything: the answer to "did that work?" should be the first thing seen.
+      router.push((source && TAB[source]) ?? '/dashboard');
     } catch (e) {
       setError(e instanceof Error ? e.message : t('saveError'));
     } finally {
@@ -61,6 +90,11 @@ export default function SaveReportCta({ data, source }: { data: BirthData; sourc
       >
         {busy ? t('saving') : t('save')}
       </button>
+      {label ? (
+        <p className="max-w-[520px] text-center font-mono text-caption text-gold">
+          {t('saveWhat', { what: label })}
+        </p>
+      ) : null}
       <p className="max-w-[480px] text-center text-[14px] leading-[1.5] text-ink-secondary">
         {session?.user ? t('saveHint') : t('saveHintGuest')}
       </p>

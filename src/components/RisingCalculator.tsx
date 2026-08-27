@@ -98,7 +98,7 @@ export default function RisingCalculator({ headingAs = 'h1' }: { headingAs?: 'h1
             paragraphs={[readingFor('rising', result.sign, locale)]}
             footer={<GuestCabinetCta />}
           />
-          {fullReading ? <SaveReportCta data={data} source="rising" /> : <SaveGate data={data} />}
+          {fullReading ? <SaveReportCta data={data} source="rising" label={ui('ascendant')} /> : <SaveGate data={data} />}
           <FullChartCta data={data} />
         </section>
       )}

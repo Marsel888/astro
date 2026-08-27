@@ -126,7 +126,8 @@
     "saveNeedsAccount": "Create a free account to save this chart.",
     "onePlacementTitle": "This is one placement from your chart",
     "onePlacementBody": "The Moon, Venus, Mars, Mercury and the rising sign all come out of the same birth data — one chart, read one line at a time. The full chart puts all ten planets together with the houses they fall in and how they answer each other.",
-    "onePlacementCta": "Calculate the full chart"
+    "onePlacementCta": "Calculate the full chart",
+    "saveWhat": "This will appear in your cabinet: {what}"
   },
   "rising": {
     "title": "Rising sign calculator",
