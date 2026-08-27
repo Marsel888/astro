@@ -333,7 +333,7 @@
     "todayBridge": "Questo è l’oroscopo {sign} fatto per bene. La pagina pubblica non sa a quale tema sta parlando, quindi presume un Sole a 15° del segno e fa a meno delle case. Qui c’è il tuo grado solare, le tue case e tutti e dieci i pianeti invece del solo Sole.",
     "comparePublic": "Vedi l’oroscopo {sign} pubblico",
     "tabToday": "Oggi",
-    "tabChart": "Tema intero",
+    "tabChart": "Tema natale",
     "tabRising": "Ascendente",
     "tabMoon": "Luna",
     "tabMercury": "Mercurio",

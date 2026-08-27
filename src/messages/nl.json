@@ -333,7 +333,7 @@
     "todayBridge": "Dit is de {sign}-horoscoop, goed gedaan. De publieke pagina weet niet tegen welke horoscoop ze praat, dus neemt ze een Zon op 15° van het teken aan en doet ze het zonder huizen. Hier is het je eigen zonnegraad, je huizen en alle tien planeten in plaats van alleen de Zon.",
     "comparePublic": "Bekijk de publieke {sign}-horoscoop",
     "tabToday": "Vandaag",
-    "tabChart": "Hele horoscoop",
+    "tabChart": "Geboortehoroscoop",
     "tabRising": "Ascendant",
     "tabMoon": "Maan",
     "tabMercury": "Mercurius",

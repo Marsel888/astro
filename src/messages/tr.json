@@ -333,7 +333,7 @@
     "todayBridge": "Bu, {sign} burç yorumunun düzgün yapılmış hâli. Kamuya açık sayfa kimin haritasına seslendiğini bilmez, bu yüzden Güneşi burcun 15°’sinde varsayar ve evlerden vazgeçer. Burada kendi Güneş dereceniz, kendi evleriniz ve yalnız Güneş yerine on gezegenin hepsi var.",
     "comparePublic": "Kamuya açık {sign} yorumunu gör",
     "tabToday": "Bugün",
-    "tabChart": "Tam harita",
+    "tabChart": "Doğum haritası",
     "tabRising": "Yükselen",
     "tabMoon": "Ay",
     "tabMercury": "Merkür",

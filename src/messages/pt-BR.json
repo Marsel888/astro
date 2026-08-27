@@ -333,7 +333,7 @@
     "todayBridge": "Este é o horóscopo de {sign} feito direito. A página pública não sabe com qual mapa está falando, então supõe um Sol a 15° do signo e passa sem casas. Aqui é o seu próprio grau solar, as suas casas e os dez planetas em vez do Sol sozinho.",
     "comparePublic": "Ver o horóscopo público de {sign}",
     "tabToday": "Hoje",
-    "tabChart": "Mapa inteiro",
+    "tabChart": "Mapa natal",
     "tabRising": "Ascendente",
     "tabMoon": "Lua",
     "tabMercury": "Mercúrio",

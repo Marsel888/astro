@@ -333,7 +333,7 @@
     "todayBridge": "Das ist das {sign}-Horoskop, richtig gemacht. Die öffentliche Seite weiß nicht, zu wessen Horoskop sie spricht, also nimmt sie eine Sonne auf 15° des Zeichens an und kommt ohne Häuser aus. Hier ist es Ihr eigener Sonnengrad, Ihre Häuser und alle zehn Planeten statt der Sonne allein.",
     "comparePublic": "Das öffentliche {sign}-Horoskop ansehen",
     "tabToday": "Heute",
-    "tabChart": "Ganzes Horoskop",
+    "tabChart": "Geburtshoroskop",
     "tabRising": "Aszendent",
     "tabMoon": "Mond",
     "tabMercury": "Merkur",

@@ -333,7 +333,7 @@
     "todayBridge": "Voici l’horoscope {sign} fait correctement. La page publique ne sait pas à quel thème elle s’adresse : elle suppose un Soleil à 15° du signe et se passe de maisons. Ici, c’est votre propre degré solaire, vos maisons et les dix planètes plutôt que le Soleil seul.",
     "comparePublic": "Voir l’horoscope {sign} public",
     "tabToday": "Aujourd’hui",
-    "tabChart": "Thème entier",
+    "tabChart": "Thème natal",
     "tabRising": "Ascendant",
     "tabMoon": "Lune",
     "tabMercury": "Mercure",
