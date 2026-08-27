@@ -26,6 +26,15 @@ const PLACEMENTS = {
 } as const;
 
 type Placement = keyof typeof PLACEMENTS;
+
+/** What to call this placement in a button. */
+async function placementName(placement: Placement): Promise<string> {
+  const labels = await getTranslations('daily');
+  const ui = await getTranslations('resultUi');
+  return placement === 'rising'
+    ? ui('ascendant')
+    : labels(`planet_${placement}` as 'planet_moon');
+}
 // Reads the session, so it must never be prerendered or reused.
 export const dynamic = 'force-dynamic';
 
@@ -54,7 +63,17 @@ export default async function CabinetPlacementPage({ params }: Props) {
   const t = await getTranslations('account');
   const ui = await getTranslations('resultUi');
   const { rows, primary, natal, astroT } = await loadCabinet(locale, `/dashboard/${placement}`);
-  if (!primary || !natal) return <CabinetEmpty />;
+  if (!primary || !natal) {
+    // The tab you are on decides which calculator is offered. Offering the natal
+    // one from every tab is how somebody ends up saving the whole chart while
+    // believing they saved a single placement.
+    return (
+      <CabinetEmpty
+        href={PLACEMENTS[placement].calculator}
+        label={await placementName(placement)}
+      />
+    );
+  }
 
   const signLabel = (sign: SignName) => astroT(`sign_${sign.toLowerCase()}`);
 
