@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
-import ArticleCalculator from '@/components/ArticleCalculator';
 import ReadNext from '@/components/ReadNext';
 import SiteHeader from '@/components/SiteHeader';
 import { ARTICLES, getArticle, type ArticleCategory } from '@/content/articles';
@@ -86,9 +85,17 @@ export default async function ArticlePage({ params }: Props) {
         <p className="mt-5 text-[19px] leading-[1.6] text-ink-secondary [text-wrap:pretty]">{article.excerpt}</p>
         <p className="mt-4 font-mono text-caption text-ink-muted">{t('methodNote')}</p>
 
-        <section className="mt-10">
-          <ArticleCalculator toolHref={article.toolHref} />
-        </section>
+        {/*
+          The calculator used to be embedded here, above the text. It made the
+          article open on a form rather than on what the reader clicked through
+          to read. The tool is one line away instead, and again at the end.
+        */}
+        <Link
+          href={article.toolHref}
+          className="mt-6 inline-flex font-mono text-caption text-gold hover:text-ink"
+        >
+          {t('openTool')} →
+        </Link>
 
         <article className="mt-10 rounded-card bg-reading px-6 py-12 sm:px-14 sm:py-16">
           <div className="flex flex-col gap-12">
