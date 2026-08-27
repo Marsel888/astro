@@ -16,6 +16,7 @@ export default function SiteHeader() {
   const articles = pathname === '/articles' || pathname.startsWith('/articles/');
   const horoscope = pathname === '/daily-horoscope' || pathname.startsWith('/daily-horoscope/');
   const faq = pathname === '/faq';
+  const faq = pathname === '/faq';
 
   return (
     <header className="border-b border-hairline px-5 sm:px-8">
@@ -37,6 +38,9 @@ export default function SiteHeader() {
           </NavLink>
           <NavLink href="/articles" active={articles}>
             {t('nav.articles')}
+          </NavLink>
+          <NavLink href="/faq" active={faq}>
+            {t('nav.faq')}
           </NavLink>
         </nav>
         <div className="flex h-16 items-center gap-3 sm:gap-5">
@@ -80,6 +84,13 @@ export default function SiteHeader() {
             className={`rounded-control px-2 py-2.5 text-data ${horoscope ? 'text-ink' : 'text-ink-secondary'}`}
           >
             {t('nav.horoscope')}
+          </Link>
+          <Link
+            href="/faq"
+            onClick={() => setOpen(false)}
+            className={`rounded-control px-2 py-2.5 text-data ${faq ? 'text-ink' : 'text-ink-secondary'}`}
+          >
+            {t('nav.faq')}
           </Link>
           <p className="px-2 pt-2 font-mono text-caption text-ink-muted">{t('nav.calculators')}</p>
           {CALCULATOR_NAV.map((n) => {
