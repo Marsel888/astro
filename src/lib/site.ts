@@ -21,4 +21,5 @@ export const CALCULATOR_PATHS = [
   '/mars-sign-calculator',
   '/synastry-calculator',
   '/composite-chart-calculator',
+  '/transits-today',
 ] as const;

@@ -7,4 +7,5 @@ export const CALCULATOR_NAV = [
   { href: '/mars-sign-calculator', key: 'mars' },
   { href: '/synastry-calculator', key: 'synastry' },
   { href: '/composite-chart-calculator', key: 'composite' },
+  { href: '/transits-today', key: 'transits' },
 ] as const;

@@ -24,7 +24,8 @@
     "readNext": "Da leggere dopo",
     "otherCalculators": "Altri calcolatori",
     "relatedArticles": "Articoli correlati",
-    "dailyHoroscope": "Oroscopo di oggi"
+    "dailyHoroscope": "Oroscopo di oggi",
+    "transits": "Transiti"
   },
   "form": {
     "date": "Data di nascita",
@@ -532,6 +533,30 @@
     "in_capricorn": "in Capricorno",
     "in_aquarius": "in Acquario",
     "in_pisces": "in Pesci"
+  },
+  "transits": {
+    "h1": "Transits today — what the sky is doing to your chart",
+    "lead": "Your birth chart never moves. The planets do. A transit is the angle between where a planet is right now and where it stood when you were born — and unlike a Sun-sign horoscope, it is read against your own degrees.",
+    "metaTitle": "Transits today — free transit calculator for your birth chart",
+    "metaDescription": "See which planets are touching your natal chart today, with the exact orb and what each contact means. Enter your birth date, time and place. Free, no account.",
+    "empty": "Enter your birth data to see what today's sky is doing to your chart.",
+    "layersTitle": "The sky moves at two speeds",
+    "fastTitle": "The fast layer — changes daily",
+    "fastBody": "The Moon covers about thirteen degrees a day, so its contacts last half a day and are gone. The Sun and Mercury hold for two or three; Venus and Mars for a week. This is the part that makes today different from yesterday.",
+    "slowTitle": "The slow layer — climate, not weather",
+    "slowBody": "Uranus moves roughly four degrees a year, Neptune less. When one of them sits on a natal point it stays there for months, sometimes years. It is worth knowing about, but it is not a task for this afternoon — so it is named separately.",
+    "faqTitle": "People also ask",
+    "faq1q": "What is a transit in astrology?",
+    "faq1a": "The angle between a planet's position right now and a point in your birth chart. Transiting Mars at 90° to your natal Sun is a transit; so is the Moon passing over your natal Mercury. The birth chart is the fixed half, today's sky is the moving half, and the transit is the relationship between them.",
+    "faq2q": "How is this different from a daily horoscope?",
+    "faq2a": "A horoscope column knows only your Sun sign, so it assumes a Sun at the middle of that sign and works without houses. This uses the real degree of every planet in your chart, and the houses if you know your birth time. Twelve readings for eight billion people versus one reading for one chart.",
+    "faq3q": "Do I need my birth time?",
+    "faq3a": "Not for the planets. Their positions come from the date, and the aspects to them are the bulk of what you see here. A time adds two things: houses, which say which part of life a contact lands in, and an exact Moon — without a time the Moon can be off by up to six degrees.",
+    "faq4q": "How often do transits change?",
+    "faq4a": "The fast ones turn over every day, and a few of them every few hours. Over five days you would typically see about half the list replaced. The slow ones can be identical for months. Both are shown, marked as such.",
+    "methodTitle": "How this is calculated",
+    "methodBody": "Positions come from a VSOP87-class ephemeris, the same one behind the natal calculators, computed for today in your chart's timezone. Aspects are conjunction, sextile, square, trine and opposition, with orbs of 8°, 6° and 4° by aspect class. Contacts from the Moon, Sun, Mercury, Venus and Mars are treated as the day; Jupiter through Pluto as climate. Tropical zodiac. The paragraphs are written templates, not generated text, and this is not medical, legal or financial advice.",
+    "title": "Transit calculator"
   },
   "horoscope": {
     "title": "Oroscopo di oggi",

@@ -19,6 +19,7 @@ const TOOL_COPY = {
   mars: { ns: 'mars' as const, href: '/mars-sign-calculator' },
   synastry: { ns: 'synastry' as const, href: '/synastry-calculator' },
   composite: { ns: 'composite' as const, href: '/composite-chart-calculator' },
+  transits: { ns: 'transits' as const, href: '/transits-today' },
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

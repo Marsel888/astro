@@ -24,6 +24,7 @@ const CALC_NS: Record<string, string> = {
   '/mars-sign-calculator': 'mars',
   '/synastry-calculator': 'synastry',
   '/composite-chart-calculator': 'composite',
+  '/transits-today': 'transits',
 };
 
 async function calculatorName(locale: AppLocale, href: string): Promise<string> {
