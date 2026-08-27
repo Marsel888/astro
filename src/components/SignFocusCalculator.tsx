@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import BirthDataForm from '@/components/BirthDataForm';
 import BirthDataLine from '@/components/BirthDataLine';
-import FullChartCta from '@/components/FullChartCta';
 import EmptyOrrery from '@/components/EmptyOrrery';
 import ReadingCard from '@/components/ReadingCard';
 import SignEmblem from '@/components/SignEmblem';
@@ -97,8 +96,11 @@ export default function SignFocusCalculator({ ns, bodyKey, headingAs = 'h1' }: P
             paragraphs={fullReading ? paras : paras.slice(0, 1)}
             footer={<GuestCabinetCta />}
           />
-          {fullReading ? <SaveReportCta data={data} source={ns} label={planetLabel(bodyKey)} /> : <SaveGate data={data} />}
-          <FullChartCta data={data} />
+          {fullReading ? (
+            <SaveReportCta data={data} source={ns} label={planetLabel(bodyKey)} wholeChart />
+          ) : (
+            <SaveGate data={data} />
+          )}
         </section>
       )}
     </>

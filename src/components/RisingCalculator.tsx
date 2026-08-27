@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import BirthDataForm from '@/components/BirthDataForm';
 import BirthDataLine from '@/components/BirthDataLine';
-import FullChartCta from '@/components/FullChartCta';
 import EmptyOrrery from '@/components/EmptyOrrery';
 import ReadingCard from '@/components/ReadingCard';
 import SignEmblem from '@/components/SignEmblem';
@@ -98,8 +97,11 @@ export default function RisingCalculator({ headingAs = 'h1' }: { headingAs?: 'h1
             paragraphs={[readingFor('rising', result.sign, locale)]}
             footer={<GuestCabinetCta />}
           />
-          {fullReading ? <SaveReportCta data={data} source="rising" label={ui('ascendant')} /> : <SaveGate data={data} />}
-          <FullChartCta data={data} />
+          {fullReading ? (
+            <SaveReportCta data={data} source="rising" label={ui('ascendant')} wholeChart />
+          ) : (
+            <SaveGate data={data} />
+          )}
         </section>
       )}
     </>

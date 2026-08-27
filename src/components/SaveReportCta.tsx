@@ -30,10 +30,13 @@ export default function SaveReportCta({
   data,
   source,
   label,
+  wholeChart = false,
 }: {
   data: BirthData;
   source?: string;
   label?: string;
+  /** Offer to keep the whole chart from here, without moving to another page. */
+  wholeChart?: boolean;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -42,7 +45,7 @@ export default function SaveReportCta({
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
-  async function onClick() {
+  async function save(as?: string) {
     setError(null);
     setBusy(true);
     try {
@@ -53,7 +56,7 @@ export default function SaveReportCta({
           date: data.date,
           time: data.time,
           timeUnknown: data.timeUnknown,
-          source,
+          source: as,
           place: {
             name: data.place.name,
             lat: data.place.lat,
@@ -72,7 +75,7 @@ export default function SaveReportCta({
       if (!res.ok || !json.id) throw new Error(json.error || t('saveError'));
       // Land on what was just kept, not on a general page that could be showing
       // anything: the answer to "did that work?" should be the first thing seen.
-      router.push((source && TAB[source]) ?? '/dashboard');
+      router.push((as && TAB[as]) ?? '/dashboard');
     } catch (e) {
       setError(e instanceof Error ? e.message : t('saveError'));
     } finally {
@@ -81,23 +84,35 @@ export default function SaveReportCta({
   }
 
   return (
-    <div className="mt-8 flex flex-col items-start gap-2 rounded-card border border-hairline bg-panel p-5 sm:items-center sm:p-6">
+    <div className="mt-8 flex flex-col items-start gap-3 rounded-card border border-hairline bg-panel p-5 sm:items-center sm:p-6">
       <button
         type="button"
-        onClick={onClick}
+        onClick={() => save(source)}
         disabled={busy}
         className="h-11 rounded-control bg-gold px-6 text-[15px] font-medium text-deep hover:bg-gold-hover disabled:opacity-60"
       >
-        {busy ? t('saving') : t('save')}
+        {busy ? t('saving') : label ? t('saveNamed', { what: label }) : t('save')}
       </button>
-      {label ? (
-        <p className="max-w-[520px] text-center font-mono text-caption text-gold">
-          {t('saveWhat', { what: label })}
-        </p>
-      ) : null}
       <p className="max-w-[480px] text-center text-[14px] leading-[1.5] text-ink-secondary">
         {session?.user ? t('saveHint') : t('saveHintGuest')}
       </p>
+
+      {wholeChart ? (
+        <div className="mt-2 w-full border-t border-hairline pt-4 text-center">
+          <p className="mx-auto max-w-[520px] text-caption text-ink-muted [text-wrap:pretty]">
+            {t('onePlacementBody')}
+          </p>
+          <button
+            type="button"
+            onClick={() => save('birth-chart')}
+            disabled={busy}
+            className="mt-3 h-11 rounded-control border border-hairline-strong px-5 text-[15px] text-ink-secondary hover:border-ink-muted hover:text-ink disabled:opacity-60"
+          >
+            {t('saveWholeChart')}
+          </button>
+        </div>
+      ) : null}
+
       {error && <p className="text-caption text-asp-hard">{error}</p>}
     </div>
   );

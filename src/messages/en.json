@@ -69,7 +69,7 @@
   "resultUi": {
     "save": "Save chart to cabinet",
     "saving": "Saving…",
-    "saveHint": "The natal chart appears in your cabinet. Daily sky readings are written from the day you save it.",
+    "saveHint": "Daily sky readings are written from the day you save it.",
     "saveHintGuest": "Save this chart, then sign in. It moves into your cabinet with a day-by-day history. The calculator stays free.",
     "saveError": "Could not save the chart.",
     "cabinetCta": "Sign in to the cabinet for the full reading",
@@ -127,7 +127,8 @@
     "onePlacementTitle": "This is one placement from your chart",
     "onePlacementBody": "The Moon, Venus, Mars, Mercury and the rising sign all come out of the same birth data — one chart, read one line at a time. The full chart puts all ten planets together with the houses they fall in and how they answer each other.",
     "onePlacementCta": "Calculate the full chart",
-    "saveWhat": "This will appear in your cabinet: {what}"
+    "saveNamed": "Save to cabinet: {what}",
+    "saveWholeChart": "Save the whole chart instead"
   },
   "rising": {
     "title": "Rising sign calculator",
