@@ -3,6 +3,7 @@ import { deArticles } from './articles.de';
 import { enArticles } from './articles.en';
 import { esArticles } from './articles.es';
 import { frArticles } from './articles.fr';
+import { ptBRArticles } from './articles.pt-BR';
 import { ruArticles } from './articles.ru';
 import { ukArticles } from './articles.uk';
 import { CALCULATOR_NAV } from '@/lib/nav';
@@ -48,6 +49,7 @@ const EXTRAS: Partial<Record<AppLocale, Record<string, ArticleCopy>>> = {
   en: enArticles,
   es: esArticles,
   fr: frArticles,
+  'pt-BR': ptBRArticles,
   ru: ruArticles,
   uk: ukArticles,
 };
