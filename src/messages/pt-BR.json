@@ -59,15 +59,15 @@
     "noHouses": "sem casas"
   },
   "birthChart": {
-    "title": "Calculadora de mapa natal",
+    "title": "Calculadora de mapa astral",
     "lead": "Posições planetárias de uma efeméride VSOP87 / lunar para data, hora e coordenadas. Zodíaco tropical, casas Placidus.",
     "result": "Mapa natal",
     "positions": "Posições planetárias",
     "aspects": "Aspectos",
     "rowHint": "abra uma linha para a leitura do signo e da casa",
-    "h1": "Calculadora de mapa natal grátis",
-    "metaTitle": "Calculadora de mapa natal grátis — mapa astral com leitura",
-    "metaDescription": "Informe data, hora e local de nascimento para o mapa natal completo: planetas, casas, aspectos e uma leitura escrita. Grátis e sem cadastro."
+    "h1": "Calculadora de mapa astral grátis",
+    "metaTitle": "Calculadora de mapa astral grátis — mapa natal com leitura",
+    "metaDescription": "Informe data, hora e local de nascimento para o mapa astral completo: planetas, casas, aspectos e uma leitura escrita. Grátis e sem cadastro."
   },
   "resultUi": {
     "save": "Salvar o mapa no gabinete",
@@ -129,7 +129,9 @@
     "saveNeedsAccount": "Crie uma conta grátis para salvar este mapa.",
     "onePlacementTitle": "Esta é uma posição do seu mapa",
     "onePlacementBody": "Lua, Vênus, Marte, Mercúrio e o ascendente saem todos dos mesmos dados de nascimento: um mapa só, lido uma linha por vez. O mapa completo junta os dez planetas com as casas em que caem e o modo como respondem uns aos outros.",
-    "onePlacementCta": "Calcular o mapa completo"
+    "onePlacementCta": "Calcular o mapa completo",
+    "saveNamed": "Salvar no gabinete: {what}",
+    "saveWholeChart": "Salvar o mapa inteiro em vez disso"
   },
   "rising": {
     "title": "Calculadora de ascendente",
@@ -141,13 +143,13 @@
     "metaDescription": "Descubra qual signo estava subindo no horizonte leste quando você nasceu. Informe hora e local de nascimento para o ascendente e sua leitura."
   },
   "sun": {
-    "title": "Sun sign calculator",
-    "description": "Find your Sun sign from your birth date. Tropical zodiac, real position.",
-    "lead": "The Sun spends about a month in each sign, so the date is usually enough. Born within a day of a boundary? This works it out from the real position rather than a table of dates, which is where the year matters.",
-    "result": "Sun sign",
-    "h1": "What is my Sun sign?",
-    "metaTitle": "Sun sign calculator — what is my Sun sign",
-    "metaDescription": "Find your Sun sign from your birth date, computed from the real position of the Sun rather than a table. Add a time for the house it falls in and a reading."
+    "title": "Calculadora de signo solar",
+    "description": "Descubra o seu signo solar pela data de nascimento. Zodíaco tropical, posição real.",
+    "lead": "O Sol passa cerca de um mês em cada signo, então a data costuma bastar. Nasceu a menos de um dia de uma fronteira? Aqui a conta sai da posição real, e não de uma tabela de datas — é justamente aí que o ano importa.",
+    "result": "Signo solar",
+    "h1": "Qual é o meu signo solar?",
+    "metaTitle": "Calculadora de signo solar — qual é o meu signo solar",
+    "metaDescription": "Descubra o seu signo solar pela data de nascimento, calculado a partir da posição real do Sol e não de uma tabela. Acrescente a hora para ver a casa e a leitura."
   },
   "moon": {
     "title": "Calculadora de signo lunar",
@@ -350,11 +352,12 @@
     "chartLockedTitle": "Você ainda não calculou o mapa inteiro",
     "chartLockedBody": "Você salvou uma posição. A mesma data, hora e local dão as dez, as casas em que caem e os aspectos entre elas — não há mais nada a digitar.",
     "openInCabinet": "Abrir no gabinete",
-    "tabSun": "Sun",
-    "calc_sun": "Sun sign calculator"
+    "tabSun": "Sol",
+    "calc_sun": "calculadora de signo solar",
+    "openNamedCalculator": "Abrir a calculadora: {what}"
   },
   "home": {
-    "title": "Calculadoras de mapa natal",
+    "title": "Calculadoras de mapa astral",
     "lead": "Informe data, hora e local. O SideraChart calcula posições tropicais com uma efeméride VSOP87, desenha a roda e lê de um cache escrito — não de um modelo que inventa graus.",
     "cta": "Abrir o mapa natal",
     "ctaSecondary": "Ler artigos",
@@ -380,12 +383,12 @@
     "horoscopeLead": "Leituras do céu tropical de hoje às 12:00 UTC. Acrescente uma data de nascimento para o seu grau solar real — ainda assim não é um mapa natal.",
     "horoscopeCta": "Abrir o horóscopo de hoje",
     "h1": "Calculadoras de astrologia grátis",
-    "metaTitle": "Calculadoras de astrologia grátis — mapa natal, ascendente, sinastria",
-    "metaDescription": "Calcule seu mapa natal, ascendente, signo lunar ou sinastria a partir de posições de efemérides reais. Todas as ferramentas são grátis e não pedem conta."
+    "metaTitle": "Calculadoras de astrologia grátis — mapa astral, ascendente, sinastria",
+    "metaDescription": "Calcule seu mapa astral, ascendente, signo lunar ou sinastria a partir de posições de efemérides reais. Todas as ferramentas são grátis e não pedem conta."
   },
   "articles": {
     "title": "Artigos",
-    "lead": "Como as calculadoras funcionam, o que é um mapa natal e como ler a roda sem tratá-la como veredito.",
+    "lead": "Como as calculadoras funcionam, o que é um mapa astral e como ler a roda sem tratá-la como veredito.",
     "read": "Ler",
     "back": "Todos os artigos",
     "faq": "Outras pessoas também perguntam",
@@ -399,13 +402,13 @@
     "category_cabinet": "Conta"
   },
   "faq": {
-    "h1": "Frequently asked questions",
-    "lead": "The questions people actually type into a search box, answered plainly. Each one ends at the page that does the thing.",
-    "metaTitle": "Astrology FAQ — birth charts, rising signs, transits",
-    "metaDescription": "How to find your Sun, Moon, Venus and rising sign, whether you need a birth time, what a transit is, and how the positions are calculated.",
-    "answerCta": "Open the calculator",
-    "answerCtaArticle": "Read the article",
-    "answerCtaHoroscope": "Open the horoscope"
+    "h1": "Perguntas frequentes",
+    "lead": "As perguntas que as pessoas de fato digitam numa busca, respondidas sem rodeios. Cada uma termina na página que faz a coisa.",
+    "metaTitle": "FAQ de astrologia — mapa astral, ascendente, trânsitos",
+    "metaDescription": "Como descobrir o seu Sol, a sua Lua, a sua Vênus e o seu ascendente, se você precisa da hora de nascimento, o que é um trânsito e como as posições são calculadas.",
+    "answerCta": "Abrir a calculadora",
+    "answerCtaArticle": "Ler o artigo",
+    "answerCtaHoroscope": "Abrir o horóscopo"
   },
   "legal": {
     "privacyTitle": "Privacidade",
@@ -415,7 +418,7 @@
   },
   "footer": {
     "blurb": "Posições natais tropicais de uma efeméride VSOP87. Não Swiss Ephemeris.",
-    "legal": "Legal"
+    "legal": "Jurídico"
   },
   "daily": {
     "skyHeading": "Céu hoje",
@@ -507,7 +510,7 @@
     "shortContact": "{transit} {verb} seu {natalPoint}"
   },
   "calcCopy": {
-    "howTitle": "Como um mapa natal é calculado",
+    "howTitle": "Como um mapa astral é calculado",
     "howP1": "Um mapa natal é um diagrama do céu a partir de um lugar num instante. Dois dados fazem o trabalho: a hora, que fixa onde cada corpo estava na eclíptica, e as coordenadas, que fixam que parte daquele céu estava ascendendo. O SideraChart resolve o local de nascimento em latitude e longitude, converte a hora civil local em Tempo Universal com as regras de fuso IANA vigentes nessa data e lê as longitudes planetárias de uma efeméride de classe VSOP87 (astronomy-engine).",
     "howP2": "As posições são dadas no zodíaco tropical, medidas a partir do equinócio de março — a convenção ocidental. As longitudes siderais diferem hoje cerca de 24° e não aparecem nesta calculadora.",
     "whyTimeTitle": "Por que a hora de nascimento importa",
@@ -526,11 +529,11 @@
     "risingBody": "O signo ascendente é o signo do zodíaco que nascia no horizonte leste no momento do nascimento. Depende de latitude, longitude e relógio, não só da data. O SideraChart o calcula a partir do tempo sideral local e da mesma efeméride tropical do mapa natal.",
     "moonTitle": "Por que a Lua precisa de uma hora",
     "moonBody": "A Lua percorre cerca de 13° por dia. A caixa de hora desconhecida ainda devolve o signo na maioria dos casos, mas o grau e a casa são uma estimativa ao meio-dia. Para uma leitura natal, informe a hora se a tiver.",
-    "venusTitle": "Vênus no mapa natal",
+    "venusTitle": "Vênus no mapa astral",
     "venusBody": "Vênus passa algumas semanas em cada signo e estaciona retrógrada cerca de a cada 18 meses. O signo é estável ao longo de um dia civil; a casa precisa de hora de nascimento. As posições são tropicais e geocêntricas, o mesmo motor do mapa natal completo.",
-    "mercuryTitle": "Mercúrio no mapa natal",
+    "mercuryTitle": "Mercúrio no mapa astral",
     "mercuryBody": "Mercúrio muda de signo a cada poucas semanas e estaciona retrógrado cerca de três vezes por ano. A data costuma bastar para o signo; a casa e o grau exato ainda querem uma hora. As posições são tropicais e geocêntricas, o mesmo motor do mapa natal completo.",
-    "marsTitle": "Marte no mapa natal",
+    "marsTitle": "Marte no mapa astral",
     "marsBody": "Marte passa cerca de seis ou sete semanas num signo, mais tempo em retrógrado. O signo é estável ao longo de um dia civil; a casa precisa de hora de nascimento. As posições são tropicais e geocêntricas, o mesmo motor do mapa natal completo.",
     "synastryTitle": "Como a sinastria é calculada",
     "synastryBody": "Cada pessoa é calculada como um mapa natal completo. A roda sobrepõe os dois conjuntos de planetas; a tabela lista aspectos maiores entre os dois mapas com os mesmos orbes do aspectário natal (8° conjunção/oposição, 6° quadratura/trígono, 4° sextil).",
@@ -555,32 +558,32 @@
     "in_capricorn": "em Capricórnio",
     "in_aquarius": "em Aquário",
     "in_pisces": "em Peixes",
-    "sunTitle": "Why a date is usually enough",
-    "sunBody": "The Sun covers about one degree a day, so it holds a sign for roughly a month. Almost everybody can read their Sun sign off the date alone. The exception is a birthday within a day or so of a sign change: the boundary falls at a different hour each year, which is why a table of dates gets those people wrong and a real ephemeris does not. A birth time adds the house — which part of life the Sun's business shows up in — and nothing else."
+    "sunTitle": "Por que a data costuma bastar",
+    "sunBody": "O Sol percorre cerca de um grau por dia, então se mantém em um signo por mais ou menos um mês. Quase todo mundo consegue ler o próprio signo solar só pela data. A exceção é um aniversário a um dia mais ou menos de uma troca de signo: a fronteira cai em uma hora diferente a cada ano, e é por isso que uma tabela de datas erra com essas pessoas e uma efeméride de verdade não erra. A hora de nascimento acrescenta a casa — em que parte da vida a tarefa do Sol aparece — e nada mais."
   },
   "transits": {
-    "h1": "Transits today — what the sky is doing to your chart",
-    "lead": "Your birth chart never moves. The planets do. A transit is the angle between where a planet is right now and where it stood when you were born — and unlike a Sun-sign horoscope, it is read against your own degrees.",
-    "metaTitle": "Transits today — free transit calculator for your birth chart",
-    "metaDescription": "See which planets are touching your natal chart today, with the exact orb and what each contact means. Enter your birth date, time and place. Free, no account.",
-    "empty": "Enter your birth data to see what today's sky is doing to your chart.",
-    "layersTitle": "The sky moves at two speeds",
-    "fastTitle": "The fast layer — changes daily",
-    "fastBody": "The Moon covers about thirteen degrees a day, so its contacts last half a day and are gone. The Sun and Mercury hold for two or three; Venus and Mars for a week. This is the part that makes today different from yesterday.",
-    "slowTitle": "The slow layer — climate, not weather",
-    "slowBody": "Uranus moves roughly four degrees a year, Neptune less. When one of them sits on a natal point it stays there for months, sometimes years. It is worth knowing about, but it is not a task for this afternoon — so it is named separately.",
-    "faqTitle": "People also ask",
-    "faq1q": "What is a transit in astrology?",
-    "faq1a": "The angle between a planet's position right now and a point in your birth chart. Transiting Mars at 90° to your natal Sun is a transit; so is the Moon passing over your natal Mercury. The birth chart is the fixed half, today's sky is the moving half, and the transit is the relationship between them.",
-    "faq2q": "How is this different from a daily horoscope?",
-    "faq2a": "A horoscope column knows only your Sun sign, so it assumes a Sun at the middle of that sign and works without houses. This uses the real degree of every planet in your chart, and the houses if you know your birth time. Twelve readings for eight billion people versus one reading for one chart.",
-    "faq3q": "Do I need my birth time?",
-    "faq3a": "Not for the planets. Their positions come from the date, and the aspects to them are the bulk of what you see here. A time adds two things: houses, which say which part of life a contact lands in, and an exact Moon — without a time the Moon can be off by up to six degrees.",
-    "faq4q": "How often do transits change?",
-    "faq4a": "The fast ones turn over every day, and a few of them every few hours. Over five days you would typically see about half the list replaced. The slow ones can be identical for months. Both are shown, marked as such.",
-    "methodTitle": "How this is calculated",
-    "methodBody": "Positions come from a VSOP87-class ephemeris, the same one behind the natal calculators, computed for today in your chart's timezone. Aspects are conjunction, sextile, square, trine and opposition, with orbs of 8°, 6° and 4° by aspect class. Contacts from the Moon, Sun, Mercury, Venus and Mars are treated as the day; Jupiter through Pluto as climate. Tropical zodiac. The paragraphs are written templates, not generated text, and this is not medical, legal or financial advice.",
-    "title": "Transit calculator"
+    "h1": "Trânsitos de hoje — o que o céu está fazendo com o seu mapa",
+    "lead": "O seu mapa astral nunca se move. Os planetas, sim. Um trânsito é o ângulo entre onde um planeta está agora e onde ele estava quando você nasceu — e, ao contrário de um horóscopo de signo solar, ele é lido contra os seus próprios graus.",
+    "metaTitle": "Trânsitos de hoje — calculadora de trânsitos grátis para o seu mapa astral",
+    "metaDescription": "Veja que planetas estão tocando o seu mapa astral hoje, com o orbe exato e o que cada contato significa. Informe data, hora e local de nascimento. Grátis, sem conta.",
+    "empty": "Informe os seus dados de nascimento para ver o que o céu de hoje está fazendo com o seu mapa.",
+    "layersTitle": "O céu se move em duas velocidades",
+    "fastTitle": "A camada rápida — muda todo dia",
+    "fastBody": "A Lua percorre cerca de treze graus por dia, então os contatos dela duram meio dia e passam. O Sol e Mercúrio se seguram por dois ou três; Vênus e Marte, por uma semana. É esta a parte que faz hoje ser diferente de ontem.",
+    "slowTitle": "A camada lenta — clima, não tempo do dia",
+    "slowBody": "Urano anda cerca de quatro graus por ano, Netuno menos. Quando um deles pousa sobre um ponto natal, fica ali por meses, às vezes anos. Vale saber disso, mas não é tarefa para esta tarde — por isso vem nomeado à parte.",
+    "faqTitle": "As pessoas também perguntam",
+    "faq1q": "O que é um trânsito na astrologia?",
+    "faq1a": "O ângulo entre a posição de um planeta agora e um ponto do seu mapa astral. Marte em trânsito a 90° do seu Sol natal é um trânsito; a Lua passando sobre o seu Mercúrio natal também. O mapa astral é a metade fixa, o céu de hoje é a metade em movimento, e o trânsito é a relação entre as duas.",
+    "faq2q": "Qual é a diferença para um horóscopo diário?",
+    "faq2a": "Uma coluna de horóscopo conhece apenas o seu signo solar, então supõe um Sol no meio daquele signo e trabalha sem casas. Aqui se usa o grau real de cada planeta do seu mapa, e as casas se você souber a hora de nascimento. Doze leituras para oito bilhões de pessoas contra uma leitura para um mapa.",
+    "faq3q": "Preciso da minha hora de nascimento?",
+    "faq3a": "Não para os planetas. As posições deles saem da data, e os aspectos a eles são o grosso do que você vê aqui. A hora acrescenta duas coisas: as casas, que dizem em que parte da vida um contato cai, e uma Lua exata — sem a hora a Lua pode errar em até seis graus.",
+    "faq4q": "De quanto em quanto tempo os trânsitos mudam?",
+    "faq4a": "Os rápidos se renovam todo dia, e alguns deles a cada poucas horas. Em cinco dias você costuma ver cerca de metade da lista trocada. Os lentos podem ficar idênticos por meses. Os dois aparecem, cada um marcado como tal.",
+    "methodTitle": "Como isto é calculado",
+    "methodBody": "As posições vêm de uma efeméride de classe VSOP87, a mesma que está por trás dos calculadoras natais, computada para hoje no fuso do seu mapa. Os aspectos são conjunção, sextil, quadratura, trígono e oposição, com orbes de 8°, 6° e 4° conforme a classe do aspecto. Contatos da Lua, do Sol, de Mercúrio, de Vênus e de Marte são tratados como o dia; de Júpiter a Plutão, como clima. Zodíaco tropical. Os parágrafos são modelos escritos, não texto gerado, e isto não é orientação médica, jurídica ou financeira.",
+    "title": "Calculadora de trânsitos"
   },
   "horoscope": {
     "title": "Horóscopo do dia",
